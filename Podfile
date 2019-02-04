@@ -8,7 +8,14 @@ target 'FamillyOrganizer' do
 
  # Autogeneration
     pod 'R.swift'
-
-
+ 
+ # Backend
+    pod 'Firebase/Auth'
+    pod 'Firebase/Core'
+    pod 'Firebase/Firestore'
+    pod 'Firebase/Storage'
+ 
+# Dependencies
+   # pod 'Dip'
 
 end

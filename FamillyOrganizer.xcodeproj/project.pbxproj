@@ -12,6 +12,7 @@
 		4B44D5912208D7EC005FEF14 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4B44D58F2208D7EC005FEF14 /* LaunchScreen.storyboard */; };
 		4B44D5A22208DAD8005FEF14 /* Closures.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B44D5A12208DAD8005FEF14 /* Closures.swift */; };
 		4B44D5B22208E343005FEF14 /* R.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B44D5B02208E253005FEF14 /* R.generated.swift */; };
+		4B44D5B62208E76B005FEF14 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4B44D5B52208E76B005FEF14 /* GoogleService-Info.plist */; };
 		7F09F18985B3098CD0DA3BB5 /* Pods_FamillyOrganizer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3E1035FD427EBD97E6209FA0 /* Pods_FamillyOrganizer.framework */; };
 /* End PBXBuildFile section */
 
@@ -25,6 +26,7 @@
 		4B44D5922208D7EC005FEF14 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4B44D5A12208DAD8005FEF14 /* Closures.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Closures.swift; sourceTree = "<group>"; };
 		4B44D5B02208E253005FEF14 /* R.generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = R.generated.swift; sourceTree = SOURCE_ROOT; };
+		4B44D5B52208E76B005FEF14 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		8BD17FA9E4F5A73C298B947C /* Pods-FamillyOrganizer.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FamillyOrganizer.release.xcconfig"; path = "Pods/Target Support Files/Pods-FamillyOrganizer/Pods-FamillyOrganizer.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -105,6 +107,7 @@
 		4B44D59E2208D97C005FEF14 /* Support */ = {
 			isa = PBXGroup;
 			children = (
+				4B44D5B52208E76B005FEF14 /* GoogleService-Info.plist */,
 				4B44D5862208D7E9005FEF14 /* AppDelegate.swift */,
 				4B44D5922208D7EC005FEF14 /* Info.plist */,
 			);
@@ -151,8 +154,8 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 4B44D5952208D7EC005FEF14 /* Build configuration list for PBXNativeTarget "FamillyOrganizer" */;
 			buildPhases = (
-				4B44D5AF2208E162005FEF14 /* Run Script */,
 				6958100D686C2564BA1557BB /* [CP] Check Pods Manifest.lock */,
+				4B44D5AF2208E162005FEF14 /* Run Script */,
 				4B44D57F2208D7E9005FEF14 /* Sources */,
 				4B44D5802208D7E9005FEF14 /* Frameworks */,
 				4B44D5812208D7E9005FEF14 /* Resources */,
@@ -207,6 +210,7 @@
 			files = (
 				4B44D5912208D7EC005FEF14 /* LaunchScreen.storyboard in Resources */,
 				4B44D58E2208D7EC005FEF14 /* Assets.xcassets in Resources */,
+				4B44D5B62208E76B005FEF14 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -227,7 +231,7 @@
 			outputFileListPaths = (
 			);
 			outputPaths = (
-				$SRCROOT/R.generated.swift,
+				"$SRCROOT/R.generated.swift",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -264,15 +268,31 @@
 			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-FamillyOrganizer/Pods-FamillyOrganizer-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/BoringSSL-GRPC/openssl_grpc.framework",
+				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
+				"${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework",
+				"${BUILT_PRODUCTS_DIR}/Protobuf/Protobuf.framework",
 				"${BUILT_PRODUCTS_DIR}/R.swift.Library/Rswift.framework",
 				"${BUILT_PRODUCTS_DIR}/SnapKit/SnapKit.framework",
+				"${BUILT_PRODUCTS_DIR}/gRPC-C++/grpcpp.framework",
+				"${BUILT_PRODUCTS_DIR}/gRPC-Core/grpc.framework",
+				"${BUILT_PRODUCTS_DIR}/leveldb-library/leveldb.framework",
+				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
 			);
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/openssl_grpc.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleUtilities.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Protobuf.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Rswift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SnapKit.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/grpcpp.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/grpc.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/leveldb.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;

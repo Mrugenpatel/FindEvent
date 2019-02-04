@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>AD_UNIT_ID_FOR_BANNER_TEST</key>
+	<string>ca-app-pub-3940256099942544/2934735716</string>
+	<key>AD_UNIT_ID_FOR_INTERSTITIAL_TEST</key>
+	<string>ca-app-pub-3940256099942544/4411468910</string>
+	<key>CLIENT_ID</key>
+	<string>370463056112-45l1uge441mg0biuu9sro0a98hlul9j3.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.370463056112-45l1uge441mg0biuu9sro0a98hlul9j3</string>
+	<key>API_KEY</key>
+	<string>AIzaSyD2T9iU9NaFhFJidPm2jQeAC84LOLWUcbY</string>
+	<key>GCM_SENDER_ID</key>
+	<string>370463056112</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>com.yurafloka.FamillyOrganizer</string>
+	<key>PROJECT_ID</key>
+	<string>famillyapp-5fe60</string>
+	<key>STORAGE_BUCKET</key>
+	<string>famillyapp-5fe60.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<true></true>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<false></false>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:370463056112:ios:8d0134a6a788ce0c</string>
+	<key>DATABASE_URL</key>
+	<string>https://famillyapp-5fe60.firebaseio.com</string>
+</dict>
+</plist>
