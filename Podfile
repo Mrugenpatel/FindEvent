@@ -5,6 +5,7 @@ target 'FamillyOrganizer' do
 
  # UI
     pod 'SnapKit'
+    pod 'ESTabBarController-swift'
 
  # Autogeneration
     pod 'R.swift'

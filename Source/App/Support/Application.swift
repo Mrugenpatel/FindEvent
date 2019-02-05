@@ -10,7 +10,7 @@ import UIKit
 import Firebase
 
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate {
+class Application: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
 
@@ -43,4 +43,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
 }
+
+let App = UIApplication.shared.delegate as! Application
 

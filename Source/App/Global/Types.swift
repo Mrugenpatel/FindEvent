@@ -1,8 +1,8 @@
 //
-//  Closures.swift
+//  Types.swift
 //  FamillyOrganizer
 //
-//  Created by Yurii Tsymbala on 2/4/19.
+//  Created by Yurii Tsymbala on 2/6/19.
 //  Copyright © 2019 Yurii Tsymbala. All rights reserved.
 //
 
@@ -11,9 +11,6 @@ import Foundation
 // MARK: - All
 
 typealias EmptyClosure = () -> Void
+typealias ErrorClosure = (Error?) -> Void
+typealias DidTouchUpInside = () -> Void
 
-
-// MARK: - UI
-// MARK: Controls / Buttons
-
-//typealias DidTouchUpInside = (Button) -> Void
