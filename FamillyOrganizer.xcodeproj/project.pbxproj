@@ -11,8 +11,8 @@
 		4B44D58E2208D7EC005FEF14 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4B44D58D2208D7EC005FEF14 /* Assets.xcassets */; };
 		4B44D5912208D7EC005FEF14 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4B44D58F2208D7EC005FEF14 /* LaunchScreen.storyboard */; };
 		4B44D5A22208DAD8005FEF14 /* Closures.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B44D5A12208DAD8005FEF14 /* Closures.swift */; };
-		4B44D5B22208E343005FEF14 /* R.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B44D5B02208E253005FEF14 /* R.generated.swift */; };
 		4B44D5B62208E76B005FEF14 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4B44D5B52208E76B005FEF14 /* GoogleService-Info.plist */; };
+		4BD8CF62220A445600E0C6F5 /* R.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BD8CF61220A445600E0C6F5 /* R.generated.swift */; };
 		7F09F18985B3098CD0DA3BB5 /* Pods_FamillyOrganizer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3E1035FD427EBD97E6209FA0 /* Pods_FamillyOrganizer.framework */; };
 /* End PBXBuildFile section */
 
@@ -25,8 +25,8 @@
 		4B44D5902208D7EC005FEF14 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		4B44D5922208D7EC005FEF14 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4B44D5A12208DAD8005FEF14 /* Closures.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Closures.swift; sourceTree = "<group>"; };
-		4B44D5B02208E253005FEF14 /* R.generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = R.generated.swift; sourceTree = SOURCE_ROOT; };
 		4B44D5B52208E76B005FEF14 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		4BD8CF61220A445600E0C6F5 /* R.generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = R.generated.swift; sourceTree = "<group>"; };
 		8BD17FA9E4F5A73C298B947C /* Pods-FamillyOrganizer.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FamillyOrganizer.release.xcconfig"; path = "Pods/Target Support Files/Pods-FamillyOrganizer/Pods-FamillyOrganizer.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -75,7 +75,6 @@
 		4B44D5982208D8E7005FEF14 /* Application */ = {
 			isa = PBXGroup;
 			children = (
-				4B44D5B02208E253005FEF14 /* R.generated.swift */,
 				4B44D59E2208D97C005FEF14 /* Support */,
 				4B44D5A02208DAA6005FEF14 /* Global */,
 				4B44D59F2208D9B0005FEF14 /* Resources */,
@@ -100,6 +99,7 @@
 		4B44D59C2208D929005FEF14 /* PresentationLayer */ = {
 			isa = PBXGroup;
 			children = (
+				4BD8CF60220A439100E0C6F5 /* Autogeneration */,
 			);
 			path = PresentationLayer;
 			sourceTree = "<group>";
@@ -107,8 +107,8 @@
 		4B44D59E2208D97C005FEF14 /* Support */ = {
 			isa = PBXGroup;
 			children = (
-				4B44D5B52208E76B005FEF14 /* GoogleService-Info.plist */,
 				4B44D5862208D7E9005FEF14 /* AppDelegate.swift */,
+				4B44D5B52208E76B005FEF14 /* GoogleService-Info.plist */,
 				4B44D5922208D7EC005FEF14 /* Info.plist */,
 			);
 			path = Support;
@@ -128,6 +128,14 @@
 				4B44D5A12208DAD8005FEF14 /* Closures.swift */,
 			);
 			path = Global;
+			sourceTree = "<group>";
+		};
+		4BD8CF60220A439100E0C6F5 /* Autogeneration */ = {
+			isa = PBXGroup;
+			children = (
+				4BD8CF61220A445600E0C6F5 /* R.generated.swift */,
+			);
+			path = Autogeneration;
 			sourceTree = "<group>";
 		};
 		B93874519070A1A466673031 /* Pods */ = {
@@ -231,11 +239,11 @@
 			outputFileListPaths = (
 			);
 			outputPaths = (
-				"$SRCROOT/R.generated.swift",
+				$SRCROOT/Source/PresentationLayer/Autogeneration/R.generated.swift,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"$PODS_ROOT/R.swift/rswift\" generate \"$SRCROOT/R.generated.swift\"\n";
+			shellScript = "\"$PODS_ROOT/R.swift/rswift\" generate \"$SRCROOT/Source/PresentationLayer/Autogeneration/R.generated.swift\"\n";
 		};
 		6958100D686C2564BA1557BB /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -306,9 +314,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4B44D5B22208E343005FEF14 /* R.generated.swift in Sources */,
 				4B44D5872208D7E9005FEF14 /* AppDelegate.swift in Sources */,
 				4B44D5A22208DAD8005FEF14 /* Closures.swift in Sources */,
+				4BD8CF62220A445600E0C6F5 /* R.generated.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
