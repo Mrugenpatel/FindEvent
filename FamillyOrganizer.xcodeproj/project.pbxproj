@@ -42,6 +42,8 @@
 		4BD8CFC4220A5DC300E0C6F5 /* UserInputError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BD8CFC3220A5DC300E0C6F5 /* UserInputError.swift */; };
 		4BD8CFC8220A5EDC00E0C6F5 /* SignInParams.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BD8CFC7220A5EDC00E0C6F5 /* SignInParams.swift */; };
 		4BD8CFCA220A5EE900E0C6F5 /* SignUpParams.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BD8CFC9220A5EE900E0C6F5 /* SignUpParams.swift */; };
+		4BDAF6AC220B716F006AD329 /* EmailAuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BDAF6AB220B716F006AD329 /* EmailAuthService.swift */; };
+		4BDAF6AE220B7180006AD329 /* FacebookAuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BDAF6AD220B7180006AD329 /* FacebookAuthService.swift */; };
 		7F09F18985B3098CD0DA3BB5 /* Pods_FamillyOrganizer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3E1035FD427EBD97E6209FA0 /* Pods_FamillyOrganizer.framework */; };
 /* End PBXBuildFile section */
 
@@ -85,6 +87,8 @@
 		4BD8CFC3220A5DC300E0C6F5 /* UserInputError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInputError.swift; sourceTree = "<group>"; };
 		4BD8CFC7220A5EDC00E0C6F5 /* SignInParams.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInParams.swift; sourceTree = "<group>"; };
 		4BD8CFC9220A5EE900E0C6F5 /* SignUpParams.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpParams.swift; sourceTree = "<group>"; };
+		4BDAF6AB220B716F006AD329 /* EmailAuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailAuthService.swift; sourceTree = "<group>"; };
+		4BDAF6AD220B7180006AD329 /* FacebookAuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FacebookAuthService.swift; sourceTree = "<group>"; };
 		8BD17FA9E4F5A73C298B947C /* Pods-FamillyOrganizer.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FamillyOrganizer.release.xcconfig"; path = "Pods/Target Support Files/Pods-FamillyOrganizer/Pods-FamillyOrganizer.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -151,6 +155,7 @@
 		4B44D59B2208D91A005FEF14 /* BusinessLayer */ = {
 			isa = PBXGroup;
 			children = (
+				4BDAF6AA220B7135006AD329 /* Networking */,
 			);
 			path = BusinessLayer;
 			sourceTree = "<group>";
@@ -331,6 +336,9 @@
 		4BD8CFAC220A569700E0C6F5 /* Modules */ = {
 			isa = PBXGroup;
 			children = (
+				4BDAF6A9220B6E4E006AD329 /* SignUp */,
+				4BDAF6A8220B6E24006AD329 /* SignIn */,
+				4BDAF6A7220B6E1C006AD329 /* Welcome */,
 			);
 			path = Modules;
 			sourceTree = "<group>";
@@ -415,6 +423,36 @@
 				4BD8CFC9220A5EE900E0C6F5 /* SignUpParams.swift */,
 			);
 			path = RequestParams;
+			sourceTree = "<group>";
+		};
+		4BDAF6A7220B6E1C006AD329 /* Welcome */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Welcome;
+			sourceTree = "<group>";
+		};
+		4BDAF6A8220B6E24006AD329 /* SignIn */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = SignIn;
+			sourceTree = "<group>";
+		};
+		4BDAF6A9220B6E4E006AD329 /* SignUp */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = SignUp;
+			sourceTree = "<group>";
+		};
+		4BDAF6AA220B7135006AD329 /* Networking */ = {
+			isa = PBXGroup;
+			children = (
+				4BDAF6AB220B716F006AD329 /* EmailAuthService.swift */,
+				4BDAF6AD220B7180006AD329 /* FacebookAuthService.swift */,
+			);
+			path = Networking;
 			sourceTree = "<group>";
 		};
 		B93874519070A1A466673031 /* Pods */ = {
@@ -617,10 +655,12 @@
 				4BD8CFC2220A5D1400E0C6F5 /* UserInputValidator.swift in Sources */,
 				4BD8CFC4220A5DC300E0C6F5 /* UserInputError.swift in Sources */,
 				4BD8CF62220A445600E0C6F5 /* R.generated.swift in Sources */,
+				4BDAF6AC220B716F006AD329 /* EmailAuthService.swift in Sources */,
 				4BD8CFB3220A594100E0C6F5 /* Reusable.swift in Sources */,
 				4BD8CF7E220A4A3E00E0C6F5 /* View.swift in Sources */,
 				4BD8CF74220A48D500E0C6F5 /* ViewController.swift in Sources */,
 				4BD8CFAF220A571C00E0C6F5 /* NavigationController.swift in Sources */,
+				4BDAF6AE220B7180006AD329 /* FacebookAuthService.swift in Sources */,
 				4BD8CFAB220A567100E0C6F5 /* Font.swift in Sources */,
 				4BD8CF78220A49A700E0C6F5 /* ControllerViewModel.swift in Sources */,
 				4BD8CFBB220A5B4600E0C6F5 /* TableViewCommunicator.swift in Sources */,
