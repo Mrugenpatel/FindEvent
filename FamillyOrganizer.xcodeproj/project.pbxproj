@@ -33,6 +33,15 @@
 		4BD8CFA7220A557700E0C6F5 /* OpenSans-Semibold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4BD8CF9D220A557700E0C6F5 /* OpenSans-Semibold.ttf */; };
 		4BD8CFAB220A567100E0C6F5 /* Font.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BD8CFAA220A567100E0C6F5 /* Font.swift */; };
 		4BD8CFAF220A571C00E0C6F5 /* NavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BD8CFAE220A571C00E0C6F5 /* NavigationController.swift */; };
+		4BD8CFB3220A594100E0C6F5 /* Reusable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BD8CFB2220A594100E0C6F5 /* Reusable.swift */; };
+		4BD8CFB6220A59BA00E0C6F5 /* UITableViewReusable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BD8CFB5220A59BA00E0C6F5 /* UITableViewReusable.swift */; };
+		4BD8CFB9220A5AD500E0C6F5 /* UICollectionViewReusable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BD8CFB8220A5AD500E0C6F5 /* UICollectionViewReusable.swift */; };
+		4BD8CFBB220A5B4600E0C6F5 /* TableViewCommunicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BD8CFBA220A5B4600E0C6F5 /* TableViewCommunicator.swift */; };
+		4BD8CFBD220A5B7100E0C6F5 /* CollectionViewCommunicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BD8CFBC220A5B7100E0C6F5 /* CollectionViewCommunicator.swift */; };
+		4BD8CFC2220A5D1400E0C6F5 /* UserInputValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BD8CFC1220A5D1400E0C6F5 /* UserInputValidator.swift */; };
+		4BD8CFC4220A5DC300E0C6F5 /* UserInputError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BD8CFC3220A5DC300E0C6F5 /* UserInputError.swift */; };
+		4BD8CFC8220A5EDC00E0C6F5 /* SignInParams.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BD8CFC7220A5EDC00E0C6F5 /* SignInParams.swift */; };
+		4BD8CFCA220A5EE900E0C6F5 /* SignUpParams.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BD8CFC9220A5EE900E0C6F5 /* SignUpParams.swift */; };
 		7F09F18985B3098CD0DA3BB5 /* Pods_FamillyOrganizer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3E1035FD427EBD97E6209FA0 /* Pods_FamillyOrganizer.framework */; };
 /* End PBXBuildFile section */
 
@@ -67,6 +76,15 @@
 		4BD8CF9D220A557700E0C6F5 /* OpenSans-Semibold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-Semibold.ttf"; sourceTree = "<group>"; };
 		4BD8CFAA220A567100E0C6F5 /* Font.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Font.swift; sourceTree = "<group>"; };
 		4BD8CFAE220A571C00E0C6F5 /* NavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationController.swift; sourceTree = "<group>"; };
+		4BD8CFB2220A594100E0C6F5 /* Reusable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Reusable.swift; sourceTree = "<group>"; };
+		4BD8CFB5220A59BA00E0C6F5 /* UITableViewReusable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITableViewReusable.swift; sourceTree = "<group>"; };
+		4BD8CFB8220A5AD500E0C6F5 /* UICollectionViewReusable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UICollectionViewReusable.swift; sourceTree = "<group>"; };
+		4BD8CFBA220A5B4600E0C6F5 /* TableViewCommunicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewCommunicator.swift; sourceTree = "<group>"; };
+		4BD8CFBC220A5B7100E0C6F5 /* CollectionViewCommunicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewCommunicator.swift; sourceTree = "<group>"; };
+		4BD8CFC1220A5D1400E0C6F5 /* UserInputValidator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInputValidator.swift; sourceTree = "<group>"; };
+		4BD8CFC3220A5DC300E0C6F5 /* UserInputError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInputError.swift; sourceTree = "<group>"; };
+		4BD8CFC7220A5EDC00E0C6F5 /* SignInParams.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInParams.swift; sourceTree = "<group>"; };
+		4BD8CFC9220A5EE900E0C6F5 /* SignUpParams.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpParams.swift; sourceTree = "<group>"; };
 		8BD17FA9E4F5A73C298B947C /* Pods-FamillyOrganizer.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FamillyOrganizer.release.xcconfig"; path = "Pods/Target Support Files/Pods-FamillyOrganizer/Pods-FamillyOrganizer.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -124,6 +142,8 @@
 		4B44D5992208D908005FEF14 /* DataLayer */ = {
 			isa = PBXGroup;
 			children = (
+				4BD8CFC5220A5E5600E0C6F5 /* Datatypes */,
+				4BD8CFC0220A5CF200E0C6F5 /* Validation */,
 			);
 			path = DataLayer;
 			sourceTree = "<group>";
@@ -138,14 +158,15 @@
 		4B44D59C2208D929005FEF14 /* PresentationLayer */ = {
 			isa = PBXGroup;
 			children = (
-				4BD8CFAD220A570300E0C6F5 /* NavigationController */,
-				4BD8CFAC220A569700E0C6F5 /* Modules */,
-				4BD8CFA9220A566400E0C6F5 /* Font */,
-				4BD8CFA8220A565800E0C6F5 /* Communicators */,
 				4BD8CF60220A439100E0C6F5 /* Autogeneration */,
+				4BD8CFAC220A569700E0C6F5 /* Modules */,
 				4BD8CF6B220A47F800E0C6F5 /* Architecture */,
-				4BD8CF91220A53E800E0C6F5 /* LaunchScreen */,
 				4BD8CF7B220A4A1800E0C6F5 /* Views */,
+				4BD8CFAD220A570300E0C6F5 /* Navigation */,
+				4BD8CFA8220A565800E0C6F5 /* Communicators */,
+				4BD8CFA9220A566400E0C6F5 /* Font */,
+				4BD8CF91220A53E800E0C6F5 /* LaunchScreen */,
+				4BD8CFB0220A590800E0C6F5 /* Extensions */,
 			);
 			path = PresentationLayer;
 			sourceTree = "<group>";
@@ -242,6 +263,8 @@
 			isa = PBXGroup;
 			children = (
 				4BD8CF7C220A4A2A00E0C6F5 /* Base */,
+				4BD8CFBF220A5C2200E0C6F5 /* CollectionViewCells */,
+				4BD8CFBE220A5C1700E0C6F5 /* TableViewCells */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -291,6 +314,8 @@
 		4BD8CFA8220A565800E0C6F5 /* Communicators */ = {
 			isa = PBXGroup;
 			children = (
+				4BD8CFBA220A5B4600E0C6F5 /* TableViewCommunicator.swift */,
+				4BD8CFBC220A5B7100E0C6F5 /* CollectionViewCommunicator.swift */,
 			);
 			path = Communicators;
 			sourceTree = "<group>";
@@ -310,12 +335,86 @@
 			path = Modules;
 			sourceTree = "<group>";
 		};
-		4BD8CFAD220A570300E0C6F5 /* NavigationController */ = {
+		4BD8CFAD220A570300E0C6F5 /* Navigation */ = {
 			isa = PBXGroup;
 			children = (
 				4BD8CFAE220A571C00E0C6F5 /* NavigationController.swift */,
 			);
-			path = NavigationController;
+			path = Navigation;
+			sourceTree = "<group>";
+		};
+		4BD8CFB0220A590800E0C6F5 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				4BD8CFB7220A59C600E0C6F5 /* CollectionView */,
+				4BD8CFB4220A599B00E0C6F5 /* UITableView */,
+				4BD8CFB1220A592500E0C6F5 /* Reusable */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		4BD8CFB1220A592500E0C6F5 /* Reusable */ = {
+			isa = PBXGroup;
+			children = (
+				4BD8CFB2220A594100E0C6F5 /* Reusable.swift */,
+			);
+			path = Reusable;
+			sourceTree = "<group>";
+		};
+		4BD8CFB4220A599B00E0C6F5 /* UITableView */ = {
+			isa = PBXGroup;
+			children = (
+				4BD8CFB5220A59BA00E0C6F5 /* UITableViewReusable.swift */,
+			);
+			path = UITableView;
+			sourceTree = "<group>";
+		};
+		4BD8CFB7220A59C600E0C6F5 /* CollectionView */ = {
+			isa = PBXGroup;
+			children = (
+				4BD8CFB8220A5AD500E0C6F5 /* UICollectionViewReusable.swift */,
+			);
+			path = CollectionView;
+			sourceTree = "<group>";
+		};
+		4BD8CFBE220A5C1700E0C6F5 /* TableViewCells */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = TableViewCells;
+			sourceTree = "<group>";
+		};
+		4BD8CFBF220A5C2200E0C6F5 /* CollectionViewCells */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = CollectionViewCells;
+			sourceTree = "<group>";
+		};
+		4BD8CFC0220A5CF200E0C6F5 /* Validation */ = {
+			isa = PBXGroup;
+			children = (
+				4BD8CFC1220A5D1400E0C6F5 /* UserInputValidator.swift */,
+				4BD8CFC3220A5DC300E0C6F5 /* UserInputError.swift */,
+			);
+			path = Validation;
+			sourceTree = "<group>";
+		};
+		4BD8CFC5220A5E5600E0C6F5 /* Datatypes */ = {
+			isa = PBXGroup;
+			children = (
+				4BD8CFC6220A5EC700E0C6F5 /* RequestParams */,
+			);
+			path = Datatypes;
+			sourceTree = "<group>";
+		};
+		4BD8CFC6220A5EC700E0C6F5 /* RequestParams */ = {
+			isa = PBXGroup;
+			children = (
+				4BD8CFC7220A5EDC00E0C6F5 /* SignInParams.swift */,
+				4BD8CFC9220A5EE900E0C6F5 /* SignUpParams.swift */,
+			);
+			path = RequestParams;
 			sourceTree = "<group>";
 		};
 		B93874519070A1A466673031 /* Pods */ = {
@@ -507,18 +606,27 @@
 			buildActionMask = 2147483647;
 			files = (
 				4B44D5872208D7E9005FEF14 /* Application.swift in Sources */,
+				4BD8CFC8220A5EDC00E0C6F5 /* SignInParams.swift in Sources */,
+				4BD8CFB9220A5AD500E0C6F5 /* UICollectionViewReusable.swift in Sources */,
+				4BD8CFCA220A5EE900E0C6F5 /* SignUpParams.swift in Sources */,
 				4BD8CF8E220A4F9E00E0C6F5 /* Types.swift in Sources */,
 				4BD8CF7A220A49B500E0C6F5 /* Controller.swift in Sources */,
 				4BD8CF76220A499700E0C6F5 /* ControllerView.swift in Sources */,
 				4B44D5A22208DAD8005FEF14 /* Functions.swift in Sources */,
+				4BD8CFBD220A5B7100E0C6F5 /* CollectionViewCommunicator.swift in Sources */,
+				4BD8CFC2220A5D1400E0C6F5 /* UserInputValidator.swift in Sources */,
+				4BD8CFC4220A5DC300E0C6F5 /* UserInputError.swift in Sources */,
 				4BD8CF62220A445600E0C6F5 /* R.generated.swift in Sources */,
+				4BD8CFB3220A594100E0C6F5 /* Reusable.swift in Sources */,
 				4BD8CF7E220A4A3E00E0C6F5 /* View.swift in Sources */,
 				4BD8CF74220A48D500E0C6F5 /* ViewController.swift in Sources */,
 				4BD8CFAF220A571C00E0C6F5 /* NavigationController.swift in Sources */,
 				4BD8CFAB220A567100E0C6F5 /* Font.swift in Sources */,
 				4BD8CF78220A49A700E0C6F5 /* ControllerViewModel.swift in Sources */,
+				4BD8CFBB220A5B4600E0C6F5 /* TableViewCommunicator.swift in Sources */,
 				4BD8CF80220A4A5C00E0C6F5 /* Button.swift in Sources */,
 				4BD8CF6F220A485100E0C6F5 /* ViewModel.swift in Sources */,
+				4BD8CFB6220A59BA00E0C6F5 /* UITableViewReusable.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
