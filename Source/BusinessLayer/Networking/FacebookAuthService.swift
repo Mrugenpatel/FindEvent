@@ -7,7 +7,19 @@
 //
 
 import Foundation
+import FirebaseAuth
 
 class FacebookAuthService {
-    
+
+    // signIn
+
+    // signUp with uiimage
+
+    // signOut
+
+    // change password
+
+    // change image
+
+    // якшо в функцію не прийшла картинка то сетати ту шо з фейсбуку
 }

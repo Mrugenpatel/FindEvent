@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4B087100220D3EFD00ABD553 /* AuthServiceError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B0870FF220D3EFD00ABD553 /* AuthServiceError.swift */; };
 		4B44D5872208D7E9005FEF14 /* Application.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B44D5862208D7E9005FEF14 /* Application.swift */; };
 		4B44D58E2208D7EC005FEF14 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4B44D58D2208D7EC005FEF14 /* Assets.xcassets */; };
 		4B44D5912208D7EC005FEF14 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4B44D58F2208D7EC005FEF14 /* LaunchScreen.storyboard */; };
@@ -50,6 +51,7 @@
 /* Begin PBXFileReference section */
 		39B9EB50827781FE90ADD3E5 /* Pods-FamillyOrganizer.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FamillyOrganizer.debug.xcconfig"; path = "Pods/Target Support Files/Pods-FamillyOrganizer/Pods-FamillyOrganizer.debug.xcconfig"; sourceTree = "<group>"; };
 		3E1035FD427EBD97E6209FA0 /* Pods_FamillyOrganizer.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FamillyOrganizer.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		4B0870FF220D3EFD00ABD553 /* AuthServiceError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthServiceError.swift; sourceTree = "<group>"; };
 		4B44D5832208D7E9005FEF14 /* FamillyOrganizer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FamillyOrganizer.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4B44D5862208D7E9005FEF14 /* Application.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Application.swift; sourceTree = "<group>"; };
 		4B44D58D2208D7EC005FEF14 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -449,6 +451,7 @@
 		4BDAF6AA220B7135006AD329 /* Networking */ = {
 			isa = PBXGroup;
 			children = (
+				4B0870FF220D3EFD00ABD553 /* AuthServiceError.swift */,
 				4BDAF6AB220B716F006AD329 /* EmailAuthService.swift */,
 				4BDAF6AD220B7180006AD329 /* FacebookAuthService.swift */,
 			);
@@ -651,6 +654,7 @@
 				4BD8CF7A220A49B500E0C6F5 /* Controller.swift in Sources */,
 				4BD8CF76220A499700E0C6F5 /* ControllerView.swift in Sources */,
 				4B44D5A22208DAD8005FEF14 /* Functions.swift in Sources */,
+				4B087100220D3EFD00ABD553 /* AuthServiceError.swift in Sources */,
 				4BD8CFBD220A5B7100E0C6F5 /* CollectionViewCommunicator.swift in Sources */,
 				4BD8CFC2220A5D1400E0C6F5 /* UserInputValidator.swift in Sources */,
 				4BD8CFC4220A5DC300E0C6F5 /* UserInputError.swift in Sources */,

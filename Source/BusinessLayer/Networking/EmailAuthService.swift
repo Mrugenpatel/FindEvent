@@ -10,66 +10,46 @@ import FirebaseAuth
 
 class EmailAuthService {
 
-}
+    // signIn
 
-enum AuthServiceError {
-    case invalidCredentials
-    case emailAlreadyExists
-    case invalidEmail
-    case wrongPassword
-    case userNotFound
-    case networkError(NSError)
-    case credentialAlreadyInUse
-    case weakPassword
-    case internalError(NSError)
-    case unknwownError(String)
-    case internalInconsistency
-    case failedToCreateUser
-    case failedToGetUser
-    case emptyPassword
-    case failedToChangePassword
+    // signUp with uiimage
 
-    public static func getError(error: Error) -> AuthServiceError {
-        guard let authError = error as NSError?,
-            let firebaseError = AuthErrorCode(rawValue: authError.code)
-            else { return .unknwownError("Unknown Error") }
-        switch firebaseError {
-        case .invalidCredential: return .invalidCredentials
-        case .emailAlreadyInUse: return .emailAlreadyExists
-        case .invalidEmail: return .invalidEmail
-        case .wrongPassword: return .wrongPassword
-        case .userNotFound: return .userNotFound
-        case .networkError: return .networkError(authError)
-        case .credentialAlreadyInUse: return .credentialAlreadyInUse
-        case .weakPassword: return .weakPassword
-        default :
-            return .internalError(authError)
-        }
-    }
+    // signOut
+
+    // change password
+
+    // change image 
+
+    // якшо в функцію не прийшла картинка то сетати ту шо з фейсбуку
+
 }
 
 protocol AuthServiceType {
+
     typealias AuthHandler = (Result<User, AuthServiceError>) -> Void
-    //TODO: Consider refactoring this method!!!
+
     func signInWith(
         email: String,
         password: String,
         completion: @escaping AuthHandler
     )
-    //TODO: Consider refactoring this method!!!
+
     func signUp(
         withName name: String,
         withEmail email: String,
         withPassword password: String,
         withUserImg img: UIImage?,
         completion: @escaping AuthHandler)
+
     func signOut(
         completion: @escaping (Result<Bool, AuthServiceError>) -> Void)
+
     func updatePassword(newPassword: String,
                         repeatNewPassword: String,
                         completion: @escaping (Result<Bool, AuthServiceError>) -> Void)
 
     var currentUserId: String? { get }
+
 }
 
 class AuthService: AuthServiceType {
@@ -230,5 +210,7 @@ class User {
                 Constants.name.rawValue: name as Any,
                 Constants.email.rawValue: email as Any,
                 Constants.avatarImgURL.rawValue: avatarImgURL as Any]
+    }
+
 }
 
