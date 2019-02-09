@@ -11,20 +11,27 @@ import Foundation
 class UserInputValidator {
     static let minimumPasswordLength = 6
 
-    func validateSignIn(email: String?, password: String?) throws -> SignInParams {
+    func validateSignIn(
+        email: String?,
+        password: String?) throws -> (email: String, password: String) {
+
         let email = try validateEmail(email)
         let password = try validatePassword(password)
-        return SignInParams(email: email, password: password)
+        return (email: email, password: password)
     }
 
-    func validateSignUp(username: String?, email: String?, password: String?) throws -> SignUpParams {
-        let username = try validateUsername(username)
+    func validateSignUp(
+        name: String?,
+        email: String?,
+        password: String?) throws -> (name: String, email: String, password: String) {
+
+        let name = try validateName(name)
         let email = try validateEmail(email)
         let password = try validatePassword(password)
-        return SignUpParams(username: username, email: email, password: password)
+        return (name: name, email: email, password: password)
     }
 
-    func validateUsername(_ username: String?) throws -> String {
+    func validateName(_ username: String?) throws -> String {
         guard
             let username = username,
             !username.isEmpty else {
@@ -68,5 +75,5 @@ extension String {
         let emailRegEx = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,64}"
         let emailPredicate = NSPredicate(format:"SELF MATCHES %@", emailRegEx)
         return emailPredicate.evaluate(with: self)
-}
+    }
 }

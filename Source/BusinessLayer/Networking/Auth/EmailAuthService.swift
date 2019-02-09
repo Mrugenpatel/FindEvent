@@ -54,7 +54,7 @@ class EmailAuthService: EmailAuthServiceType {
 
 class AuthService {
     private let firebaseAuth = Auth.auth()
-    private let userService: UserServiceType
+    private let userService: UserService
     private var currentFirebaseUser: FirebaseAuth.User? {
         return firebaseAuth.currentUser
     }
@@ -64,7 +64,7 @@ class AuthService {
         return firUserId
     }
 
-    init(userService: UserServiceType) {
+    init(userService: UserService) {
         self.userService = userService
     }
 
@@ -166,52 +166,3 @@ class AuthService {
         }
     }
 }
-
-// MARK: change place!
-class User {
-    private enum Constants: String {
-        case id
-        case name
-        case email
-        case avatarImgURL
-    }
-
-    let id: String?
-    var name: String?
-    let email: String?
-    var avatarImgURL: String?
-
-    // location in latitute,longtitude (Ukraine,Lviv in app presenting)
-
-    init?(user: [String: Any]) {
-        guard let id = user[Constants.id.rawValue] as? String else { return nil }
-        self.id = id
-        guard let name = user[Constants.name.rawValue] as? String else { return nil }
-        self.name = name
-        guard let email = user[Constants.email.rawValue] as? String else { return nil }
-        self.email = email
-        guard let avatarImgURL = user[Constants.avatarImgURL.rawValue] as? String else { return nil }
-        self.avatarImgURL = avatarImgURL
-    }
-
-    init(id: String,
-         name: String,
-         email: String,
-         avatarImgURL: String) {
-
-        self.id = id
-        self.name = name
-        self.email = email
-        self.avatarImgURL = avatarImgURL
-
-    }
-
-    func data() -> [String: Any] {
-        return [Constants.id.rawValue: id as Any,
-                Constants.name.rawValue: name as Any,
-                Constants.email.rawValue: email as Any,
-                Constants.avatarImgURL.rawValue: avatarImgURL as Any]
-    }
-
-}
-

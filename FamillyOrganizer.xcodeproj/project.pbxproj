@@ -15,6 +15,7 @@
 		4B44D5B62208E76B005FEF14 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4B44D5B52208E76B005FEF14 /* GoogleService-Info.plist */; };
 		4B83B2F9220F387A00C549AA /* AuthServiceType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B83B2F8220F387A00C549AA /* AuthServiceType.swift */; };
 		4B83B2FD220F44D900C549AA /* UserService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B83B2FC220F44D900C549AA /* UserService.swift */; };
+		4B83B300220F496C00C549AA /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B83B2FF220F496C00C549AA /* User.swift */; };
 		4BD8CF62220A445600E0C6F5 /* R.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BD8CF61220A445600E0C6F5 /* R.generated.swift */; };
 		4BD8CF6F220A485100E0C6F5 /* ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BD8CF6E220A485100E0C6F5 /* ViewModel.swift */; };
 		4BD8CF74220A48D500E0C6F5 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BD8CF73220A48D500E0C6F5 /* ViewController.swift */; };
@@ -43,8 +44,6 @@
 		4BD8CFBD220A5B7100E0C6F5 /* CollectionViewCommunicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BD8CFBC220A5B7100E0C6F5 /* CollectionViewCommunicator.swift */; };
 		4BD8CFC2220A5D1400E0C6F5 /* UserInputValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BD8CFC1220A5D1400E0C6F5 /* UserInputValidator.swift */; };
 		4BD8CFC4220A5DC300E0C6F5 /* UserInputError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BD8CFC3220A5DC300E0C6F5 /* UserInputError.swift */; };
-		4BD8CFC8220A5EDC00E0C6F5 /* SignInParams.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BD8CFC7220A5EDC00E0C6F5 /* SignInParams.swift */; };
-		4BD8CFCA220A5EE900E0C6F5 /* SignUpParams.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BD8CFC9220A5EE900E0C6F5 /* SignUpParams.swift */; };
 		4BDAF6AC220B716F006AD329 /* EmailAuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BDAF6AB220B716F006AD329 /* EmailAuthService.swift */; };
 		4BDAF6AE220B7180006AD329 /* FacebookAuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BDAF6AD220B7180006AD329 /* FacebookAuthService.swift */; };
 		7F09F18985B3098CD0DA3BB5 /* Pods_FamillyOrganizer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3E1035FD427EBD97E6209FA0 /* Pods_FamillyOrganizer.framework */; };
@@ -63,6 +62,7 @@
 		4B44D5B52208E76B005FEF14 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		4B83B2F8220F387A00C549AA /* AuthServiceType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthServiceType.swift; sourceTree = "<group>"; };
 		4B83B2FC220F44D900C549AA /* UserService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserService.swift; sourceTree = "<group>"; };
+		4B83B2FF220F496C00C549AA /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		4BD8CF61220A445600E0C6F5 /* R.generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = R.generated.swift; sourceTree = "<group>"; };
 		4BD8CF6E220A485100E0C6F5 /* ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModel.swift; sourceTree = "<group>"; };
 		4BD8CF73220A48D500E0C6F5 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -91,8 +91,6 @@
 		4BD8CFBC220A5B7100E0C6F5 /* CollectionViewCommunicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewCommunicator.swift; sourceTree = "<group>"; };
 		4BD8CFC1220A5D1400E0C6F5 /* UserInputValidator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInputValidator.swift; sourceTree = "<group>"; };
 		4BD8CFC3220A5DC300E0C6F5 /* UserInputError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInputError.swift; sourceTree = "<group>"; };
-		4BD8CFC7220A5EDC00E0C6F5 /* SignInParams.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInParams.swift; sourceTree = "<group>"; };
-		4BD8CFC9220A5EE900E0C6F5 /* SignUpParams.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpParams.swift; sourceTree = "<group>"; };
 		4BDAF6AB220B716F006AD329 /* EmailAuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailAuthService.swift; sourceTree = "<group>"; };
 		4BDAF6AD220B7180006AD329 /* FacebookAuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FacebookAuthService.swift; sourceTree = "<group>"; };
 		8BD17FA9E4F5A73C298B947C /* Pods-FamillyOrganizer.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FamillyOrganizer.release.xcconfig"; path = "Pods/Target Support Files/Pods-FamillyOrganizer/Pods-FamillyOrganizer.release.xcconfig"; sourceTree = "<group>"; };
@@ -225,6 +223,14 @@
 			isa = PBXGroup;
 			children = (
 				4B83B2FC220F44D900C549AA /* UserService.swift */,
+			);
+			path = User;
+			sourceTree = "<group>";
+		};
+		4B83B2FE220F495400C549AA /* User */ = {
+			isa = PBXGroup;
+			children = (
+				4B83B2FF220F496C00C549AA /* User.swift */,
 			);
 			path = User;
 			sourceTree = "<group>";
@@ -436,18 +442,9 @@
 		4BD8CFC5220A5E5600E0C6F5 /* Datatypes */ = {
 			isa = PBXGroup;
 			children = (
-				4BD8CFC6220A5EC700E0C6F5 /* RequestParams */,
+				4B83B2FE220F495400C549AA /* User */,
 			);
 			path = Datatypes;
-			sourceTree = "<group>";
-		};
-		4BD8CFC6220A5EC700E0C6F5 /* RequestParams */ = {
-			isa = PBXGroup;
-			children = (
-				4BD8CFC7220A5EDC00E0C6F5 /* SignInParams.swift */,
-				4BD8CFC9220A5EE900E0C6F5 /* SignUpParams.swift */,
-			);
-			path = RequestParams;
 			sourceTree = "<group>";
 		};
 		4BDAF6A7220B6E1C006AD329 /* Welcome */ = {
@@ -668,11 +665,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4B83B300220F496C00C549AA /* User.swift in Sources */,
 				4B44D5872208D7E9005FEF14 /* Application.swift in Sources */,
-				4BD8CFC8220A5EDC00E0C6F5 /* SignInParams.swift in Sources */,
 				4B83B2FD220F44D900C549AA /* UserService.swift in Sources */,
 				4BD8CFB9220A5AD500E0C6F5 /* UICollectionViewReusable.swift in Sources */,
-				4BD8CFCA220A5EE900E0C6F5 /* SignUpParams.swift in Sources */,
 				4BD8CF8E220A4F9E00E0C6F5 /* Types.swift in Sources */,
 				4BD8CF7A220A49B500E0C6F5 /* Controller.swift in Sources */,
 				4BD8CF76220A499700E0C6F5 /* ControllerView.swift in Sources */,
