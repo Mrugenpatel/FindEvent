@@ -16,6 +16,7 @@
 		4B83B2F9220F387A00C549AA /* AuthServiceType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B83B2F8220F387A00C549AA /* AuthServiceType.swift */; };
 		4B83B2FD220F44D900C549AA /* UserService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B83B2FC220F44D900C549AA /* UserService.swift */; };
 		4B83B300220F496C00C549AA /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B83B2FF220F496C00C549AA /* User.swift */; };
+		4B83B302220F67C600C549AA /* UserServiceError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B83B301220F67C600C549AA /* UserServiceError.swift */; };
 		4BD8CF62220A445600E0C6F5 /* R.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BD8CF61220A445600E0C6F5 /* R.generated.swift */; };
 		4BD8CF6F220A485100E0C6F5 /* ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BD8CF6E220A485100E0C6F5 /* ViewModel.swift */; };
 		4BD8CF74220A48D500E0C6F5 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BD8CF73220A48D500E0C6F5 /* ViewController.swift */; };
@@ -63,6 +64,7 @@
 		4B83B2F8220F387A00C549AA /* AuthServiceType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthServiceType.swift; sourceTree = "<group>"; };
 		4B83B2FC220F44D900C549AA /* UserService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserService.swift; sourceTree = "<group>"; };
 		4B83B2FF220F496C00C549AA /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		4B83B301220F67C600C549AA /* UserServiceError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserServiceError.swift; sourceTree = "<group>"; };
 		4BD8CF61220A445600E0C6F5 /* R.generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = R.generated.swift; sourceTree = "<group>"; };
 		4BD8CF6E220A485100E0C6F5 /* ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModel.swift; sourceTree = "<group>"; };
 		4BD8CF73220A48D500E0C6F5 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -222,6 +224,7 @@
 		4B83B2FB220F43F500C549AA /* User */ = {
 			isa = PBXGroup;
 			children = (
+				4B83B301220F67C600C549AA /* UserServiceError.swift */,
 				4B83B2FC220F44D900C549AA /* UserService.swift */,
 			);
 			path = User;
@@ -676,6 +679,7 @@
 				4B087100220D3EFD00ABD553 /* AuthServiceError.swift in Sources */,
 				4BD8CFBD220A5B7100E0C6F5 /* CollectionViewCommunicator.swift in Sources */,
 				4BD8CFC2220A5D1400E0C6F5 /* UserInputValidator.swift in Sources */,
+				4B83B302220F67C600C549AA /* UserServiceError.swift in Sources */,
 				4BD8CFC4220A5DC300E0C6F5 /* UserInputError.swift in Sources */,
 				4BD8CF62220A445600E0C6F5 /* R.generated.swift in Sources */,
 				4BDAF6AC220B716F006AD329 /* EmailAuthService.swift in Sources */,

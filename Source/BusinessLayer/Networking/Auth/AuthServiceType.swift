@@ -10,10 +10,11 @@ import Foundation
 
 protocol AuthServiceType {
 
-    typealias AuthHandler = (Result<User, AuthServiceError>) -> Void
+    typealias AuthResult = (Result<User, AuthServiceError>) -> Void
 
     func signOut(
-        completion: @escaping (Result<Bool, AuthServiceError>) -> Void)
+        completion: @escaping (Result<Bool, AuthServiceError>) -> Void
+    )
 
     var currentUserId: String? { get }
 }

@@ -13,10 +13,12 @@ protocol FacebookAuthServiceType: AuthServiceType {
 
     func signUp(
         withUserImg img: UIImage?,
-        completion: @escaping AuthHandler)
+        completion: @escaping AuthResult
+    )
 
     func signIn(
-        completion: @escaping AuthHandler)
+        completion: @escaping AuthResult
+    )
 }
 
 class FacebookAuthService: FacebookAuthServiceType {
@@ -24,17 +26,20 @@ class FacebookAuthService: FacebookAuthServiceType {
 
     func signUp(
         withUserImg img: UIImage?,
-        completion: @escaping AuthHandler) { // if image(Optional) -> set imageUrl from Facebook
+        completion: @escaping AuthResult
+        ) { // if image(Optional) -> set imageUrl from Facebook
 
     }
 
     func signIn(
-        completion: @escaping AuthHandler) {
+        completion: @escaping AuthResult
+        ) {
 
     }
 
     func signOut(
-        completion: @escaping (Result<Bool, AuthServiceError>) -> Void) {
+        completion: @escaping (Result<Bool, AuthServiceError>) -> Void
+        ) {
 
     }
 

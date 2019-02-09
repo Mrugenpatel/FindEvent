@@ -15,12 +15,14 @@ protocol EmailAuthServiceType: AuthServiceType {
         withEmail email: String,
         withPassword password: String,
         withUserImg img: UIImage?,
-        completion: @escaping AuthHandler)
+        completion: @escaping AuthResult
+    )
 
     func signIn(
         withEmail email: String,
         withPassword password: String,
-        completion: @escaping AuthHandler)
+        completion: @escaping AuthResult
+    )
 
 }
 
@@ -31,26 +33,27 @@ class EmailAuthService: EmailAuthServiceType {
         withEmail email: String,
         withPassword password: String,
         withUserImg img: UIImage?,
-        completion: @escaping AuthHandler) { // if image(Optional) -> showAlert
+        completion: @escaping AuthResult
+        ) { // if image(Optional) -> showAlert
 
     }
 
     func signIn(
         withEmail email: String,
         withPassword password: String,
-        completion: @escaping AuthHandler) {
+        completion: @escaping AuthResult
+        ) {
 
     }
 
     func signOut(
-        completion: @escaping (Result<Bool, AuthServiceError>) -> Void) {
+        completion: @escaping (Result<Bool, AuthServiceError>) -> Void
+        ) {
 
     }
 
     var currentUserId: String?
 }
-
-
 
 class AuthService {
     private let firebaseAuth = Auth.auth()
