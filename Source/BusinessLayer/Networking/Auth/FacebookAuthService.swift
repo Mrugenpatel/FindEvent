@@ -23,7 +23,6 @@ protocol FacebookAuthServiceType: AuthServiceType {
 
 class FacebookAuthService: FacebookAuthServiceType {
 
-
     func signUp(
         withUserImg img: UIImage?,
         completion: @escaping AuthResult
@@ -44,9 +43,5 @@ class FacebookAuthService: FacebookAuthServiceType {
     }
 
     var currentUserId: String?
-    
-
-
-
 
 }

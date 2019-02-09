@@ -23,7 +23,6 @@ protocol EmailAuthServiceType: AuthServiceType {
         withPassword password: String,
         completion: @escaping AuthResult
     )
-
 }
 
 class EmailAuthService: EmailAuthServiceType {
