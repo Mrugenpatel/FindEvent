@@ -7,13 +7,6 @@
 //
 
 import Foundation
-
-//class UserService {
-//    // update image
-//    // update location
-//}
-
-import Foundation
 import FirebaseFirestore
 
 protocol UserServiceType {
