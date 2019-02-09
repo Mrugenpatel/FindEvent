@@ -8,31 +8,7 @@
 
 import FirebaseAuth
 
-class EmailAuthService {
-
-    // signIn
-
-    // signUp with uiimage
-
-    // signOut
-
-    // change password
-
-    // change image 
-
-    // якшо в функцію не прийшла картинка то сетати ту шо з фейсбуку
-
-}
-
-protocol AuthServiceType {
-
-    typealias AuthHandler = (Result<User, AuthServiceError>) -> Void
-
-    func signInWith(
-        email: String,
-        password: String,
-        completion: @escaping AuthHandler
-    )
+protocol EmailAuthServiceType: AuthServiceType {
 
     func signUp(
         withName name: String,
@@ -41,19 +17,42 @@ protocol AuthServiceType {
         withUserImg img: UIImage?,
         completion: @escaping AuthHandler)
 
-    func signOut(
-        completion: @escaping (Result<Bool, AuthServiceError>) -> Void)
-
-    func updatePassword(newPassword: String,
-                        repeatNewPassword: String,
-                        completion: @escaping (Result<Bool, AuthServiceError>) -> Void)
-
-    var currentUserId: String? { get }
+    func signIn(
+        withEmail email: String,
+        withPassword password: String,
+        completion: @escaping AuthHandler)
 
 }
 
-class AuthService: AuthServiceType {
+class EmailAuthService: EmailAuthServiceType {
 
+    func signUp(
+        withName name: String,
+        withEmail email: String,
+        withPassword password: String,
+        withUserImg img: UIImage?,
+        completion: @escaping AuthHandler) { // if image(Optional) -> showAlert
+
+    }
+
+    func signIn(
+        withEmail email: String,
+        withPassword password: String,
+        completion: @escaping AuthHandler) {
+
+    }
+
+    func signOut(
+        completion: @escaping (Result<Bool, AuthServiceError>) -> Void) {
+
+    }
+
+    var currentUserId: String?
+}
+
+
+
+class AuthService {
     private let firebaseAuth = Auth.auth()
     private let userService: UserServiceType
     private var currentFirebaseUser: FirebaseAuth.User? {
@@ -69,9 +68,9 @@ class AuthService: AuthServiceType {
         self.userService = userService
     }
 
-    func signInWith(
-        email: String,
-        password: String,
+    func signIn(
+        withEmail email: String,
+        withPassword password: String,
         completion: @escaping AuthHandler
         ) {
         firebaseAuth.signIn(withEmail: email, password: password) { [weak self] (_, authError) in
@@ -181,6 +180,8 @@ class User {
     var name: String?
     let email: String?
     var avatarImgURL: String?
+
+    // location in latitute,longtitude (Ukraine,Lviv in app presenting)
 
     init?(user: [String: Any]) {
         guard let id = user[Constants.id.rawValue] as? String else { return nil }

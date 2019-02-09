@@ -13,6 +13,8 @@
 		4B44D5912208D7EC005FEF14 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4B44D58F2208D7EC005FEF14 /* LaunchScreen.storyboard */; };
 		4B44D5A22208DAD8005FEF14 /* Functions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B44D5A12208DAD8005FEF14 /* Functions.swift */; };
 		4B44D5B62208E76B005FEF14 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4B44D5B52208E76B005FEF14 /* GoogleService-Info.plist */; };
+		4B83B2F9220F387A00C549AA /* AuthServiceType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B83B2F8220F387A00C549AA /* AuthServiceType.swift */; };
+		4B83B2FD220F44D900C549AA /* UserService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B83B2FC220F44D900C549AA /* UserService.swift */; };
 		4BD8CF62220A445600E0C6F5 /* R.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BD8CF61220A445600E0C6F5 /* R.generated.swift */; };
 		4BD8CF6F220A485100E0C6F5 /* ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BD8CF6E220A485100E0C6F5 /* ViewModel.swift */; };
 		4BD8CF74220A48D500E0C6F5 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BD8CF73220A48D500E0C6F5 /* ViewController.swift */; };
@@ -59,6 +61,8 @@
 		4B44D5922208D7EC005FEF14 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4B44D5A12208DAD8005FEF14 /* Functions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Functions.swift; sourceTree = "<group>"; };
 		4B44D5B52208E76B005FEF14 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		4B83B2F8220F387A00C549AA /* AuthServiceType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthServiceType.swift; sourceTree = "<group>"; };
+		4B83B2FC220F44D900C549AA /* UserService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserService.swift; sourceTree = "<group>"; };
 		4BD8CF61220A445600E0C6F5 /* R.generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = R.generated.swift; sourceTree = "<group>"; };
 		4BD8CF6E220A485100E0C6F5 /* ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModel.swift; sourceTree = "<group>"; };
 		4BD8CF73220A48D500E0C6F5 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -204,6 +208,25 @@
 				4BD8CF8D220A4F9E00E0C6F5 /* Types.swift */,
 			);
 			path = Global;
+			sourceTree = "<group>";
+		};
+		4B83B2FA220F43E900C549AA /* Auth */ = {
+			isa = PBXGroup;
+			children = (
+				4B0870FF220D3EFD00ABD553 /* AuthServiceError.swift */,
+				4B83B2F8220F387A00C549AA /* AuthServiceType.swift */,
+				4BDAF6AB220B716F006AD329 /* EmailAuthService.swift */,
+				4BDAF6AD220B7180006AD329 /* FacebookAuthService.swift */,
+			);
+			path = Auth;
+			sourceTree = "<group>";
+		};
+		4B83B2FB220F43F500C549AA /* User */ = {
+			isa = PBXGroup;
+			children = (
+				4B83B2FC220F44D900C549AA /* UserService.swift */,
+			);
+			path = User;
 			sourceTree = "<group>";
 		};
 		4BD8CF60220A439100E0C6F5 /* Autogeneration */ = {
@@ -451,9 +474,8 @@
 		4BDAF6AA220B7135006AD329 /* Networking */ = {
 			isa = PBXGroup;
 			children = (
-				4B0870FF220D3EFD00ABD553 /* AuthServiceError.swift */,
-				4BDAF6AB220B716F006AD329 /* EmailAuthService.swift */,
-				4BDAF6AD220B7180006AD329 /* FacebookAuthService.swift */,
+				4B83B2FA220F43E900C549AA /* Auth */,
+				4B83B2FB220F43F500C549AA /* User */,
 			);
 			path = Networking;
 			sourceTree = "<group>";
@@ -648,6 +670,7 @@
 			files = (
 				4B44D5872208D7E9005FEF14 /* Application.swift in Sources */,
 				4BD8CFC8220A5EDC00E0C6F5 /* SignInParams.swift in Sources */,
+				4B83B2FD220F44D900C549AA /* UserService.swift in Sources */,
 				4BD8CFB9220A5AD500E0C6F5 /* UICollectionViewReusable.swift in Sources */,
 				4BD8CFCA220A5EE900E0C6F5 /* SignUpParams.swift in Sources */,
 				4BD8CF8E220A4F9E00E0C6F5 /* Types.swift in Sources */,
@@ -663,6 +686,7 @@
 				4BD8CFB3220A594100E0C6F5 /* Reusable.swift in Sources */,
 				4BD8CF7E220A4A3E00E0C6F5 /* View.swift in Sources */,
 				4BD8CF74220A48D500E0C6F5 /* ViewController.swift in Sources */,
+				4B83B2F9220F387A00C549AA /* AuthServiceType.swift in Sources */,
 				4BD8CFAF220A571C00E0C6F5 /* NavigationController.swift in Sources */,
 				4BDAF6AE220B7180006AD329 /* FacebookAuthService.swift in Sources */,
 				4BD8CFAB220A567100E0C6F5 /* Font.swift in Sources */,
