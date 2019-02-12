@@ -18,6 +18,15 @@
 		4B49B2E522127F2900EF6C74 /* WelcomeControllerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B49B2E422127F2900EF6C74 /* WelcomeControllerViewModel.swift */; };
 		4B49B2E722127F4500EF6C74 /* WelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B49B2E622127F4500EF6C74 /* WelcomeViewController.swift */; };
 		4B49B2EA22128C5D00EF6C74 /* ViewConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B49B2E922128C5D00EF6C74 /* ViewConfig.swift */; };
+		4B49B3062212960300EF6C74 /* SignUpControllerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B49B3052212960300EF6C74 /* SignUpControllerView.swift */; };
+		4B49B3082212961A00EF6C74 /* SignUpControllerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B49B3072212961A00EF6C74 /* SignUpControllerViewModel.swift */; };
+		4B49B30A2212963300EF6C74 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B49B3092212963300EF6C74 /* SignUpViewController.swift */; };
+		4B49B30C2212964400EF6C74 /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B49B30B2212964400EF6C74 /* SignInViewController.swift */; };
+		4B49B30E2212965B00EF6C74 /* FriendsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B49B30D2212965B00EF6C74 /* FriendsViewController.swift */; };
+		4B49B3102212966B00EF6C74 /* EventsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B49B30F2212966B00EF6C74 /* EventsViewController.swift */; };
+		4B49B3122212967800EF6C74 /* ChatsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B49B3112212967800EF6C74 /* ChatsViewController.swift */; };
+		4B49B3142212968C00EF6C74 /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B49B3132212968C00EF6C74 /* GameViewController.swift */; };
+		4B49B316221296A000EF6C74 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B49B315221296A000EF6C74 /* SettingsViewController.swift */; };
 		4B83B2F9220F387A00C549AA /* AuthServiceType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B83B2F8220F387A00C549AA /* AuthServiceType.swift */; };
 		4B83B2FD220F44D900C549AA /* UserService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B83B2FC220F44D900C549AA /* UserService.swift */; };
 		4B83B300220F496C00C549AA /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B83B2FF220F496C00C549AA /* User.swift */; };
@@ -73,6 +82,15 @@
 		4B49B2E422127F2900EF6C74 /* WelcomeControllerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeControllerViewModel.swift; sourceTree = "<group>"; };
 		4B49B2E622127F4500EF6C74 /* WelcomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeViewController.swift; sourceTree = "<group>"; };
 		4B49B2E922128C5D00EF6C74 /* ViewConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewConfig.swift; sourceTree = "<group>"; };
+		4B49B3052212960300EF6C74 /* SignUpControllerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpControllerView.swift; sourceTree = "<group>"; };
+		4B49B3072212961A00EF6C74 /* SignUpControllerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpControllerViewModel.swift; sourceTree = "<group>"; };
+		4B49B3092212963300EF6C74 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
+		4B49B30B2212964400EF6C74 /* SignInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
+		4B49B30D2212965B00EF6C74 /* FriendsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsViewController.swift; sourceTree = "<group>"; };
+		4B49B30F2212966B00EF6C74 /* EventsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventsViewController.swift; sourceTree = "<group>"; };
+		4B49B3112212967800EF6C74 /* ChatsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatsViewController.swift; sourceTree = "<group>"; };
+		4B49B3132212968C00EF6C74 /* GameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewController.swift; sourceTree = "<group>"; };
+		4B49B315221296A000EF6C74 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		4B83B2F8220F387A00C549AA /* AuthServiceType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthServiceType.swift; sourceTree = "<group>"; };
 		4B83B2FC220F44D900C549AA /* UserService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserService.swift; sourceTree = "<group>"; };
 		4B83B2FF220F496C00C549AA /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
@@ -333,6 +351,7 @@
 		4B49B2F22212940500EF6C74 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				4B49B30D2212965B00EF6C74 /* FriendsViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -354,6 +373,7 @@
 		4B49B2F52212942000EF6C74 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				4B49B30F2212966B00EF6C74 /* EventsViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -361,6 +381,7 @@
 		4B49B2F62212942700EF6C74 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				4B49B3112212967800EF6C74 /* ChatsViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -382,6 +403,7 @@
 		4B49B2F92212944200EF6C74 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				4B49B3132212968C00EF6C74 /* GameViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -417,6 +439,7 @@
 		4B49B2FE2212946D00EF6C74 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				4B49B315221296A000EF6C74 /* SettingsViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -424,6 +447,7 @@
 		4B49B2FF2212948700EF6C74 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				4B49B3052212960300EF6C74 /* SignUpControllerView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -431,6 +455,7 @@
 		4B49B3002212948B00EF6C74 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
+				4B49B3072212961A00EF6C74 /* SignUpControllerViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -438,6 +463,7 @@
 		4B49B3012212949300EF6C74 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				4B49B3092212963300EF6C74 /* SignUpViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -445,6 +471,7 @@
 		4B49B3022212949C00EF6C74 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				4B49B30B2212964400EF6C74 /* SignInViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -949,12 +976,15 @@
 				4B44D5872208D7E9005FEF14 /* Application.swift in Sources */,
 				4B83B2FD220F44D900C549AA /* UserService.swift in Sources */,
 				4BD8CFB9220A5AD500E0C6F5 /* UICollectionViewReusable.swift in Sources */,
+				4B49B3082212961A00EF6C74 /* SignUpControllerViewModel.swift in Sources */,
 				4BD8CF8E220A4F9E00E0C6F5 /* Types.swift in Sources */,
 				4BD8CF7A220A49B500E0C6F5 /* Controller.swift in Sources */,
 				4BD8CF76220A499700E0C6F5 /* ControllerView.swift in Sources */,
 				4B44D5A22208DAD8005FEF14 /* Functions.swift in Sources */,
+				4B49B3102212966B00EF6C74 /* EventsViewController.swift in Sources */,
 				4B087100220D3EFD00ABD553 /* AuthServiceError.swift in Sources */,
 				4BD8CFBD220A5B7100E0C6F5 /* CollectionViewCommunicator.swift in Sources */,
+				4B49B3062212960300EF6C74 /* SignUpControllerView.swift in Sources */,
 				4B49B2EA22128C5D00EF6C74 /* ViewConfig.swift in Sources */,
 				4BB7591C2211FE58009E305B /* RootViewController.swift in Sources */,
 				4BD8CFC2220A5D1400E0C6F5 /* UserInputValidator.swift in Sources */,
@@ -969,8 +999,13 @@
 				4BD8CF7E220A4A3E00E0C6F5 /* View.swift in Sources */,
 				4BD8CF74220A48D500E0C6F5 /* ViewController.swift in Sources */,
 				4B83B2F9220F387A00C549AA /* AuthServiceType.swift in Sources */,
+				4B49B3122212967800EF6C74 /* ChatsViewController.swift in Sources */,
+				4B49B3142212968C00EF6C74 /* GameViewController.swift in Sources */,
 				4BD8CFAF220A571C00E0C6F5 /* NavigationController.swift in Sources */,
 				4B49B2E722127F4500EF6C74 /* WelcomeViewController.swift in Sources */,
+				4B49B30E2212965B00EF6C74 /* FriendsViewController.swift in Sources */,
+				4B49B30C2212964400EF6C74 /* SignInViewController.swift in Sources */,
+				4B49B316221296A000EF6C74 /* SettingsViewController.swift in Sources */,
 				4BDAF6AE220B7180006AD329 /* FacebookAuthService.swift in Sources */,
 				4BD8CFAB220A567100E0C6F5 /* Font.swift in Sources */,
 				4BD8CF78220A49A700E0C6F5 /* ControllerViewModel.swift in Sources */,
@@ -979,6 +1014,7 @@
 				4BD8CF6F220A485100E0C6F5 /* ViewModel.swift in Sources */,
 				4BD8CFB6220A59BA00E0C6F5 /* UITableViewReusable.swift in Sources */,
 				4B49B2E322127F0000EF6C74 /* WelcomeControllerView.swift in Sources */,
+				4B49B30A2212963300EF6C74 /* SignUpViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
