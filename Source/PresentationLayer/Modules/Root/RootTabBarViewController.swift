@@ -16,11 +16,11 @@ final class RootTabBarController: UITabBarController {
         static let events = NSLocalizedString("Events", comment: "")
         static let eventsImg = UIImage(named: "events.png")
 
-        static let chats = NSLocalizedString("Chat", comment: "")
-        static let chatsImg = UIImage(named: "chat.png")
+        static let chats = NSLocalizedString("Chats", comment: "")
+        static let chatsImg = UIImage(named: "chats.png")
 
         static let game = NSLocalizedString("Game", comment: "")
-        static let gameImg = UIImage(named: "game.png")
+        static let gameImg = UIImage(named: "games.png")
 
         static let settings = NSLocalizedString("Settings", comment: "")
         static let settingsImg = UIImage(named: "settings.png")
