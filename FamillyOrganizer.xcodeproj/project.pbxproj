@@ -14,6 +14,7 @@
 		4B44D5912208D7EC005FEF14 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4B44D58F2208D7EC005FEF14 /* LaunchScreen.storyboard */; };
 		4B44D5A22208DAD8005FEF14 /* Functions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B44D5A12208DAD8005FEF14 /* Functions.swift */; };
 		4B44D5B62208E76B005FEF14 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4B44D5B52208E76B005FEF14 /* GoogleService-Info.plist */; };
+		4B4947C72214D77D00462D1A /* AuthServiceBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B4947C62214D77D00462D1A /* AuthServiceBase.swift */; };
 		4B49B2DE22127CFC00EF6C74 /* UserDefaultsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B49B2DD22127CFC00EF6C74 /* UserDefaultsService.swift */; };
 		4B49B2E322127F0000EF6C74 /* WelcomeControllerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B49B2E222127F0000EF6C74 /* WelcomeControllerView.swift */; };
 		4B49B2E522127F2900EF6C74 /* WelcomeControllerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B49B2E422127F2900EF6C74 /* WelcomeControllerViewModel.swift */; };
@@ -40,7 +41,6 @@
 		4B49B32A22129B3500EF6C74 /* ChatsControllerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B49B32922129B3500EF6C74 /* ChatsControllerViewModel.swift */; };
 		4B49B32C22129B5600EF6C74 /* GameControllerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B49B32B22129B5600EF6C74 /* GameControllerViewModel.swift */; };
 		4B49B32E22129B7C00EF6C74 /* SettingsControllerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B49B32D22129B7C00EF6C74 /* SettingsControllerViewModel.swift */; };
-		4B83B2F9220F387A00C549AA /* AuthServiceType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B83B2F8220F387A00C549AA /* AuthServiceType.swift */; };
 		4B83B2FD220F44D900C549AA /* UserService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B83B2FC220F44D900C549AA /* UserService.swift */; };
 		4B83B300220F496C00C549AA /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B83B2FF220F496C00C549AA /* User.swift */; };
 		4B83B302220F67C600C549AA /* UserServiceError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B83B301220F67C600C549AA /* UserServiceError.swift */; };
@@ -91,6 +91,7 @@
 		4B44D5922208D7EC005FEF14 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4B44D5A12208DAD8005FEF14 /* Functions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Functions.swift; sourceTree = "<group>"; };
 		4B44D5B52208E76B005FEF14 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		4B4947C62214D77D00462D1A /* AuthServiceBase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthServiceBase.swift; sourceTree = "<group>"; };
 		4B49B2DD22127CFC00EF6C74 /* UserDefaultsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsService.swift; sourceTree = "<group>"; };
 		4B49B2E222127F0000EF6C74 /* WelcomeControllerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeControllerView.swift; sourceTree = "<group>"; };
 		4B49B2E422127F2900EF6C74 /* WelcomeControllerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeControllerViewModel.swift; sourceTree = "<group>"; };
@@ -117,7 +118,6 @@
 		4B49B32922129B3500EF6C74 /* ChatsControllerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatsControllerViewModel.swift; sourceTree = "<group>"; };
 		4B49B32B22129B5600EF6C74 /* GameControllerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameControllerViewModel.swift; sourceTree = "<group>"; };
 		4B49B32D22129B7C00EF6C74 /* SettingsControllerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsControllerViewModel.swift; sourceTree = "<group>"; };
-		4B83B2F8220F387A00C549AA /* AuthServiceType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthServiceType.swift; sourceTree = "<group>"; };
 		4B83B2FC220F44D900C549AA /* UserService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserService.swift; sourceTree = "<group>"; };
 		4B83B2FF220F496C00C549AA /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		4B83B301220F67C600C549AA /* UserServiceError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserServiceError.swift; sourceTree = "<group>"; };
@@ -532,7 +532,7 @@
 			isa = PBXGroup;
 			children = (
 				4B0870FF220D3EFD00ABD553 /* AuthServiceError.swift */,
-				4B83B2F8220F387A00C549AA /* AuthServiceType.swift */,
+				4B4947C62214D77D00462D1A /* AuthServiceBase.swift */,
 				4BDAF6AB220B716F006AD329 /* EmailAuthService.swift */,
 				4BDAF6AD220B7180006AD329 /* FacebookAuthService.swift */,
 			);
@@ -1035,6 +1035,7 @@
 				4B49B32622129AE300EF6C74 /* FriendsControllerViewModel.swift in Sources */,
 				4B49B3182212995000EF6C74 /* SignInControllerView.swift in Sources */,
 				4B49B2DE22127CFC00EF6C74 /* UserDefaultsService.swift in Sources */,
+				4B4947C72214D77D00462D1A /* AuthServiceBase.swift in Sources */,
 				4BB7591E2211FE6E009E305B /* RootTabBarViewController.swift in Sources */,
 				4B49B2E522127F2900EF6C74 /* WelcomeControllerViewModel.swift in Sources */,
 				4B83B302220F67C600C549AA /* UserServiceError.swift in Sources */,
@@ -1047,7 +1048,6 @@
 				4BD8CF7E220A4A3E00E0C6F5 /* View.swift in Sources */,
 				4B49B320221299EA00EF6C74 /* GameControllerView.swift in Sources */,
 				4BD8CF74220A48D500E0C6F5 /* ViewController.swift in Sources */,
-				4B83B2F9220F387A00C549AA /* AuthServiceType.swift in Sources */,
 				4B49B3122212967800EF6C74 /* ChatsViewController.swift in Sources */,
 				4B49B3142212968C00EF6C74 /* GameViewController.swift in Sources */,
 				4BD8CFAF220A571C00E0C6F5 /* NavigationController.swift in Sources */,
