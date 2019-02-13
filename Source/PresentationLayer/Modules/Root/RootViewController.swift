@@ -36,6 +36,7 @@ final class RootViewController: UIViewController {
                 self.clear(asChild: self.currentViewController)
                 self.decideWhatToShow()
             }
+
         } else if userDefaultsService.isUserLogin {
 
             let tabBar = RootTabBarController()

@@ -13,11 +13,29 @@ import Firebase
 class Application: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
+     var rootViewController: RootViewController!
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         FirebaseApp.configure()
+        viewSetup()
         return true
 }
+
+    func viewSetup() {
+        window = UIWindow(frame: UIScreen.main.bounds)
+        window?.backgroundColor = ViewConfig.Colors.background
+        UINavigationBar.appearance().titleTextAttributes = [NSAttributedString.Key(
+            rawValue: NSAttributedString.Key.foregroundColor.rawValue): ViewConfig.Colors.white]
+        UITabBarItem.appearance().setTitleTextAttributes(
+            [NSAttributedString.Key.foregroundColor: ViewConfig.Colors.textWhite], for: .normal)
+        UITabBarItem.appearance().setTitleTextAttributes(
+            [NSAttributedString.Key.foregroundColor: ViewConfig.Colors.blue], for: .selected)
+
+        rootViewController = RootViewController(userDefaultsService: UserDefaultsService())
+
+        window?.rootViewController = rootViewController
+        window?.makeKeyAndVisible()
+    }
 
     func applicationWillResignActive(_ application: UIApplication) {
         // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
