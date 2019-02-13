@@ -33,6 +33,12 @@
 		4B49B31E221299D200EF6C74 /* ChatsControllerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B49B31D221299D200EF6C74 /* ChatsControllerView.swift */; };
 		4B49B320221299EA00EF6C74 /* GameControllerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B49B31F221299EA00EF6C74 /* GameControllerView.swift */; };
 		4B49B32222129A0400EF6C74 /* SettingsControllerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B49B32122129A0400EF6C74 /* SettingsControllerView.swift */; };
+		4B49B32422129ABC00EF6C74 /* SignInControllerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B49B32322129ABC00EF6C74 /* SignInControllerViewModel.swift */; };
+		4B49B32622129AE300EF6C74 /* FriendsControllerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B49B32522129AE300EF6C74 /* FriendsControllerViewModel.swift */; };
+		4B49B32822129AFF00EF6C74 /* EventsControllerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B49B32722129AFF00EF6C74 /* EventsControllerViewModel.swift */; };
+		4B49B32A22129B3500EF6C74 /* ChatsControllerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B49B32922129B3500EF6C74 /* ChatsControllerViewModel.swift */; };
+		4B49B32C22129B5600EF6C74 /* GameControllerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B49B32B22129B5600EF6C74 /* GameControllerViewModel.swift */; };
+		4B49B32E22129B7C00EF6C74 /* SettingsControllerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B49B32D22129B7C00EF6C74 /* SettingsControllerViewModel.swift */; };
 		4B83B2F9220F387A00C549AA /* AuthServiceType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B83B2F8220F387A00C549AA /* AuthServiceType.swift */; };
 		4B83B2FD220F44D900C549AA /* UserService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B83B2FC220F44D900C549AA /* UserService.swift */; };
 		4B83B300220F496C00C549AA /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B83B2FF220F496C00C549AA /* User.swift */; };
@@ -103,6 +109,12 @@
 		4B49B31D221299D200EF6C74 /* ChatsControllerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatsControllerView.swift; sourceTree = "<group>"; };
 		4B49B31F221299EA00EF6C74 /* GameControllerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameControllerView.swift; sourceTree = "<group>"; };
 		4B49B32122129A0400EF6C74 /* SettingsControllerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsControllerView.swift; sourceTree = "<group>"; };
+		4B49B32322129ABC00EF6C74 /* SignInControllerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInControllerViewModel.swift; sourceTree = "<group>"; };
+		4B49B32522129AE300EF6C74 /* FriendsControllerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsControllerViewModel.swift; sourceTree = "<group>"; };
+		4B49B32722129AFF00EF6C74 /* EventsControllerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventsControllerViewModel.swift; sourceTree = "<group>"; };
+		4B49B32922129B3500EF6C74 /* ChatsControllerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatsControllerViewModel.swift; sourceTree = "<group>"; };
+		4B49B32B22129B5600EF6C74 /* GameControllerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameControllerViewModel.swift; sourceTree = "<group>"; };
+		4B49B32D22129B7C00EF6C74 /* SettingsControllerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsControllerViewModel.swift; sourceTree = "<group>"; };
 		4B83B2F8220F387A00C549AA /* AuthServiceType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthServiceType.swift; sourceTree = "<group>"; };
 		4B83B2FC220F44D900C549AA /* UserService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserService.swift; sourceTree = "<group>"; };
 		4B83B2FF220F496C00C549AA /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
@@ -357,6 +369,7 @@
 		4B49B2F1221293FF00EF6C74 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
+				4B49B32522129AE300EF6C74 /* FriendsControllerViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -380,6 +393,7 @@
 		4B49B2F42212941A00EF6C74 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
+				4B49B32722129AFF00EF6C74 /* EventsControllerViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -403,6 +417,7 @@
 		4B49B2F72212942E00EF6C74 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
+				4B49B32922129B3500EF6C74 /* ChatsControllerViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -434,6 +449,7 @@
 		4B49B2FB2212945000EF6C74 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
+				4B49B32B22129B5600EF6C74 /* GameControllerViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -449,6 +465,7 @@
 		4B49B2FD2212946600EF6C74 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
+				4B49B32D22129B7C00EF6C74 /* SettingsControllerViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -504,6 +521,7 @@
 		4B49B304221294A800EF6C74 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
+				4B49B32322129ABC00EF6C74 /* SignInControllerViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -997,6 +1015,7 @@
 				4B49B3082212961A00EF6C74 /* SignUpControllerViewModel.swift in Sources */,
 				4BD8CF8E220A4F9E00E0C6F5 /* Types.swift in Sources */,
 				4BD8CF7A220A49B500E0C6F5 /* Controller.swift in Sources */,
+				4B49B32822129AFF00EF6C74 /* EventsControllerViewModel.swift in Sources */,
 				4BD8CF76220A499700E0C6F5 /* ControllerView.swift in Sources */,
 				4B49B31E221299D200EF6C74 /* ChatsControllerView.swift in Sources */,
 				4B44D5A22208DAD8005FEF14 /* Functions.swift in Sources */,
@@ -1006,13 +1025,17 @@
 				4BD8CFBD220A5B7100E0C6F5 /* CollectionViewCommunicator.swift in Sources */,
 				4B49B3062212960300EF6C74 /* SignUpControllerView.swift in Sources */,
 				4B49B2EA22128C5D00EF6C74 /* ViewConfig.swift in Sources */,
+				4B49B32422129ABC00EF6C74 /* SignInControllerViewModel.swift in Sources */,
 				4BB7591C2211FE58009E305B /* RootViewController.swift in Sources */,
 				4BD8CFC2220A5D1400E0C6F5 /* UserInputValidator.swift in Sources */,
+				4B49B32622129AE300EF6C74 /* FriendsControllerViewModel.swift in Sources */,
 				4B49B3182212995000EF6C74 /* SignInControllerView.swift in Sources */,
 				4B49B2DE22127CFC00EF6C74 /* UserDefaultsService.swift in Sources */,
 				4BB7591E2211FE6E009E305B /* RootTabBarViewController.swift in Sources */,
 				4B49B2E522127F2900EF6C74 /* WelcomeControllerViewModel.swift in Sources */,
 				4B83B302220F67C600C549AA /* UserServiceError.swift in Sources */,
+				4B49B32C22129B5600EF6C74 /* GameControllerViewModel.swift in Sources */,
+				4B49B32E22129B7C00EF6C74 /* SettingsControllerViewModel.swift in Sources */,
 				4BD8CFC4220A5DC300E0C6F5 /* UserInputError.swift in Sources */,
 				4BD8CF62220A445600E0C6F5 /* R.generated.swift in Sources */,
 				4BDAF6AC220B716F006AD329 /* EmailAuthService.swift in Sources */,
@@ -1037,6 +1060,7 @@
 				4BD8CF80220A4A5C00E0C6F5 /* Button.swift in Sources */,
 				4BD8CF6F220A485100E0C6F5 /* ViewModel.swift in Sources */,
 				4BD8CFB6220A59BA00E0C6F5 /* UITableViewReusable.swift in Sources */,
+				4B49B32A22129B3500EF6C74 /* ChatsControllerViewModel.swift in Sources */,
 				4B49B2E322127F0000EF6C74 /* WelcomeControllerView.swift in Sources */,
 				4B49B30A2212963300EF6C74 /* SignUpViewController.swift in Sources */,
 			);

@@ -30,7 +30,7 @@ final class RootTabBarController: UITabBarController {
 
     var doneCallback:(() -> Void)? {
         didSet {
-            settingsViewController?.doneCallback = doneCallback
+            settingsViewController?.rootView.doneCallback = doneCallback
         }
     }
 
@@ -43,12 +43,25 @@ final class RootTabBarController: UITabBarController {
 
     private func configureStackOfViewControllers() -> [UIViewController]? {
 
-//        let todo = TaskViewController(viewModel: DependencyContainer.shared.resolve(TaskViewModelType.self))
-//        let toDoVC = createRootNavigationViewController(
-//            withVC: todo,
-//            withTitle: Constants.todo)
-//        toDoVC.tabBarItem.title = Constants.todo
-//        toDoVC.tabBarItem.image = Constants.todoImg
+        let friends = FriendsViewController(
+            viewModel: FriendsControllerViewModel())
+        let friendsVC = createRootNavigationViewController(
+            withVC: friends,
+            withTitle: Constants.friends)
+        friendsVC.tabBarItem.title = Constants.friends
+        friendsVC.tabBarItem.image = Constants.friendsImg
+
+        let events = EventsViewController(
+            viewModel: EventsControllerViewModel())
+        let eventsVC = createRootNavigationViewController(
+            withVC: events,
+            withTitle: Constants.events)
+        eventsVC.tabBarItem.title = Constants.events
+        eventsVC.tabBarItem.image = Constants.eventsImg
+
+        
+
+
 //
 //        let calendarVC = createRootNavigationViewController(
 //            withVC: CalendarViewController(),
@@ -76,7 +89,7 @@ final class RootTabBarController: UITabBarController {
 //            withTitle: Constants.more)
 //        moreVC.tabBarItem.title = Constants.more
 //        moreVC.tabBarItem.image = Constants.moreImg
-//        return [calendarVC, toDoVC, locationVC, chatsVC, moreVC]
+          return [friendsVC, eventsVC]
     }
 
     private func createRootNavigationViewController(withVC viewController: UIViewController,

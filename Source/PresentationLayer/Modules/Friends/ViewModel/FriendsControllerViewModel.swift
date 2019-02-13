@@ -1,5 +1,5 @@
 //
-//  SignUpControllerViewModel.swift
+//  FriendsControllerViewModel.swift
 //  FamillyOrganizer
 //
 //  Created by Yurii Tsymbala on 2/12/19.
@@ -8,7 +8,6 @@
 
 import Foundation
 
-final class SignUpControllerViewModel: ControllerViewModel {
+final class FriendsControllerViewModel: ControllerViewModel {
 
 }
-

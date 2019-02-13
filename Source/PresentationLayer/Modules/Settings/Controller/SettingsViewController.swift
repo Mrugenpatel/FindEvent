@@ -8,13 +8,11 @@
 
 import UIKit
 
-class SettingsViewController: UIViewController {
+class SettingsViewController: Controller<
+    SettingsControllerView,
+    SettingsControllerViewModel
+> {
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
-    }
 
 
 }

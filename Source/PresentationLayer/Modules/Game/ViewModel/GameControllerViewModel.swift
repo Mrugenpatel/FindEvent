@@ -1,5 +1,5 @@
 //
-//  SignUpControllerViewModel.swift
+//  GameControllerViewModel.swift
 //  FamillyOrganizer
 //
 //  Created by Yurii Tsymbala on 2/12/19.
@@ -8,7 +8,6 @@
 
 import Foundation
 
-final class SignUpControllerViewModel: ControllerViewModel {
+final class GameControllerViewModel: ControllerViewModel {
 
 }
-
