@@ -24,8 +24,12 @@ class Application: UIResponder, UIApplicationDelegate {
     func viewSetup() {
         window = UIWindow(frame: UIScreen.main.bounds)
         window?.backgroundColor = ViewConfig.Colors.background
+
+        UINavigationBar.appearance().barTintColor = ViewConfig.Colors.background
+        UINavigationBar.appearance().isTranslucent = false
         UINavigationBar.appearance().titleTextAttributes = [NSAttributedString.Key(
             rawValue: NSAttributedString.Key.foregroundColor.rawValue): ViewConfig.Colors.white]
+
         UITabBarItem.appearance().setTitleTextAttributes(
             [NSAttributedString.Key.foregroundColor: ViewConfig.Colors.textWhite], for: .normal)
         UITabBarItem.appearance().setTitleTextAttributes(

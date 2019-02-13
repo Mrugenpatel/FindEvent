@@ -13,4 +13,6 @@ class SignUpViewController: Controller<
     SignUpControllerViewModel
 > {
 
+    var doneCallback: (() -> Void)?
+    
 }

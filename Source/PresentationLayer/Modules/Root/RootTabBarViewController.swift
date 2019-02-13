@@ -25,6 +25,10 @@ final class RootTabBarController: UITabBarController {
         static let settings = NSLocalizedString("Settings", comment: "")
         static let settingsImg = UIImage(named: "settings.png")
     }
+    
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        return .lightContent
+    }
 
     weak var settingsViewController: SettingsViewController?
 

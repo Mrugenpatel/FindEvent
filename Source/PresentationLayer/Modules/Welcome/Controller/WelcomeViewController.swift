@@ -15,8 +15,8 @@ final class WelcomeViewController: Controller<
 
     // MARK: - Properties
     // MARK: Callbacks
-    var willCreateAccount: EmptyClosure?
-    var willSignIn: EmptyClosure?
+
+    var doneCallback: (() -> Void)?
 
     // MARK: - UI
     // MARK: Configuration
@@ -24,19 +24,24 @@ final class WelcomeViewController: Controller<
     override func configureView() {
         super.configureView()
 
-        rootView.didTouchCreateAccount = { [unowned self] in
-            self.willCreateAccount?()
+        rootView.didTouchSignUp = { [unowned self] in
+            self.navigateToSignUpVC()
         }
 
         rootView.didTouchSignIn = { [unowned self] in
-            self.willSignIn?()
+            self.navigateToSignInVC()
         }
-
-        rootView.didTouchCreateAccount = { [unowned self] in
-            self.willCreateAccount?()
-        }
-
-        rootView.backgroundColor = UIColor(red: 249, green: 251, blue: 253, alpha: 1)
     }
 
+    private func navigateToSignUpVC() {
+        let signUpViewController = SignUpViewController(viewModel: SignUpControllerViewModel())
+        signUpViewController.doneCallback = doneCallback
+        navController?.pushViewController(signUpViewController, animated: true)
+    }
+
+    private func navigateToSignInVC() {
+        let signInViewController = SignInViewController(viewModel: SignControllerViewModel())
+        signInViewController.doneCallback = doneCallback
+        navController?.pushViewController(signInViewController, animated: true)
+    }
 }

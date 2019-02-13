@@ -27,6 +27,23 @@ protocol EmailAuthServiceType: AuthServiceType {
 
 class EmailAuthService: EmailAuthServiceType {
 
+    private let firebaseAuth = Auth.auth()
+
+    private let userService: UserService
+
+    private var currentFirebaseUser: FirebaseAuth.User? {
+        return firebaseAuth.currentUser
+    }
+
+    var currentUserId: String? {
+        guard let firUserId = currentFirebaseUser?.uid else { return nil }
+        return firUserId
+    }
+
+    init(userService: UserService) {
+        self.userService = userService
+    }
+
     func signUp(
         withName name: String,
         withEmail email: String,
@@ -51,24 +68,9 @@ class EmailAuthService: EmailAuthServiceType {
 
     }
 
-    var currentUserId: String?
 }
 
 //class AuthService {
-//    private let firebaseAuth = Auth.auth()
-//    private let userService: UserService
-//    private var currentFirebaseUser: FirebaseAuth.User? {
-//        return firebaseAuth.currentUser
-//    }
-//
-//    var currentUserId: String? {
-//        guard let firUserId = currentFirebaseUser?.uid else { return nil }
-//        return firUserId
-//    }
-//
-//    init(userService: UserService) {
-//        self.userService = userService
-//    }
 //
 //    func signIn(
 //        withEmail email: String,

@@ -12,4 +12,5 @@ class SignInViewController: Controller<
     SignInControllerView,
     SignControllerViewModel
 > {
+    var doneCallback: (() -> Void)?
 }
