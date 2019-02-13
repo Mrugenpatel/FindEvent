@@ -59,37 +59,38 @@ final class RootTabBarController: UITabBarController {
         eventsVC.tabBarItem.title = Constants.events
         eventsVC.tabBarItem.image = Constants.eventsImg
 
-        
+        let chats = ChatsViewController(
+            viewModel: ChatsControllerViewModel())
+        let chatsVC = createRootNavigationViewController(
+            withVC: chats,
+            withTitle: Constants.chats)
+        chatsVC.tabBarItem.title = Constants.chats
+        chatsVC.tabBarItem.image = Constants.chatsImg
 
+        let game = GameViewController(
+            viewModel: GameControllerViewModel())
+        let gameVC = createRootNavigationViewController(
+            withVC: game,
+            withTitle: Constants.chats)
+        gameVC.tabBarItem.title = Constants.game
+        gameVC.tabBarItem.image = Constants.gameImg
 
-//
-//        let calendarVC = createRootNavigationViewController(
-//            withVC: CalendarViewController(),
-//            withTitle: Constants.calendar)
-//        calendarVC.tabBarItem.title = Constants.calendar
-//        calendarVC.tabBarItem.image = UIImage(named: "calendar.png")
-//
-//        let locationVC = LocationViewController(
-//            nibName: "LocationViewController",
-//            bundle: nil)
-//        locationVC.tabBarItem.title = Constants.map
-//        locationVC.tabBarItem.image = Constants.mapImg
-//
-//        let chatsVC = createRootNavigationViewController(
-//            withVC: ChatsViewController(viewModel: ),
-//            withTitle: Constants.chats)
-//        chatsVC.tabBarItem.title = Constants.chats
-//        chatsVC.tabBarItem.image = Constants.chatsImg
-//
-//        let more =
-//            SettingsViewController(viewModel: )
-//        settingsViewController = setings
-//        let moreVC = createRootNavigationViewController(
-//            withVC: more,
-//            withTitle: Constants.more)
-//        moreVC.tabBarItem.title = Constants.more
-//        moreVC.tabBarItem.image = Constants.moreImg
-          return [friendsVC, eventsVC]
+        let settings = SettingsViewController(
+            viewModel: SettingsControllerViewModel())
+        settingsViewController = settings
+        let settingsVC = createRootNavigationViewController(
+            withVC: setbtings,
+            withTitle: Constants.settings)
+        settingsVC.tabBarItem.title = Constants.settings
+        settingsVC.tabBarItem.image = Constants.settingsImg
+
+        return [
+            friendsVC,
+            eventsVC,
+            chatsVC,
+            gameVC,
+            settingsVC
+        ]
     }
 
     private func createRootNavigationViewController(withVC viewController: UIViewController,
