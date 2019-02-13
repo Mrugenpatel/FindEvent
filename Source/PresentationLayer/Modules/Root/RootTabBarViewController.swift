@@ -79,7 +79,7 @@ final class RootTabBarController: UITabBarController {
             viewModel: SettingsControllerViewModel())
         settingsViewController = settings
         let settingsVC = createRootNavigationViewController(
-            withVC: setbtings,
+            withVC: settings,
             withTitle: Constants.settings)
         settingsVC.tabBarItem.title = Constants.settings
         settingsVC.tabBarItem.image = Constants.settingsImg
