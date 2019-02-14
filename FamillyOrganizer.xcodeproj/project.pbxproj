@@ -44,6 +44,8 @@
 		4B83B2FD220F44D900C549AA /* UserService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B83B2FC220F44D900C549AA /* UserService.swift */; };
 		4B83B300220F496C00C549AA /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B83B2FF220F496C00C549AA /* User.swift */; };
 		4B83B302220F67C600C549AA /* UserServiceError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B83B301220F67C600C549AA /* UserServiceError.swift */; };
+		4BAB7A4722160B35003EB418 /* ImageService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BAB7A4622160B35003EB418 /* ImageService.swift */; };
+		4BAB7A4922160C04003EB418 /* ImageServiceError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BAB7A4822160C04003EB418 /* ImageServiceError.swift */; };
 		4BB7591C2211FE58009E305B /* RootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BB7591B2211FE58009E305B /* RootViewController.swift */; };
 		4BB7591E2211FE6E009E305B /* RootTabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BB7591D2211FE6E009E305B /* RootTabBarViewController.swift */; };
 		4BD8CF62220A445600E0C6F5 /* R.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BD8CF61220A445600E0C6F5 /* R.generated.swift */; };
@@ -121,6 +123,8 @@
 		4B83B2FC220F44D900C549AA /* UserService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserService.swift; sourceTree = "<group>"; };
 		4B83B2FF220F496C00C549AA /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		4B83B301220F67C600C549AA /* UserServiceError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserServiceError.swift; sourceTree = "<group>"; };
+		4BAB7A4622160B35003EB418 /* ImageService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageService.swift; sourceTree = "<group>"; };
+		4BAB7A4822160C04003EB418 /* ImageServiceError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageServiceError.swift; sourceTree = "<group>"; };
 		4BB7591B2211FE58009E305B /* RootViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootViewController.swift; sourceTree = "<group>"; };
 		4BB7591D2211FE6E009E305B /* RootTabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootTabBarViewController.swift; sourceTree = "<group>"; };
 		4BD8CF61220A445600E0C6F5 /* R.generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = R.generated.swift; sourceTree = "<group>"; };
@@ -556,6 +560,15 @@
 			path = User;
 			sourceTree = "<group>";
 		};
+		4BAB7A4522160AF4003EB418 /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				4BAB7A4622160B35003EB418 /* ImageService.swift */,
+				4BAB7A4822160C04003EB418 /* ImageServiceError.swift */,
+			);
+			path = Data;
+			sourceTree = "<group>";
+		};
 		4BB7591A2211FE3C009E305B /* Root */ = {
 			isa = PBXGroup;
 			children = (
@@ -817,6 +830,7 @@
 		4BDAF6AA220B7135006AD329 /* Networking */ = {
 			isa = PBXGroup;
 			children = (
+				4BAB7A4522160AF4003EB418 /* Data */,
 				4B83B2FA220F43E900C549AA /* Auth */,
 				4B83B2FB220F43F500C549AA /* User */,
 			);
@@ -1016,6 +1030,7 @@
 				4B83B2FD220F44D900C549AA /* UserService.swift in Sources */,
 				4B3319FA2213E7120095032E /* TextField.swift in Sources */,
 				4BD8CFB9220A5AD500E0C6F5 /* UICollectionViewReusable.swift in Sources */,
+				4BAB7A4722160B35003EB418 /* ImageService.swift in Sources */,
 				4B49B3082212961A00EF6C74 /* SignUpControllerViewModel.swift in Sources */,
 				4BD8CF8E220A4F9E00E0C6F5 /* Types.swift in Sources */,
 				4BD8CF7A220A49B500E0C6F5 /* Controller.swift in Sources */,
@@ -1030,6 +1045,7 @@
 				4B49B3062212960300EF6C74 /* SignUpControllerView.swift in Sources */,
 				4B49B2EA22128C5D00EF6C74 /* ViewConfig.swift in Sources */,
 				4B49B32422129ABC00EF6C74 /* SignInControllerViewModel.swift in Sources */,
+				4BAB7A4922160C04003EB418 /* ImageServiceError.swift in Sources */,
 				4BB7591C2211FE58009E305B /* RootViewController.swift in Sources */,
 				4BD8CFC2220A5D1400E0C6F5 /* UserInputValidator.swift in Sources */,
 				4B49B32622129AE300EF6C74 /* FriendsControllerViewModel.swift in Sources */,

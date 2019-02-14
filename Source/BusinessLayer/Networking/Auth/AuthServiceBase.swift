@@ -26,7 +26,7 @@ class AuthServiceBase: AuthServiceType {
     func signOut(completion: @escaping (Result<Bool, AuthServiceError>) -> Void) {
     }
 
-    private let firebaseAuth = Auth.auth()
+    let firebaseAuth = Auth.auth()
 
     private var currentFirebaseUser: FirebaseAuth.User? {
         return firebaseAuth.currentUser

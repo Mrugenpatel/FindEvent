@@ -14,7 +14,9 @@ protocol EmailAuthServiceType: AuthServiceType {
         withName name: String,
         withEmail email: String,
         withPassword password: String,
-        withUserImg img: UIImage?,
+        withUserImg img: UIImage,
+        withLatitude latitude: String,
+        withLongtitude longtitude: String,
         completion: @escaping AuthResult
     )
 
@@ -29,18 +31,73 @@ class EmailAuthService: AuthServiceBase, EmailAuthServiceType {
 
     private let userService: UserService
 
-    init(userService: UserService) {
+    private let imageService: ImageService
+
+    init(userService: UserService, imageService: ImageService) {
         self.userService = userService
+        self.imageService = imageService
     }
 
     func signUp(
         withName name: String,
         withEmail email: String,
         withPassword password: String,
-        withUserImg img: UIImage?,
+        withUserImg img: UIImage,
+        withLatitude latitude: String = "",
+        withLongtitude longtitude: String = "",
         completion: @escaping AuthResult
-        ) { // if image(Optional) -> showAlert
+        ) {
+        firebaseAuth.createUser(withEmail: email, password: password) { (responseData, responseError) in
+            guard let firebaseError = responseError else {
 
+                guard let user = responseData?.user else { completion(.failure(.userNotFound)); return }
+
+                self.updateUser(forUser: user, updateName: name, completion: {  result in
+                    switch result {
+                    case .success:
+                       // guard let currentUserId = self.currentUserId else { completion(.failure(.userNotFound)); return }
+
+                        self.imageService.uploadImage(img, identifier: user.uid, completion: { responsResult in
+
+                            switch responsResult {
+
+                            case .success(let url):
+                                let stringURL = url.absoluteString
+
+                                self.userService.create(
+                                    user: User(
+                                        id: user.uid,
+                                        name: name,
+                                        email: email,
+                                        avatarImgURL: stringURL,
+                                        latitude: latitude,
+                                        longtitude: longtitude
+                                    ),
+                                    completion: { responseResult in
+
+                                        switch responseResult {
+                                        case .success(let userFromFiretore):
+                                            completion(.success(userFromFiretore))
+                                        case .failure:
+                                            completion(.failure(.failedToCreateUser))
+                                        }
+                                })
+
+                            case .failure(_):
+                                completion(.failure(AuthServiceError.unknwownError("Image Uploading Failed =(")))
+                            }
+                        })
+
+                    case .failure(let error):
+                        completion(.failure(error))
+                    }
+                })
+
+
+                return
+            }
+            completion(.failure(.getError(error: firebaseError))); return
+        }
     }
 
     func signIn(
@@ -54,9 +111,25 @@ class EmailAuthService: AuthServiceBase, EmailAuthServiceType {
     override func signOut(
         completion: @escaping (Result<Bool, AuthServiceError>) -> Void
         ) {
+        do {
+            try firebaseAuth.signOut()
+            completion(.success(true))
+        } catch let signOutError as NSError {
+            completion(.failure(.getError(error: signOutError)))
+        }
 
     }
 
+    private func updateUser(forUser user: FirebaseAuth.User,
+                            updateName name: String,
+                            completion: @escaping (Result<Bool, AuthServiceError>) -> Void) {
+        let updatableUser = user.createProfileChangeRequest()
+        updatableUser.displayName = name
+        updatableUser.commitChanges { responseError in
+            guard let error = responseError else { completion(.success(true)); return }
+            completion(.failure(.getError(error: error)))
+        }
+    }
 }
 
 //class AuthService {

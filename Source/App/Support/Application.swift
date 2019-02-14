@@ -39,6 +39,20 @@ class Application: UIResponder, UIApplicationDelegate {
 
         window?.rootViewController = rootViewController
         window?.makeKeyAndVisible()
+
+        EmailAuthService(userService: UserService(), imageService: ImageService()).signUp(
+            withName: "Floka",
+            withEmail: "flokafloka@gmail.com",
+            withPassword: "flokafloka",
+            withUserImg: #imageLiteral(resourceName: "friends")) { responseResult in
+                switch responseResult {
+
+                case .success(_):
+                    print("1")
+                case .failure(let error):
+                    print(print(error))
+                }
+        }
     }
 
     func applicationWillResignActive(_ application: UIApplication) {

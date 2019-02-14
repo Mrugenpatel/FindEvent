@@ -14,14 +14,16 @@ class User {
         case name
         case email
         case avatarImgURL
-        case location
+        case latitude
+        case longtitude
     }
 
     let id: String?
     var name: String?
     let email: String?
     var avatarImgURL: String?
-    var location: String? //Ukraine,Lviv
+    var latitude: String?
+    var longtitude: String?
 
     init?(user: [String: Any]) {
         guard let id = user[Constants.id.rawValue] as? String else { return nil }
@@ -32,30 +34,36 @@ class User {
         self.email = email
         guard let avatarImgURL = user[Constants.avatarImgURL.rawValue] as? String else { return nil }
         self.avatarImgURL = avatarImgURL
-        guard let location = user[Constants.location.rawValue] as? String else { return nil }
-        self.location = location
+        guard let latitude = user[Constants.latitude.rawValue] as? String else { return nil }
+        self.latitude = latitude
+        guard let longtitude = user[Constants.longtitude.rawValue] as? String else { return nil }
+        self.longtitude = longtitude
     }
 
     init(id: String,
          name: String,
          email: String,
          avatarImgURL: String,
-         location: String) {
-
+         latitude: String,
+         longtitude: String
+        ) {
         self.id = id
         self.name = name
         self.email = email
         self.avatarImgURL = avatarImgURL
-        self.location = location
-
+        self.latitude = latitude
+        self.longtitude = longtitude
     }
 
     func data() -> [String: Any] {
-        return [Constants.id.rawValue: id as Any,
-                Constants.name.rawValue: name as Any,
-                Constants.email.rawValue: email as Any,
-                Constants.avatarImgURL.rawValue: avatarImgURL as Any,
-                Constants.location.rawValue: location as Any]
+        return [
+            Constants.id.rawValue: id as Any,
+            Constants.name.rawValue: name as Any,
+            Constants.email.rawValue: email as Any,
+            Constants.avatarImgURL.rawValue: avatarImgURL as Any,
+            Constants.latitude.rawValue: latitude as Any,
+            Constants.longtitude.rawValue: longtitude as Any
+        ]
     }
 }
 
