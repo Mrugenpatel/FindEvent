@@ -16,7 +16,7 @@ final class WelcomeViewController: Controller<
     // MARK: - Properties
     // MARK: Callbacks
 
-    var doneCallback: (() -> Void)?
+    var doneCallback: EmptyClosure?
 
     // MARK: - UI
     // MARK: Configuration

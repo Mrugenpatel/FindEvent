@@ -13,13 +13,13 @@ import Firebase
 class Application: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
-     var rootViewController: RootViewController!
+    var rootViewController: RootViewController!
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         FirebaseApp.configure()
         viewSetup()
         return true
-}
+    }
 
     func viewSetup() {
         window = UIWindow(frame: UIScreen.main.bounds)
@@ -40,19 +40,19 @@ class Application: UIResponder, UIApplicationDelegate {
         window?.rootViewController = rootViewController
         window?.makeKeyAndVisible()
 
-        EmailAuthService(userService: UserService(), imageService: ImageService()).signUp(
-            withName: "Floka",
-            withEmail: "flokafloka@gmail.com",
-            withPassword: "flokafloka",
-            withUserImg: #imageLiteral(resourceName: "friends")) { responseResult in
-                switch responseResult {
-
-                case .success(_):
-                    print("1")
-                case .failure(let error):
-                    print(print(error))
-                }
-        }
+//        EmailAuthService(userService: UserService(), imageService: ImageService()).signUp(
+//            withName: "lelelelel",
+//            withEmail: "lelelele@gmail.com",
+//            withPassword: "lelelle",
+//            withUserImg: #imageLiteral(resourceName: "events")) { responseResult in
+//                switch responseResult {
+//
+//                case .success(_):
+//                    print("1")
+//                case .failure(let error):
+//                    print(print(error))
+//                }
+//        }
     }
 
     func applicationWillResignActive(_ application: UIApplication) {

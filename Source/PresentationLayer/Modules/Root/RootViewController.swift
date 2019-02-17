@@ -35,7 +35,7 @@ final class RootViewController: UIViewController {
             currentViewController = welcome
             
             let welcomeViewController = welcome.children.first as? WelcomeViewController
-            welcomeViewController?.rootView.doneCallback = { [unowned self] in
+            welcomeViewController?.doneCallback = { [unowned self] in
                 self.userDefaultsService.isUserLogin = true
                 self.clear(asChild: self.currentViewController)
                 self.decideWhatToShow()

@@ -17,8 +17,6 @@ class TextField: UITextField {
         static let caretColor = ViewConfig.Colors.white
     }
 
-    let padding = UIEdgeInsets(top: 0, left: 7, bottom: 0, right: 5)
-
     private var customPlaceholder: String? = ""
 
     override var placeholder: String? {

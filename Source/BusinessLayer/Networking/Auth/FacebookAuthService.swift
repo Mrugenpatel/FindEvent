@@ -22,6 +22,17 @@ protocol FacebookAuthServiceType: AuthServiceType {
 }
 
 class FacebookAuthService: AuthServiceBase, FacebookAuthServiceType {
+
+    let firebaseAuth = Auth.auth()
+
+    private var currentFirebaseUser: FirebaseAuth.User? {
+        return firebaseAuth.currentUser
+    }
+
+    var currentUserId: String? {
+        guard let firUserId = currentFirebaseUser?.uid else { return nil }
+        return firUserId
+    }
     
     func signUp(
         withUserImg img: UIImage?,

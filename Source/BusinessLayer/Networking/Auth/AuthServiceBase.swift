@@ -16,24 +16,10 @@ protocol AuthServiceType {
     func signOut(
         completion: @escaping (Result<Bool, AuthServiceError>) -> Void
     )
-
-    var currentUserId: String? { get }
 }
-
 
 class AuthServiceBase: AuthServiceType {
 
     func signOut(completion: @escaping (Result<Bool, AuthServiceError>) -> Void) {
-    }
-
-    let firebaseAuth = Auth.auth()
-
-    private var currentFirebaseUser: FirebaseAuth.User? {
-        return firebaseAuth.currentUser
-    }
-
-    var currentUserId: String? {
-        guard let firUserId = currentFirebaseUser?.uid else { return nil }
-        return firUserId
     }
 }

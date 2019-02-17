@@ -22,8 +22,6 @@ final class WelcomeControllerView: ControllerView {
     // MARK: - Properties
     // MARK: Callbacks
 
-    var doneCallback: EmptyClosure?
-
     var didTouchSignUp: EmptyClosure?
     var didTouchSignIn: EmptyClosure?
 

@@ -6,9 +6,17 @@
 //  Copyright © 2019 Yurii Tsymbala. All rights reserved.
 //
 
-import Foundation
+import UIKit
 
 final class SignUpControllerViewModel: ControllerViewModel {
+
+    override func configure() {
+        super.configure()
+    }
+
+    var selectedImage: UIImage?
+
+    
 
 }
 

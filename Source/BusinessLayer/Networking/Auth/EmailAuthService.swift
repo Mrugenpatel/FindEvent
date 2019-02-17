@@ -29,6 +29,17 @@ protocol EmailAuthServiceType: AuthServiceType {
 
 class EmailAuthService: AuthServiceBase, EmailAuthServiceType {
 
+    let firebaseAuth = Auth.auth()
+
+    private var currentFirebaseUser: FirebaseAuth.User? {
+        return firebaseAuth.currentUser
+    }
+
+    var currentUserId: String? {
+        guard let firUserId = currentFirebaseUser?.uid else { return nil }
+        return firUserId
+    }
+
     private let userService: UserService
 
     private let imageService: ImageService
@@ -52,47 +63,38 @@ class EmailAuthService: AuthServiceBase, EmailAuthServiceType {
 
                 guard let user = responseData?.user else { completion(.failure(.userNotFound)); return }
 
-                self.updateUser(forUser: user, updateName: name, completion: {  result in
-                    switch result {
-                    case .success:
-                       // guard let currentUserId = self.currentUserId else { completion(.failure(.userNotFound)); return }
+                guard let currentUserId = self.currentUserId else { completion(.failure(.userNotFound)); return }
 
-                        self.imageService.uploadImage(img, identifier: user.uid, completion: { responsResult in
+                self.imageService.uploadImage(img, identifier: currentUserId, completion: { responsResult in
 
-                            switch responsResult {
+                    switch responsResult {
 
-                            case .success(let url):
-                                let stringURL = url.absoluteString
+                    case .success(let url):
+                        let stringURL = url.absoluteString
 
-                                self.userService.create(
-                                    user: User(
-                                        id: user.uid,
-                                        name: name,
-                                        email: email,
-                                        avatarImgURL: stringURL,
-                                        latitude: latitude,
-                                        longtitude: longtitude
-                                    ),
-                                    completion: { responseResult in
+                        self.userService.create(
+                            user: User(
+                                id: user.uid,
+                                name: name,
+                                email: email,
+                                avatarImgURL: stringURL,
+                                latitude: latitude,
+                                longtitude: longtitude
+                            ),
+                            completion: { responseResult in
 
-                                        switch responseResult {
-                                        case .success(let userFromFiretore):
-                                            completion(.success(userFromFiretore))
-                                        case .failure:
-                                            completion(.failure(.failedToCreateUser))
-                                        }
-                                })
-
-                            case .failure(_):
-                                completion(.failure(AuthServiceError.unknwownError("Image Uploading Failed =(")))
-                            }
+                                switch responseResult {
+                                case .success(let userFromFiretore):
+                                    completion(.success(userFromFiretore))
+                                case .failure:
+                                    completion(.failure(.failedToCreateUser))
+                                }
                         })
 
-                    case .failure(let error):
-                        completion(.failure(error))
+                    case .failure(_):
+                        completion(.failure(AuthServiceError.unknwownError("Image Uploading Failed =(")))
                     }
                 })
-
 
                 return
             }

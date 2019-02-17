@@ -5,7 +5,6 @@ target 'FamillyOrganizer' do
 
  # UI
     pod 'SnapKit'
-    pod 'ESTabBarController-swift'
 
  # Autogeneration
     pod 'R.swift'
@@ -15,6 +14,12 @@ target 'FamillyOrganizer' do
     pod 'Firebase/Core'
     pod 'Firebase/Firestore'
     pod 'Firebase/Storage'
+
+# Permissions
+    pod 'Permission', :path => './LocalPods/Permission'
+    pod 'Permission/Camera', :path => './LocalPods/Permission'
+    pod 'Permission/Photos', :path => './LocalPods/Permission'
+    pod 'Permission/Microphone', :path => './LocalPods/Permission'
  
 # Dependencies
    # pod 'Dip'
