@@ -34,7 +34,12 @@ final class WelcomeViewController: Controller<
     }
 
     private func navigateToSignUpVC() {
-        let signUpViewController = SignUpViewController(viewModel: SignUpControllerViewModel())
+        let signUpViewController = SignUpViewController(
+            viewModel: SignUpControllerViewModel(
+                emailAuthService: EmailAuthService(
+                    userService: UserService(),
+                    imageService: ImageService()),
+                facebookAuthService: FacebookAuthService()))
         signUpViewController.doneCallback = doneCallback
         navController?.pushViewController(signUpViewController, animated: true)
     }

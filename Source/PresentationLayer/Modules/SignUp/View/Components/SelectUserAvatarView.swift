@@ -28,8 +28,11 @@ class SelectUserAvatarView: View {
         didSet {
             avatarImageView.image = setImage
             stackView.isHidden = true
+            userImage?(setImage)
         }
     }
+
+    var userImage: ((UIImage) -> (Void))?
 
     var didSelectImage: EmptyClosure?
 

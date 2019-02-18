@@ -21,12 +21,23 @@ final class SignUpControllerView: ControllerView {
 
     lazy var selectUserAvatarView = SelectUserAvatarView()
 
+    lazy var signUpEmailButton = configuredEmailButton()
+
     // MARK: - UI
     // MARK: Configuration
 
     override func configure() {
         super.configure()
         attachUserAvatarView()
+        attachEmailButton()
+    }
+
+    private func configuredEmailButton() -> Button {
+        let button = Button()
+        button.didTouchUpInside = { [unowned self] in
+            self.didTouchSignUpViaEmail?()
+        }
+        return button
     }
 
     private func attachUserAvatarView() {
@@ -35,6 +46,14 @@ final class SignUpControllerView: ControllerView {
             make.center.equalToSuperview()
             make.width.equalTo(160)
             make.height.equalTo(160)
+        }
+    }
+
+    private func attachEmailButton() {
+        containerView.addSubview(signUpEmailButton)
+        signUpEmailButton.snp.makeConstraints { make in
+            make.left.right.bottom.equalToSuperview()
+            make.height.equalTo(50)
         }
     }
 }

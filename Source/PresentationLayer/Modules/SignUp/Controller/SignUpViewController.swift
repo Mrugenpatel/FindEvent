@@ -37,19 +37,26 @@ class SignUpViewController: Controller<
                 }.show(from: self)
         }
 
-
         locationManager = CLLocationManager()
         locationManager.delegate = self
         locationManager.requestWhenInUseAuthorization()
-        //locationManager.desiredAccuracy
-        locationManager.distanceFilter = 500
+        locationManager.desiredAccuracy = kCLLocationAccuracyBestForNavigation
+        locationManager.distanceFilter = 200
         locationManager.startUpdatingLocation()
 
     }
 
     override func configureViewModel() {
         super.configureViewModel()
-
+        viewModel.userLocation = { [unowned self] latitude, longtitude in
+            self.viewModel.userLocationData = (latitude,longtitude)
+        }
+        rootView.selectUserAvatarView.userImage = { [unowned self] image in
+            self.viewModel.userImageData = image
+        }
+        rootView.didTouchSignUpViaEmail = { [unowned self] in
+           self.viewModel.signUpViaEmail()
+        }
     }
 
     private func getAddressFromLatLon(pdblLatitude: String, withLongitude pdblLongitude: String) {
@@ -98,24 +105,15 @@ class SignUpViewController: Controller<
                         addressString = addressString + pm.postalCode! + " "
                     }
 
-
                     print(addressString)
                 }
         })
-
     }
 
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         getAddressFromLatLon(pdblLatitude: String(locations[0].coordinate.latitude), withLongitude: String(locations[0].coordinate.longitude))
-//        locationManager.stopUpdatingLocation()
 
-    }
-
-    func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
-                if status != .authorizedWhenInUse {return}
-//                locationManager.desiredAccuracy = kCLLocationAccuracyBest
-//                locationManager.startUpdatingLocation()
-//                let locValue: CLLocationCoordinate2D = manager.location!.coordinate
-//                print("locations = \(locValue.latitude) \(locValue.longitude)")
+        viewModel.userLocation?(String(locations[0].coordinate.latitude),String(locations[0].coordinate.longitude))
+        locationManager.stopUpdatingLocation()
     }
 }
