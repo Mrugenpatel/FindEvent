@@ -8,8 +8,12 @@
 
 import UIKit
 
-class ChatsViewController: Controller<
-    ChatsControllerView,
-    ChatsControllerViewModel
-> {
+class ChatsViewController: UIViewController {
+
+    private var viewModel: ChatsControllerViewModel?
+
+    convenience init(viewModel: ChatsControllerViewModel) {
+        self.init()
+        self.viewModel = viewModel
+    }
 }

@@ -8,9 +8,12 @@
 
 import UIKit
 
-class FriendsViewController: Controller<
-    FriendsControllerView,
-    FriendsControllerViewModel
-> {
+class FriendsViewController: UIViewController {
 
+    private var viewModel: FriendsControllerViewModel?
+
+    convenience init(viewModel: FriendsControllerViewModel) {
+        self.init()
+        self.viewModel = viewModel
+    }
 }

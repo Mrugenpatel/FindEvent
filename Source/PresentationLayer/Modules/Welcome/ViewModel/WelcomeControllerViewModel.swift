@@ -8,6 +8,6 @@
 
 import Foundation
 
-final class WelcomeControllerViewModel: ControllerViewModel {
+final class WelcomeControllerViewModel {
 
 }

@@ -8,6 +8,6 @@
 
 import Foundation
 
-final class EventsControllerViewModel: ControllerViewModel {
+final class EventsControllerViewModel {
 
 }

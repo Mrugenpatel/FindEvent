@@ -72,7 +72,7 @@ final class RootViewController: UIViewController {
         currentViewController = nil
     }
     
-    private func createRootNavigationViewController(with viewController: UIViewController) -> NavigationController {
-        return NavigationController(rootViewController: viewController)
+    private func createRootNavigationViewController(with viewController: UIViewController) -> UINavigationController {
+        return UINavigationController(rootViewController: viewController)
     }
 }

@@ -8,11 +8,17 @@
 
 import UIKit
 
-class SettingsViewController: Controller<
-    SettingsControllerView,
-    SettingsControllerViewModel
-> {
+class SettingsViewController: UIViewController {
 
 
+    private var viewModel: SettingsControllerViewModel?
 
+    convenience init(viewModel: SettingsControllerViewModel) {
+        self.init()
+        self.viewModel = viewModel
+    }
+
+
+    // MARK: Callbacks
+    var doneCallback: EmptyClosure?
 }

@@ -8,9 +8,13 @@
 
 import UIKit
 
-class GameViewController: Controller<
-    GameControllerView,
-    GameControllerViewModel
-> {
+class GameViewController: UIViewController {
+
+    private var viewModel: GameControllerViewModel?
+
+    convenience init(viewModel: GameControllerViewModel) {
+        self.init()
+        self.viewModel = viewModel
+    }
 
 }

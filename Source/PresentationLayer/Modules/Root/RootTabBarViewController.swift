@@ -34,7 +34,7 @@ final class RootTabBarController: UITabBarController {
 
     var doneCallback:(() -> Void)? {
         didSet {
-            settingsViewController?.rootView.doneCallback = doneCallback
+            settingsViewController?.doneCallback = doneCallback
         }
     }
 

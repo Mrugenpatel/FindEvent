@@ -8,8 +8,13 @@
 
 import UIKit
 
-class EventsViewController: Controller<
-    EventsControllerView,
-    EventsControllerViewModel
-> {
+class EventsViewController: UIViewController {
+
+
+    private var viewModel: EventsControllerViewModel?
+
+    convenience init(viewModel: EventsControllerViewModel) {
+        self.init()
+        self.viewModel = viewModel
+    }
 }

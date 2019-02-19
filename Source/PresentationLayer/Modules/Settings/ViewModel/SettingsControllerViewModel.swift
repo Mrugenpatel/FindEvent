@@ -8,6 +8,6 @@
 
 import Foundation
 
-final class SettingsControllerViewModel: ControllerViewModel {
+final class SettingsControllerViewModel {
 
 }

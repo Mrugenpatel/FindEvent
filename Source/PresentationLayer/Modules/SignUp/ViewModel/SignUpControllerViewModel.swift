@@ -8,25 +8,20 @@
 
 import UIKit
 
-final class SignUpControllerViewModel: ControllerViewModel {
+class SignUpControllerViewModel {
 
     private let emailAuthService: EmailAuthService
     private let facebookAuthService: FacebookAuthService
-
-    init(emailAuthService: EmailAuthService, facebookAuthService: FacebookAuthService) {
-        self.emailAuthService = emailAuthService
-        self.facebookAuthService = facebookAuthService
-        super.init()
-    }
-
-    override func configure() {
-        super.configure()
-    }
 
     var userImageData: UIImage?
     var userLocation: ((String,String) -> (Void))?
     var userLocationData: (latitude: String,longtitude: String)?
 
+     init(emailAuthService: EmailAuthService, facebookAuthService: FacebookAuthService) {
+        self.emailAuthService = emailAuthService
+        self.facebookAuthService = facebookAuthService
+
+    }
 
     func signUpViaEmail() {
 
@@ -34,16 +29,16 @@ final class SignUpControllerViewModel: ControllerViewModel {
         guard let userLocation = userLocationData else {return}
         EmailAuthService(userService: UserService(), imageService: ImageService()).signUp(
             withName: "Yurii Tsymbala",
-            withEmail: "lelele1le@gmail.com",
+            withEmail: "lelele1100.71.168.87le@gmail.com",
             withPassword: "lelelle",
             withUserImg: userImageData,
             withLatitude: userLocation.latitude,
             withLongtitude: userLocation.longtitude) { responseResult in
                 switch responseResult {
                 case .success(_):
-                    print("1")
+                    print("Success")
                 case .failure(let error):
-                    print(print(error))
+                    print(error)
                 }
         }
     }

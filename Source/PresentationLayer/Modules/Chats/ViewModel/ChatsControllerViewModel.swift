@@ -8,6 +8,6 @@
 
 import Foundation
 
-final class ChatsControllerViewModel: ControllerViewModel {
+final class ChatsControllerViewModel {
 
 }

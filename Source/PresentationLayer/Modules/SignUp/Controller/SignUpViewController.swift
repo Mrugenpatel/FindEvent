@@ -9,10 +9,14 @@
 import UIKit
 import CoreLocation
 
-class SignUpViewController: Controller<
-    SignUpControllerView,
-    SignUpControllerViewModel
-> , CLLocationManagerDelegate {
+class SignUpViewController: UIViewController, CLLocationManagerDelegate {
+
+    private var viewModel: SignUpControllerViewModel?
+
+    convenience init(viewModel: SignUpControllerViewModel) {
+        self.init()
+        self.viewModel = viewModel
+    }
 
     // MARK: Properties
 
@@ -23,19 +27,19 @@ class SignUpViewController: Controller<
 
     // MARK: Configuration
 
-    override func configureView() {
-        super.configureView()
+    override func viewDidLoad() {
+        super.viewDidLoad()
 
         // MARK: SelectUserAvatarView
 
-        rootView.selectUserAvatarView.setTitle = "ADD"
-        rootView.selectUserAvatarView.didSelectImage = { [unowned self] in
-            ImagePicker { picker in
-                picker.didPickImage = { [unowned self] image in
-                    self.rootView.selectUserAvatarView.setImage = image
-                }
-                }.show(from: self)
-        }
+//        rootView.selectUserAvatarView.setTitle = "ADD"
+//        rootView.selectUserAvatarView.didSelectImage = { [unowned self] in
+//            ImagePicker { picker in
+//                picker.didPickImage = { [unowned self] image in
+//                    self.rootView.selectUserAvatarView.setImage = image
+//                }
+//                }.show(from: self)
+//        }
 
         locationManager = CLLocationManager()
         locationManager.delegate = self
@@ -44,19 +48,15 @@ class SignUpViewController: Controller<
         locationManager.distanceFilter = 200
         locationManager.startUpdatingLocation()
 
-    }
-
-    override func configureViewModel() {
-        super.configureViewModel()
-        viewModel.userLocation = { [unowned self] latitude, longtitude in
-            self.viewModel.userLocationData = (latitude,longtitude)
-        }
-        rootView.selectUserAvatarView.userImage = { [unowned self] image in
-            self.viewModel.userImageData = image
-        }
-        rootView.didTouchSignUpViaEmail = { [unowned self] in
-           self.viewModel.signUpViaEmail()
-        }
+//        viewModel.userLocation = { [unowned self] latitude, longtitude in
+//            self.viewModel.userLocationData = (latitude,longtitude)
+//        }
+//        selectUserAvatarView.userImage = { [unowned self] image in
+//            self.viewModel.userImageData = image
+//        }
+//        didTouchSignUpViaEmail = { [unowned self] in
+//            self.viewModel.signUpViaEmail()
+//        }
     }
 
     private func getAddressFromLatLon(pdblLatitude: String, withLongitude pdblLongitude: String) {
@@ -113,7 +113,54 @@ class SignUpViewController: Controller<
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         getAddressFromLatLon(pdblLatitude: String(locations[0].coordinate.latitude), withLongitude: String(locations[0].coordinate.longitude))
 
-        viewModel.userLocation?(String(locations[0].coordinate.latitude),String(locations[0].coordinate.longitude))
+        //viewModel.userLocation?(String(locations[0].coordinate.latitude),String(locations[0].coordinate.longitude))
         locationManager.stopUpdatingLocation()
     }
 }
+
+
+//// MARK: - Properties
+//// MARK: Callbacks
+//
+//var didTouchSignUpViaFB: EmptyClosure?
+//var didTouchSignUpViaEmail: EmptyClosure?
+//
+//// MARK: Views
+//
+//lazy var selectUserAvatarView = SelectUserAvatarView()
+//
+//lazy var signUpEmailButton = configuredEmailButton()
+//
+//// MARK: - UI
+//// MARK: Configuration
+//
+//override func configure() {
+//    super.configure()
+//    attachUserAvatarView()
+//    attachEmailButton()
+//}
+//
+//private func configuredEmailButton() -> Button {
+//    let button = Button()
+//    button.didTouchUpInside = { [unowned self] in
+//        self.didTouchSignUpViaEmail?()
+//    }
+//    return button
+//}
+//
+//private func attachUserAvatarView() {
+//    containerView.addSubview(selectUserAvatarView)
+//    selectUserAvatarView.snp.makeConstraints { make in
+//        make.center.equalToSuperview()
+//        make.width.equalTo(160)
+//        make.height.equalTo(160)
+//    }
+//}
+//
+//private func attachEmailButton() {
+//    containerView.addSubview(signUpEmailButton)
+//    signUpEmailButton.snp.makeConstraints { make in
+//        make.left.right.bottom.equalToSuperview()
+//        make.height.equalTo(50)
+//    }
+//}

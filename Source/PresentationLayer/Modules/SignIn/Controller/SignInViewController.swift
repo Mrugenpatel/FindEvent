@@ -8,9 +8,25 @@
 
 import UIKit
 
-class SignInViewController: Controller<
-    SignInControllerView,
-    SignControllerViewModel
-> {
+class SignInViewController: UIViewController {
+
+
+    private var viewModel: SignInControllerViewModel?
+
+    convenience init(viewModel: SignInControllerViewModel) {
+        self.init()
+        self.viewModel = viewModel
+    }
+    // MARK: - Properties
+    // MARK: Callbacks
+
+    var didTouchCreateAccount: EmptyClosure?
+    var didTouchSignIn: EmptyClosure?
     var doneCallback: (() -> Void)?
+
+    // MARK: Views
+
+
+    // MARK: - UI
+    // MARK: Configuration
 }

@@ -8,6 +8,6 @@
 
 import Foundation
 
-final class SignControllerViewModel: ControllerViewModel {
+final class SignInControllerViewModel {
 
 }

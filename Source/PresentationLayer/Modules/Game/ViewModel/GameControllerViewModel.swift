@@ -8,6 +8,6 @@
 
 import Foundation
 
-final class GameControllerViewModel: ControllerViewModel {
+final class GameControllerViewModel {
 
 }
