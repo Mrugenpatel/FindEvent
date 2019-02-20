@@ -10,7 +10,6 @@ import UIKit
 
 class SignInViewController: UIViewController {
 
-
     private var viewModel: SignInControllerViewModel?
 
     convenience init(viewModel: SignInControllerViewModel) {

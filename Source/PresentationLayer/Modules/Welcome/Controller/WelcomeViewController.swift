@@ -13,9 +13,9 @@ final class WelcomeViewController: UIViewController {
 
     // MARK: - Properties
 
-    private var viewModel: WelcomeControllerViewModel?
+    private var viewModel: WelcomeViewModelType!
 
-    convenience init(viewModel: WelcomeControllerViewModel) {
+    convenience init(viewModel: WelcomeViewModelType) {
         self.init()
         self.viewModel = viewModel
     }
@@ -24,47 +24,51 @@ final class WelcomeViewController: UIViewController {
 
     var doneCallback: EmptyClosure?
 
-    // MARK: - UI
-    // MARK: Configuration
-
     // MARK: Views
-    private lazy var buttonsStackView = configuredStackView()
-    private lazy var signInButton = configuredSignInButton()
-    private lazy var signUpButton = configuredSignUpButton()
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        configureView()
-        configureViewModel()
-    }
+    private lazy var signInButton = setupSignInButton()
+    private lazy var signUpButton = setupSignUpButton()
+    private lazy var buttonsStackView = setupStackView()
+
+    // MARK: Configuration
 
     override func configureView() {
         super.configureView()
-        self.backgroundColor = ViewConfig.Colors.background
+        containerView.backgroundColor = ViewConfig.Colors.background
         attachButtonsStackView()
     }
 
     override func configureViewModel() {
         super.configureViewModel()
-        //        viewModel.didTouchSignUp = { [unowned self] in
-        //            self.navigateToSignUpVC()
-        //        }
-        //
-        //        viewModel.didTouchSignIn = { [unowned self] in
-        //            self.navigateToSignInVC()
-        //        }
+        viewModel.didTouchSignIn = { [unowned self] in
+            self.showingSignInVC()
+        }
+        viewModel.didTouchSignUp = { [unowned self] in
+            self.showingSignUpVC()
+        }
     }
 
+    // MARK: View Life Cycle
 
-    // MARK: Attachments
+    override func loadView() {
+        super.loadView()
+        configureView()
+        configureViewModel()
+    }
 
-    private func configuredStackView() -> UIStackView {
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        navigationController?.isNavigationBarHidden = true
+    }
+
+    // MARK: View Setup
+
+    private func setupStackView() -> UIStackView {
         let buttonsStackView = UIStackView()
         buttonsStackView.axis = .vertical
         buttonsStackView.alignment = .fill //leading - trailling edges
         buttonsStackView.distribution = .fill
         buttonsStackView.spacing = 7
-
         buttonsStackView.addArrangedSubview(signInButton)
         buttonsStackView.addArrangedSubview(signUpButton)
 
@@ -79,27 +83,27 @@ final class WelcomeViewController: UIViewController {
         return buttonsStackView
     }
 
-    private func configuredSignInButton() -> Button {
+    private func setupSignInButton() -> Button {
         let signInButton = Button()
-        signInButton.setTitle(signInButtonTitle, for: .normal)
+        signInButton.setTitle(viewModel.signInButtonTitle, for: .normal)
         signInButton.titleLabel?.font = R.font.openSans(size: 12)
         signInButton.setTitleColor(ViewConfig.Colors.textWhite, for: .normal)
         signInButton.backgroundColor = ViewConfig.Colors.blue
         signInButton.didTouchUpInside = { [unowned self] in
-            self.didTouchSignIn?()
+            self.viewModel.didTouchSignIn?()
         }
 
         return signInButton
     }
 
-    private func configuredSignUpButton() -> Button {
+    private func setupSignUpButton() -> Button {
         let signUpButton = Button()
-        signUpButton.setTitle(signUpButtonTitle, for: .normal)
+        signUpButton.setTitle(viewModel.signUpButtonTitle, for: .normal)
         signUpButton.titleLabel?.font = R.font.openSans(size: 12)
         signUpButton.setTitleColor(ViewConfig.Colors.textWhite, for: .normal)
         signUpButton.backgroundColor = ViewConfig.Colors.blue
         signUpButton.didTouchUpInside = { [unowned self] in
-            self.didTouchSignUp?()
+            self.viewModel.didTouchSignUp?()
         }
 
         return signUpButton
@@ -114,9 +118,11 @@ final class WelcomeViewController: UIViewController {
         }
     }
 
-    private func navigateToSignUpVC() {
+    // MARK: Navigation
+
+    private func showingSignUpVC() {
         let signUpViewController = SignUpViewController(
-            viewModel: SignUpControllerViewModel(
+            viewModel: SignUpControllerViewModel                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            (
                 emailAuthService: EmailAuthService(
                     userService: UserService(),
                     imageService: ImageService()),
@@ -125,8 +131,9 @@ final class WelcomeViewController: UIViewController {
         navigationController?.pushViewController(signUpViewController, animated: true)
     }
 
-    private func navigateToSignInVC() {
-        let signInViewController = SignInViewController(viewModel: SignInControllerViewModel())
+    private func showingSignInVC() {
+        let signInViewController = SignInViewController(
+            viewModel: SignInControllerViewModel())
         signInViewController.doneCallback = doneCallback
         navigationController?.pushViewController(signInViewController, animated: true)
     }

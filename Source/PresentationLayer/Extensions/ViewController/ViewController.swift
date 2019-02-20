@@ -11,4 +11,7 @@ import UIKit
 extension UIViewController {
     @objc func configureViewModel() {}
     @objc func configureView() {}
+    var containerView: UIView {
+        return view
+    }
 }

@@ -11,10 +11,8 @@ import Foundation
 protocol WelcomeViewModelType {
     var signInButtonTitle: String { get }
     var signUpButtonTitle: String { get }
-    var showSignUp: EmptyClosure? { get }
-    var showSignIn: EmptyClosure? { get }
-    func signIn()
-    func signUp()
+    var didTouchSignUp: EmptyClosure? { get set }
+    var didTouchSignIn: EmptyClosure? { get set }
 }
 
 final class WelcomeControllerViewModel: WelcomeViewModelType {
@@ -30,33 +28,6 @@ final class WelcomeControllerViewModel: WelcomeViewModelType {
 
     // MARK: - Callbacks
 
-    var showSignUp: EmptyClosure?
-    var showSignIn: EmptyClosure?
-
-     // MARK: - Methods
-
-    func signIn() {
-        showSignIn?()
-    }
-
-    func signUp() {
-        showSignUp?()
-    }
-
-  
-    //
-    //// MARK: - UI
-    //// MARK: Configuration
-    //
-    //override func configure() {
-    //    super.configure()
-    //    backgroundColor = ViewConfig.Colors.background
-    //
-    //    attachButtonsStackView()
-    //}
-    //
-    
-    //}
-
-
+    var didTouchSignUp: EmptyClosure?
+    var didTouchSignIn: EmptyClosure?
 }
