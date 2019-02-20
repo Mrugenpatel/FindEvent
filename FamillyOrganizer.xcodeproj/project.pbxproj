@@ -43,6 +43,7 @@
 		4BAB7A4922160C04003EB418 /* ImageServiceError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BAB7A4822160C04003EB418 /* ImageServiceError.swift */; };
 		4BB7591C2211FE58009E305B /* RootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BB7591B2211FE58009E305B /* RootViewController.swift */; };
 		4BB7591E2211FE6E009E305B /* RootTabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BB7591D2211FE6E009E305B /* RootTabBarViewController.swift */; };
+		4BD35145221C996500D764D2 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BD35144221C996500D764D2 /* ViewController.swift */; };
 		4BD8CF62220A445600E0C6F5 /* R.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BD8CF61220A445600E0C6F5 /* R.generated.swift */; };
 		4BD8CF7E220A4A3E00E0C6F5 /* View.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BD8CF7D220A4A3E00E0C6F5 /* View.swift */; };
 		4BD8CF80220A4A5C00E0C6F5 /* Button.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BD8CF7F220A4A5C00E0C6F5 /* Button.swift */; };
@@ -109,6 +110,7 @@
 		4BAB7A4822160C04003EB418 /* ImageServiceError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageServiceError.swift; sourceTree = "<group>"; };
 		4BB7591B2211FE58009E305B /* RootViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootViewController.swift; sourceTree = "<group>"; };
 		4BB7591D2211FE6E009E305B /* RootTabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootTabBarViewController.swift; sourceTree = "<group>"; };
+		4BD35144221C996500D764D2 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		4BD8CF61220A445600E0C6F5 /* R.generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = R.generated.swift; sourceTree = "<group>"; };
 		4BD8CF7D220A4A3E00E0C6F5 /* View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = View.swift; sourceTree = "<group>"; };
 		4BD8CF7F220A4A5C00E0C6F5 /* Button.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Button.swift; sourceTree = "<group>"; };
@@ -497,6 +499,14 @@
 			path = Root;
 			sourceTree = "<group>";
 		};
+		4BD35143221C994D00D764D2 /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				4BD35144221C996500D764D2 /* ViewController.swift */,
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
 		4BD8CF60220A439100E0C6F5 /* Autogeneration */ = {
 			isa = PBXGroup;
 			children = (
@@ -586,6 +596,7 @@
 		4BD8CFB0220A590800E0C6F5 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				4BD35143221C994D00D764D2 /* ViewController */,
 				4BD8CFB7220A59C600E0C6F5 /* CollectionView */,
 				4BD8CFB4220A599B00E0C6F5 /* UITableView */,
 				4BD8CFB1220A592500E0C6F5 /* Reusable */,
@@ -904,6 +915,7 @@
 				4BDAF6AC220B716F006AD329 /* EmailAuthService.swift in Sources */,
 				4B39EF0E22177F0300A36A06 /* LocationService.swift in Sources */,
 				4BD8CFB3220A594100E0C6F5 /* Reusable.swift in Sources */,
+				4BD35145221C996500D764D2 /* ViewController.swift in Sources */,
 				4BD8CF7E220A4A3E00E0C6F5 /* View.swift in Sources */,
 				4B49B3122212967800EF6C74 /* ChatsViewController.swift in Sources */,
 				4B49B3142212968C00EF6C74 /* GameViewController.swift in Sources */,

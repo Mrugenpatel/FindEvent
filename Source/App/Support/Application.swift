@@ -9,6 +9,8 @@
 import UIKit
 import Firebase
 
+let App = UIApplication.shared.delegate as! Application
+
 @UIApplicationMain
 class Application: UIResponder, UIApplicationDelegate {
 
@@ -79,6 +81,4 @@ class Application: UIResponder, UIApplicationDelegate {
 
 
 }
-
-let App = UIApplication.shared.delegate as! Application
 
