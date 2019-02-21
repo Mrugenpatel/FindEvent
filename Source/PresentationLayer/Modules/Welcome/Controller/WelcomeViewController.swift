@@ -48,7 +48,7 @@ final class WelcomeViewController: UIViewController {
         }
     }
 
-    // MARK: View Life Cycle
+    // MARK: Life Cycle
 
     override func loadView() {
         super.loadView()
@@ -61,7 +61,7 @@ final class WelcomeViewController: UIViewController {
         navigationController?.isNavigationBarHidden = true
     }
 
-    // MARK: View Setup
+    // MARK: Setup
 
     private func setupStackView() -> UIStackView {
         let buttonsStackView = UIStackView()

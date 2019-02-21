@@ -33,6 +33,7 @@
 		4B49B32A22129B3500EF6C74 /* ChatsControllerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B49B32922129B3500EF6C74 /* ChatsControllerViewModel.swift */; };
 		4B49B32C22129B5600EF6C74 /* GameControllerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B49B32B22129B5600EF6C74 /* GameControllerViewModel.swift */; };
 		4B49B32E22129B7C00EF6C74 /* SettingsControllerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B49B32D22129B7C00EF6C74 /* SettingsControllerViewModel.swift */; };
+		4B73070B221E6F1B008B9B5B /* SelectUserAvatarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B73070A221E6F1B008B9B5B /* SelectUserAvatarView.swift */; };
 		4B83B2FD220F44D900C549AA /* UserService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B83B2FC220F44D900C549AA /* UserService.swift */; };
 		4B83B300220F496C00C549AA /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B83B2FF220F496C00C549AA /* User.swift */; };
 		4B83B302220F67C600C549AA /* UserServiceError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B83B301220F67C600C549AA /* UserServiceError.swift */; };
@@ -100,6 +101,7 @@
 		4B49B32922129B3500EF6C74 /* ChatsControllerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatsControllerViewModel.swift; sourceTree = "<group>"; };
 		4B49B32B22129B5600EF6C74 /* GameControllerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameControllerViewModel.swift; sourceTree = "<group>"; };
 		4B49B32D22129B7C00EF6C74 /* SettingsControllerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsControllerViewModel.swift; sourceTree = "<group>"; };
+		4B73070A221E6F1B008B9B5B /* SelectUserAvatarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectUserAvatarView.swift; sourceTree = "<group>"; };
 		4B83B2FC220F44D900C549AA /* UserService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserService.swift; sourceTree = "<group>"; };
 		4B83B2FF220F496C00C549AA /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		4B83B301220F67C600C549AA /* UserServiceError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserServiceError.swift; sourceTree = "<group>"; };
@@ -218,7 +220,7 @@
 			children = (
 				4BD8CF60220A439100E0C6F5 /* Autogeneration */,
 				4BD8CFAC220A569700E0C6F5 /* Modules */,
-				4BD8CF7B220A4A1800E0C6F5 /* Views */,
+				4BD8CF7B220A4A1800E0C6F5 /* CommonViews */,
 				4B49B2E822128C4700EF6C74 /* Colors */,
 				4BD8CFA9220A566400E0C6F5 /* Font */,
 				4BD8CF91220A53E800E0C6F5 /* LaunchScreen */,
@@ -443,6 +445,14 @@
 			path = ViewModel;
 			sourceTree = "<group>";
 		};
+		4B730709221E6F02008B9B5B /* CustomViews */ = {
+			isa = PBXGroup;
+			children = (
+				4B73070A221E6F1B008B9B5B /* SelectUserAvatarView.swift */,
+			);
+			path = CustomViews;
+			sourceTree = "<group>";
+		};
 		4B83B2FA220F43E900C549AA /* Auth */ = {
 			isa = PBXGroup;
 			children = (
@@ -515,15 +525,16 @@
 			path = Autogeneration;
 			sourceTree = "<group>";
 		};
-		4BD8CF7B220A4A1800E0C6F5 /* Views */ = {
+		4BD8CF7B220A4A1800E0C6F5 /* CommonViews */ = {
 			isa = PBXGroup;
 			children = (
+				4B730709221E6F02008B9B5B /* CustomViews */,
 				4B8E96462218BC7C001694C8 /* ImagePicker */,
 				4BD8CF7C220A4A2A00E0C6F5 /* Base */,
 				4BD8CFBF220A5C2200E0C6F5 /* CollectionViewCells */,
 				4BD8CFBE220A5C1700E0C6F5 /* TableViewCells */,
 			);
-			path = Views;
+			path = CommonViews;
 			sourceTree = "<group>";
 		};
 		4BD8CF7C220A4A2A00E0C6F5 /* Base */ = {
@@ -886,6 +897,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				4B83B300220F496C00C549AA /* User.swift in Sources */,
+				4B73070B221E6F1B008B9B5B /* SelectUserAvatarView.swift in Sources */,
 				4B44D5872208D7E9005FEF14 /* Application.swift in Sources */,
 				4B83B2FD220F44D900C549AA /* UserService.swift in Sources */,
 				4B3319FA2213E7120095032E /* TextField.swift in Sources */,

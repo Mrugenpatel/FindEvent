@@ -28,4 +28,12 @@ class SignInViewController: UIViewController {
 
     // MARK: - UI
     // MARK: Configuration
+
+
+
+    private func setupNavigationBar() {
+        navigationController?.navigationBar.isTranslucent = false
+        navigationController?.isNavigationBarHidden = false
+        navigationController?.navigationBar.barTintColor = ViewConfig.Colors.background
+    }
 }
