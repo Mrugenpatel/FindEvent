@@ -9,7 +9,7 @@
 import UIKit
 import CoreLocation
 
-class SignUpViewController: UIViewController, CLLocationManagerDelegate {
+class SignUpViewController: UIViewController {
 
     // MARK: Properties
 
@@ -35,27 +35,26 @@ class SignUpViewController: UIViewController, CLLocationManagerDelegate {
     override func configureView() {
         super.configureView()
         containerView.backgroundColor = ViewConfig.Colors.background
+        selectUserAvatarView.setTitle = viewModel.selectUserAvatarViewTitle
     }
 
     override func configureViewModel() {
         super.configureViewModel()
-        //        selectUserAvatarView.setTitle = viewModel.selectUserAvatarViewTitle
-        //        rootView.selectUserAvatarView.didSelectImage = { [unowned self] in
-        //            ImagePicker { picker in
-        //                picker.didPickImage = { [unowned self] image in
-        //                    self.rootView.selectUserAvatarView.setImage = image
-        //                }
-        //                }.show(from: self)
-        //        }
-        //        viewModel.userLocation = { [unowned self] latitude, longtitude in
-        //            self.viewModel.userLocationData = (latitude,longtitude)
-        //        }
-        //        selectUserAvatarView.userImage = { [unowned self] image in
-        //            self.viewModel.userImageData = image
-        //        }
-        //        didTouchSignUpViaEmail = { [unowned self] in
-        //            self.viewModel.signUpViaEmail()
-        //        }
+
+        selectUserAvatarView.didSelectImage = { [unowned self] in
+            ImagePicker { picker in
+                picker.didPickImage = { [unowned self] image in
+                    self.selectUserAvatarView.setImage = image // CHANGE WITHOUT CALLBACK
+                }
+                }.show(from: self)
+        }
+
+        selectUserAvatarView.userImage = { [unowned self] image in // DELETE THIS SH%$T
+            self.viewModel.userImageData = image
+        }
+                viewModel.didTouchSignUpViaEmail = { [unowned self] in
+                    self.viewModel.signUpViaEmail()
+                }
     }
 
     // MARK: View Life Cycle
@@ -90,27 +89,10 @@ class SignUpViewController: UIViewController, CLLocationManagerDelegate {
     }
 
     private func setupSelectUserAvatarView() {
-       //viewModel.
-    }
-
-    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        viewModel.geocodeLocationData(withLatitude: String(locations[0].coordinate.latitude), withLongitude: String(locations[0].coordinate.longitude))
-
-        //viewModel.userLocation?(String(locations[0].coordinate.latitude),String(locations[0].coordinate.longitude))
-        locationManager.stopUpdatingLocation()
+        //viewModel.
     }
 }
 
-
-//// MARK: - Properties
-//// MARK: Callbacks
-//
-
-//
-//// MARK: Views
-//
-//lazy var selectUserAvatarView = SelectUserAvatarView()
-//
 //lazy var signUpEmailButton = configuredEmailButton()
 //
 //// MARK: - UI
@@ -146,3 +128,14 @@ class SignUpViewController: UIViewController, CLLocationManagerDelegate {
 //        make.height.equalTo(50)
 //    }
 //}
+
+extension SignUpViewController: CLLocationManagerDelegate {
+    
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        viewModel.userLocationData = (
+            String(locations[0].coordinate.latitude),
+            String(locations[0].coordinate.longitude)
+        )
+        locationManager.stopUpdatingLocation()
+    }
+}

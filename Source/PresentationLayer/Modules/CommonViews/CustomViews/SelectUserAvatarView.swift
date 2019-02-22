@@ -24,7 +24,7 @@ class SelectUserAvatarView: View {
         }
     }
 
-    var setImage: UIImage! {
+    var setImage: UIImage! {  // CHANGE WITH GET AND SET
         didSet {
             avatarImageView.image = setImage
             stackView.isHidden = true
@@ -32,7 +32,7 @@ class SelectUserAvatarView: View {
         }
     }
 
-    var userImage: ((UIImage) -> (Void))?
+    var userImage: ((UIImage) -> (Void))? // DELETE
 
     var didSelectImage: EmptyClosure?
 
