@@ -27,7 +27,7 @@ class SignUpControllerViewModel: SignUpControllerViewModelType {
 
     // MARK: Properties
 
-    selectUserAvatarViewTitle = Strings.selectUserAvatarViewTitle
+    var selectUserAvatarViewTitle = Strings.selectUserAvatarViewTitle
 
     private let emailAuthService: EmailAuthService
 

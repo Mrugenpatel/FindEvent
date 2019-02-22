@@ -220,7 +220,6 @@
 			children = (
 				4BD8CF60220A439100E0C6F5 /* Autogeneration */,
 				4BD8CFAC220A569700E0C6F5 /* Modules */,
-				4BD8CF7B220A4A1800E0C6F5 /* CommonViews */,
 				4B49B2E822128C4700EF6C74 /* Colors */,
 				4BD8CFA9220A566400E0C6F5 /* Font */,
 				4BD8CF91220A53E800E0C6F5 /* LaunchScreen */,
@@ -600,6 +599,7 @@
 				4B49B2EC2212900400EF6C74 /* Chats */,
 				4B49B2EF2212914300EF6C74 /* Game */,
 				4B49B2EE2212912C00EF6C74 /* Settings */,
+				4BD8CF7B220A4A1800E0C6F5 /* CommonViews */,
 			);
 			path = Modules;
 			sourceTree = "<group>";

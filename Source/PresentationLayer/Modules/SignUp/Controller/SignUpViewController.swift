@@ -34,6 +34,7 @@ class SignUpViewController: UIViewController, CLLocationManagerDelegate {
 
     override func configureView() {
         super.configureView()
+        containerView.backgroundColor = ViewConfig.Colors.background
     }
 
     override func configureViewModel() {
@@ -89,7 +90,7 @@ class SignUpViewController: UIViewController, CLLocationManagerDelegate {
     }
 
     private func setupSelectUserAvatarView() {
-       viewModel.
+       //viewModel.
     }
 
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
