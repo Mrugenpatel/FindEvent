@@ -68,7 +68,7 @@ final class WelcomeViewController: UIViewController {
         buttonsStackView.axis = .vertical
         buttonsStackView.alignment = .fill //leading - trailling edges
         buttonsStackView.distribution = .fill
-        buttonsStackView.spacing = 7
+        buttonsStackView.spacing = 10
         buttonsStackView.addArrangedSubview(signInButton)
         buttonsStackView.addArrangedSubview(signUpButton)
 

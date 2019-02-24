@@ -103,7 +103,7 @@ class SignUpViewController: UIViewController {
         containerStackView.axis = .vertical
         containerStackView.alignment = .center //leading - trailling edges
         containerStackView.distribution = .fill
-        containerStackView.spacing = 7
+        containerStackView.spacing = 10
 
         return containerStackView
     }

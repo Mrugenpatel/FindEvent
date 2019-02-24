@@ -15,6 +15,21 @@ class TextField: UITextField {
         static let textColor = ViewConfig.Colors.textWhite
         static let placeholderColor = ViewConfig.Colors.textLightGrey
         static let caretColor = ViewConfig.Colors.white
+        static let textFont = Font.bold(of: 14)
+    }
+
+    let padding = UIEdgeInsets(top: 0, left: 10, bottom: 0, right: 10)
+
+    override open func textRect(forBounds bounds: CGRect) -> CGRect {
+        return bounds.inset(by: padding)
+    }
+
+    override open func placeholderRect(forBounds bounds: CGRect) -> CGRect {
+        return bounds.inset(by: padding)
+    }
+
+    override open func editingRect(forBounds bounds: CGRect) -> CGRect {
+        return bounds.inset(by: padding)
     }
 
     private var customPlaceholder: String? = ""
@@ -43,12 +58,18 @@ class TextField: UITextField {
         backgroundColor = Constants.backgroundColor
         textColor = Constants.textColor
         tintColor = Constants.caretColor
+        font = Font.bold(of: 16)
+        layer.cornerRadius = 5
+        layer.shadowColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.40).cgColor
+        layer.shadowOffset = CGSize(width: 5, height: 5)
+        layer.shadowOpacity = 1.0
+        layer.shadowRadius = 10.0
     }
 
     private func getAttributedPlaceholder(withText text: String) -> NSAttributedString {
         return NSAttributedString(string: text ,
                                   attributes: [NSAttributedString.Key.foregroundColor: Constants.placeholderColor,
-                                               NSAttributedString.Key.font: Font.bold(of: 14)]) // Constants.
+                                               NSAttributedString.Key.font: Constants.textFont])
     }
 }
 

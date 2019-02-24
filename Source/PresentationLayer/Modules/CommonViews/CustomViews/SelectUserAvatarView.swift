@@ -12,7 +12,7 @@ class SelectUserAvatarView: View {
 
     private struct Constants {
         static let borderWidth: CGFloat = 6
-        static let borderColor: CGColor = ViewConfig.Colors.textLightGrey.cgColor
+        static let borderColor: CGColor = ViewConfig.Colors.grey.cgColor
     }
 
     // MARK: - Properties
