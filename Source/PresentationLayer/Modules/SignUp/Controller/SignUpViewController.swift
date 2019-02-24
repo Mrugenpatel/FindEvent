@@ -53,7 +53,6 @@ class SignUpViewController: UIViewController {
     override func configureView() {
         super.configureView()
         containerView.backgroundColor = ViewConfig.Colors.background
-        setupSelectUserAvatarView()
     }
 
     override func configureViewModel() {
@@ -100,7 +99,6 @@ class SignUpViewController: UIViewController {
         containerStackView.spacing = 7
 
         return containerStackView
-
     }
 
     private func setupSelectUserAvatarView() -> SelectUserAvatarView {
@@ -108,7 +106,6 @@ class SignUpViewController: UIViewController {
         selectUserAvatarView.setTitle = viewModel.selectUserAvatarViewTitle
 
         return selectUserAvatarView
-
     }
 
     private func setupNameTextField() -> TextField {
@@ -143,7 +140,6 @@ class SignUpViewController: UIViewController {
         }
 
         return signupButtonViaEmail
-        
     }
 
     private func setupSignupButtonViaFacebook() -> Button {
@@ -153,34 +149,13 @@ class SignUpViewController: UIViewController {
         signupButtonViaFacebook.setTitleColor(ViewConfig.Colors.textWhite, for: .normal)
         signupButtonViaFacebook.backgroundColor = ViewConfig.Colors.blue
         signupButtonViaFacebook.didTouchUpInside = { [unowned self] in
-            self.viewModel.didTouchSignUpViaEmail?()
+            self.viewModel.didTouchSignUpViaFacebook?()
         }
 
         return signupButtonViaFacebook
     }
-
-    
 }
 
-//lazy var signUpEmailButton = configuredEmailButton()
-//
-//// MARK: - UI
-//// MARK: Configuration
-//
-//override func configure() {
-//    super.configure()
-//    attachUserAvatarView()
-//    attachEmailButton()
-//}
-//
-//private func configuredEmailButton() -> Button {
-//    let button = Button()
-//    button.didTouchUpInside = { [unowned self] in
-//        self.didTouchSignUpViaEmail?()
-//    }
-//    return button
-//}
-//
 //private func attachUserAvatarView() {
 //    containerView.addSubview(selectUserAvatarView)
 //    selectUserAvatarView.snp.makeConstraints { make in

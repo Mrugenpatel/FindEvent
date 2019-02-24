@@ -16,7 +16,7 @@ protocol SignUpControllerViewModelType {
     var namePlaceholderTitle: String { get }
     var emailPlaceholderTitle: String { get }
     var passwordPlaceholderTitle: String { get }
-    var didTouchSignUpViaFB: EmptyClosure? { get set }
+    var didTouchSignUpViaFacebook: EmptyClosure? { get set }
     var didTouchSignUpViaEmail: EmptyClosure? { get set }
     var userImageData: UIImage? { get set }
     var userLocationData: (
@@ -56,7 +56,7 @@ class SignUpControllerViewModel: SignUpControllerViewModelType {
     var alertMessage: ((String) -> (Void))?
     var userImageData: UIImage?
     var userLocationData: (latitude: String, longtitude: String) = ("", "")
-    var didTouchSignUpViaFB: EmptyClosure?
+    var didTouchSignUpViaFacebook: EmptyClosure?
     var didTouchSignUpViaEmail: EmptyClosure?
 
     init(emailAuthService: EmailAuthService, facebookAuthService: FacebookAuthService) {
