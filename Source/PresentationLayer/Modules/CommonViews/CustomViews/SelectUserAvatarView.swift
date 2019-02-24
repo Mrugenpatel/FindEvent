@@ -98,7 +98,7 @@ class SelectUserAvatarView: View {
     private func configuredTitleLabel() -> UILabel {
         let label = UILabel()
         label.textAlignment = .center
-        label.font = Font.bold(of: 18)
+        label.font = Font.bold(of: 20)
         label.textColor = ViewConfig.Colors.textWhite
 
         return label
@@ -108,6 +108,7 @@ class SelectUserAvatarView: View {
 
     private func attachAvatarImageView() {
         addSubview(avatarImageView)
+
         avatarImageView.snp.makeConstraints { make in
             make.left.right.top.bottom.equalToSuperview()
         }
@@ -115,8 +116,9 @@ class SelectUserAvatarView: View {
 
     private func attachStackView() {
         avatarImageView.addSubview(stackView)
+
         stackView.snp.makeConstraints { make in
-            make.center.equalToSuperview()
+            make.left.right.bottom.top.equalToSuperview().inset(20)
         }
     }
 
@@ -131,6 +133,7 @@ class SelectUserAvatarView: View {
 
     private func attachTitleLabel() {
         stackView.addArrangedSubview(titleLabel)
+
         titleLabel.snp.makeConstraints { make in
             make.height.equalTo(20)
         }

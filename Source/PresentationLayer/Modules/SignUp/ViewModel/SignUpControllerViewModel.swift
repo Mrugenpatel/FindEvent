@@ -30,7 +30,7 @@ protocol SignUpControllerViewModelType {
 class SignUpControllerViewModel: SignUpControllerViewModelType {
 
     private struct Strings {
-        static let selectUserAvatarViewTitle = NSLocalizedString("Add", comment: "")
+        static let selectUserAvatarViewTitle = NSLocalizedString("ADD", comment: "")
         static let emailBtnTitle = NSLocalizedString("Sign Up", comment: "")
         static let facebookBtnTitle = NSLocalizedString("Sign Up via Facebbok", comment: "")
         static let namePlaceholderTitle = NSLocalizedString("Name", comment: "")

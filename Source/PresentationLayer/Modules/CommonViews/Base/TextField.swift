@@ -48,7 +48,7 @@ class TextField: UITextField {
     private func getAttributedPlaceholder(withText text: String) -> NSAttributedString {
         return NSAttributedString(string: text ,
                                   attributes: [NSAttributedString.Key.foregroundColor: Constants.placeholderColor,
-                                               NSAttributedString.Key.font: UIFont.boldSystemFont(ofSize: 12)]) // Constants.
+                                               NSAttributedString.Key.font: Font.bold(of: 14)]) // Constants.
     }
 }
 

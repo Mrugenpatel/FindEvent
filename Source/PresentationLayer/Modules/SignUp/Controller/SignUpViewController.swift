@@ -53,6 +53,13 @@ class SignUpViewController: UIViewController {
     override func configureView() {
         super.configureView()
         containerView.backgroundColor = ViewConfig.Colors.background
+        attachContainerStackView()
+        attachSelectUserAvatarView()
+        attachNameTextField()
+        attachEmailTextField()
+        attachPasswordTextField()
+        attachSignupButtonViaEmail()
+        attachSignupButtonViaFacebook()
     }
 
     override func configureViewModel() {
@@ -94,7 +101,7 @@ class SignUpViewController: UIViewController {
     private func setupContainerStackView() -> UIStackView {
         let containerStackView = UIStackView()
         containerStackView.axis = .vertical
-        containerStackView.alignment = .fill //leading - trailling edges
+        containerStackView.alignment = .center //leading - trailling edges
         containerStackView.distribution = .fill
         containerStackView.spacing = 7
 
@@ -132,7 +139,7 @@ class SignUpViewController: UIViewController {
     private func setupSignupButtonViaEmail() -> Button {
         let signupButtonViaEmail = Button()
         signupButtonViaEmail.setTitle(viewModel.emailBtnTitle, for: .normal)
-        signupButtonViaEmail.titleLabel?.font = R.font.openSans(size: 12)
+        signupButtonViaEmail.titleLabel?.font = Font.bold(of: 18)
         signupButtonViaEmail.setTitleColor(ViewConfig.Colors.textWhite, for: .normal)
         signupButtonViaEmail.backgroundColor = ViewConfig.Colors.blue
         signupButtonViaEmail.didTouchUpInside = { [unowned self] in
@@ -145,7 +152,7 @@ class SignUpViewController: UIViewController {
     private func setupSignupButtonViaFacebook() -> Button {
         let signupButtonViaFacebook = Button()
         signupButtonViaFacebook.setTitle(viewModel.facebookBtnTitle, for: .normal)
-        signupButtonViaFacebook.titleLabel?.font = R.font.openSans(size: 12)
+        signupButtonViaFacebook.titleLabel?.font = Font.bold(of: 18)
         signupButtonViaFacebook.setTitleColor(ViewConfig.Colors.textWhite, for: .normal)
         signupButtonViaFacebook.backgroundColor = ViewConfig.Colors.blue
         signupButtonViaFacebook.didTouchUpInside = { [unowned self] in
@@ -153,6 +160,72 @@ class SignUpViewController: UIViewController {
         }
 
         return signupButtonViaFacebook
+    }
+
+    // MARK: Attachments
+
+    private func attachContainerStackView() {
+        containerView.addSubview(containerStackView)
+
+        containerStackView.snp.makeConstraints { maker in
+            maker.center.equalToSuperview()
+            maker.left.right.equalToSuperview().inset(15)
+        }
+    }
+
+    private func attachSelectUserAvatarView() {
+        containerStackView.addArrangedSubview(selectUserAvatarView)
+
+        selectUserAvatarView.snp.makeConstraints { maker in
+            maker.width.equalTo(120)
+            maker.height.equalTo(120)
+        }
+    }
+
+    private func attachNameTextField() {
+        containerStackView.addArrangedSubview(nameTextField)
+
+        nameTextField.snp.makeConstraints { maker in
+           // maker.top.equalToSuperview().inset(20)
+            maker.height.equalTo(40)
+            maker.left.right.equalToSuperview().inset(15)
+        }
+    }
+
+    private func attachEmailTextField() {
+        containerStackView.addArrangedSubview(emailTextField)
+
+        emailTextField.snp.makeConstraints { maker in
+            maker.height.equalTo(40)
+            maker.left.right.equalToSuperview().inset(15)
+        }
+    }
+
+    private func attachPasswordTextField() {
+        containerStackView.addArrangedSubview(passwordTextField)
+
+        passwordTextField.snp.makeConstraints { maker in
+            maker.height.equalTo(40)
+            maker.left.right.equalToSuperview().inset(15)
+        }
+    }
+
+    private func attachSignupButtonViaEmail() {
+        containerStackView.addArrangedSubview(signupButtonViaEmail)
+
+        signupButtonViaEmail.snp.makeConstraints { maker in
+            maker.height.equalTo(50)
+            maker.left.right.equalToSuperview().inset(15)
+        }
+    }
+
+    private func attachSignupButtonViaFacebook() {
+        containerStackView.addArrangedSubview(signupButtonViaFacebook)
+
+        signupButtonViaFacebook.snp.makeConstraints { maker in
+            maker.height.equalTo(50)
+            maker.left.right.equalToSuperview().inset(15)
+        }
     }
 }
 
