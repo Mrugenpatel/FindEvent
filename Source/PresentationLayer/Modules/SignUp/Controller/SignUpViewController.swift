@@ -68,14 +68,11 @@ class SignUpViewController: UIViewController {
         selectUserAvatarView.didSelectImage = { [unowned self] in
             ImagePicker { picker in
                 picker.didPickImage = { [unowned self] image in
-                    self.selectUserAvatarView.image = image // CHANGE WITHOUT CALLBACK
+                    self.selectUserAvatarView.image = image
                 }
                 }.show(from: self)
         }
 
-        selectUserAvatarView.userImage = { [unowned self] image in // DELETE THIS SH%$T
-            self.viewModel.userImageData = image
-        }
         viewModel.didTouchSignUpViaEmail = { [unowned self] in
             self.viewModel.signUpViaEmail()
         }
@@ -120,6 +117,7 @@ class SignUpViewController: UIViewController {
         nameTextField.autocorrectionType = .no
         nameTextField.keyboardType = .default
         nameTextField.placeholder = viewModel.namePlaceholderTitle
+        nameTextField.addTarget(self, action: #selector(observeNameTextField), for: .editingChanged) // UICONTROL EVENT???
 
         return nameTextField
     }
@@ -129,6 +127,7 @@ class SignUpViewController: UIViewController {
         emailTextField.autocorrectionType = .no
         emailTextField.keyboardType = .emailAddress
         emailTextField.placeholder = viewModel.emailPlaceholderTitle
+        emailTextField.addTarget(self, action: #selector(observeEmailTextField), for: .editingChanged)
 
         return emailTextField
     }
@@ -139,6 +138,7 @@ class SignUpViewController: UIViewController {
         passwordTextField.keyboardType = .default
         passwordTextField.isSecureTextEntry = true
         passwordTextField.placeholder = viewModel.passwordPlaceholderTitle
+        passwordTextField.addTarget(self, action: #selector(observePasswordTextField), for: .editingChanged)
 
         return passwordTextField
     }
@@ -184,8 +184,7 @@ class SignUpViewController: UIViewController {
         containerStackView.addArrangedSubview(selectUserAvatarView)
 
         selectUserAvatarView.snp.makeConstraints { maker in
-            maker.width.equalTo(120)
-            maker.height.equalTo(120)
+            maker.width.height.equalTo(120)
         }
     }
 
@@ -232,6 +231,23 @@ class SignUpViewController: UIViewController {
             maker.height.equalTo(50)
             maker.left.right.equalToSuperview().inset(15)
         }
+    }
+
+    // MARK: Actions
+
+    @objc
+    private func observeNameTextField() {
+       // add validation class to viewModel!!! and send errors to ProgressHud
+    }
+
+    @objc
+    private func observeEmailTextField() {
+
+    }
+
+    @objc
+    private func observePasswordTextField() {
+
     }
 }
 

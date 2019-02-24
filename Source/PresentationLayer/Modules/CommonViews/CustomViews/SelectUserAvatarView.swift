@@ -16,23 +16,25 @@ class SelectUserAvatarView: View {
     }
 
     // MARK: - Properties
-    // MARK: Content
 
-    var title: String! {
-        didSet {
-            titleLabel.text = title
+    var title: String {
+        get {
+            return titleLabel.text ?? ""
+        }
+        set {
+            titleLabel.text = newValue
         }
     }
 
-    var image: UIImage! {  // CHANGE WITH GET AND SET
-        didSet {
-            avatarImageView.image = image
+    var image: UIImage? {
+        get {
+            return avatarImageView.image
+        }
+        set {
+            avatarImageView.image = newValue
             stackView.isHidden = true
-            userImage?(image)
         }
     }
-
-    var userImage: ((UIImage) -> (Void))? // DELETE
 
     var didSelectImage: EmptyClosure?
 
