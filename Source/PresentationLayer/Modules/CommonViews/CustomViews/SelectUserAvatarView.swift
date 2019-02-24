@@ -118,7 +118,7 @@ class SelectUserAvatarView: View {
         avatarImageView.addSubview(stackView)
 
         stackView.snp.makeConstraints { make in
-            make.left.right.bottom.top.equalToSuperview().inset(20)
+            make.center.equalToSuperview()
         }
     }
 
@@ -127,7 +127,7 @@ class SelectUserAvatarView: View {
         stackView.addArrangedSubview(logoImageView)
 
         logoImageView.snp.makeConstraints { make in
-            make.width.height.equalTo(60)
+            make.width.height.equalTo(70)
         }
     }
 
