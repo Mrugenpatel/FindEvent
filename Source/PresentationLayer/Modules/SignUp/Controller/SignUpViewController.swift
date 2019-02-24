@@ -68,7 +68,7 @@ class SignUpViewController: UIViewController {
         selectUserAvatarView.didSelectImage = { [unowned self] in
             ImagePicker { picker in
                 picker.didPickImage = { [unowned self] image in
-                    self.selectUserAvatarView.setImage = image // CHANGE WITHOUT CALLBACK
+                    self.selectUserAvatarView.image = image // CHANGE WITHOUT CALLBACK
                 }
                 }.show(from: self)
         }
@@ -110,13 +110,15 @@ class SignUpViewController: UIViewController {
 
     private func setupSelectUserAvatarView() -> SelectUserAvatarView {
         let selectUserAvatarView = SelectUserAvatarView()
-        selectUserAvatarView.setTitle = viewModel.selectUserAvatarViewTitle
+        selectUserAvatarView.title = viewModel.selectUserAvatarViewTitle
 
         return selectUserAvatarView
     }
 
     private func setupNameTextField() -> TextField {
         let nameTextField = TextField()
+        nameTextField.autocorrectionType = .no
+        nameTextField.keyboardType = .default
         nameTextField.placeholder = viewModel.namePlaceholderTitle
 
         return nameTextField
@@ -124,6 +126,8 @@ class SignUpViewController: UIViewController {
 
     private func setupEmailTextField() -> TextField {
         let emailTextField = TextField()
+        emailTextField.autocorrectionType = .no
+        emailTextField.keyboardType = .emailAddress
         emailTextField.placeholder = viewModel.emailPlaceholderTitle
 
         return emailTextField
@@ -131,6 +135,9 @@ class SignUpViewController: UIViewController {
 
     private func setupPasswordTextField() -> TextField {
         let passwordTextField = TextField()
+        passwordTextField.autocorrectionType = .no
+        passwordTextField.keyboardType = .default
+        passwordTextField.isSecureTextEntry = true
         passwordTextField.placeholder = viewModel.passwordPlaceholderTitle
 
         return passwordTextField
@@ -186,7 +193,6 @@ class SignUpViewController: UIViewController {
         containerStackView.addArrangedSubview(nameTextField)
 
         nameTextField.snp.makeConstraints { maker in
-           // maker.top.equalToSuperview().inset(20)
             maker.height.equalTo(40)
             maker.left.right.equalToSuperview().inset(15)
         }
@@ -228,23 +234,6 @@ class SignUpViewController: UIViewController {
         }
     }
 }
-
-//private func attachUserAvatarView() {
-//    containerView.addSubview(selectUserAvatarView)
-//    selectUserAvatarView.snp.makeConstraints { make in
-//        make.center.equalToSuperview()
-//        make.width.equalTo(160)
-//        make.height.equalTo(160)
-//    }
-//}
-//
-//private func attachEmailButton() {
-//    containerView.addSubview(signUpEmailButton)
-//    signUpEmailButton.snp.makeConstraints { make in
-//        make.left.right.bottom.equalToSuperview()
-//        make.height.equalTo(50)
-//    }
-//}
 
 extension SignUpViewController: CLLocationManagerDelegate {
     

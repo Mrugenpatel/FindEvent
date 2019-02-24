@@ -18,17 +18,17 @@ class SelectUserAvatarView: View {
     // MARK: - Properties
     // MARK: Content
 
-    var setTitle: String! {
+    var title: String! {
         didSet {
-            titleLabel.text = setTitle
+            titleLabel.text = title
         }
     }
 
-    var setImage: UIImage! {  // CHANGE WITH GET AND SET
+    var image: UIImage! {  // CHANGE WITH GET AND SET
         didSet {
-            avatarImageView.image = setImage
+            avatarImageView.image = image
             stackView.isHidden = true
-            userImage?(setImage)
+            userImage?(image)
         }
     }
 
