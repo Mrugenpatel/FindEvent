@@ -14,7 +14,6 @@ class SignUpViewController: UIViewController {
     // MARK: Properties
 
     private var locationManager: CLLocationManager!
-
     private var viewModel: SignUpControllerViewModelType!
 
     convenience init(viewModel: SignUpControllerViewModelType) {
@@ -27,15 +26,34 @@ class SignUpViewController: UIViewController {
     var doneCallback: EmptyClosure?
 
     // MARK: Views
+    private lazy var containerStackView = setupContainerStackView()
+    private lazy var selectUserAvatarView = setupSelectUserAvatarView()
+    private lazy var nameTextField = setupNameTextField()
+    private lazy var emailTextField = setupEmailTextField()
+    private lazy var passwordTextField = setupPasswordTextField()
+    private lazy var signupButtonViaEmail = setupSignupButtonViaEmail()
+    private lazy var signupButtonViaFacebook = setupSignupButtonViaFacebook()
 
-    private lazy var selectUserAvatarView = SelectUserAvatarView()
+    // MARK: View Life Cycle
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        setupLocationManager()
+        configureView()
+        configureViewModel()
+    }
+
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
+        setupNavigationBar()
+    }
 
     // MARK: Configuration
 
     override func configureView() {
         super.configureView()
         containerView.backgroundColor = ViewConfig.Colors.background
-        selectUserAvatarView.setTitle = viewModel.selectUserAvatarViewTitle
+        setupSelectUserAvatarView()
     }
 
     override func configureViewModel() {
@@ -52,32 +70,12 @@ class SignUpViewController: UIViewController {
         selectUserAvatarView.userImage = { [unowned self] image in // DELETE THIS SH%$T
             self.viewModel.userImageData = image
         }
-                viewModel.didTouchSignUpViaEmail = { [unowned self] in
-                    self.viewModel.signUpViaEmail()
-                }
-    }
-
-    // MARK: View Life Cycle
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        setupLocationManager()
-        configureView()
-        configureViewModel()
-    }
-
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(true)
-        setupNavigationBar()
+        viewModel.didTouchSignUpViaEmail = { [unowned self] in
+            self.viewModel.signUpViaEmail()
+        }
     }
 
     // MARK: Setup
-
-    private func setupNavigationBar() {
-        navigationController?.navigationBar.isTranslucent = false
-        navigationController?.isNavigationBarHidden = false
-        navigationController?.navigationBar.barTintColor = ViewConfig.Colors.background
-    }
 
     private func setupLocationManager() {
         locationManager = CLLocationManager()
@@ -88,9 +86,80 @@ class SignUpViewController: UIViewController {
         locationManager.startUpdatingLocation()
     }
 
-    private func setupSelectUserAvatarView() {
-        //viewModel.
+    private func setupNavigationBar() {
+        navigationController?.navigationBar.isTranslucent = false
+        navigationController?.isNavigationBarHidden = false
+        navigationController?.navigationBar.barTintColor = ViewConfig.Colors.background
     }
+
+    private func setupContainerStackView() -> UIStackView {
+        let containerStackView = UIStackView()
+        containerStackView.axis = .vertical
+        containerStackView.alignment = .fill //leading - trailling edges
+        containerStackView.distribution = .fill
+        containerStackView.spacing = 7
+
+        return containerStackView
+
+    }
+
+    private func setupSelectUserAvatarView() -> SelectUserAvatarView {
+        let selectUserAvatarView = SelectUserAvatarView()
+        selectUserAvatarView.setTitle = viewModel.selectUserAvatarViewTitle
+
+        return selectUserAvatarView
+
+    }
+
+    private func setupNameTextField() -> TextField {
+        let nameTextField = TextField()
+        nameTextField.placeholder = viewModel.namePlaceholderTitle
+
+        return nameTextField
+    }
+
+    private func setupEmailTextField() -> TextField {
+        let emailTextField = TextField()
+        emailTextField.placeholder = viewModel.emailPlaceholderTitle
+
+        return emailTextField
+    }
+
+    private func setupPasswordTextField() -> TextField {
+        let passwordTextField = TextField()
+        passwordTextField.placeholder = viewModel.passwordPlaceholderTitle
+
+        return passwordTextField
+    }
+
+    private func setupSignupButtonViaEmail() -> Button {
+        let signupButtonViaEmail = Button()
+        signupButtonViaEmail.setTitle(viewModel.emailBtnTitle, for: .normal)
+        signupButtonViaEmail.titleLabel?.font = R.font.openSans(size: 12)
+        signupButtonViaEmail.setTitleColor(ViewConfig.Colors.textWhite, for: .normal)
+        signupButtonViaEmail.backgroundColor = ViewConfig.Colors.blue
+        signupButtonViaEmail.didTouchUpInside = { [unowned self] in
+            self.viewModel.didTouchSignUpViaEmail?()
+        }
+
+        return signupButtonViaEmail
+        
+    }
+
+    private func setupSignupButtonViaFacebook() -> Button {
+        let signupButtonViaFacebook = Button()
+        signupButtonViaFacebook.setTitle(viewModel.facebookBtnTitle, for: .normal)
+        signupButtonViaFacebook.titleLabel?.font = R.font.openSans(size: 12)
+        signupButtonViaFacebook.setTitleColor(ViewConfig.Colors.textWhite, for: .normal)
+        signupButtonViaFacebook.backgroundColor = ViewConfig.Colors.blue
+        signupButtonViaFacebook.didTouchUpInside = { [unowned self] in
+            self.viewModel.didTouchSignUpViaEmail?()
+        }
+
+        return signupButtonViaFacebook
+    }
+
+    
 }
 
 //lazy var signUpEmailButton = configuredEmailButton()

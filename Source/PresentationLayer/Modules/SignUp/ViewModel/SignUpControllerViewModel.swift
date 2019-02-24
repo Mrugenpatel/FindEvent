@@ -11,10 +11,18 @@ import CoreLocation
 
 protocol SignUpControllerViewModelType {
     var selectUserAvatarViewTitle: String { get }
+    var emailBtnTitle: String { get }
+    var facebookBtnTitle: String { get }
+    var namePlaceholderTitle: String { get }
+    var emailPlaceholderTitle: String { get }
+    var passwordPlaceholderTitle: String { get }
     var didTouchSignUpViaFB: EmptyClosure? { get set }
     var didTouchSignUpViaEmail: EmptyClosure? { get set }
     var userImageData: UIImage? { get set }
-    var userLocationData: (latitude: String, longtitude: String) { get set }
+    var userLocationData: (
+        latitude: String,
+        longtitude: String
+        ) { get set }
     var alertMessage: ((String) -> (Void))? { get set }
     func signUpViaEmail()
 }
@@ -23,26 +31,32 @@ class SignUpControllerViewModel: SignUpControllerViewModelType {
 
     private struct Strings {
         static let selectUserAvatarViewTitle = NSLocalizedString("Add", comment: "")
+        static let emailBtnTitle = NSLocalizedString("Sign Up", comment: "")
+        static let facebookBtnTitle = NSLocalizedString("Sign Up via Facebbok", comment: "")
+        static let namePlaceholderTitle = NSLocalizedString("Name", comment: "")
+        static let emailPlaceholderTitle = NSLocalizedString("Email", comment: "")
+        static let passwordPlaceholderTitle = NSLocalizedString("Password", comment: "")
     }
 
     // MARK: Properties
 
-    var selectUserAvatarViewTitle = Strings.selectUserAvatarViewTitle
-
     private let emailAuthService: EmailAuthService
-
     private let facebookAuthService: FacebookAuthService
+
+    var selectUserAvatarViewTitle = Strings.selectUserAvatarViewTitle
+    var emailBtnTitle = Strings.emailBtnTitle
+    var facebookBtnTitle = Strings.facebookBtnTitle
+    var namePlaceholderTitle = Strings.namePlaceholderTitle
+    var emailPlaceholderTitle = Strings.emailPlaceholderTitle
+    var passwordPlaceholderTitle = Strings.passwordPlaceholderTitle
+
 
     // MARK: Callbacks
 
     var alertMessage: ((String) -> (Void))?
-
     var userImageData: UIImage?
-
     var userLocationData: (latitude: String, longtitude: String) = ("", "")
-
     var didTouchSignUpViaFB: EmptyClosure?
-
     var didTouchSignUpViaEmail: EmptyClosure?
 
     init(emailAuthService: EmailAuthService, facebookAuthService: FacebookAuthService) {
