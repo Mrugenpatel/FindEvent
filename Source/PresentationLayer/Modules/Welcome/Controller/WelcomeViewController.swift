@@ -126,7 +126,8 @@ final class WelcomeViewController: UIViewController {
                 emailAuthService: EmailAuthService(
                     userService: UserService(),
                     imageService: ImageService()),
-                facebookAuthService: FacebookAuthService()))
+                facebookAuthService: FacebookAuthService(),
+                userInputValidator: UserInputValidator()))
         signUpViewController.doneCallback = doneCallback
         navigationController?.pushViewController(signUpViewController, animated: true)
     }

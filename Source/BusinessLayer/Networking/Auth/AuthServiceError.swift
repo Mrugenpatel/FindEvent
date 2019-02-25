@@ -9,7 +9,7 @@
 import Foundation
 import Firebase
 
-enum AuthServiceError {
+enum AuthServiceError: Error {
     case invalidCredentials
     case emailAlreadyExists
     case invalidEmail

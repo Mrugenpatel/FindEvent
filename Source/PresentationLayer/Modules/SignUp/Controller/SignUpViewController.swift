@@ -69,8 +69,13 @@ class SignUpViewController: UIViewController {
             ImagePicker { picker in
                 picker.didPickImage = { [unowned self] image in
                     self.selectUserAvatarView.image = image
+                    self.viewModel.imageData = image
                 }
                 }.show(from: self)
+        }
+
+        viewModel.alertMessage = { [unowned self] message in
+           print(message)
         }
 
         viewModel.didTouchSignUpViaEmail = { [unowned self] in
@@ -237,24 +242,24 @@ class SignUpViewController: UIViewController {
 
     @objc
     private func observeNameTextField() {
-       // add validation class to viewModel!!! and send errors to ProgressHud
+        viewModel.nameData = nameTextField.text
     }
 
     @objc
     private func observeEmailTextField() {
-
+        viewModel.emailData = emailTextField.text
     }
 
     @objc
     private func observePasswordTextField() {
-
+        viewModel.passwordData = passwordTextField.text
     }
 }
 
 extension SignUpViewController: CLLocationManagerDelegate {
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        viewModel.userLocationData = (
+        viewModel.locationData = (
             String(locations[0].coordinate.latitude),
             String(locations[0].coordinate.longitude)
         )

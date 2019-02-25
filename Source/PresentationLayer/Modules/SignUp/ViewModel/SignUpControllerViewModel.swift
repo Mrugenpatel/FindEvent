@@ -18,8 +18,11 @@ protocol SignUpControllerViewModelType {
     var passwordPlaceholderTitle: String { get }
     var didTouchSignUpViaFacebook: EmptyClosure? { get set }
     var didTouchSignUpViaEmail: EmptyClosure? { get set }
-    var userImageData: UIImage? { get set }
-    var userLocationData: (
+    var imageData: UIImage? { get set }
+    var nameData: String? { get set }
+    var emailData: String? { get set }
+    var passwordData: String? { get set }
+    var locationData: (
         latitude: String,
         longtitude: String
         ) { get set }
@@ -42,6 +45,7 @@ class SignUpControllerViewModel: SignUpControllerViewModelType {
 
     private let emailAuthService: EmailAuthService
     private let facebookAuthService: FacebookAuthService
+    private let userInputValidator: UserInputValidator
 
     var selectUserAvatarViewTitle = Strings.selectUserAvatarViewTitle
     var emailBtnTitle = Strings.emailBtnTitle
@@ -54,33 +58,48 @@ class SignUpControllerViewModel: SignUpControllerViewModelType {
     // MARK: Callbacks
 
     var alertMessage: ((String) -> (Void))?
-    var userImageData: UIImage?
-    var userLocationData: (latitude: String, longtitude: String) = ("", "")
+    var imageData: UIImage?
+    var locationData: (latitude: String, longtitude: String) = ("", "")
+    var nameData: String?
+    var emailData: String?
+    var passwordData: String?
     var didTouchSignUpViaFacebook: EmptyClosure?
     var didTouchSignUpViaEmail: EmptyClosure?
 
-    init(emailAuthService: EmailAuthService, facebookAuthService: FacebookAuthService) {
+    init(emailAuthService: EmailAuthService,
+         facebookAuthService: FacebookAuthService,
+         userInputValidator: UserInputValidator) {
         self.emailAuthService = emailAuthService
         self.facebookAuthService = facebookAuthService
+        self.userInputValidator = userInputValidator
     }
 
     // MARK: Actions
 
     func signUpViaEmail() {
-        guard let userImageData = userImageData else { alertMessage?("Choose Image Please"); return}
-        emailAuthService.signUp(
-            withName: "Yurii Tsymbala",
-            withEmail: "lelele1100.71.168.87le@gmail.com",
-            withPassword: "lelelle",
-            withUserImg: userImageData,
-            withLatitude: userLocationData.latitude,
-            withLongtitude: userLocationData.longtitude) { responseResult in
-                switch responseResult {
-                case .success(_):
-                    print("Success")
-                case .failure(let error):
-                    print(error)
-                }
+        guard let imageData = imageData else { alertMessage?("Choose Image Please"); return}
+        do {
+            let signupParams = try self.userInputValidator.validateSignUp(
+                name: nameData,
+                email: emailData,
+                password: passwordData)
+
+            emailAuthService.signUp(
+                withName: signupParams.name,
+                withEmail: signupParams.email,
+                withPassword: signupParams.password,
+                withUserImg: imageData,
+                withLatitude: locationData.latitude,
+                withLongtitude: locationData.longtitude) { responseResult in
+                    switch responseResult {
+                    case .success(_):
+                        print("Success") // navigate
+                    case .failure(let error):
+                        self.alertMessage?(error.localizedDescription)
+                    }
+            }
+        } catch let error {
+            alertMessage?(error.localizedDescription)
         }
     }
 }
