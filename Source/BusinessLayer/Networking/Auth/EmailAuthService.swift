@@ -14,7 +14,7 @@ protocol EmailAuthServiceType: AuthServiceType {
         withName name: String,
         withEmail email: String,
         withPassword password: String,
-        withUserImg img: UIImage,
+        withUserImg img: UIImage?,
         withLatitude latitude: String,
         withLongtitude longtitude: String,
         completion: @escaping AuthResult
@@ -53,7 +53,7 @@ class EmailAuthService: AuthServiceBase, EmailAuthServiceType {
         withName name: String,
         withEmail email: String,
         withPassword password: String,
-        withUserImg img: UIImage,
+        withUserImg img: UIImage?,
         withLatitude latitude: String = "",
         withLongtitude longtitude: String = "",
         completion: @escaping AuthResult
@@ -65,37 +65,57 @@ class EmailAuthService: AuthServiceBase, EmailAuthServiceType {
 
                 guard let currentUserId = self.currentUserId else { completion(.failure(.userNotFound)); return }
 
-                self.imageService.uploadImage(img, identifier: currentUserId, completion: { responsResult in
+                if let image = img {
+                    self.imageService.uploadImage(image, identifier: currentUserId, completion: { responsResult in
 
-                    switch responsResult {
+                        switch responsResult {
 
-                    case .success(let url):
-                        let stringURL = url.absoluteString
+                        case .success(let url):
+                            let stringURL = url.absoluteString
 
-                        self.userService.create(
-                            user: User(
-                                id: user.uid,
-                                name: name,
-                                email: email,
-                                avatarImgURL: stringURL,
-                                latitude: latitude,
-                                longtitude: longtitude
-                            ),
-                            completion: { responseResult in
+                            self.userService.create(
+                                user: User(
+                                    id: user.uid,
+                                    name: name,
+                                    email: email,
+                                    avatarImgURL: stringURL,
+                                    latitude: latitude,
+                                    longtitude: longtitude
+                                ),
+                                completion: { responseResult in
 
-                                switch responseResult {
-                                case .success(let userFromFiretore):
-                                    completion(.success(userFromFiretore))
-                                case .failure:
-                                    completion(.failure(.failedToCreateUser))
-                                }
-                        })
+                                    switch responseResult {
+                                    case .success(let userFromFiretore):
+                                        completion(.success(userFromFiretore))
+                                    case .failure:
+                                        completion(.failure(.failedToCreateUser))
+                                    }
+                            })
 
-                    case .failure(_):
-                        completion(.failure(AuthServiceError.unknwownError("Image Uploading Failed =(")))
-                    }
-                })
+                        case .failure(_):
+                            completion(.failure(AuthServiceError.unknwownError("Image Uploading Failed =(")))
+                        }
+                    })
+                } else {
+                    self.userService.create(
+                        user: User(
+                            id: user.uid,
+                            name: name,
+                            email: email,
+                            avatarImgURL: "",
+                            latitude: latitude,
+                            longtitude: longtitude
+                        ),
+                        completion: { responseResult in
 
+                            switch responseResult {
+                            case .success(let userFromFiretore):
+                                completion(.success(userFromFiretore))
+                            case .failure:
+                                completion(.failure(.failedToCreateUser))
+                            }
+                    })
+                }
                 return
             }
             completion(.failure(.getError(error: firebaseError))); return

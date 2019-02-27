@@ -77,7 +77,6 @@ class SignUpControllerViewModel: SignUpControllerViewModelType {
     // MARK: Actions
 
     func signUpViaEmail() {
-        guard let imageData = imageData else { alertMessage?("Choose Image Please"); return}
         do {
             let signupParams = try self.userInputValidator.validateSignUp(
                 name: nameData,
