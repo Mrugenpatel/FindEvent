@@ -123,7 +123,7 @@ final class WelcomeViewController: UIViewController {
 
     private func showingSignUpVC() {
         let signUpViewController = SignUpViewController(
-            viewModel: SignUpControllerViewModel                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            (
+            viewModel: SignUpControllerViewModel(
                 emailAuthService: EmailAuthService(
                     userService: UserService(),
                     imageService: ImageService()),
@@ -135,9 +135,13 @@ final class WelcomeViewController: UIViewController {
 
     private func showingSignInVC() {
         let signInViewController = SignInViewController(
-            viewModel: SignInControllerViewModel())
-        signInViewController.doneCallback = doneCallback
-        navigationController?.pushViewController(signInViewController, animated: true)
+            viewModel: SignInControllerViewModel(
+                emailAuthService: EmailAuthService(userService: UserService(),
+                                                   imageService: ImageService()),
+                facebookAuthService: FacebookAuthService(),
+                userInputValidator: UserInputValidator()))
+                signInViewController.doneCallback = doneCallback
+                navigationController?.pushViewController(signInViewController, animated: true)
     }
 }
 

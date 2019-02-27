@@ -8,11 +8,11 @@
 
 import UIKit
 
-class SignInViewController: UIViewController {
+final class SignInViewController: UIViewController {
 
-    private var viewModel: SignInControllerViewModel?
+    private var viewModel: SignInControllerViewModelType!
 
-    convenience init(viewModel: SignInControllerViewModel) {
+    convenience init(viewModel: SignInControllerViewModelType) {
         self.init()
         self.viewModel = viewModel
     }
@@ -25,9 +25,30 @@ class SignInViewController: UIViewController {
 
     // MARK: Views
 
+    // MARK: View Life Cycle
 
-    // MARK: - UI
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        configureView()
+        configureViewModel()
+    }
+
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
+        setupNavigationBar()
+    }
+
+
     // MARK: Configuration
+
+    override func configureView() {
+        super.configureView()
+        containerView.backgroundColor = ViewConfig.Colors.background
+    }
+
+    override func configureViewModel() {
+        super.configureViewModel()
+    }
 
 
 

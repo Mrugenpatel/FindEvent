@@ -27,10 +27,12 @@ protocol SignUpControllerViewModelType {
         longtitude: String
         ) { get set }
     var alertMessage: ((String) -> (Void))? { get set }
+    var navigate: EmptyClosure? { get set}
     func signUpViaEmail()
+    func signUpViaFacebook()
 }
 
-class SignUpControllerViewModel: SignUpControllerViewModelType {
+final class SignUpControllerViewModel: SignUpControllerViewModelType {
 
     private struct Strings {
         static let selectUserAvatarViewTitle = NSLocalizedString("ADD", comment: "")
@@ -54,15 +56,16 @@ class SignUpControllerViewModel: SignUpControllerViewModelType {
     var emailPlaceholderTitle = Strings.emailPlaceholderTitle
     var passwordPlaceholderTitle = Strings.passwordPlaceholderTitle
 
+    var nameData: String?
+    var emailData: String?
+    var passwordData: String?
+    var imageData: UIImage?
+    var locationData: (latitude: String, longtitude: String) = ("", "")
 
     // MARK: Callbacks
 
     var alertMessage: ((String) -> (Void))?
-    var imageData: UIImage?
-    var locationData: (latitude: String, longtitude: String) = ("", "")
-    var nameData: String?
-    var emailData: String?
-    var passwordData: String?
+    var navigate: EmptyClosure?
     var didTouchSignUpViaFacebook: EmptyClosure?
     var didTouchSignUpViaEmail: EmptyClosure?
 
@@ -89,10 +92,10 @@ class SignUpControllerViewModel: SignUpControllerViewModelType {
                 withPassword: signupParams.password,
                 withUserImg: imageData,
                 withLatitude: locationData.latitude,
-                withLongtitude: locationData.longtitude) { responseResult in
+                withLongtitude: locationData.longtitude) { [unowned self] responseResult in
                     switch responseResult {
                     case .success(_):
-                        print("Success") // navigate
+                        self.navigate?()
                     case .failure(let error):
                         self.alertMessage?(error.localizedDescription)
                     }
@@ -100,6 +103,10 @@ class SignUpControllerViewModel: SignUpControllerViewModelType {
         } catch let error {
             alertMessage?(error.localizedDescription)
         }
+    }
+
+    func signUpViaFacebook() {
+        //
     }
 }
 

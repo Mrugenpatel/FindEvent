@@ -9,7 +9,7 @@
 import UIKit
 import CoreLocation
 
-class SignUpViewController: UIViewController {
+final class SignUpViewController: UIViewController {
 
     // MARK: Properties
 
@@ -75,11 +75,15 @@ class SignUpViewController: UIViewController {
         }
 
         viewModel.alertMessage = { [unowned self] message in
-           print(message)
+            print(message)
         }
 
         viewModel.didTouchSignUpViaEmail = { [unowned self] in
             self.viewModel.signUpViaEmail()
+        }
+
+        viewModel.navigate = { [unowned self] in
+            self.doneCallback?()
         }
     }
 
