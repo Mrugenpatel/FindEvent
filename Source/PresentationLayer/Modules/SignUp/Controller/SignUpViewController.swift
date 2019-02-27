@@ -181,7 +181,7 @@ class SignUpViewController: UIViewController {
 
         containerStackView.snp.makeConstraints { maker in
             maker.center.equalToSuperview()
-            maker.left.right.equalToSuperview().inset(15)
+            maker.left.right.equalToSuperview().inset(30)
         }
     }
 
@@ -198,7 +198,7 @@ class SignUpViewController: UIViewController {
 
         nameTextField.snp.makeConstraints { maker in
             maker.height.equalTo(40)
-            maker.left.right.equalToSuperview().inset(15)
+            maker.left.right.equalToSuperview()
         }
     }
 
@@ -207,7 +207,7 @@ class SignUpViewController: UIViewController {
 
         emailTextField.snp.makeConstraints { maker in
             maker.height.equalTo(40)
-            maker.left.right.equalToSuperview().inset(15)
+            maker.left.right.equalToSuperview()
         }
     }
 
@@ -216,7 +216,7 @@ class SignUpViewController: UIViewController {
 
         passwordTextField.snp.makeConstraints { maker in
             maker.height.equalTo(40)
-            maker.left.right.equalToSuperview().inset(15)
+            maker.left.right.equalToSuperview()
         }
     }
 
@@ -225,7 +225,7 @@ class SignUpViewController: UIViewController {
 
         signupButtonViaEmail.snp.makeConstraints { maker in
             maker.height.equalTo(50)
-            maker.left.right.equalToSuperview().inset(15)
+            maker.left.right.equalToSuperview()
         }
     }
 
@@ -234,7 +234,7 @@ class SignUpViewController: UIViewController {
 
         signupButtonViaFacebook.snp.makeConstraints { maker in
             maker.height.equalTo(50)
-            maker.left.right.equalToSuperview().inset(15)
+            maker.left.right.equalToSuperview()
         }
     }
 

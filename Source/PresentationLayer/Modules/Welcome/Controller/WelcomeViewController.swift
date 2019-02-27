@@ -114,7 +114,8 @@ final class WelcomeViewController: UIViewController {
     private func attachButtonsStackView() {
         containerView.addSubview(buttonsStackView)
         buttonsStackView.snp.makeConstraints { make in
-            make.left.bottom.right.equalToSuperview().inset(15)
+            make.left.right.equalToSuperview().inset(30)
+            make.bottom.equalToSuperview().inset(15)
         }
     }
 
