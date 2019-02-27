@@ -140,8 +140,8 @@ final class WelcomeViewController: UIViewController {
                                                    imageService: ImageService()),
                 facebookAuthService: FacebookAuthService(),
                 userInputValidator: UserInputValidator()))
-                signInViewController.doneCallback = doneCallback
-                navigationController?.pushViewController(signInViewController, animated: true)
+        signInViewController.doneCallback = doneCallback
+        navigationController?.pushViewController(signInViewController, animated: true)
     }
 }
 
