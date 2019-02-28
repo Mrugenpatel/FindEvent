@@ -82,6 +82,10 @@ final class SignUpViewController: UIViewController {
             self.viewModel.signUpViaEmail()
         }
 
+        viewModel.didTouchSignUpViaFacebook = { [unowned self] in
+            self.viewModel.signUpViaFacebook()
+        }
+
         viewModel.navigate = { [unowned self] in
             self.doneCallback?()
         }
