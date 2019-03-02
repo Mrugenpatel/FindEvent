@@ -8,6 +8,7 @@
 
 import Foundation
 import FirebaseFirestore
+import FirebaseAuth
 
 protocol UserServiceType {
 
@@ -115,5 +116,11 @@ class UserService: UserServiceType {
                 completion(.failure(error))
             }
         }
+    }
+
+    static func setUserStatus(isOnline: Bool) {
+        guard let currentUser = Auth.auth().currentUser else { return }
+        let userCollection = Firestore.firestore().collection("users")
+        userCollection.document(currentUser.uid).setData(["isOnline": isOnline], merge: true)
     }
 }

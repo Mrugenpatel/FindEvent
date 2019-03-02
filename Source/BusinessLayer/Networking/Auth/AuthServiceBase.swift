@@ -18,8 +18,3 @@ protocol AuthServiceType {
     )
 }
 
-class AuthServiceBase: AuthServiceType {
-
-    func signOut(completion: @escaping (Result<Bool, AuthServiceError>) -> Void) {
-    }
-}

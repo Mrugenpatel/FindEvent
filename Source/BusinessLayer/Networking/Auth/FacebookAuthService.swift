@@ -21,7 +21,7 @@ protocol FacebookAuthServiceType: AuthServiceType {
     )
 }
 
-class FacebookAuthService: AuthServiceBase, FacebookAuthServiceType {
+class FacebookAuthService: AuthServiceType, FacebookAuthServiceType {
 
     let firebaseAuth = Auth.auth()
 
@@ -47,7 +47,7 @@ class FacebookAuthService: AuthServiceBase, FacebookAuthServiceType {
         
     }
     
-    override func signOut(
+    func signOut(
         completion: @escaping (Result<Bool, AuthServiceError>) -> Void
         ) {
         

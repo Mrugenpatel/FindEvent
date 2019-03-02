@@ -27,7 +27,7 @@ protocol EmailAuthServiceType: AuthServiceType {
     )
 }
 
-class EmailAuthService: AuthServiceBase, EmailAuthServiceType {
+class EmailAuthService: AuthServiceType, EmailAuthServiceType {
     
     let firebaseAuth = Auth.auth()
     
@@ -161,7 +161,7 @@ class EmailAuthService: AuthServiceBase, EmailAuthServiceType {
         }
     }
     
-    override func signOut(
+     func signOut(
         completion: @escaping (Result<Bool, AuthServiceError>) -> Void
         ) {
         do {
