@@ -9,7 +9,7 @@
 import FirebaseAuth
 
 protocol EmailAuthServiceType: AuthServiceType {
-
+    
     func signUp(
         withName name: String,
         withEmail email: String,
@@ -19,7 +19,7 @@ protocol EmailAuthServiceType: AuthServiceType {
         withLongtitude longtitude: String,
         completion: @escaping AuthResult
     )
-
+    
     func signIn(
         withEmail email: String,
         withPassword password: String,
@@ -28,27 +28,27 @@ protocol EmailAuthServiceType: AuthServiceType {
 }
 
 class EmailAuthService: AuthServiceBase, EmailAuthServiceType {
-
+    
     let firebaseAuth = Auth.auth()
-
+    
     private var currentFirebaseUser: FirebaseAuth.User? {
         return firebaseAuth.currentUser
     }
-
+    
     var currentUserId: String? {
         guard let firUserId = currentFirebaseUser?.uid else { return nil }
         return firUserId
     }
-
+    
     private let userService: UserService
-
+    
     private let imageService: ImageService
-
+    
     init(userService: UserService, imageService: ImageService) {
         self.userService = userService
         self.imageService = imageService
     }
-
+    
     func signUp(
         withName name: String,
         withEmail email: String,
@@ -58,22 +58,29 @@ class EmailAuthService: AuthServiceBase, EmailAuthServiceType {
         withLongtitude longtitude: String = "",
         completion: @escaping AuthResult
         ) {
-        firebaseAuth.createUser(withEmail: email, password: password) { (responseData, responseError) in
+        firebaseAuth.createUser(
+            withEmail: email,
+            password: password)
+        { [weak self] (responseData, responseError) in
+            guard let strongSelf = self else { return }
             guard let firebaseError = responseError else {
-
+                
                 guard let user = responseData?.user else { completion(.failure(.userNotFound)); return }
-
-                guard let currentUserId = self.currentUserId else { completion(.failure(.userNotFound)); return }
-
+                
+                guard let currentUserId = strongSelf.currentUserId else { completion(.failure(.userNotFound)); return }
+                
                 if let image = img {
-                    self.imageService.uploadImage(image, identifier: currentUserId, completion: { responsResult in
-
+                    strongSelf.imageService.uploadImage(
+                        image,
+                        identifier: currentUserId)
+                    { responsResult in
+                        
                         switch responsResult {
-
+                            
                         case .success(let url):
                             let stringURL = url.absoluteString
-
-                            self.userService.create(
+                            
+                            strongSelf.userService.create(
                                 user: User(
                                     id: user.uid,
                                     name: name,
@@ -81,23 +88,23 @@ class EmailAuthService: AuthServiceBase, EmailAuthServiceType {
                                     avatarImgURL: stringURL,
                                     latitude: latitude,
                                     longtitude: longtitude
-                                ),
-                                completion: { responseResult in
-
-                                    switch responseResult {
-                                    case .success(let userFromFiretore):
-                                        completion(.success(userFromFiretore))
-                                    case .failure:
-                                        completion(.failure(.failedToCreateUser))
-                                    }
-                            })
-
+                                ))
+                            { responseResult in
+                                
+                                switch responseResult {
+                                case .success(let userFromFiretore):
+                                    completion(.success(userFromFiretore))
+                                case .failure:
+                                    completion(.failure(.failedToCreateUser))
+                                }
+                            }
+                            
                         case .failure(_):
                             completion(.failure(AuthServiceError.unknwownError("Image Uploading Failed =(")))
                         }
-                    })
+                    }
                 } else {
-                    self.userService.create(
+                    strongSelf.userService.create(
                         user: User(
                             id: user.uid,
                             name: name,
@@ -105,31 +112,55 @@ class EmailAuthService: AuthServiceBase, EmailAuthServiceType {
                             avatarImgURL: "",
                             latitude: latitude,
                             longtitude: longtitude
-                        ),
-                        completion: { responseResult in
-
-                            switch responseResult {
-                            case .success(let userFromFiretore):
-                                completion(.success(userFromFiretore))
-                            case .failure:
-                                completion(.failure(.failedToCreateUser))
-                            }
-                    })
+                        ))
+                    { responseResult in
+                        
+                        switch responseResult {
+                        case .success(let userFromFiretore):
+                            completion(.success(userFromFiretore))
+                        case .failure:
+                            completion(.failure(.failedToCreateUser))
+                        }
+                    }
                 }
                 return
             }
             completion(.failure(.getError(error: firebaseError))); return
         }
     }
-
+    
     func signIn(
         withEmail email: String,
         withPassword password: String,
         completion: @escaping AuthResult
         ) {
-
+        firebaseAuth.signIn(
+            withEmail: email,
+            password: password)
+        { [weak self] (_, responseError) in
+            
+            guard let strongSelf = self else { return }
+            
+            guard let firebaseError = responseError else {
+                
+                guard let currentUserId = strongSelf.currentUserId else { completion(.failure(.userNotFound)); return }
+                
+                strongSelf.userService.getById(
+                    userId: currentUserId)
+                { responseResult in
+                    switch responseResult {
+                    case .success(let user):
+                        completion(.success(user))
+                    case .failure: completion(.failure(.failedToGetUser))
+                    }
+                }
+                return
+            }
+            let error = AuthServiceError.getError(error: firebaseError)
+            completion(.failure(error))
+        }
     }
-
+    
     override func signOut(
         completion: @escaping (Result<Bool, AuthServiceError>) -> Void
         ) {
@@ -139,94 +170,8 @@ class EmailAuthService: AuthServiceBase, EmailAuthServiceType {
         } catch let signOutError as NSError {
             completion(.failure(.getError(error: signOutError)))
         }
-
-    }
-
-    private func updateUser(forUser user: FirebaseAuth.User,
-                            updateName name: String,
-                            completion: @escaping (Result<Bool, AuthServiceError>) -> Void) {
-        let updatableUser = user.createProfileChangeRequest()
-        updatableUser.displayName = name
-        updatableUser.commitChanges { responseError in
-            guard let error = responseError else { completion(.success(true)); return }
-            completion(.failure(.getError(error: error)))
-        }
     }
 }
-
-//class AuthService {
-//
-//    func signIn(
-//        withEmail email: String,
-//        withPassword password: String,
-//        completion: @escaping AuthHandler
-//        ) {
-//        firebaseAuth.signIn(withEmail: email, password: password) { [weak self] (_, authError) in
-//            guard let strongSelf = self else { return }
-//            guard let authError = authError else {
-//                guard let currentUserId = strongSelf.currentUserId else { return }
-//                strongSelf
-//                    .userService
-//                    .getById(currentUserId)
-//                    .subscribe(onNext: { userResult in
-//                        switch userResult {
-//                        case .success(let user): completion(.success(user))
-//                        case .failure: completion(.failure(.failedToGetUser))
-//                        }
-//                    }).disposed(by: strongSelf.disposeBag)
-//                return
-//            }
-//            let error = AuthServiceError.getError(error: authError)
-//            completion(.failure(error))
-//        }
-//    }
-//
-//    func signUp(withName name: String,
-//                withEmail email: String,
-//                withPassword password: String,
-//                withUserImg img: UIImage?,
-//                completion: @escaping AuthHandler) {
-//        firebaseAuth.createUser(withEmail: email, password: password) { (authResult, authError) in
-//            guard let authError = authError else {
-//                guard let user = authResult?.user else { completion(.failure(.internalInconsistency)); return }
-//                self.updateUser(forUser: user, updateName: name, completion: { [unowned self] (result) in
-//                    switch result {
-//                    case .success:
-//                        guard let currentUserId = self.currentUserId else { completion(.failure(.userNotFound)); return }
-//                        self.userService.create(
-//                            User(id: currentUserId,
-//                                 name: name,
-//                                 email: email,
-//                                 avatarImgURL: ""
-//                            ), completion: { (result) in
-//                                switch result {
-//                                case .success(let user):
-//                                    completion(.success(user))
-//                                case .failure:
-//                                    completion(.failure(.failedToCreateUser))
-//                                }
-//                        })
-//                    case .failure(let error):
-//                        completion(.failure(error))
-//                    }
-//                })
-//                return
-//            }
-//
-//            completion(.failure(.getError(error: authError)))
-//            return
-//        }
-//    }
-//
-//    func signOut(
-//        completion: @escaping (Result<Bool, AuthServiceError>) -> Void) {
-//        do {
-//            try firebaseAuth.signOut()
-//            completion(.success(true))
-//        } catch let signOutError as NSError {
-//            completion(.failure(.getError(error: signOutError)))
-//        }
-//    }
 //
 //    func updatePassword(newPassword: String,
 //                        repeatNewPassword: String,
@@ -242,15 +187,4 @@ class EmailAuthService: AuthServiceBase, EmailAuthServiceType {
 //            })
 //        } else {completion(.failure(.failedToChangePassword))}
 //    }
-//
-//    private func updateUser(forUser user: FirebaseAuth.User,
-//                            updateName name: String,
-//                            completion: @escaping (Result<Bool, AuthServiceError>) -> Void) {
-//        let updatableUser = user.createProfileChangeRequest()
-//        updatableUser.displayName = name
-//        updatableUser.commitChanges { responseError in
-//            guard let error = responseError else { completion(.success(true)); return }
-//            completion(.failure(.getError(error: error)))
-//        }
-//    }
-//}
+

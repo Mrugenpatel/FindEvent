@@ -2,15 +2,17 @@
   "images" : [
     {
       "idiom" : "universal",
-      "filename" : "friends.png",
+      "filename" : "rsz_friends.png",
       "scale" : "1x"
     },
     {
       "idiom" : "universal",
+      "filename" : "rsz_1friends.png",
       "scale" : "2x"
     },
     {
       "idiom" : "universal",
+      "filename" : "rsz_2friends.png",
       "scale" : "3x"
     }
   ],

@@ -37,7 +37,7 @@ final class SignUpControllerViewModel: SignUpControllerViewModelType {
     private struct Strings {
         static let selectUserAvatarViewTitle = NSLocalizedString("ADD", comment: "")
         static let emailBtnTitle = NSLocalizedString("Sign Up", comment: "")
-        static let facebookBtnTitle = NSLocalizedString("Sign Up via Facebok", comment: "")
+        static let facebookBtnTitle = NSLocalizedString("Sign Up via Facebook", comment: "")
         static let namePlaceholderTitle = NSLocalizedString("Name", comment: "")
         static let emailPlaceholderTitle = NSLocalizedString("Email", comment: "")
         static let passwordPlaceholderTitle = NSLocalizedString("Password", comment: "")
@@ -81,7 +81,7 @@ final class SignUpControllerViewModel: SignUpControllerViewModelType {
 
     func signUpViaEmail() {
         do {
-            let signupParams = try self.userInputValidator.validateSignUp(
+            let signupParams = try userInputValidator.validateSignUp(
                 name: nameData,
                 email: emailData,
                 password: passwordData)

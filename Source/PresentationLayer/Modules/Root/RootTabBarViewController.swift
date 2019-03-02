@@ -19,7 +19,7 @@ final class RootTabBarController: UITabBarController {
         static let chats = NSLocalizedString("Chats", comment: "")
         static let chatsImg = UIImage(named: "chats.png")
 
-        static let game = NSLocalizedString("Game", comment: "")
+        static let game = NSLocalizedString("Games", comment: "")
         static let gameImg = UIImage(named: "games.png")
 
         static let settings = NSLocalizedString("Settings", comment: "")
@@ -75,7 +75,7 @@ final class RootTabBarController: UITabBarController {
             viewModel: GameControllerViewModel())
         let gameVC = createRootNavigationViewController(
             withVC: game,
-            withTitle: Constants.chats)
+            withTitle: Constants.game)
         gameVC.tabBarItem.title = Constants.game
         gameVC.tabBarItem.image = Constants.gameImg
 

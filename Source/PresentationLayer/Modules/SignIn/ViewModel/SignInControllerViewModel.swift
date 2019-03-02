@@ -26,7 +26,7 @@ protocol SignInControllerViewModelType {
 final class SignInControllerViewModel: SignInControllerViewModelType {
     private struct Strings {
         static let emailBtnTitle = NSLocalizedString("Sign In", comment: "")
-        static let facebookBtnTitle = NSLocalizedString("Sign In via Facebok", comment: "")
+        static let facebookBtnTitle = NSLocalizedString("Sign In via Facebook", comment: "")
         static let emailPlaceholderTitle = NSLocalizedString("Email", comment: "")
         static let passwordPlaceholderTitle = NSLocalizedString("Password", comment: "")
     }
@@ -62,25 +62,21 @@ final class SignInControllerViewModel: SignInControllerViewModelType {
 
     func signInViaEmail() {
         do {
-            let signinParams = try self.userInputValidator.validateSignIn(
+            let signinParams = try userInputValidator.validateSignIn(
                 email: emailData,
                 password: passwordData)
 
-//            emailAuthService.signUp(
-//                withName: signinParams.name,
-//                withEmail: signinParams.email,
-//                withPassword: signinParams.password,
-//                withUserImg: imageData,
-//                withLatitude: locationData.latitude,
-//                withLongtitude: locationData.longtitude) { [unowned self] responseResult in
-//                    switch responseResult {
-//                    case .success(_):
-//                        self.navigate?()
-//                    case .failure(let error):
-//                        self.alertMessage?(error.localizedDescription)
-//                    }
-//            }
-
+            emailAuthService.signIn(
+                withEmail: signinParams.email,
+                withPassword: signinParams.password)
+            { [unowned self] responseResult in
+                switch responseResult {
+                case .success(_):
+                    self.navigate?()
+                case .failure(let error):
+                    self.alertMessage?(error.localizedDescription)
+                }
+            }
         } catch let error {
             alertMessage?(error.localizedDescription)
         }
