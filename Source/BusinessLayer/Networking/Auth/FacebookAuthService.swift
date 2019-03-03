@@ -21,7 +21,7 @@ protocol FacebookAuthServiceType: AuthServiceType {
     )
 }
 
-class FacebookAuthService: AuthServiceType, FacebookAuthServiceType {
+class FacebookAuthService: FacebookAuthServiceType {
 
     let firebaseAuth = Auth.auth()
 

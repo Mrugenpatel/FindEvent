@@ -25,11 +25,15 @@ protocol EmailAuthServiceType: AuthServiceType {
         withPassword password: String,
         completion: @escaping AuthResult
     )
+
+    func forgotPassword(
+        withEmail email: String,
+        completion: @escaping AuthResult)
 }
 
-class EmailAuthService: AuthServiceType, EmailAuthServiceType {
-    
-    let firebaseAuth = Auth.auth()
+class EmailAuthService: EmailAuthServiceType {
+
+    private let firebaseAuth = Auth.auth()
     
     private var currentFirebaseUser: FirebaseAuth.User? {
         return firebaseAuth.currentUser
@@ -161,7 +165,7 @@ class EmailAuthService: AuthServiceType, EmailAuthServiceType {
         }
     }
     
-     func signOut(
+    func signOut(
         completion: @escaping (Result<Bool, AuthServiceError>) -> Void
         ) {
         do {
@@ -169,6 +173,21 @@ class EmailAuthService: AuthServiceType, EmailAuthServiceType {
             completion(.success(true))
         } catch let signOutError as NSError {
             completion(.failure(.getError(error: signOutError)))
+        }
+    }
+
+    func forgotPassword(
+        withEmail email: String,
+        completion: @escaping AuthResult
+        ) {
+        firebaseAuth.sendPasswordReset(withEmail: email) { responseError in
+            guard let firebaseError = responseError else {return}
+            completion(.failure(.getError(firebaseError)))
+
+//            if error == nil && self.emailTextField.text?.isEmpty==false{
+//                let resetEmailAlertSent = UIAlertController(title: "Reset Email Sent", message: "Reset email has been sent to your login email, please follow the instructions in the mail to reset your password", preferredStyle: .alert)
+//            }
+
         }
     }
 }

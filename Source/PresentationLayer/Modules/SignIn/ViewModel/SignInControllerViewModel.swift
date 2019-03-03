@@ -17,7 +17,7 @@ protocol SignInControllerViewModelType {
     var didTouchSignInViaEmail: EmptyClosure? { get set }
     var emailData: String? { get set }
     var passwordData: String? { get set }
-    var alertMessage: ((String) -> (Void))? { get set }
+    var infoMessage: ((String) -> (Void))? { get set }
     var navigate: EmptyClosure? { get set}
     func signInViaEmail()
     func signInViaFacebook()
@@ -49,7 +49,7 @@ final class SignInControllerViewModel: SignInControllerViewModelType {
 
     var didTouchSignInViaFacebook: EmptyClosure?
     var didTouchSignInViaEmail: EmptyClosure?
-    var alertMessage: ((String) -> (Void))?
+    var infoMessage: ((String) -> (Void))?
     var navigate: EmptyClosure?
 
     init(emailAuthService: EmailAuthService,
@@ -74,11 +74,11 @@ final class SignInControllerViewModel: SignInControllerViewModelType {
                 case .success(_):
                     self.navigate?()
                 case .failure(let error):
-                    self.alertMessage?(error.localizedDescription)
+                    self.infoMessage?(error.localizedDescription)
                 }
             }
         } catch let error {
-            alertMessage?(error.localizedDescription)
+            infoMessage?(error.localizedDescription)
         }
     }
 

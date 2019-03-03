@@ -74,7 +74,7 @@ final class SignUpViewController: UIViewController {
                 }.show(from: self)
         }
 
-        viewModel.alertMessage = { [unowned self] message in
+        viewModel.infoMessage = { [unowned self] message in
             print(message)
         }
 

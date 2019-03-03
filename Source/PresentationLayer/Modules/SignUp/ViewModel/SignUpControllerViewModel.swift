@@ -26,7 +26,7 @@ protocol SignUpControllerViewModelType {
         latitude: String,
         longtitude: String
         ) { get set }
-    var alertMessage: ((String) -> (Void))? { get set }
+    var infoMessage: ((String) -> (Void))? { get set }
     var navigate: EmptyClosure? { get set}
     func signUpViaEmail()
     func signUpViaFacebook()
@@ -64,7 +64,7 @@ final class SignUpControllerViewModel: SignUpControllerViewModelType {
 
     // MARK: Callbacks
 
-    var alertMessage: ((String) -> (Void))?
+    var infoMessage: ((String) -> (Void))?
     var navigate: EmptyClosure?
     var didTouchSignUpViaFacebook: EmptyClosure?
     var didTouchSignUpViaEmail: EmptyClosure?
@@ -97,11 +97,11 @@ final class SignUpControllerViewModel: SignUpControllerViewModelType {
                     case .success(_):
                         self.navigate?()
                     case .failure(let error):
-                        self.alertMessage?(error.localizedDescription)
+                        self.infoMessage?(error.localizedDescription)
                     }
             }
         } catch let error {
-            alertMessage?(error.localizedDescription)
+            infoMessage?(error.localizedDescription)
         }
     }
 

@@ -59,7 +59,7 @@ final class SignInViewController: UIViewController {
     override func configureViewModel() {
         super.configureViewModel()
 
-        viewModel.alertMessage = { [unowned self] message in
+        viewModel.infoMessage = { [unowned self] message in
             print(message)
         }
 
