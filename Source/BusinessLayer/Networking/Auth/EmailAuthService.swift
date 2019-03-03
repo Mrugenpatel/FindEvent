@@ -28,7 +28,8 @@ protocol EmailAuthServiceType: AuthServiceType {
 
     func forgotPassword(
         withEmail email: String,
-        completion: @escaping AuthResult)
+        completion: @escaping (Result<Bool, AuthServiceError>) -> Void
+    )
 }
 
 class EmailAuthService: EmailAuthServiceType {
@@ -178,10 +179,10 @@ class EmailAuthService: EmailAuthServiceType {
 
     func forgotPassword(
         withEmail email: String,
-        completion: @escaping AuthResult
+        completion: @escaping (Result<Bool, AuthServiceError>) -> Void
         ) {
         firebaseAuth.sendPasswordReset(withEmail: email) { responseError in
-            guard let firebaseError = responseError else {return}
+            guard let firebaseError = responseError else { completion(.success(true)); return }
             completion(.failure(.getError(error: firebaseError)))
 
 //            if error == nil && self.emailTextField.text?.isEmpty==false{
