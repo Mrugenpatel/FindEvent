@@ -182,7 +182,7 @@ class EmailAuthService: EmailAuthServiceType {
         ) {
         firebaseAuth.sendPasswordReset(withEmail: email) { responseError in
             guard let firebaseError = responseError else {return}
-            completion(.failure(.getError(firebaseError)))
+            completion(.failure(.getError(error: firebaseError)))
 
 //            if error == nil && self.emailTextField.text?.isEmpty==false{
 //                let resetEmailAlertSent = UIAlertController(title: "Reset Email Sent", message: "Reset email has been sent to your login email, please follow the instructions in the mail to reset your password", preferredStyle: .alert)
