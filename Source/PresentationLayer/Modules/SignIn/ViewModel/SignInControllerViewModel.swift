@@ -11,21 +11,25 @@ import Foundation
 protocol SignInControllerViewModelType {
     var emailBtnTitle: String { get }
     var facebookBtnTitle: String { get }
+    var forgotBtnTitle: String { get }
     var emailPlaceholderTitle: String { get }
     var passwordPlaceholderTitle: String { get }
     var didTouchSignInViaFacebook: EmptyClosure? { get set }
     var didTouchSignInViaEmail: EmptyClosure? { get set }
+    var didTouchForgotPassword: EmptyClosure? { get set }
     var emailData: String? { get set }
     var passwordData: String? { get set }
     var infoMessage: ((String) -> (Void))? { get set }
     var navigate: EmptyClosure? { get set}
     func signInViaEmail()
     func signInViaFacebook()
+    func forgotPassword()
 }
 
 final class SignInControllerViewModel: SignInControllerViewModelType {
     private struct Strings {
         static let emailBtnTitle = NSLocalizedString("Sign In", comment: "")
+        static let forgotBtnTitle = NSLocalizedString("Forgot Password?", comment: "")
         static let facebookBtnTitle = NSLocalizedString("Sign In via Facebook", comment: "")
         static let emailPlaceholderTitle = NSLocalizedString("Email", comment: "")
         static let passwordPlaceholderTitle = NSLocalizedString("Password", comment: "")
@@ -39,6 +43,7 @@ final class SignInControllerViewModel: SignInControllerViewModelType {
 
     var emailBtnTitle = Strings.emailBtnTitle
     var facebookBtnTitle = Strings.facebookBtnTitle
+    var forgotBtnTitle = Strings.forgotBtnTitle
     var emailPlaceholderTitle = Strings.emailPlaceholderTitle
     var passwordPlaceholderTitle = Strings.passwordPlaceholderTitle
 
@@ -49,6 +54,7 @@ final class SignInControllerViewModel: SignInControllerViewModelType {
 
     var didTouchSignInViaFacebook: EmptyClosure?
     var didTouchSignInViaEmail: EmptyClosure?
+    var didTouchForgotPassword: EmptyClosure?
     var infoMessage: ((String) -> (Void))?
     var navigate: EmptyClosure?
 
@@ -84,5 +90,25 @@ final class SignInControllerViewModel: SignInControllerViewModelType {
 
     func signInViaFacebook() {
         //
+    }
+
+    func forgotPassword() {
+        do {
+            let forgotPasswordParams = try userInputValidator.validateForgotPassword(
+                email: emailData)
+
+            emailAuthService.forgotPassword(
+                withEmail: forgotPasswordParams)
+            { [unowned self] responseResult in
+                switch responseResult {
+                case .success(_):
+                    self.infoMessage?("Reset email has been sent to your login email, please follow the instructions in the mail to reset your password")
+                case .failure(let error):
+                    self.infoMessage?(error.localizedDescription)
+                }
+            }
+        } catch let error {
+            infoMessage?(error.localizedDescription)
+        }
     }
 }

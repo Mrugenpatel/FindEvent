@@ -30,6 +30,7 @@ final class SignInViewController: UIViewController {
     private lazy var passwordTextField = setupPasswordTextField()
     private lazy var signinButtonViaEmail = setupSigninButtonViaEmail()
     private lazy var signinButtonViaFacebook = setupSigninButtonViaFacebook()
+    private lazy var forgotPasswordButton = setupForgotPasswordButton()
 
     // MARK: - View Life Cycle
 
@@ -54,6 +55,7 @@ final class SignInViewController: UIViewController {
         attachPasswordTextField()
         attachSigninButtonViaEmail()
         attachSigninButtonViaFacebook()
+        attachForgotPasswordButton()
     }
 
     override func configureViewModel() {
@@ -69,6 +71,10 @@ final class SignInViewController: UIViewController {
 
         viewModel.didTouchSignInViaFacebook = { [unowned self] in
             self.viewModel.signInViaFacebook()
+        }
+
+        viewModel.didTouchForgotPassword = { [unowned self] in
+            self.viewModel.forgotPassword()
         }
 
         viewModel.navigate = { [unowned self] in
@@ -141,6 +147,19 @@ final class SignInViewController: UIViewController {
         return signinButtonViaFacebook
     }
 
+    private func setupForgotPasswordButton() -> Button {
+        let forgotPasswordButton = Button()
+        forgotPasswordButton.setTitle(viewModel.forgotBtnTitle, for: .normal)
+        forgotPasswordButton.titleLabel?.font = Font.bold(of: 14)
+        forgotPasswordButton.setTitleColor(ViewConfig.Colors.textLightGrey, for: .normal)
+        forgotPasswordButton.backgroundColor = .clear
+        forgotPasswordButton.didTouchUpInside = { [unowned self] in
+            self.viewModel.didTouchForgotPassword?()
+        }
+
+        return forgotPasswordButton
+    }
+
     // MARK: - Attachments
 
     private func attachContainerStackView() {
@@ -181,6 +200,14 @@ final class SignInViewController: UIViewController {
 
         signinButtonViaFacebook.snp.makeConstraints { maker in
             maker.height.equalTo(50)
+        }
+    }
+
+    private func attachForgotPasswordButton() {
+        containerStackView.addArrangedSubview(forgotPasswordButton)
+
+        forgotPasswordButton.snp.makeConstraints { maker in
+            maker.height.equalTo(20)
         }
     }
 

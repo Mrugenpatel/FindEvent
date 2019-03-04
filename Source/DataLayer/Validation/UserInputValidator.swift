@@ -20,6 +20,14 @@ class UserInputValidator {
         return (email: email, password: password)
     }
 
+    func validateForgotPassword(
+        email: String?) throws -> String {
+
+        let email = try validateEmail(email)
+        return email
+
+    }
+
     func validateSignUp(
         name: String?,
         email: String?,
