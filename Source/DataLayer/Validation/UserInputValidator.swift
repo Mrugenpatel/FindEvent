@@ -56,11 +56,13 @@ class UserInputValidator {
                 throw UserInputError.emptyEmail
         }
 
-        guard email.isValidEmail() else {
+        let emailLowerCased = email.lowercased()
+
+        guard emailLowerCased.isValidEmail() else {
             throw UserInputError.invalidEmail
         }
 
-        return email
+        return emailLowerCased
     }
 
     func validatePassword(_ password: String?) throws -> String {

@@ -16,6 +16,7 @@ class User {
         case avatarImgURL
         case latitude
         case longtitude
+        case isOnline
     }
 
     let id: String?
@@ -24,6 +25,7 @@ class User {
     var avatarImgURL: String?
     var latitude: String?
     var longtitude: String?
+    var isOnline: Bool?
 
     init?(user: [String: Any]) {
         guard let id = user[Constants.id.rawValue] as? String else { return nil }
@@ -38,6 +40,8 @@ class User {
         self.latitude = latitude
         guard let longtitude = user[Constants.longtitude.rawValue] as? String else { return nil }
         self.longtitude = longtitude
+        guard let isOnline = user[Constants.isOnline.rawValue] as? Bool else { return nil }
+        self.isOnline = isOnline
     }
 
     init(id: String,
@@ -45,7 +49,8 @@ class User {
          email: String,
          avatarImgURL: String,
          latitude: String,
-         longtitude: String
+         longtitude: String,
+         isOnline: Bool
         ) {
         self.id = id
         self.name = name
@@ -53,6 +58,7 @@ class User {
         self.avatarImgURL = avatarImgURL
         self.latitude = latitude
         self.longtitude = longtitude
+        self.isOnline = isOnline
     }
 
     func data() -> [String: Any] {
@@ -62,7 +68,8 @@ class User {
             Constants.email.rawValue: email as Any,
             Constants.avatarImgURL.rawValue: avatarImgURL as Any,
             Constants.latitude.rawValue: latitude as Any,
-            Constants.longtitude.rawValue: longtitude as Any
+            Constants.longtitude.rawValue: longtitude as Any,
+            Constants.isOnline.rawValue: isOnline as Any
         ]
     }
 }

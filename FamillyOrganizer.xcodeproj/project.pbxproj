@@ -33,6 +33,8 @@
 		4B49B32A22129B3500EF6C74 /* ChatsControllerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B49B32922129B3500EF6C74 /* ChatsControllerViewModel.swift */; };
 		4B49B32C22129B5600EF6C74 /* GameControllerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B49B32B22129B5600EF6C74 /* GameControllerViewModel.swift */; };
 		4B49B32E22129B7C00EF6C74 /* SettingsControllerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B49B32D22129B7C00EF6C74 /* SettingsControllerViewModel.swift */; };
+		4B61677B22308DF200CF12AA /* ForgotPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B61677A22308DF200CF12AA /* ForgotPasswordViewController.swift */; };
+		4B61677D22308E0900CF12AA /* ForgotPasswordViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B61677C22308E0900CF12AA /* ForgotPasswordViewModel.swift */; };
 		4B73070B221E6F1B008B9B5B /* SelectUserAvatarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B73070A221E6F1B008B9B5B /* SelectUserAvatarView.swift */; };
 		4B83B2FD220F44D900C549AA /* UserService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B83B2FC220F44D900C549AA /* UserService.swift */; };
 		4B83B300220F496C00C549AA /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B83B2FF220F496C00C549AA /* User.swift */; };
@@ -101,6 +103,8 @@
 		4B49B32922129B3500EF6C74 /* ChatsControllerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatsControllerViewModel.swift; sourceTree = "<group>"; };
 		4B49B32B22129B5600EF6C74 /* GameControllerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameControllerViewModel.swift; sourceTree = "<group>"; };
 		4B49B32D22129B7C00EF6C74 /* SettingsControllerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsControllerViewModel.swift; sourceTree = "<group>"; };
+		4B61677A22308DF200CF12AA /* ForgotPasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPasswordViewController.swift; sourceTree = "<group>"; };
+		4B61677C22308E0900CF12AA /* ForgotPasswordViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPasswordViewModel.swift; sourceTree = "<group>"; };
 		4B73070A221E6F1B008B9B5B /* SelectUserAvatarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectUserAvatarView.swift; sourceTree = "<group>"; };
 		4B83B2FC220F44D900C549AA /* UserService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserService.swift; sourceTree = "<group>"; };
 		4B83B2FF220F496C00C549AA /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
@@ -444,6 +448,31 @@
 			path = ViewModel;
 			sourceTree = "<group>";
 		};
+		4B61677722308D6A00CF12AA /* ForgotPassword */ = {
+			isa = PBXGroup;
+			children = (
+				4B61677822308D9400CF12AA /* ViewModel */,
+				4B61677922308D9A00CF12AA /* Controller */,
+			);
+			path = ForgotPassword;
+			sourceTree = "<group>";
+		};
+		4B61677822308D9400CF12AA /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				4B61677C22308E0900CF12AA /* ForgotPasswordViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		4B61677922308D9A00CF12AA /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				4B61677A22308DF200CF12AA /* ForgotPasswordViewController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
 		4B730709221E6F02008B9B5B /* CustomViews */ = {
 			isa = PBXGroup;
 			children = (
@@ -592,6 +621,7 @@
 			children = (
 				4BB7591A2211FE3C009E305B /* Root */,
 				4BDAF6A7220B6E1C006AD329 /* Welcome */,
+				4B61677722308D6A00CF12AA /* ForgotPassword */,
 				4BDAF6A9220B6E4E006AD329 /* SignUp */,
 				4BDAF6A8220B6E24006AD329 /* SignIn */,
 				4B49B2EB22128FFC00EF6C74 /* Friends */,
@@ -920,6 +950,7 @@
 				4BB7591E2211FE6E009E305B /* RootTabBarViewController.swift in Sources */,
 				4B49B2E522127F2900EF6C74 /* WelcomeControllerViewModel.swift in Sources */,
 				4B83B302220F67C600C549AA /* UserServiceError.swift in Sources */,
+				4B61677D22308E0900CF12AA /* ForgotPasswordViewModel.swift in Sources */,
 				4B49B32C22129B5600EF6C74 /* GameControllerViewModel.swift in Sources */,
 				4B49B32E22129B7C00EF6C74 /* SettingsControllerViewModel.swift in Sources */,
 				4BD8CFC4220A5DC300E0C6F5 /* UserInputError.swift in Sources */,
@@ -928,6 +959,7 @@
 				4B39EF0E22177F0300A36A06 /* LocationService.swift in Sources */,
 				4BD8CFB3220A594100E0C6F5 /* Reusable.swift in Sources */,
 				4BD35145221C996500D764D2 /* ViewController.swift in Sources */,
+				4B61677B22308DF200CF12AA /* ForgotPasswordViewController.swift in Sources */,
 				4BD8CF7E220A4A3E00E0C6F5 /* View.swift in Sources */,
 				4B49B3122212967800EF6C74 /* ChatsViewController.swift in Sources */,
 				4B49B3142212968C00EF6C74 /* GameViewController.swift in Sources */,

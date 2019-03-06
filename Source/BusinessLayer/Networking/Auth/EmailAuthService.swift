@@ -92,7 +92,8 @@ class EmailAuthService: EmailAuthServiceType {
                                     email: email,
                                     avatarImgURL: stringURL,
                                     latitude: latitude,
-                                    longtitude: longtitude
+                                    longtitude: longtitude,
+                                    isOnline: true
                                 ))
                             { responseResult in
                                 
@@ -116,7 +117,8 @@ class EmailAuthService: EmailAuthServiceType {
                             email: email,
                             avatarImgURL: "",
                             latitude: latitude,
-                            longtitude: longtitude
+                            longtitude: longtitude,
+                            isOnline: true
                         ))
                     { responseResult in
                         
