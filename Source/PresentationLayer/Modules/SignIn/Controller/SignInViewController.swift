@@ -93,9 +93,7 @@ final class SignInViewController: UIViewController {
     // MARK: - Setup
 
     private func setupNavigationBar() {
-        navigationController?.navigationBar.isTranslucent = false
         navigationController?.isNavigationBarHidden = false
-        navigationController?.navigationBar.barTintColor = ViewConfig.Colors.background
     }
 
     private func setupContainerStackView() -> UIStackView {
