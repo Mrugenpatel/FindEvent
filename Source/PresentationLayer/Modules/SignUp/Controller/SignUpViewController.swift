@@ -8,6 +8,7 @@
 
 import UIKit
 import CoreLocation
+import SVProgressHUD
 
 final class SignUpViewController: UIViewController {
 
@@ -74,8 +75,19 @@ final class SignUpViewController: UIViewController {
                 }.show(from: self)
         }
 
-        viewModel.infoMessage = { [unowned self] message in
-            print(message)
+        viewModel.willStartSigningUp = { [unowned self] in
+            self.enableUserIteraction(isUserInteractionEnabled: false)
+            SVProgressHUD.show()
+        }
+
+        viewModel.didCatchSigningUpError = { [unowned self] message in
+            self.enableUserIteraction(isUserInteractionEnabled: true)
+            SVProgressHUD.showError(withStatus: message)
+        }
+
+        viewModel.didSignedUp = {
+            SVProgressHUD.showSuccess(withStatus: nil)
+            self.doneCallback?()
         }
 
         viewModel.didTouchSignUpViaEmail = { [unowned self] in
@@ -84,10 +96,6 @@ final class SignUpViewController: UIViewController {
 
         viewModel.didTouchSignUpViaFacebook = { [unowned self] in
             self.viewModel.signUpViaFacebook()
-        }
-
-        viewModel.navigate = { [unowned self] in
-            self.doneCallback?()
         }
     }
 

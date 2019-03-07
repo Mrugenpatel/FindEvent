@@ -14,4 +14,8 @@ extension UIViewController {
     var containerView: UIView {
         return view
     }
+
+    @objc func enableUserIteraction(isUserInteractionEnabled: Bool) {
+        containerView.isUserInteractionEnabled = isUserInteractionEnabled
+    }
 }

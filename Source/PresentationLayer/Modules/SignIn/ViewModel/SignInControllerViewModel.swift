@@ -19,8 +19,9 @@ protocol SignInControllerViewModelType {
     var didTouchForgotPassword: EmptyClosure? { get set }
     var emailData: String? { get set }
     var passwordData: String? { get set }
-    var infoMessage: ((String) -> (Void))? { get set }
-    var navigate: EmptyClosure? { get set}
+    var didCatchSigningInError: ((String) -> (Void))? { get set }
+    var didSignedIn: EmptyClosure? { get set }
+    var willStartSigningIn: EmptyClosure? { get set }
     func signInViaEmail()
     func signInViaFacebook()
     func forgotPassword()
@@ -55,8 +56,9 @@ final class SignInControllerViewModel: SignInControllerViewModelType {
     var didTouchSignInViaFacebook: EmptyClosure?
     var didTouchSignInViaEmail: EmptyClosure?
     var didTouchForgotPassword: EmptyClosure?
-    var infoMessage: ((String) -> (Void))?
-    var navigate: EmptyClosure?
+    var didCatchSigningInError: ((String) -> (Void))?
+    var didSignedIn: EmptyClosure?
+    var willStartSigningIn: EmptyClosure?
 
     init(emailAuthService: EmailAuthService,
          facebookAuthService: FacebookAuthService,
@@ -67,6 +69,7 @@ final class SignInControllerViewModel: SignInControllerViewModelType {
     }
 
     func signInViaEmail() {
+        willStartSigningIn?()
         do {
             let signinParams = try userInputValidator.validateSignIn(
                 email: emailData,
@@ -78,13 +81,13 @@ final class SignInControllerViewModel: SignInControllerViewModelType {
             { [unowned self] responseResult in
                 switch responseResult {
                 case .success(_):
-                    self.navigate?()
+                    self.didSignedIn?()
                 case .failure(let error):
-                    self.infoMessage?(error.localizedDescription)
+                    self.didCatchSigningInError?(error.localizedDescription)
                 }
             }
         } catch let error {
-            infoMessage?(error.localizedDescription)
+            didCatchSigningInError?(error.localizedDescription)
         }
     }
 
@@ -102,13 +105,13 @@ final class SignInControllerViewModel: SignInControllerViewModelType {
             { [unowned self] responseResult in
                 switch responseResult {
                 case .success(_):
-                    self.infoMessage?("Reset email has been sent to your login email, please follow the instructions in the mail to reset your password")
+                    self.didCatchSigningInError?("Reset email has been sent to your login email, please follow the instructions in the mail to reset your password")
                 case .failure(let error):
-                    self.infoMessage?(error.localizedDescription)
+                    self.didCatchSigningInError?(error.localizedDescription)
                 }
             }
         } catch let error {
-            infoMessage?(error.localizedDescription)
+            didCatchSigningInError?(error.localizedDescription)
         }
     }
 }

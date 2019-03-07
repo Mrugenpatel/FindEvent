@@ -8,6 +8,7 @@
 
 import UIKit
 import Firebase
+import SVProgressHUD
 
 let App = UIApplication.shared.delegate as! Application
 
@@ -42,6 +43,9 @@ class Application: UIResponder, UIApplicationDelegate {
 
         window?.rootViewController = rootViewController
         window?.makeKeyAndVisible()
+
+        SVProgressHUD.setMinimumDismissTimeInterval(1)
+        SVProgressHUD.setDefaultMaskType(.gradient)
     }
 
     func applicationWillResignActive(_ application: UIApplication) {

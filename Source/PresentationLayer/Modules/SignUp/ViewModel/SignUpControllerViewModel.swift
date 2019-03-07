@@ -16,6 +16,7 @@ protocol SignUpControllerViewModelType {
     var namePlaceholderTitle: String { get }
     var emailPlaceholderTitle: String { get }
     var passwordPlaceholderTitle: String { get }
+    var willStartSigningUp: EmptyClosure? { get set}
     var didTouchSignUpViaFacebook: EmptyClosure? { get set }
     var didTouchSignUpViaEmail: EmptyClosure? { get set }
     var imageData: UIImage? { get set }
@@ -26,8 +27,8 @@ protocol SignUpControllerViewModelType {
         latitude: String,
         longtitude: String
         ) { get set }
-    var infoMessage: ((String) -> (Void))? { get set }
-    var navigate: EmptyClosure? { get set}
+    var didCatchSigningUpError: ((String) -> (Void))? { get set }
+    var didSignedUp: EmptyClosure? { get set }
     func signUpViaEmail()
     func signUpViaFacebook()
 }
@@ -64,8 +65,9 @@ final class SignUpControllerViewModel: SignUpControllerViewModelType {
 
     // MARK: Callbacks
 
-    var infoMessage: ((String) -> (Void))?
-    var navigate: EmptyClosure?
+    var didCatchSigningUpError: ((String) -> (Void))?
+    var didSignedUp: EmptyClosure?
+    var willStartSigningUp: EmptyClosure?
     var didTouchSignUpViaFacebook: EmptyClosure?
     var didTouchSignUpViaEmail: EmptyClosure?
 
@@ -80,6 +82,7 @@ final class SignUpControllerViewModel: SignUpControllerViewModelType {
     // MARK: Actions
 
     func signUpViaEmail() {
+        willStartSigningUp?()
         do {
             let signupParams = try userInputValidator.validateSignUp(
                 name: nameData,
@@ -95,13 +98,13 @@ final class SignUpControllerViewModel: SignUpControllerViewModelType {
                 withLongtitude: locationData.longtitude) { [unowned self] responseResult in
                     switch responseResult {
                     case .success(_):
-                        self.navigate?()
+                        self.didSignedUp?()
                     case .failure(let error):
-                        self.infoMessage?(error.localizedDescription)
+                        self.didCatchSigningUpError?(error.localizedDescription)
                     }
             }
         } catch let error {
-            infoMessage?(error.localizedDescription)
+            didCatchSigningUpError?(error.localizedDescription)
         }
     }
 

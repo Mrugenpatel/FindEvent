@@ -120,6 +120,7 @@ PODS:
     - R.swift.Library (~> 5.0.0)
   - R.swift.Library (5.0.0)
   - SnapKit (4.2.0)
+  - SVProgressHUD (2.2.5)
 
 DEPENDENCIES:
   - Firebase/Auth
@@ -132,6 +133,7 @@ DEPENDENCIES:
   - Permission/Photos (from `./LocalPods/Permission`)
   - R.swift
   - SnapKit
+  - SVProgressHUD
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
@@ -155,6 +157,7 @@ SPEC REPOS:
     - R.swift
     - R.swift.Library
     - SnapKit
+    - SVProgressHUD
 
 EXTERNAL SOURCES:
   Permission:
@@ -182,7 +185,8 @@ SPEC CHECKSUMS:
   R.swift: 81455d81467763cbd3f4d79d938d05f4ac4c0228
   R.swift.Library: 0bf390e729bc10bb2c9e4fb78bd043164a7be4ff
   SnapKit: fe8a619752f3f27075cc9a90244d75c6c3f27e2a
+  SVProgressHUD: 1428aafac632c1f86f62aa4243ec12008d7a51d6
 
-PODFILE CHECKSUM: 86dd14ecb89a80783d7655e5c42088826d15ca78
+PODFILE CHECKSUM: 7f246fe2e3c52ef8cc519aea065d92dd6f7962a0
 
 COCOAPODS: 1.5.3

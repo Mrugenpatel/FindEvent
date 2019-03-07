@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SVProgressHUD
 
 final class SignInViewController: UIViewController {
 
@@ -61,8 +62,19 @@ final class SignInViewController: UIViewController {
     override func configureViewModel() {
         super.configureViewModel()
 
-        viewModel.infoMessage = { [unowned self] message in
-            print(message)
+        viewModel.willStartSigningIn = { [unowned self] in
+            self.enableUserIteraction(isUserInteractionEnabled: false)
+            SVProgressHUD.show()
+        }
+
+        viewModel.didCatchSigningInError = { [unowned self] message in
+            self.enableUserIteraction(isUserInteractionEnabled: true)
+            SVProgressHUD.showError(withStatus: message)
+        }
+
+        viewModel.didSignedIn = {
+            SVProgressHUD.showSuccess(withStatus: nil)
+            self.doneCallback?()
         }
 
         viewModel.didTouchSignInViaEmail = { [unowned self] in
@@ -75,10 +87,6 @@ final class SignInViewController: UIViewController {
 
         viewModel.didTouchForgotPassword = { [unowned self] in
             self.viewModel.forgotPassword()
-        }
-
-        viewModel.navigate = { [unowned self] in
-            self.doneCallback?()
         }
     }
 
