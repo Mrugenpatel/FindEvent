@@ -27,6 +27,7 @@ final class SignUpViewController: UIViewController {
     var doneCallback: EmptyClosure?
 
     // MARK: Views
+    
     private lazy var containerStackView = setupContainerStackView()
     private lazy var selectUserAvatarView = setupSelectUserAvatarView()
     private lazy var nameTextField = setupNameTextField()

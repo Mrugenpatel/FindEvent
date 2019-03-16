@@ -15,7 +15,7 @@ class User {
         case email
         case avatarImgURL
         case latitude
-        case longtitude
+        case longitude
         case isOnline
     }
 
@@ -24,7 +24,7 @@ class User {
     let email: String?
     var avatarImgURL: String?
     var latitude: String?
-    var longtitude: String?
+    var longitude: String?
     var isOnline: Bool?
 
     init?(user: [String: Any]) {
@@ -38,8 +38,8 @@ class User {
         self.avatarImgURL = avatarImgURL
         guard let latitude = user[Constants.latitude.rawValue] as? String else { return nil }
         self.latitude = latitude
-        guard let longtitude = user[Constants.longtitude.rawValue] as? String else { return nil }
-        self.longtitude = longtitude
+        guard let longtitude = user[Constants.longitude.rawValue] as? String else { return nil }
+        self.longitude = longtitude
         guard let isOnline = user[Constants.isOnline.rawValue] as? Bool else { return nil }
         self.isOnline = isOnline
     }
@@ -49,7 +49,7 @@ class User {
          email: String,
          avatarImgURL: String,
          latitude: String,
-         longtitude: String,
+         longitude: String,
          isOnline: Bool
         ) {
         self.id = id
@@ -57,7 +57,7 @@ class User {
         self.email = email
         self.avatarImgURL = avatarImgURL
         self.latitude = latitude
-        self.longtitude = longtitude
+        self.longitude = longitude
         self.isOnline = isOnline
     }
 
@@ -68,7 +68,7 @@ class User {
             Constants.email.rawValue: email as Any,
             Constants.avatarImgURL.rawValue: avatarImgURL as Any,
             Constants.latitude.rawValue: latitude as Any,
-            Constants.longtitude.rawValue: longtitude as Any,
+            Constants.longitude.rawValue: longitude as Any,
             Constants.isOnline.rawValue: isOnline as Any
         ]
     }

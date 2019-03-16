@@ -44,6 +44,10 @@
 		4B8E964C2218BD18001694C8 /* ImagePickerAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B8E964B2218BD17001694C8 /* ImagePickerAction.swift */; };
 		4BAB7A4722160B35003EB418 /* ImageService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BAB7A4622160B35003EB418 /* ImageService.swift */; };
 		4BAB7A4922160C04003EB418 /* ImageServiceError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BAB7A4822160C04003EB418 /* ImageServiceError.swift */; };
+		4BB6BA622231E3390062E42B /* UserInfoHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BB6BA612231E3390062E42B /* UserInfoHeaderView.swift */; };
+		4BB6BA662231E67A0062E42B /* Reusable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BB6BA652231E67A0062E42B /* Reusable.swift */; };
+		4BB6BA682231E6B10062E42B /* TableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BB6BA672231E6B10062E42B /* TableViewCell.swift */; };
+		4BB6BA6A2231E6FE0062E42B /* CollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BB6BA692231E6FE0062E42B /* CollectionViewCell.swift */; };
 		4BB7591C2211FE58009E305B /* RootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BB7591B2211FE58009E305B /* RootViewController.swift */; };
 		4BB7591E2211FE6E009E305B /* RootTabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BB7591D2211FE6E009E305B /* RootTabBarViewController.swift */; };
 		4BD35145221C996500D764D2 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BD35144221C996500D764D2 /* ViewController.swift */; };
@@ -62,7 +66,6 @@
 		4BD8CFA6220A557700E0C6F5 /* OpenSans-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4BD8CF9C220A557700E0C6F5 /* OpenSans-Light.ttf */; };
 		4BD8CFA7220A557700E0C6F5 /* OpenSans-Semibold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4BD8CF9D220A557700E0C6F5 /* OpenSans-Semibold.ttf */; };
 		4BD8CFAB220A567100E0C6F5 /* Font.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BD8CFAA220A567100E0C6F5 /* Font.swift */; };
-		4BD8CFB3220A594100E0C6F5 /* Reusable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BD8CFB2220A594100E0C6F5 /* Reusable.swift */; };
 		4BD8CFB6220A59BA00E0C6F5 /* UITableViewReusable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BD8CFB5220A59BA00E0C6F5 /* UITableViewReusable.swift */; };
 		4BD8CFB9220A5AD500E0C6F5 /* UICollectionViewReusable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BD8CFB8220A5AD500E0C6F5 /* UICollectionViewReusable.swift */; };
 		4BD8CFC2220A5D1400E0C6F5 /* UserInputValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BD8CFC1220A5D1400E0C6F5 /* UserInputValidator.swift */; };
@@ -114,6 +117,10 @@
 		4B8E964B2218BD17001694C8 /* ImagePickerAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePickerAction.swift; sourceTree = "<group>"; };
 		4BAB7A4622160B35003EB418 /* ImageService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageService.swift; sourceTree = "<group>"; };
 		4BAB7A4822160C04003EB418 /* ImageServiceError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageServiceError.swift; sourceTree = "<group>"; };
+		4BB6BA612231E3390062E42B /* UserInfoHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfoHeaderView.swift; sourceTree = "<group>"; };
+		4BB6BA652231E67A0062E42B /* Reusable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Reusable.swift; sourceTree = "<group>"; };
+		4BB6BA672231E6B10062E42B /* TableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewCell.swift; sourceTree = "<group>"; };
+		4BB6BA692231E6FE0062E42B /* CollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewCell.swift; sourceTree = "<group>"; };
 		4BB7591B2211FE58009E305B /* RootViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootViewController.swift; sourceTree = "<group>"; };
 		4BB7591D2211FE6E009E305B /* RootTabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootTabBarViewController.swift; sourceTree = "<group>"; };
 		4BD35144221C996500D764D2 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -132,7 +139,6 @@
 		4BD8CF9C220A557700E0C6F5 /* OpenSans-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-Light.ttf"; sourceTree = "<group>"; };
 		4BD8CF9D220A557700E0C6F5 /* OpenSans-Semibold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-Semibold.ttf"; sourceTree = "<group>"; };
 		4BD8CFAA220A567100E0C6F5 /* Font.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Font.swift; sourceTree = "<group>"; };
-		4BD8CFB2220A594100E0C6F5 /* Reusable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Reusable.swift; sourceTree = "<group>"; };
 		4BD8CFB5220A59BA00E0C6F5 /* UITableViewReusable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITableViewReusable.swift; sourceTree = "<group>"; };
 		4BD8CFB8220A5AD500E0C6F5 /* UICollectionViewReusable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UICollectionViewReusable.swift; sourceTree = "<group>"; };
 		4BD8CFC1220A5D1400E0C6F5 /* UserInputValidator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInputValidator.swift; sourceTree = "<group>"; };
@@ -477,6 +483,7 @@
 			isa = PBXGroup;
 			children = (
 				4B73070A221E6F1B008B9B5B /* SelectUserAvatarView.swift */,
+				4BB6BA612231E3390062E42B /* UserInfoHeaderView.swift */,
 			);
 			path = CustomViews;
 			sourceTree = "<group>";
@@ -557,8 +564,8 @@
 			isa = PBXGroup;
 			children = (
 				4B730709221E6F02008B9B5B /* CustomViews */,
-				4B8E96462218BC7C001694C8 /* ImagePicker */,
 				4BD8CF7C220A4A2A00E0C6F5 /* Base */,
+				4B8E96462218BC7C001694C8 /* ImagePicker */,
 				4BD8CFBF220A5C2200E0C6F5 /* CollectionViewCells */,
 				4BD8CFBE220A5C1700E0C6F5 /* TableViewCells */,
 			);
@@ -571,6 +578,9 @@
 				4BD8CF7D220A4A3E00E0C6F5 /* View.swift */,
 				4BD8CF7F220A4A5C00E0C6F5 /* Button.swift */,
 				4B3319F92213E7120095032E /* TextField.swift */,
+				4BB6BA652231E67A0062E42B /* Reusable.swift */,
+				4BB6BA672231E6B10062E42B /* TableViewCell.swift */,
+				4BB6BA692231E6FE0062E42B /* CollectionViewCell.swift */,
 			);
 			path = Base;
 			sourceTree = "<group>";
@@ -640,17 +650,8 @@
 				4BD35143221C994D00D764D2 /* ViewController */,
 				4BD8CFB7220A59C600E0C6F5 /* CollectionView */,
 				4BD8CFB4220A599B00E0C6F5 /* UITableView */,
-				4BD8CFB1220A592500E0C6F5 /* Reusable */,
 			);
 			path = Extensions;
-			sourceTree = "<group>";
-		};
-		4BD8CFB1220A592500E0C6F5 /* Reusable */ = {
-			isa = PBXGroup;
-			children = (
-				4BD8CFB2220A594100E0C6F5 /* Reusable.swift */,
-			);
-			path = Reusable;
 			sourceTree = "<group>";
 		};
 		4BD8CFB4220A599B00E0C6F5 /* UITableView */ = {
@@ -849,7 +850,7 @@
 			outputFileListPaths = (
 			);
 			outputPaths = (
-				"$SRCROOT/Source/PresentationLayer/Autogeneration/R.generated.swift",
+				$SRCROOT/Source/PresentationLayer/Autogeneration/R.generated.swift,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -928,6 +929,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4BB6BA622231E3390062E42B /* UserInfoHeaderView.swift in Sources */,
 				4B83B300220F496C00C549AA /* User.swift in Sources */,
 				4B73070B221E6F1B008B9B5B /* SelectUserAvatarView.swift in Sources */,
 				4B44D5872208D7E9005FEF14 /* Application.swift in Sources */,
@@ -941,11 +943,13 @@
 				4B49B3102212966B00EF6C74 /* EventsViewController.swift in Sources */,
 				4B087100220D3EFD00ABD553 /* AuthServiceError.swift in Sources */,
 				4B49B2EA22128C5D00EF6C74 /* ViewConfig.swift in Sources */,
+				4BB6BA682231E6B10062E42B /* TableViewCell.swift in Sources */,
 				4B8E964C2218BD18001694C8 /* ImagePickerAction.swift in Sources */,
 				4B49B32422129ABC00EF6C74 /* SignInControllerViewModel.swift in Sources */,
 				4BAB7A4922160C04003EB418 /* ImageServiceError.swift in Sources */,
 				4BB7591C2211FE58009E305B /* RootViewController.swift in Sources */,
 				4BD8CFC2220A5D1400E0C6F5 /* UserInputValidator.swift in Sources */,
+				4BB6BA6A2231E6FE0062E42B /* CollectionViewCell.swift in Sources */,
 				4B49B32622129AE300EF6C74 /* FriendsControllerViewModel.swift in Sources */,
 				4B49B2DE22127CFC00EF6C74 /* UserDefaultsService.swift in Sources */,
 				4B4947C72214D77D00462D1A /* AuthServiceBase.swift in Sources */,
@@ -959,7 +963,7 @@
 				4BD8CF62220A445600E0C6F5 /* R.generated.swift in Sources */,
 				4BDAF6AC220B716F006AD329 /* EmailAuthService.swift in Sources */,
 				4B39EF0E22177F0300A36A06 /* LocationService.swift in Sources */,
-				4BD8CFB3220A594100E0C6F5 /* Reusable.swift in Sources */,
+				4BB6BA662231E67A0062E42B /* Reusable.swift in Sources */,
 				4BD35145221C996500D764D2 /* ViewController.swift in Sources */,
 				4B61677B22308DF200CF12AA /* ForgotPasswordViewController.swift in Sources */,
 				4BD8CF7E220A4A3E00E0C6F5 /* View.swift in Sources */,
