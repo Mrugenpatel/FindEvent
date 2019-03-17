@@ -14,10 +14,12 @@ class View: UIView {
 
     override init(frame: CGRect = .zero) {
         super.init(frame: frame)
+        configure()
     }
 
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
+        configure()
     }
 
     override func layoutSubviews() {

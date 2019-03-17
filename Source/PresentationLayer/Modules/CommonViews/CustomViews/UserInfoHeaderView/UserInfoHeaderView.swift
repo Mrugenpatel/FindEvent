@@ -35,6 +35,10 @@ class UserInfoHeaderView: View {
         backgroundColor = ViewConfig.Colors.background
         addGestureRecognizer(UIGestureRecognizer(target: self, action: #selector(selectView)))
         isUserInteractionEnabled = true
+        attachAvatarView()
+        attachNameLabel()
+        attachLocationLabel()
+        attachDisclosureIndicatorView()
     }
 
     private func configuredAvatarView() -> SelectAvatarView {
@@ -64,18 +68,22 @@ class UserInfoHeaderView: View {
 
     private func attachAvatarView() {
         addSubview(avatarView)
+        avatarView.snp.makeConstraints { maker in
+            maker.height.width.equalTo(90)
+            maker.top.left.equalToSuperview().inset(15)
+        }
     }
 
     private func attachNameLabel() {
-        addSubview(nameLabel)
+        //addSubview(nameLabel)
     }
 
     private func attachLocationLabel() {
-        addSubview(locationLabel)
+        //addSubview(locationLabel)
     }
 
     private func attachDisclosureIndicatorView() {
-        addSubview(disclosureIndicatorView)
+        //addSubview(disclosureIndicatorView)
     }
 
 

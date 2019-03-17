@@ -117,7 +117,7 @@ class SelectAvatarView: View {
         addSubview(avatarImageView)
 
         avatarImageView.snp.makeConstraints { make in
-            make.left.right.top.bottom.equalToSuperview()
+            make.edges.equalToSuperview()
         }
     }
 
