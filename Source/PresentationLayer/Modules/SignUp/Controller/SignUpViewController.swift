@@ -125,8 +125,8 @@ final class SignUpViewController: UIViewController {
         return containerStackView
     }
 
-    private func setupSelectUserAvatarView() -> SelectUserAvatarView {
-        let selectUserAvatarView = SelectUserAvatarView()
+    private func setupSelectUserAvatarView() -> SelectAvatarView {
+        let selectUserAvatarView = SelectAvatarView()
         selectUserAvatarView.title = viewModel.selectUserAvatarViewTitle
 
         return selectUserAvatarView

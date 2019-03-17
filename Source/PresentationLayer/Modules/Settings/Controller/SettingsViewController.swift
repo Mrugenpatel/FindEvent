@@ -10,6 +10,8 @@ import UIKit
 
 class SettingsViewController: UIViewController {
 
+    // MARK: Properties
+
     private var viewModel: SettingsControllerViewModel?
 
     convenience init(viewModel: SettingsControllerViewModel) {
@@ -23,7 +25,8 @@ class SettingsViewController: UIViewController {
 
     // MARK: Views
 
-    private lazy var tableView = setupTableView()
+    private lazy var infoHeaderView = configuredInfoHeaderView()
+    private lazy var tableView = configuredTableView()
 
     // MARK: View Life Cycle
 
@@ -35,7 +38,7 @@ class SettingsViewController: UIViewController {
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
-        setupNavigationBar()
+        configuredNavigationBar()
     }
 
     // MARK: Configuration
@@ -53,16 +56,51 @@ class SettingsViewController: UIViewController {
 
     // MARK: Setup
 
-    private func setupNavigationBar() {
-        //
+    private func configuredNavigationBar() {
+        // add edit button
+    }
+
+    private func configuredTableView() -> UITableView {
+        let tableView = UITableView()
+        tableView.separatorStyle = .singleLine
+
+        return tableView
+    }
+
+    private func configuredInfoHeaderView() -> UserInfoHeaderView {
+        let view = UserInfoHeaderView()
+
+        return view
+    }
+}
+
+extension SettingsViewController: UITableViewDataSource {
+
+    func numberOfSections(in tableView: UITableView) -> Int {
+
+    }
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+
+    }
+
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+
     }
 
 
-    private func setupTableView() -> UITableView {
-        let tableView = UITableView()
+}
 
+extension SettingsViewController: UITableViewDelegate {
 
-        return tableView
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+
+    }
+
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+
+    }
+
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
 
     }
 }

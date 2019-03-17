@@ -35,7 +35,9 @@
 		4B49B32E22129B7C00EF6C74 /* SettingsControllerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B49B32D22129B7C00EF6C74 /* SettingsControllerViewModel.swift */; };
 		4B61677B22308DF200CF12AA /* ForgotPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B61677A22308DF200CF12AA /* ForgotPasswordViewController.swift */; };
 		4B61677D22308E0900CF12AA /* ForgotPasswordViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B61677C22308E0900CF12AA /* ForgotPasswordViewModel.swift */; };
-		4B73070B221E6F1B008B9B5B /* SelectUserAvatarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B73070A221E6F1B008B9B5B /* SelectUserAvatarView.swift */; };
+		4B73070B221E6F1B008B9B5B /* SelectAvatarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B73070A221E6F1B008B9B5B /* SelectAvatarView.swift */; };
+		4B7652B0223DAC4A009D60F0 /* SelectAvatarViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B7652AF223DAC4A009D60F0 /* SelectAvatarViewModel.swift */; };
+		4B7652B3223DAC97009D60F0 /* UserInfoHeaderViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B7652B2223DAC97009D60F0 /* UserInfoHeaderViewModel.swift */; };
 		4B83B2FD220F44D900C549AA /* UserService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B83B2FC220F44D900C549AA /* UserService.swift */; };
 		4B83B300220F496C00C549AA /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B83B2FF220F496C00C549AA /* User.swift */; };
 		4B83B302220F67C600C549AA /* UserServiceError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B83B301220F67C600C549AA /* UserServiceError.swift */; };
@@ -108,7 +110,9 @@
 		4B49B32D22129B7C00EF6C74 /* SettingsControllerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsControllerViewModel.swift; sourceTree = "<group>"; };
 		4B61677A22308DF200CF12AA /* ForgotPasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPasswordViewController.swift; sourceTree = "<group>"; };
 		4B61677C22308E0900CF12AA /* ForgotPasswordViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPasswordViewModel.swift; sourceTree = "<group>"; };
-		4B73070A221E6F1B008B9B5B /* SelectUserAvatarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectUserAvatarView.swift; sourceTree = "<group>"; };
+		4B73070A221E6F1B008B9B5B /* SelectAvatarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectAvatarView.swift; sourceTree = "<group>"; };
+		4B7652AF223DAC4A009D60F0 /* SelectAvatarViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectAvatarViewModel.swift; sourceTree = "<group>"; };
+		4B7652B2223DAC97009D60F0 /* UserInfoHeaderViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfoHeaderViewModel.swift; sourceTree = "<group>"; };
 		4B83B2FC220F44D900C549AA /* UserService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserService.swift; sourceTree = "<group>"; };
 		4B83B2FF220F496C00C549AA /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		4B83B301220F67C600C549AA /* UserServiceError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserServiceError.swift; sourceTree = "<group>"; };
@@ -482,10 +486,28 @@
 		4B730709221E6F02008B9B5B /* CustomViews */ = {
 			isa = PBXGroup;
 			children = (
-				4B73070A221E6F1B008B9B5B /* SelectUserAvatarView.swift */,
-				4BB6BA612231E3390062E42B /* UserInfoHeaderView.swift */,
+				4B7652B1223DAC6D009D60F0 /* UserInfoHeaderView */,
+				4B7652AE223DAC0B009D60F0 /* SelectAvatarView */,
 			);
 			path = CustomViews;
+			sourceTree = "<group>";
+		};
+		4B7652AE223DAC0B009D60F0 /* SelectAvatarView */ = {
+			isa = PBXGroup;
+			children = (
+				4B73070A221E6F1B008B9B5B /* SelectAvatarView.swift */,
+				4B7652AF223DAC4A009D60F0 /* SelectAvatarViewModel.swift */,
+			);
+			path = SelectAvatarView;
+			sourceTree = "<group>";
+		};
+		4B7652B1223DAC6D009D60F0 /* UserInfoHeaderView */ = {
+			isa = PBXGroup;
+			children = (
+				4BB6BA612231E3390062E42B /* UserInfoHeaderView.swift */,
+				4B7652B2223DAC97009D60F0 /* UserInfoHeaderViewModel.swift */,
+			);
+			path = UserInfoHeaderView;
 			sourceTree = "<group>";
 		};
 		4B83B2FA220F43E900C549AA /* Auth */ = {
@@ -929,9 +951,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4B7652B0223DAC4A009D60F0 /* SelectAvatarViewModel.swift in Sources */,
 				4BB6BA622231E3390062E42B /* UserInfoHeaderView.swift in Sources */,
 				4B83B300220F496C00C549AA /* User.swift in Sources */,
-				4B73070B221E6F1B008B9B5B /* SelectUserAvatarView.swift in Sources */,
+				4B73070B221E6F1B008B9B5B /* SelectAvatarView.swift in Sources */,
+				4B7652B3223DAC97009D60F0 /* UserInfoHeaderViewModel.swift in Sources */,
 				4B44D5872208D7E9005FEF14 /* Application.swift in Sources */,
 				4B83B2FD220F44D900C549AA /* UserService.swift in Sources */,
 				4B3319FA2213E7120095032E /* TextField.swift in Sources */,

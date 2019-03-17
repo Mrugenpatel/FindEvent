@@ -1,5 +1,5 @@
 //
-//  SelectUserAvatarView.swift
+//  SelectAvatarView.swift
 //  FamillyOrganizer
 //
 //  Created by Yurii Tsymbala on 2/16/19.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class SelectUserAvatarView: View {
+class SelectAvatarView: View {
 
     private struct Constants {
         static let borderWidth: CGFloat = 6
@@ -36,6 +36,8 @@ class SelectUserAvatarView: View {
         }
     }
 
+    // MARK: Callbacks
+
     var didSelectImage: EmptyClosure?
 
     // MARK: Views
@@ -44,12 +46,15 @@ class SelectUserAvatarView: View {
     private lazy var stackView = configuredStackView()
     private lazy var logoImageView = configuredLogoImageView()
     private lazy var titleLabel = configuredTitleLabel()
-    private lazy var tapRecognizer = UITapGestureRecognizer(target: self, action: #selector(selectImage))
-
 
     // MARK: - UI
     // MARK: Configuration
 
+    func configure(viewModel: SelectAvatarViewModel) {
+        avatarImageView.image = viewModel.image != nil ? viewModel.image : R.image.profilePlaceholder()
+        titleLabel.text = viewModel.name
+        stackView.isHidden = true
+    }
 
     override func configure() {
         super.configure()
@@ -69,11 +74,11 @@ class SelectUserAvatarView: View {
         imageView.layer.borderColor = Constants.borderColor
         imageView.contentMode = .scaleAspectFit
         imageView.isUserInteractionEnabled = true
-        imageView.addGestureRecognizer(tapRecognizer)
+        imageView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(selectImage)))
 
         addSubview(imageView)
         imageView.snp.makeConstraints { maker in
-            maker.left.right.top.bottom.equalToSuperview()
+            maker.edges.equalToSuperview()
         }
 
         return imageView
