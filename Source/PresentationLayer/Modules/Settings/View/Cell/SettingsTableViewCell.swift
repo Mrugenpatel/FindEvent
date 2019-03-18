@@ -95,7 +95,7 @@ class SettingsTableViewCell: TableViewCell {
         logoImageView.snp.makeConstraints { maker in
             maker.width.height.equalTo(40)
             maker.top.equalToSuperview().inset(10)
-            maker.left.equalToSuperview().inset(15)
+            maker.left.equalToSuperview().inset(10)
         }
     }
 

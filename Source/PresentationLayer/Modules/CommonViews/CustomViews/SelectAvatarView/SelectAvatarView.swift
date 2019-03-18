@@ -64,15 +64,19 @@ class SelectAvatarView: View {
         attachTitleLabel()
     }
 
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        avatarImageView.layer.cornerRadius = frame.size.width / 2
+    }
+
     private func configuredAvatarImageView() -> UIImageView {
         let imageView = UIImageView()
         imageView.backgroundColor = ViewConfig.Colors.blue
         imageView.isOpaque = true
-        imageView.layer.cornerRadius = frame.size.width / 2
         imageView.layer.masksToBounds = true
         imageView.layer.borderWidth = Constants.borderWidth
         imageView.layer.borderColor = Constants.borderColor
-        imageView.contentMode = .scaleAspectFit
+        imageView.contentMode = .scaleAspectFill
         imageView.isUserInteractionEnabled = true
         imageView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(selectImage)))
 
@@ -134,7 +138,7 @@ class SelectAvatarView: View {
         stackView.addArrangedSubview(logoImageView)
 
         logoImageView.snp.makeConstraints { make in
-            make.width.height.equalTo(70)
+            make.width.height.equalTo(60)
         }
     }
 
@@ -142,7 +146,7 @@ class SelectAvatarView: View {
         stackView.addArrangedSubview(titleLabel)
 
         titleLabel.snp.makeConstraints { make in
-            make.height.equalTo(20)
+            make.height.equalTo(10)
         }
     }
 

@@ -27,7 +27,6 @@ final class SettingsControllerViewModel {
         return sections.count
     }
 
-
     init(
         userService: UserService,
         imageService: ImageService
@@ -75,32 +74,7 @@ final class SettingsControllerViewModel {
             case .failure(_):
                 completion(nil)
             }
-
         }
-        //        { [weak self] responseResult in
-        //            switch responseResult {
-        //
-        //            case .success(let user):
-        //                self?.imageService
-        //                    .getImage(by: user.avatarImgURL) { [weak self] (imgResult) in
-        //                        guard let strongSelf = self else { return }
-        //                        switch imgResult {
-        //                        case .success(let image):
-        //                            completion(UserInfoHeaderViewModel(image: image,
-        //                                                               name: user.name,
-        //                                                               location: user.latitude)
-        //                        case .failure:
-        //                            return }
-        //                }
-        //                )
-        //            case .failure(_):
-        //                completion(nil)
-        //            }
-    }
-
-
-    private func getCurrentUserImg(for user: User) {
-
     }
 
     func getCellViewModel(sectionindex: Int, rowIndex: Int) -> SettingsTableCellViewModel {

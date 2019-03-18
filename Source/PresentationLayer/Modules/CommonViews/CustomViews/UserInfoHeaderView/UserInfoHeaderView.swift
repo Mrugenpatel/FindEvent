@@ -49,7 +49,7 @@ class UserInfoHeaderView: View {
 
     private func configuredLabel() -> UILabel {
         let label = UILabel()
-        label.font = Font.regular(of: 10)
+        label.font = Font.bold(of: 20)
         label.numberOfLines = 0
         label.textAlignment = .center
         label.textColor = ViewConfig.Colors.textWhite
@@ -71,8 +71,8 @@ class UserInfoHeaderView: View {
         addSubview(avatarView)
 
         avatarView.snp.makeConstraints { maker in
-            maker.height.width.equalTo(90)
-            maker.top.left.equalToSuperview().inset(15)
+            maker.height.width.equalTo(70)
+            maker.top.left.equalToSuperview().inset(10)
         }
     }
 
@@ -81,7 +81,7 @@ class UserInfoHeaderView: View {
 
         nameLabel.snp.makeConstraints { maker in
             maker.centerY.equalToSuperview()
-            maker.left.equalTo(avatarView.snp.right)
+            maker.left.equalTo(avatarView.snp.right).offset(15)
         }
     }
 

@@ -93,7 +93,7 @@ class SettingsViewController: UIViewController {
 
         infoHeaderView.snp.makeConstraints { maker in
             maker.left.right.top.equalToSuperview()
-            maker.height.equalTo(120)
+            maker.height.equalTo(90)
         }
     }
 
