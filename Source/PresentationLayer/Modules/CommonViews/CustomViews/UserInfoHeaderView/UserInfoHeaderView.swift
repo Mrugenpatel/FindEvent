@@ -19,15 +19,15 @@ class UserInfoHeaderView: View {
     private lazy var avatarView = configuredAvatarView()
     private lazy var nameLabel = configuredLabel()
     private lazy var locationLabel = configuredLabel()
-    private lazy var disclosureIndicatorView = configuredDisclosureIndicatorView()
+    private lazy var disclosureImageView = configuredDisclosureIndicatorView()
 
     // MARK: - UI
     // MARK: Configuration
 
-    func configure(viewModel: UserInfoHeaderViewModel) {
-        avatarView.image = viewModel.image
-        locationLabel.text = viewModel.location
-        nameLabel.text = viewModel.name
+    func configure(viewModel: UserInfoHeaderViewModel?) {
+        avatarView.image = viewModel?.image
+        locationLabel.text = viewModel?.location
+        nameLabel.text = viewModel?.name
     }
 
     override func configure() {
@@ -38,7 +38,7 @@ class UserInfoHeaderView: View {
         attachAvatarView()
         attachNameLabel()
         attachLocationLabel()
-        attachDisclosureIndicatorView()
+        attachDisclosureImageView()
     }
 
     private func configuredAvatarView() -> SelectAvatarView {
@@ -60,6 +60,7 @@ class UserInfoHeaderView: View {
     private func configuredDisclosureIndicatorView() -> UIImageView {
         let imageView = UIImageView()
         imageView.contentMode = .scaleAspectFill
+        imageView.image = R.image.disclosurePlaceholder()
 
         return imageView
     }
@@ -68,6 +69,7 @@ class UserInfoHeaderView: View {
 
     private func attachAvatarView() {
         addSubview(avatarView)
+
         avatarView.snp.makeConstraints { maker in
             maker.height.width.equalTo(90)
             maker.top.left.equalToSuperview().inset(15)
@@ -75,15 +77,26 @@ class UserInfoHeaderView: View {
     }
 
     private func attachNameLabel() {
-        //addSubview(nameLabel)
+        addSubview(nameLabel)
+
+        nameLabel.snp.makeConstraints { maker in
+            maker.centerY.equalToSuperview()
+            maker.left.equalTo(avatarView.snp.right)
+        }
     }
 
     private func attachLocationLabel() {
         //addSubview(locationLabel)
     }
 
-    private func attachDisclosureIndicatorView() {
-        //addSubview(disclosureIndicatorView)
+    private func attachDisclosureImageView() {
+        addSubview(disclosureImageView)
+
+        disclosureImageView.snp.makeConstraints { maker in
+            maker.width.height.equalTo(15)
+            maker.centerY.equalToSuperview()
+            maker.right.equalToSuperview().inset(15)
+        }
     }
 
 

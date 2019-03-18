@@ -7,13 +7,16 @@
 //
 
 import Foundation
+import FirebaseAuth
 
 final class SettingsControllerViewModel {
 
     // MARK: Properties
 
     private lazy var cellViewModels = setupCellViewModels()
-    
+    private var userService: UserService
+    private var imageService: ImageService
+
     lazy var sections: [SettingsSection] = [.firstSection, .secondSection]
 
     var numberOfCellViewModels: Int {
@@ -24,24 +27,98 @@ final class SettingsControllerViewModel {
         return sections.count
     }
 
+
+    init(
+        userService: UserService,
+        imageService: ImageService
+        ) {
+        self.userService = userService
+        self.imageService = imageService
+    }
+
     // MARK: Callbacks
 
-
+    var didCatchError: ((String) -> (Void))?
 
     // MARK: Methods
 
-    func getCellViewModel(atIndex index: Int) -> SettingsTableCellViewModel {
-        return cellViewModels[index]
+    func getUserInfo(completion: @escaping (UserInfoHeaderViewModel?) -> Void) {
+        guard let currentUserId = Auth.auth().currentUser?.uid else { return completion(nil) }
+        userService.getById(
+            userId: currentUserId
+            )
+        { [weak self] responseResult in
+            switch responseResult {
+
+            case .success(let user):
+                self?.imageService.getImage(
+                    by: user.avatarImgURL)
+                { responseResult in
+                    switch responseResult {
+
+                    case .success(let image):
+                        completion(UserInfoHeaderViewModel(
+                            image: image,
+                            name: user.name,
+                            location: user.latitude
+                            )
+                        )
+                    case .failure(_):
+                        completion(UserInfoHeaderViewModel(
+                            image: nil,
+                            name: user.name,
+                            location: user.latitude
+                            )
+                        )
+                    }
+                }
+            case .failure(_):
+                completion(nil)
+            }
+
+        }
+        //        { [weak self] responseResult in
+        //            switch responseResult {
+        //
+        //            case .success(let user):
+        //                self?.imageService
+        //                    .getImage(by: user.avatarImgURL) { [weak self] (imgResult) in
+        //                        guard let strongSelf = self else { return }
+        //                        switch imgResult {
+        //                        case .success(let image):
+        //                            completion(UserInfoHeaderViewModel(image: image,
+        //                                                               name: user.name,
+        //                                                               location: user.latitude)
+        //                        case .failure:
+        //                            return }
+        //                }
+        //                )
+        //            case .failure(_):
+        //                completion(nil)
+        //            }
     }
 
-    func selectCellViewModel(atIndex index: Int) {
-        guard index >= 0 && index < cellViewModels.count else {return}
-//        let catDetail = CatDetailViewModel(name: cellViewModels[index].name,
-//                                           text: cellViewModels[index].text)
-//        showCatDetail.onNext(catDetail)
+
+    private func getCurrentUserImg(for user: User) {
+
     }
 
-    private func setupCellViewModels() -> [SettingsTableCellViewModel] {
+    func getCellViewModel(sectionindex: Int, rowIndex: Int) -> SettingsTableCellViewModel {
+        return cellViewModels[sectionindex][rowIndex]
+    }
+
+    func getNumberOfRowsForSection(sectionIndex: Int) -> Int {
+        return cellViewModels[sectionIndex].count
+    }
+
+    func selectCellViewModel(sectionindex: Int, rowIndex: Int) {
+        guard rowIndex >= 0 && rowIndex < cellViewModels[sectionindex].count else {return}
+        //        let catDetail = CatDetailViewModel(name: cellViewModels[index].name,
+        //                                           text: cellViewModels[index].text)
+        //        showCatDetail.onNext(catDetail)
+    }
+
+    private func setupCellViewModels() -> [[SettingsTableCellViewModel]] {
 
         let notificationsCellViewModel = SettingsTableCellViewModel(
             title: "Notifications and Sounds",
@@ -74,11 +151,15 @@ final class SettingsControllerViewModel {
         )
 
         return [
-            notificationsCellViewModel,
-            appearanceCellVieModel,
-            languageCellVieModel,
-            reportBugCellVieModel,
-            aboutUsCellVieModel
+            [
+                notificationsCellViewModel,
+                appearanceCellVieModel,
+                languageCellVieModel
+            ],
+            [
+                reportBugCellVieModel,
+                aboutUsCellVieModel
+            ]
         ]
     }
 }

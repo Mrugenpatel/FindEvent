@@ -16,6 +16,7 @@ class SettingsTableViewCell: TableViewCell {
     private lazy var titleLabel = configuredTitleLabel()
     private lazy var subtitleLabel = configuredSubtitleLabel()
     private lazy var logoImageView = configuredImageView()
+    private lazy var disclosureImageView = configuredDislosureImageView()
 
     // MARK: Configuration
 
@@ -27,18 +28,17 @@ class SettingsTableViewCell: TableViewCell {
 
     override func configure() {
         super.configure()
-        backgroundColor = ViewConfig.Colors.background
-        accessoryType = .disclosureIndicator
+        backgroundColor = ViewConfig.Colors.dark
         attachContainerView()
         attachLogoImageView()
         attachTitleLabel()
+        attachDisclosureImageView()
         attachSubtitleLabel()
     }
 
-    private func configuredContainerView() -> View {
-        let view = View()
+    private func configuredContainerView() -> UIView {
+        let view = UIView()
         view.backgroundColor = ViewConfig.Colors.background
-
         return view
     }
 
@@ -70,13 +70,22 @@ class SettingsTableViewCell: TableViewCell {
         return imageView
     }
 
+    private func configuredDislosureImageView() -> UIImageView {
+        let imageView = UIImageView()
+        imageView.contentMode = .scaleAspectFill
+        imageView.image = R.image.disclosurePlaceholder()
+
+        return imageView
+    }
+
     // MARK: Attachments
 
     private func attachContainerView() {
-        addSubview(containerView)
+        contentView.addSubview(containerView)
 
         containerView.snp.makeConstraints { maker in
-            maker.edges.equalToSuperview()
+            maker.left.right.top.equalToSuperview()
+            maker.bottom.equalToSuperview().inset(2)
         }
     }
 
@@ -99,12 +108,22 @@ class SettingsTableViewCell: TableViewCell {
         }
     }
 
+    private func attachDisclosureImageView() {
+        containerView.addSubview(disclosureImageView)
+
+        disclosureImageView.snp.makeConstraints { maker in
+            maker.width.height.equalTo(15)
+            maker.centerY.equalToSuperview()
+            maker.right.equalToSuperview().inset(15)
+        }
+    }
+
     private func attachSubtitleLabel() {
         containerView.addSubview(subtitleLabel)
 
         subtitleLabel.snp.makeConstraints { maker in
             maker.centerY.equalToSuperview()
-            maker.right.equalToSuperview().inset(35)
+            maker.right.equalTo(disclosureImageView.snp.left).offset(-10)
         }
     }
 }

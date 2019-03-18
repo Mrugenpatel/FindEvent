@@ -9,6 +9,10 @@
 import UIKit
 
 class SettingsViewController: UIViewController {
+    private struct Constants {
+        static let heightForRowAt: CGFloat = 60
+        static let heightForHeaderInSection: CGFloat = 30
+    }
 
     // MARK: Properties
 
@@ -52,6 +56,11 @@ class SettingsViewController: UIViewController {
 
     override func configureViewModel() {
         super.configureViewModel()
+        viewModel.getUserInfo { [weak self] userInfoHeaderViewModel in
+            DispatchQueue.main.async {
+                 self?.infoHeaderView.configure(viewModel: userInfoHeaderViewModel)
+            }
+        }
     }
 
     // MARK: Setup
@@ -73,11 +82,6 @@ class SettingsViewController: UIViewController {
 
     private func configuredInfoHeaderView() -> UserInfoHeaderView {
         let view = UserInfoHeaderView()
-        view.configure(viewModel: UserInfoHeaderViewModel(
-            image: R.image.profilePlaceholder(),
-            name: "Yurii Tsymbala",
-            location: "Lviv, Ukraine"
-        ))
 
         return view
     }
@@ -117,9 +121,9 @@ extension SettingsViewController: UITableViewDataSource {
         ) -> Int {
         switch viewModel.sections[section] {
         case .firstSection:
-            return 3
+            return viewModel.getNumberOfRowsForSection(sectionIndex: section)
         case .secondSection:
-            return 2
+            return viewModel.getNumberOfRowsForSection(sectionIndex: section)
         }
     }
 
@@ -127,9 +131,14 @@ extension SettingsViewController: UITableViewDataSource {
         _ tableView: UITableView,
         cellForRowAt indexPath: IndexPath
         ) -> UITableViewCell {
-
         let cell: SettingsTableViewCell = tableView.dequeueCell(at: indexPath)
-        cell.configure(withViewModel: viewModel.getCellViewModel(atIndex: indexPath.row))
+        cell.configure(
+            withViewModel: viewModel.getCellViewModel(
+                sectionindex: indexPath.section,
+                rowIndex: indexPath.row
+            )
+        )
+
         return cell
     }
 
@@ -144,42 +153,43 @@ extension SettingsViewController: UITableViewDataSource {
     }
 }
 
-
 extension SettingsViewController: UITableViewDelegate {
 
     func tableView(
         _ tableView: UITableView,
         didSelectRowAt indexPath: IndexPath
         ) {
-        viewModel.selectCellViewModel(atIndex: indexPath.row)
+        viewModel.selectCellViewModel(
+            sectionindex: indexPath.section,
+            rowIndex: indexPath.row
+        )
     }
-
 
     func tableView(
         _ tableView: UITableView,
         estimatedHeightForHeaderInSection section: Int
         ) -> CGFloat {
-        return 30
+        return Constants.heightForHeaderInSection
     }
 
     func tableView(
         _ tableView: UITableView,
         heightForHeaderInSection section: Int
         ) -> CGFloat {
-        return 30
+        return Constants.heightForHeaderInSection
     }
 
     func tableView(
         _ tableView: UITableView,
         heightForRowAt indexPath: IndexPath
         ) -> CGFloat {
-        return 60
+        return Constants.heightForRowAt
     }
 
     func tableView(
         _ tableView: UITableView,
         estimatedHeightForRowAt indexPath: IndexPath
         ) -> CGFloat {
-        return 60
+        return Constants.heightForRowAt
     }
 }

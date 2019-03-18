@@ -80,7 +80,7 @@ final class RootTabBarController: UITabBarController {
         gameVC.tabBarItem.image = Constants.gameImg
 
         let settings = SettingsViewController(
-            viewModel: SettingsControllerViewModel())
+            viewModel: SettingsControllerViewModel(userService: UserService(), imageService: ImageService()))
         settingsViewController = settings
         let settingsVC = createRootNavigationViewController(
             withVC: settings,
