@@ -93,8 +93,8 @@ class SettingsTableViewCell: TableViewCell {
         containerView.addSubview(logoImageView)
 
         logoImageView.snp.makeConstraints { maker in
-            maker.width.height.equalTo(40)
-            maker.top.equalToSuperview().inset(10)
+            maker.width.height.equalTo(36)
+            maker.top.equalToSuperview().inset(8)
             maker.left.equalToSuperview().inset(10)
         }
     }

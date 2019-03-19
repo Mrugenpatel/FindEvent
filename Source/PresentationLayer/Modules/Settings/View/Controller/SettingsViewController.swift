@@ -10,7 +10,7 @@ import UIKit
 
 class SettingsViewController: UIViewController {
     private struct Constants {
-        static let heightForRowAt: CGFloat = 60
+        static let heightForRowAt: CGFloat = 54
         static let heightForHeaderInSection: CGFloat = 30
     }
 

@@ -517,6 +517,29 @@
 			path = UserInfoHeaderView;
 			sourceTree = "<group>";
 		};
+		4B81E69C22417A8700C84E3D /* ProfileSettings */ = {
+			isa = PBXGroup;
+			children = (
+				4B81E69D22417AB300C84E3D /* View */,
+				4B81E69E22417ABC00C84E3D /* ViewModel */,
+			);
+			path = ProfileSettings;
+			sourceTree = "<group>";
+		};
+		4B81E69D22417AB300C84E3D /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		4B81E69E22417ABC00C84E3D /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
 		4B83B2FA220F43E900C549AA /* Auth */ = {
 			isa = PBXGroup;
 			children = (
@@ -694,6 +717,7 @@
 				4B49B2EC2212900400EF6C74 /* Chats */,
 				4B49B2EF2212914300EF6C74 /* Game */,
 				4B49B2EE2212912C00EF6C74 /* Settings */,
+				4B81E69C22417A8700C84E3D /* ProfileSettings */,
 				4BD8CF7B220A4A1800E0C6F5 /* CommonViews */,
 			);
 			path = Modules;
