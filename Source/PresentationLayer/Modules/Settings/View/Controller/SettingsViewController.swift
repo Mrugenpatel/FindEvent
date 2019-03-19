@@ -58,7 +58,7 @@ class SettingsViewController: UIViewController {
         super.configureViewModel()
         viewModel.getUserInfo { [weak self] userInfoHeaderViewModel in
             DispatchQueue.main.async {
-                 self?.infoHeaderView.configure(viewModel: userInfoHeaderViewModel)
+                self?.infoHeaderView.configure(viewModel: userInfoHeaderViewModel)
             }
         }
     }
@@ -82,6 +82,13 @@ class SettingsViewController: UIViewController {
 
     private func configuredInfoHeaderView() -> UserInfoHeaderView {
         let view = UserInfoHeaderView()
+        view.configure(
+            viewModel: UserInfoHeaderViewModel(
+                image: R.image.profilePlaceholder(),
+                name: "",
+                location: ""
+            )
+        )
 
         return view
     }

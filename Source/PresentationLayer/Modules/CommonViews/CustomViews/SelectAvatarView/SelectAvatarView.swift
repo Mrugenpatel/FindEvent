@@ -146,7 +146,7 @@ class SelectAvatarView: View {
         stackView.addArrangedSubview(titleLabel)
 
         titleLabel.snp.makeConstraints { make in
-            make.height.equalTo(10)
+            make.height.equalTo(13)
         }
     }
 
