@@ -38,15 +38,22 @@ final class SettingsControllerViewModel {
     // MARK: Callbacks
 
     var didCatchError: ((String) -> (Void))?
+    var isAnimating: ((Bool) -> (Void))?
 
     // MARK: Methods
 
     func getUserInfo(completion: @escaping (UserInfoHeaderViewModel?) -> Void) {
-        guard let currentUserId = Auth.auth().currentUser?.uid else { return completion(nil) }
+        isAnimating?(true)
+        guard let currentUserId = Auth.auth().currentUser?.uid else {
+            isAnimating?(false);
+            didCatchError?("Network Error. Reload the App");
+            return completion(nil)
+        }
         userService.getById(
             userId: currentUserId
             )
         { [weak self] responseResult in
+            guard let strongSelf = self else {return}
             switch responseResult {
 
             case .success(let user):
@@ -56,6 +63,7 @@ final class SettingsControllerViewModel {
                     switch responseResult {
 
                     case .success(let image):
+                        strongSelf.isAnimating?(false)
                         completion(UserInfoHeaderViewModel(
                             image: image,
                             name: user.name,
@@ -63,16 +71,19 @@ final class SettingsControllerViewModel {
                             )
                         )
                     case .failure(_):
+                        strongSelf.isAnimating?(false)
                         completion(UserInfoHeaderViewModel(
                             image: nil,
                             name: user.name,
-                            location: user.latitude
+                            location: user.latitude   // MARK: FIX TO LOCATION 
                             )
                         )
                     }
                 }
             case .failure(_):
+                strongSelf.isAnimating?(false)
                 completion(nil)
+                strongSelf.didCatchError?("Network Error. Reload the App")
             }
         }
     }
@@ -90,6 +101,10 @@ final class SettingsControllerViewModel {
         //        let catDetail = CatDetailViewModel(name: cellViewModels[index].name,
         //                                           text: cellViewModels[index].text)
         //        showCatDetail.onNext(catDetail)
+    }
+
+    func edit() {
+        
     }
 
     private func setupCellViewModels() -> [[SettingsTableCellViewModel]] {

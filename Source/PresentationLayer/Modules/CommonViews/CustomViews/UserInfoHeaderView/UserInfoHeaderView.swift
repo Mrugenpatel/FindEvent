@@ -10,6 +10,14 @@ import UIKit
 
 class UserInfoHeaderView: View {
 
+    // MARK: Properties
+
+    var isAnimating: Bool = false {
+        didSet {
+            isAnimating ? startAnimating() : stopAnimating()
+        }
+    }
+
     // MARK: Callbacks
 
     var didTapView: EmptyClosure?
@@ -20,12 +28,13 @@ class UserInfoHeaderView: View {
     private lazy var nameLabel = configuredLabel()
     private lazy var locationLabel = configuredLabel()
     private lazy var disclosureImageView = configuredDisclosureIndicatorView()
+    private lazy var activityIndicatorView = configuredActivityIndicatorView()
 
     // MARK: - UI
     // MARK: Configuration
 
     func configure(viewModel: UserInfoHeaderViewModel?) {
-        avatarView.image = viewModel?.image
+        avatarView.image = viewModel?.image ?? R.image.profilePlaceholder()
         locationLabel.text = viewModel?.location
         nameLabel.text = viewModel?.name
     }
@@ -39,10 +48,17 @@ class UserInfoHeaderView: View {
         attachNameLabel()
         attachLocationLabel()
         attachDisclosureImageView()
+        attachActivityIndicator()
+        startAnimating()
+    }
+
+    override func layoutSubviews() {
+        super.layoutSubviews()
     }
 
     private func configuredAvatarView() -> SelectAvatarView {
         let imageView = SelectAvatarView()
+        imageView.image = R.image.profilePlaceholder()
 
         return imageView
     }
@@ -63,6 +79,14 @@ class UserInfoHeaderView: View {
         imageView.image = R.image.disclosurePlaceholder()
 
         return imageView
+    }
+
+    private func configuredActivityIndicatorView() -> UIActivityIndicatorView {
+        let activityIndicator = UIActivityIndicatorView(
+            style: UIActivityIndicatorView.Style.whiteLarge
+        )
+
+        return activityIndicator
     }
 
     // MARK: - Attachments
@@ -99,11 +123,36 @@ class UserInfoHeaderView: View {
         }
     }
 
+    private func attachActivityIndicator() {
+        addSubview(activityIndicatorView)
+
+        activityIndicatorView.snp.makeConstraints { maker in
+            maker.center.equalToSuperview()
+        }
+    }
 
     // MARK: Actions
 
     @objc
     private func selectView() {
         didTapView?()
+    }
+
+    private func startAnimating() {
+        activityIndicatorView.isHidden = false
+        activityIndicatorView.startAnimating()
+        userIteractionEnabled(isEnabled: false)
+    }
+
+    private func stopAnimating() {
+        DispatchQueue.main.async {
+            self.activityIndicatorView.stopAnimating()
+            self.activityIndicatorView.isHidden = true
+            self.userIteractionEnabled(isEnabled: true)
+        }
+    }
+
+    private func userIteractionEnabled(isEnabled: Bool) {
+        isUserInteractionEnabled = isEnabled
     }
 }
