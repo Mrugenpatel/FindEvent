@@ -29,6 +29,7 @@ class Application: UIResponder, UIApplicationDelegate {
         window = UIWindow(frame: UIScreen.main.bounds)
         window?.backgroundColor = ViewConfig.Colors.background
 
+        UINavigationBar.appearance().tintColor = ViewConfig.Colors.textWhite
         UINavigationBar.appearance().barTintColor = ViewConfig.Colors.background
         UINavigationBar.appearance().isTranslucent = false
         UINavigationBar.appearance().titleTextAttributes = [NSAttributedString.Key(

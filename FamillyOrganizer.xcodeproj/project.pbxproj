@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		4B087100220D3EFD00ABD553 /* AuthServiceError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B0870FF220D3EFD00ABD553 /* AuthServiceError.swift */; };
+		4B0EC965224FFF2900C6A87D /* ProfileSettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B0EC964224FFF2900C6A87D /* ProfileSettingsViewController.swift */; };
+		4B0EC967224FFF6900C6A87D /* ProfileSettingsControllerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B0EC966224FFF6900C6A87D /* ProfileSettingsControllerViewModel.swift */; };
 		4B3319FA2213E7120095032E /* TextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B3319F92213E7120095032E /* TextField.swift */; };
 		4B39EF0E22177F0300A36A06 /* LocationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B39EF0D22177F0300A36A06 /* LocationService.swift */; };
 		4B44D5872208D7E9005FEF14 /* Application.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B44D5862208D7E9005FEF14 /* Application.swift */; };
@@ -84,6 +86,8 @@
 		39B9EB50827781FE90ADD3E5 /* Pods-FamillyOrganizer.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FamillyOrganizer.debug.xcconfig"; path = "Pods/Target Support Files/Pods-FamillyOrganizer/Pods-FamillyOrganizer.debug.xcconfig"; sourceTree = "<group>"; };
 		3E1035FD427EBD97E6209FA0 /* Pods_FamillyOrganizer.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FamillyOrganizer.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		4B0870FF220D3EFD00ABD553 /* AuthServiceError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthServiceError.swift; sourceTree = "<group>"; };
+		4B0EC964224FFF2900C6A87D /* ProfileSettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileSettingsViewController.swift; sourceTree = "<group>"; };
+		4B0EC966224FFF6900C6A87D /* ProfileSettingsControllerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileSettingsControllerViewModel.swift; sourceTree = "<group>"; };
 		4B3319F92213E7120095032E /* TextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextField.swift; sourceTree = "<group>"; };
 		4B39EF0D22177F0300A36A06 /* LocationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationService.swift; sourceTree = "<group>"; };
 		4B44D5832208D7E9005FEF14 /* FamillyOrganizer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FamillyOrganizer.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -529,6 +533,7 @@
 		4B81E69D22417AB300C84E3D /* View */ = {
 			isa = PBXGroup;
 			children = (
+				4B0EC964224FFF2900C6A87D /* ProfileSettingsViewController.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -536,6 +541,7 @@
 		4B81E69E22417ABC00C84E3D /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
+				4B0EC966224FFF6900C6A87D /* ProfileSettingsControllerViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -607,8 +613,8 @@
 		4BBD31FE223E664F0000D398 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				4BBD31FF223E667E0000D398 /* Cell */,
 				4BBD31FB223E64D20000D398 /* Sections */,
+				4BBD31FF223E667E0000D398 /* Cell */,
 				4B49B2FE2212946D00EF6C74 /* Controller */,
 			);
 			path = View;
@@ -965,7 +971,7 @@
 			inputFileListPaths = (
 			);
 			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-FamillyOrganizer/Pods-FamillyOrganizer-frameworks.sh",
+				"${PODS_ROOT}/Target Support Files/Pods-FamillyOrganizer/Pods-FamillyOrganizer-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/BoringSSL-GRPC/openssl_grpc.framework",
 				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
 				"${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework",
@@ -998,7 +1004,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-FamillyOrganizer/Pods-FamillyOrganizer-frameworks.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-FamillyOrganizer/Pods-FamillyOrganizer-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -1021,6 +1027,7 @@
 				4BD8CFB9220A5AD500E0C6F5 /* UICollectionViewReusable.swift in Sources */,
 				4BAB7A4722160B35003EB418 /* ImageService.swift in Sources */,
 				4B49B3082212961A00EF6C74 /* SignUpControllerViewModel.swift in Sources */,
+				4B0EC965224FFF2900C6A87D /* ProfileSettingsViewController.swift in Sources */,
 				4BD8CF8E220A4F9E00E0C6F5 /* Types.swift in Sources */,
 				4B49B32822129AFF00EF6C74 /* EventsControllerViewModel.swift in Sources */,
 				4B49B3102212966B00EF6C74 /* EventsViewController.swift in Sources */,
@@ -1059,6 +1066,7 @@
 				4B49B30C2212964400EF6C74 /* SignInViewController.swift in Sources */,
 				4B49B316221296A000EF6C74 /* SettingsViewController.swift in Sources */,
 				4BDAF6AE220B7180006AD329 /* FacebookAuthService.swift in Sources */,
+				4B0EC967224FFF6900C6A87D /* ProfileSettingsControllerViewModel.swift in Sources */,
 				4BD8CFAB220A567100E0C6F5 /* Font.swift in Sources */,
 				4B8E964A2218BCDB001694C8 /* ImagePickerActionSheet.swift in Sources */,
 				4BD8CF80220A4A5C00E0C6F5 /* Button.swift in Sources */,

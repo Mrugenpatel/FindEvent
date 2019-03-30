@@ -180,7 +180,7 @@ SPEC CHECKSUMS:
   GTMSessionFetcher: 32aeca0aa144acea523e1c8e053089dec2cb98ca
   leveldb-library: 08cba283675b7ed2d99629a4bc5fd052cd2bb6a5
   nanopb: 2901f78ea1b7b4015c860c2fdd1ea2fee1a18d48
-  Permission: e5cc0a54c2a2d358efac9b42f6f909b95e849e5c
+  Permission: 5a77b519f676aecbae99b8d8d3b296dc16a833dc
   Protobuf: 1eb9700044745f00181c136ef21b8ff3ad5a0fd5
   R.swift: 81455d81467763cbd3f4d79d938d05f4ac4c0228
   R.swift.Library: 0bf390e729bc10bb2c9e4fb78bd043164a7be4ff
@@ -189,4 +189,4 @@ SPEC CHECKSUMS:
 
 PODFILE CHECKSUM: 7f246fe2e3c52ef8cc519aea065d92dd6f7962a0
 
-COCOAPODS: 1.5.3
+COCOAPODS: 1.6.1

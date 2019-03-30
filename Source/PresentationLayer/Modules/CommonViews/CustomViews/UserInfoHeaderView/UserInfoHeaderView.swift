@@ -42,8 +42,7 @@ class UserInfoHeaderView: View {
     override func configure() {
         super.configure()
         backgroundColor = ViewConfig.Colors.background
-        addGestureRecognizer(UIGestureRecognizer(target: self, action: #selector(selectView)))
-        isUserInteractionEnabled = true
+        addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(selectView)))
         attachAvatarView()
         attachNameLabel()
         attachLocationLabel()

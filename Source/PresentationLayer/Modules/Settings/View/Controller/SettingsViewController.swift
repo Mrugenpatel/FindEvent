@@ -9,7 +9,7 @@
 import UIKit
 import SVProgressHUD
 
-class SettingsViewController: UIViewController {
+final class SettingsViewController: UIViewController {
     private struct Constants {
         static let heightForRowAt: CGFloat = 54
         static let heightForHeaderInSection: CGFloat = 30
@@ -72,14 +72,21 @@ class SettingsViewController: UIViewController {
                 self?.infoHeaderView.isAnimating = isAnimating
             }
         }
+
+        infoHeaderView.didTapView = { [unowned self] in
+            self.showDetail(
+                to: ProfileSettingsViewController(
+                    viewModel: ProfileSettingsControllerViewModel()
+            ))
+        }
     }
     
     private func configuredNavigationBar() {
-        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Edit",
-                                                            style: .plain,
-                                                            target: self,
-                                                            action: #selector(edit))
-        navigationItem.rightBarButtonItem?.tintColor = ViewConfig.Colors.textWhite
+        navigationItem.rightBarButtonItem = UIBarButtonItem(
+            title: "Edit",
+            style: .plain,
+            target: self,
+            action: #selector(edit))
     }
     
     private func configuredTableView() -> UITableView {
@@ -94,9 +101,8 @@ class SettingsViewController: UIViewController {
     }
     
     private func configuredInfoHeaderView() -> UserInfoHeaderView {
-        let view = UserInfoHeaderView()
-        
-        return view
+
+        return .init()
     }
     
     // MARK: Attachments
@@ -122,7 +128,10 @@ class SettingsViewController: UIViewController {
     // MARK: Actions
     
     @objc func edit() {
-        viewModel.edit()
+        self.showDetail(
+            to: ProfileSettingsViewController(
+                viewModel: ProfileSettingsControllerViewModel()
+        ))
     }
     
     // MARK: Navigation
@@ -131,7 +140,7 @@ class SettingsViewController: UIViewController {
         SVProgressHUD.showError(withStatus: error)
     }
     
-    private func showDetail(toViewController viewController: UIViewController) {
+    private func showDetail(to viewController: UIViewController) {
         navigationController?.pushViewController(viewController, animated: true)
     }
 }
