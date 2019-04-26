@@ -28,26 +28,26 @@ final class SignUpViewController: UIViewController {
 
     // MARK: Views
     
-    private lazy var containerStackView = setupContainerStackView()
-    private lazy var selectUserAvatarView = setupSelectUserAvatarView()
-    private lazy var nameTextField = setupNameTextField()
-    private lazy var emailTextField = setupEmailTextField()
-    private lazy var passwordTextField = setupPasswordTextField()
-    private lazy var signupButtonViaEmail = setupSignupButtonViaEmail()
-    private lazy var signupButtonViaFacebook = setupSignupButtonViaFacebook()
+    private lazy var containerStackView = configuredContainerStackView()
+    private lazy var selectUserAvatarView = configuredSelectUserAvatarView()
+    private lazy var nameTextField = configuredNameTextField()
+    private lazy var emailTextField = configuredEmailTextField()
+    private lazy var passwordTextField = configuredPasswordTextField()
+    private lazy var signupButtonViaEmail = configuredSignupButtonViaEmail()
+    private lazy var signupButtonViaFacebook = configuredSignupButtonViaFacebook()
 
     // MARK: View Life Cycle
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        setupLocationManager()
+        configuredLocationManager()
         configureView()
         configureViewModel()
     }
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
-        setupNavigationBar()
+        configuredNavigationBar()
     }
 
     // MARK: Configuration
@@ -100,9 +100,7 @@ final class SignUpViewController: UIViewController {
         }
     }
 
-    // MARK: Setup
-
-    private func setupLocationManager() {
+    private func configuredLocationManager() {
         locationManager = CLLocationManager()
         locationManager.delegate = self
         locationManager.requestWhenInUseAuthorization()
@@ -111,11 +109,11 @@ final class SignUpViewController: UIViewController {
         locationManager.startUpdatingLocation()
     }
 
-    private func setupNavigationBar() {
+    private func configuredNavigationBar() {
         navigationController?.isNavigationBarHidden = false
     }
 
-    private func setupContainerStackView() -> UIStackView {
+    private func configuredContainerStackView() -> UIStackView {
         let containerStackView = UIStackView()
         containerStackView.axis = .vertical
         containerStackView.alignment = .center //leading - trailling edges
@@ -125,14 +123,14 @@ final class SignUpViewController: UIViewController {
         return containerStackView
     }
 
-    private func setupSelectUserAvatarView() -> SelectAvatarView {
+    private func configuredSelectUserAvatarView() -> SelectAvatarView {
         let selectUserAvatarView = SelectAvatarView()
         selectUserAvatarView.title = viewModel.selectUserAvatarViewTitle
 
         return selectUserAvatarView
     }
 
-    private func setupNameTextField() -> TextField {
+    private func configuredNameTextField() -> TextField {
         let nameTextField = TextField()
         nameTextField.autocorrectionType = .no
         nameTextField.keyboardType = .default
@@ -142,7 +140,7 @@ final class SignUpViewController: UIViewController {
         return nameTextField
     }
 
-    private func setupEmailTextField() -> TextField {
+    private func configuredEmailTextField() -> TextField {
         let emailTextField = TextField()
         emailTextField.autocorrectionType = .no
         emailTextField.keyboardType = .emailAddress
@@ -152,7 +150,7 @@ final class SignUpViewController: UIViewController {
         return emailTextField
     }
 
-    private func setupPasswordTextField() -> TextField {
+    private func configuredPasswordTextField() -> TextField {
         let passwordTextField = TextField()
         passwordTextField.autocorrectionType = .no
         passwordTextField.keyboardType = .default
@@ -163,7 +161,7 @@ final class SignUpViewController: UIViewController {
         return passwordTextField
     }
 
-    private func setupSignupButtonViaEmail() -> Button {
+    private func configuredSignupButtonViaEmail() -> Button {
         let signupButtonViaEmail = Button()
         signupButtonViaEmail.setTitle(viewModel.emailBtnTitle, for: .normal)
         signupButtonViaEmail.titleLabel?.font = Font.bold(of: 18)
@@ -176,7 +174,7 @@ final class SignUpViewController: UIViewController {
         return signupButtonViaEmail
     }
 
-    private func setupSignupButtonViaFacebook() -> Button {
+    private func configuredSignupButtonViaFacebook() -> Button {
         let signupButtonViaFacebook = Button()
         signupButtonViaFacebook.setTitle(viewModel.facebookBtnTitle, for: .normal)
         signupButtonViaFacebook.titleLabel?.font = Font.bold(of: 18)

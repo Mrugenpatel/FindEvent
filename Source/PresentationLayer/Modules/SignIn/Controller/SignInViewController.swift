@@ -26,9 +26,9 @@ final class SignInViewController: UIViewController {
 
     // MARK: - Views
 
-    private lazy var containerStackView = setupContainerStackView()
-    private lazy var emailTextField = setupEmailTextField()
-    private lazy var passwordTextField = setupPasswordTextField()
+    private lazy var containerStackView = configuredContainerStackView()
+    private lazy var emailTextField = configuredEmailTextField()
+    private lazy var passwordTextField = configuredPasswordTextField()
     private lazy var signinButtonViaEmail = setupSigninButtonViaEmail()
     private lazy var signinButtonViaFacebook = setupSigninButtonViaFacebook()
     private lazy var forgotPasswordButton = setupForgotPasswordButton()
@@ -43,7 +43,7 @@ final class SignInViewController: UIViewController {
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
-        setupNavigationBar()
+        configuredNavigationBar()
     }
 
     // MARK: - Configuration
@@ -90,13 +90,11 @@ final class SignInViewController: UIViewController {
         }
     }
 
-    // MARK: - Setup
-
-    private func setupNavigationBar() {
+    private func configuredNavigationBar() {
         navigationController?.isNavigationBarHidden = false
     }
 
-    private func setupContainerStackView() -> UIStackView {
+    private func configuredContainerStackView() -> UIStackView {
         let containerStackView = UIStackView()
         containerStackView.axis = .vertical
         containerStackView.alignment = .fill //leading - trailling edges
@@ -106,7 +104,7 @@ final class SignInViewController: UIViewController {
         return containerStackView
     }
 
-    private func setupEmailTextField() -> TextField {
+    private func configuredEmailTextField() -> TextField {
         let emailTextField = TextField()
         emailTextField.autocorrectionType = .no
         emailTextField.keyboardType = .emailAddress
@@ -116,7 +114,7 @@ final class SignInViewController: UIViewController {
         return emailTextField
     }
 
-    private func setupPasswordTextField() -> TextField {
+    private func configuredPasswordTextField() -> TextField {
         let passwordTextField = TextField()
         passwordTextField.autocorrectionType = .no
         passwordTextField.keyboardType = .default

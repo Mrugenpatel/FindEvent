@@ -30,6 +30,14 @@ final class ProfileSettingsViewController: UIViewController {
         configuredNavigationBar()
     }
 
+    // MARK: Callbacks
+
+    var doneCallback: EmptyClosure?
+
+    // MARK: Views
+
+    private var tableView = configuredTableView()
+
     // MARK: Configuration
 
     override func configureView() {
@@ -37,6 +45,8 @@ final class ProfileSettingsViewController: UIViewController {
         containerView.backgroundColor = ViewConfig.Colors.background
 
     }
+
+    // add tableView with custom cells with footers with additional info
 
     override func configureViewModel() {
         super.configureViewModel()
@@ -54,12 +64,11 @@ final class ProfileSettingsViewController: UIViewController {
     }
 
 
-
     // MARK: Actions
 
     @objc func save() {
-    }
 
+    }
     
 
 }
