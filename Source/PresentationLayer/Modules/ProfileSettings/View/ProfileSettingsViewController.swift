@@ -36,7 +36,7 @@ final class ProfileSettingsViewController: UIViewController {
 
     // MARK: Views
 
-    private var tableView = configuredTableView()
+   // private var tableView = configuredTableView()
 
     // MARK: Configuration
 
