@@ -64,7 +64,7 @@ class UserInfoHeaderView: View {
 
     private func configuredLabel() -> UILabel {
         let label = UILabel()
-        label.font = Font.bold(of: 20)
+        label.font = ViewConfig.Fonts.bold(of: 20)
         label.numberOfLines = 0
         label.textAlignment = .center
         label.textColor = ViewConfig.Colors.textWhite

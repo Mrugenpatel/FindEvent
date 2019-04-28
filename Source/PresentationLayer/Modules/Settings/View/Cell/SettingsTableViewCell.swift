@@ -44,7 +44,7 @@ class SettingsTableViewCell: TableViewCell {
 
     private func configuredTitleLabel() -> UILabel {
         let label = UILabel()
-        label.font = Font.bold(of: 14)
+        label.font = ViewConfig.Fonts.bold(of: 14)
         label.numberOfLines = 0
         label.textAlignment = .center
         label.textColor = ViewConfig.Colors.textWhite
@@ -54,7 +54,7 @@ class SettingsTableViewCell: TableViewCell {
 
     private func configuredSubtitleLabel() -> UILabel  {
         let label = UILabel()
-        label.font = Font.regular(of: 16)
+        label.font = ViewConfig.Fonts.regular(of: 16)
         label.numberOfLines = 0
         label.textAlignment = .center
         label.textColor = ViewConfig.Colors.textLightGrey

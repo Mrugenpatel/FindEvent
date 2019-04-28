@@ -44,6 +44,7 @@ final class SettingsViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
         configuredNavigationBar()
+        // update headerview
     }
     
     // MARK: Configuration
@@ -57,11 +58,6 @@ final class SettingsViewController: UIViewController {
     
     override func configureViewModel() {
         super.configureViewModel()
-        viewModel.getUserInfo { [weak self] userInfoHeaderViewModel in
-            DispatchQueue.main.async {
-                self?.infoHeaderView.configure(viewModel: userInfoHeaderViewModel)
-            }
-        }
         viewModel.didCatchError = { [weak self] error in
             DispatchQueue.main.async {
                 self?.showError(error: error)
@@ -72,11 +68,18 @@ final class SettingsViewController: UIViewController {
                 self?.infoHeaderView.isAnimating = isAnimating
             }
         }
-
+        viewModel.getUserInfo { [weak self] userInfoHeaderViewModel in
+            DispatchQueue.main.async {
+                self?.infoHeaderView.configure(viewModel: userInfoHeaderViewModel)
+            }
+        }
         infoHeaderView.didTapView = { [unowned self] in
             self.showDetail(
                 to: ProfileSettingsViewController(
-                    viewModel: ProfileSettingsControllerViewModel()
+                    viewModel: ProfileSettingsControllerViewModel(
+                        userService: UserService(),
+                        imageService: ImageService()
+                    )
             ))
         }
     }
@@ -130,7 +133,10 @@ final class SettingsViewController: UIViewController {
     @objc func edit() {
         self.showDetail(
             to: ProfileSettingsViewController(
-                viewModel: ProfileSettingsControllerViewModel()
+                viewModel: ProfileSettingsControllerViewModel(
+                    userService: UserService(),
+                    imageService: ImageService()
+                )
         ))
     }
     

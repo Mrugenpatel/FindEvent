@@ -28,7 +28,8 @@ class User {
         case avatarImgURL
         case latitude
         case longitude
-        case isOnline
+        case lastOnlineDate
+        case description
     }
 
     let id: String?
@@ -37,7 +38,8 @@ class User {
     var avatarImgURL: String?
     var latitude: String?
     var longitude: String?
-    var isOnline: Bool?
+    var lastOnlineDate: Bool?
+    var description: String?
 
     init?(user: [String: Any]) {
         guard let id = user[Constants.id.rawValue] as? String else { return nil }
@@ -52,8 +54,10 @@ class User {
         self.latitude = latitude
         guard let longtitude = user[Constants.longitude.rawValue] as? String else { return nil }
         self.longitude = longtitude
-        guard let isOnline = user[Constants.isOnline.rawValue] as? Bool else { return nil }
-        self.isOnline = isOnline
+        guard let lastOnlineDate = user[Constants.lastOnlineDate.rawValue] as? Bool else { return nil }
+        self.lastOnlineDate = lastOnlineDate
+        guard let description = user[Constants.description.rawValue] as? String else { return nil }
+        self.description = description
     }
 
     init(id: String,
@@ -62,7 +66,8 @@ class User {
          avatarImgURL: String,
          latitude: String,
          longitude: String,
-         isOnline: Bool
+         isOnline: Bool,
+         description: String
         ) {
         self.id = id
         self.name = name
@@ -70,7 +75,8 @@ class User {
         self.avatarImgURL = avatarImgURL
         self.latitude = latitude
         self.longitude = longitude
-        self.isOnline = isOnline
+        self.lastOnlineDate = isOnline
+        self.description = description
     }
 
     func data() -> [String: Any] {
@@ -81,7 +87,8 @@ class User {
             Constants.avatarImgURL.rawValue: avatarImgURL as Any,
             Constants.latitude.rawValue: latitude as Any,
             Constants.longitude.rawValue: longitude as Any,
-            Constants.isOnline.rawValue: isOnline as Any
+            Constants.lastOnlineDate.rawValue: lastOnlineDate as Any,
+            Constants.description.rawValue: description as Any
         ]
     }
 }

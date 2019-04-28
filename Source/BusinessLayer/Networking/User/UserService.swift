@@ -121,6 +121,6 @@ class UserService: UserServiceType {
     static func setUserStatus(isOnline: Bool) {
         guard let currentUser = Auth.auth().currentUser else { return }
         let userCollection = Firestore.firestore().collection("users")
-        userCollection.document(currentUser.uid).setData(["isOnline": isOnline], merge: true)
+        userCollection.document(currentUser.uid).setData(["lastOnlineDate": isOnline], merge: true)
     }
 }

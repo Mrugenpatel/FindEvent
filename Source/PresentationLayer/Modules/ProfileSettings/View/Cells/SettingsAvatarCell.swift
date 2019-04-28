@@ -6,11 +6,15 @@
 //  Copyright © 2019 Yurii Tsymbala. All rights reserved.
 //
 
-import Foundation
+import UIKit
 
 class SettingsAvatarCell: TableViewCell {
 
-    private lazy var selectAvatarView = configuredSelectAvatarView()
+    // MARK: - Views
+
+    lazy var selectAvatarView = configuredSelectAvatarView()
+
+    // MARK: - Configuration
 
     private func configuredSelectAvatarView() -> SelectAvatarView {
         let selectAvatarView = SelectAvatarView()
@@ -19,13 +23,26 @@ class SettingsAvatarCell: TableViewCell {
     }
 
     override func configure() {
-        //
+        super.configure()
+        contentView.backgroundColor = ViewConfig.Colors.background
+        attachSelectAvatarView()
     }
+
+    func configure(avatarImage: UIImage?) {
+        if avatarImage != nil {
+            selectAvatarView.image = avatarImage
+        } else {
+            selectAvatarView.title = "ADD"
+        }
+    }
+
+    // MARK: - Attachments
 
     private func attachSelectAvatarView() {
         contentView.addSubview(selectAvatarView)
         selectAvatarView.snp.makeConstraints { maker in
             maker.center.equalToSuperview()
+            maker.width.height.equalTo(120)
         }
     }
 }

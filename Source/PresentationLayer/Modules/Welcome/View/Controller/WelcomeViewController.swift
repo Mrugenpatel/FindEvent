@@ -86,7 +86,7 @@ final class WelcomeViewController: UIViewController {
     private func setupSignInButton() -> Button {
         let signInButton = Button()
         signInButton.setTitle(viewModel.signInButtonTitle, for: .normal)
-        signInButton.titleLabel?.font = Font.bold(of: 18)
+        signInButton.titleLabel?.font = ViewConfig.Fonts.bold(of: 18)
         signInButton.setTitleColor(ViewConfig.Colors.textWhite, for: .normal)
         signInButton.backgroundColor = ViewConfig.Colors.blue
         signInButton.didTouchUpInside = { [unowned self] in
@@ -99,7 +99,7 @@ final class WelcomeViewController: UIViewController {
     private func setupSignUpButton() -> Button {
         let signUpButton = Button()
         signUpButton.setTitle(viewModel.signUpButtonTitle, for: .normal)
-        signUpButton.titleLabel?.font = Font.bold(of: 18)
+        signUpButton.titleLabel?.font = ViewConfig.Fonts.bold(of: 18)
         signUpButton.setTitleColor(ViewConfig.Colors.textWhite, for: .normal)
         signUpButton.backgroundColor = ViewConfig.Colors.blue
         signUpButton.didTouchUpInside = { [unowned self] in

@@ -128,7 +128,7 @@ final class SignInViewController: UIViewController {
     private func setupSigninButtonViaEmail() -> Button {
         let signinButtonViaEmail = Button()
         signinButtonViaEmail.setTitle(viewModel.emailBtnTitle, for: .normal)
-        signinButtonViaEmail.titleLabel?.font = Font.bold(of: 18)
+        signinButtonViaEmail.titleLabel?.font = ViewConfig.Fonts.bold(of: 18)
         signinButtonViaEmail.setTitleColor(ViewConfig.Colors.textWhite, for: .normal)
         signinButtonViaEmail.backgroundColor = ViewConfig.Colors.blue
         signinButtonViaEmail.didTouchUpInside = { [unowned self] in
@@ -141,7 +141,7 @@ final class SignInViewController: UIViewController {
     private func setupSigninButtonViaFacebook() -> Button {
         let signinButtonViaFacebook = Button()
         signinButtonViaFacebook.setTitle(viewModel.facebookBtnTitle, for: .normal)
-        signinButtonViaFacebook.titleLabel?.font = Font.bold(of: 18)
+        signinButtonViaFacebook.titleLabel?.font = ViewConfig.Fonts.bold(of: 18)
         signinButtonViaFacebook.setTitleColor(ViewConfig.Colors.textWhite, for: .normal)
         signinButtonViaFacebook.backgroundColor = ViewConfig.Colors.blue
         signinButtonViaFacebook.didTouchUpInside = { [unowned self] in
@@ -154,7 +154,7 @@ final class SignInViewController: UIViewController {
     private func setupForgotPasswordButton() -> Button {
         let forgotPasswordButton = Button()
         forgotPasswordButton.setTitle(viewModel.forgotBtnTitle, for: .normal)
-        forgotPasswordButton.titleLabel?.font = Font.bold(of: 14)
+        forgotPasswordButton.titleLabel?.font = ViewConfig.Fonts.bold(of: 14)
         forgotPasswordButton.setTitleColor(ViewConfig.Colors.textLightGrey, for: .normal)
         forgotPasswordButton.backgroundColor = .clear
         forgotPasswordButton.didTouchUpInside = { [unowned self] in

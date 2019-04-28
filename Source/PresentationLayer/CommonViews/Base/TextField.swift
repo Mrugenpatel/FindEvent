@@ -15,7 +15,7 @@ class TextField: UITextField {
         static let textColor = ViewConfig.Colors.textWhite
         static let placeholderColor = ViewConfig.Colors.textLightGrey
         static let caretColor = ViewConfig.Colors.white
-        static let textFont = Font.bold(of: 14)
+        static let textFont = ViewConfig.Fonts.bold(of: 14)
     }
 
     let padding = UIEdgeInsets(top: 0, left: 10, bottom: 0, right: 10)
@@ -58,7 +58,7 @@ class TextField: UITextField {
         backgroundColor = Constants.backgroundColor
         textColor = Constants.textColor
         tintColor = Constants.caretColor
-        font = Font.bold(of: 16)
+        font = ViewConfig.Fonts.bold(of: 16)
         layer.cornerRadius = 5
         layer.shadowColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.40).cgColor
         layer.shadowOffset = CGSize(width: 5, height: 5)

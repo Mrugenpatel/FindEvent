@@ -17,7 +17,7 @@ final class SettingsControllerViewModel {
     private var userService: UserService
     private var imageService: ImageService
 
-    lazy var sections: [SettingsSection] = [.firstSection, .secondSection]
+    lazy var sections = SettingsSection.allCases
 
     var numberOfCellViewModels: Int {
         return cellViewModels.count

@@ -140,7 +140,7 @@ UINavigationControllerDelegate {
         imagePickerController.delegate = self
         imagePickerController.sourceType = sourceType
         imagePickerController.allowsEditing = allowsEditing
-        imagePickerController.modalPresentationStyle = .overCurrentContext
+        imagePickerController.modalPresentationStyle = .overFullScreen
 
         let navigationController = controller.navigationController
 

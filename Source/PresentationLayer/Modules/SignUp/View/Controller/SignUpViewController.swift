@@ -164,7 +164,7 @@ final class SignUpViewController: UIViewController {
     private func configuredSignupButtonViaEmail() -> Button {
         let signupButtonViaEmail = Button()
         signupButtonViaEmail.setTitle(viewModel.emailBtnTitle, for: .normal)
-        signupButtonViaEmail.titleLabel?.font = Font.bold(of: 18)
+        signupButtonViaEmail.titleLabel?.font = ViewConfig.Fonts.bold(of: 18)
         signupButtonViaEmail.setTitleColor(ViewConfig.Colors.textWhite, for: .normal)
         signupButtonViaEmail.backgroundColor = ViewConfig.Colors.blue
         signupButtonViaEmail.didTouchUpInside = { [unowned self] in
@@ -177,7 +177,7 @@ final class SignUpViewController: UIViewController {
     private func configuredSignupButtonViaFacebook() -> Button {
         let signupButtonViaFacebook = Button()
         signupButtonViaFacebook.setTitle(viewModel.facebookBtnTitle, for: .normal)
-        signupButtonViaFacebook.titleLabel?.font = Font.bold(of: 18)
+        signupButtonViaFacebook.titleLabel?.font = ViewConfig.Fonts.bold(of: 18)
         signupButtonViaFacebook.setTitleColor(ViewConfig.Colors.textWhite, for: .normal)
         signupButtonViaFacebook.backgroundColor = ViewConfig.Colors.blue
         signupButtonViaFacebook.didTouchUpInside = { [unowned self] in

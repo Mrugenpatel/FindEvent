@@ -109,7 +109,7 @@ class SelectAvatarView: View {
     private func configuredTitleLabel() -> UILabel {
         let label = UILabel()
         label.textAlignment = .center
-        label.font = Font.bold(of: 20)
+        label.font = ViewConfig.Fonts.bold(of: 20)
         label.textColor = ViewConfig.Colors.textWhite
 
         return label
