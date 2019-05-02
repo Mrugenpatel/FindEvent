@@ -76,7 +76,7 @@ class UserService: UserServiceType {
         userId: String,
         completion: @escaping (Result<User, UserServiceError>) -> Void
         ) {
-        userCollection.document(userId).addSnapshotListener({ (responseData, responseError) in
+        userCollection.document(userId).getDocument(completion: { (responseData, responseError) in
             guard let firebaseError = responseError else {
                 guard let data = responseData?.data() else { completion(.failure(.mappingFailed)); return }
                 guard let user = User(user: data) else { completion(.failure(.mappingFailed)); return }

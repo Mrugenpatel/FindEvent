@@ -74,13 +74,7 @@ final class SettingsViewController: UIViewController {
             }
         }
         infoHeaderView.didTapView = { [unowned self] in
-            self.showDetail(
-                to: ProfileSettingsViewController(
-                    viewModel: ProfileSettingsControllerViewModel(
-                        userService: UserService(),
-                        imageService: ImageService()
-                    )
-            ))
+            self.showDetail()
         }
     }
     
@@ -104,7 +98,7 @@ final class SettingsViewController: UIViewController {
     }
     
     private func configuredInfoHeaderView() -> UserInfoHeaderView {
-
+        
         return .init()
     }
     
@@ -131,13 +125,7 @@ final class SettingsViewController: UIViewController {
     // MARK: Actions
     
     @objc func edit() {
-        self.showDetail(
-            to: ProfileSettingsViewController(
-                viewModel: ProfileSettingsControllerViewModel(
-                    userService: UserService(),
-                    imageService: ImageService()
-                )
-        ))
+        showDetail()
     }
     
     // MARK: Navigation
@@ -146,8 +134,17 @@ final class SettingsViewController: UIViewController {
         SVProgressHUD.showError(withStatus: error)
     }
     
-    private func showDetail(to viewController: UIViewController) {
-        navigationController?.pushViewController(viewController, animated: true)
+    private func showDetail() {
+        let profileVC = ProfileSettingsViewController(
+            viewModel: ProfileSettingsControllerViewModel(
+                userService: UserService(),
+                imageService: ImageService(),
+                emailAuthService: EmailAuthService(userService: UserService(), imageService: ImageService()),
+                facebookAuthService: FacebookAuthService()
+        ))
+        profileVC.doneCallback = doneCallback
+        
+        navigationController?.pushViewController(profileVC, animated: true)
     }
 }
 

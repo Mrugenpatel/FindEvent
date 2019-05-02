@@ -56,6 +56,9 @@ final class ProfileSettingsViewController: UIViewController {
 
     override func configureViewModel() {
         super.configureViewModel()
+        viewModel.startingLogout = { [unowned self] in
+            self.doneCallback?()
+        }
         viewModel.didCatchError = { [weak self] error in
             DispatchQueue.main.async {
                 self?.showError(error: error)
@@ -170,7 +173,7 @@ extension ProfileSettingsViewController: UITableViewDataSource {
         case .logoutSection:
             let cell: SettingsLogoutCell = tableView.dequeueCell(at: indexPath)
             cell.logout = { [unowned self] in
-                 // logout
+                 self.viewModel.logout()
             }
             return cell
         }

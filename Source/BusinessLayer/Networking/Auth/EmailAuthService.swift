@@ -25,7 +25,7 @@ protocol EmailAuthServiceType: AuthServiceType {
         withPassword password: String,
         completion: @escaping AuthResult
     )
-
+    
     func forgotPassword(
         withEmail email: String,
         completion: @escaping (Result<Bool, AuthServiceError>) -> Void
@@ -33,7 +33,7 @@ protocol EmailAuthServiceType: AuthServiceType {
 }
 
 class EmailAuthService: EmailAuthServiceType {
-
+    
     private let firebaseAuth = Auth.auth()
     
     private var currentFirebaseUser: FirebaseAuth.User? {
@@ -46,7 +46,6 @@ class EmailAuthService: EmailAuthServiceType {
     }
     
     private let userService: UserService
-    
     private let imageService: ImageService
     
     init(userService: UserService, imageService: ImageService) {
@@ -180,7 +179,7 @@ class EmailAuthService: EmailAuthServiceType {
             completion(.failure(.getError(error: signOutError)))
         }
     }
-
+    
     func forgotPassword(
         withEmail email: String,
         completion: @escaping (Result<Bool, AuthServiceError>) -> Void
@@ -188,11 +187,11 @@ class EmailAuthService: EmailAuthServiceType {
         firebaseAuth.sendPasswordReset(withEmail: email) { responseError in
             guard let firebaseError = responseError else { completion(.success(true)); return }
             completion(.failure(.getError(error: firebaseError)))
-
-//            if error == nil && self.emailTextField.text?.isEmpty==false{
-//                let resetEmailAlertSent = UIAlertController(title: "Reset Email Sent", message: "Reset email has been sent to your login email, please follow the instructions in the mail to reset your password", preferredStyle: .alert)
-//            }
-
+            
+            //            if error == nil && self.emailTextField.text?.isEmpty==false{
+            //                let resetEmailAlertSent = UIAlertController(title: "Reset Email Sent", message: "Reset email has been sent to your login email, please follow the instructions in the mail to reset your password", preferredStyle: .alert)
+            //            }
+            
         }
     }
 }
