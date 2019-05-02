@@ -12,19 +12,26 @@ import FirebaseAuth
 class ProfileSettingsControllerViewModel {
     
     struct UserInfo {
+        var avatarURL: String
         var avatarImage: UIImage?
         var name: String
         var latitude: String
         var longitude: String
         var description: String
-        
-        init(avatarImage: UIImage?,
+
+        init(avatarURL: String?,
+             avatarImage: UIImage?,
              name: String?,
              latitude: String?,
              longitude: String?,
              description: String?
             ) {
             self.avatarImage = avatarImage
+            if let avatarURL = avatarURL {
+                self.avatarURL = avatarURL
+            } else {
+                self.avatarURL = ""
+            }
             if let name = name {
                 self.name = name
             } else {
@@ -47,14 +54,18 @@ class ProfileSettingsControllerViewModel {
             }
         }
     }
-    
-    var userInfo = UserInfo(avatarImage: nil,
-                            name: "",
-                            latitude: "",
-                            longitude: "",
-                            description: "")
-    
-    
+
+    var editedUserInfo = UserInfo(avatarURL: "",
+                                  avatarImage: nil,
+                                  name: "",
+                                  latitude: "",
+                                  longitude: "",
+                                  description: "")
+
+    var updatedImage: UIImage?
+
+    var dismissVC: EmptyClosure?
+
     private var userService: UserService
     private var imageService: ImageService
     private var emailAuthService: EmailAuthService
@@ -109,6 +120,7 @@ class ProfileSettingsControllerViewModel {
                     case .success(let image):
                         strongSelf.isAnimating?(false)
                         completion(UserInfo(
+                            avatarURL: user.avatarImgURL,
                             avatarImage: image,
                             name: user.name,
                             latitude: user.latitude,
@@ -119,6 +131,7 @@ class ProfileSettingsControllerViewModel {
                     case .failure(_):
                         strongSelf.isAnimating?(false)
                         completion(UserInfo(
+                            avatarURL: user.avatarImgURL,
                             avatarImage: nil,
                             name: user.name,
                             latitude: user.latitude,
@@ -135,7 +148,84 @@ class ProfileSettingsControllerViewModel {
             }
         }
     }
-    
+
+    func saveEditedInfo() {
+        isAnimating?(true)
+
+        guard editedUserInfo.name.count > 3 else {
+            isAnimating?(false); didCatchError?("Too short name"); return
+        }
+
+        guard editedUserInfo.description.count > 10 && editedUserInfo.description.count < 30 else {
+            isAnimating?(false); didCatchError?("Min 10 && Max 30 symbols for bio"); return
+        }
+
+        guard let currentUserId = Auth.auth().currentUser?.uid else {
+            isAnimating?(false); didCatchError?("Network Error. Reload the App"); return
+        }
+
+        userService.getById(userId: currentUserId) { [weak self] responseResult in
+            switch responseResult {
+            case .success(let user):
+                if let updatedImage = self?.updatedImage {
+                    self?.imageService.uploadImage(updatedImage, identifier: currentUserId, completion: { [weak self] imageServiceResult in
+                        switch imageServiceResult {
+                        case .success(let updatedAvatarImageUrl):
+                            self?.userService.updateById(user: User(id: user.id,
+                                                                    name: self?.editedUserInfo.name,
+                                                                    email: user.email,
+                                                                    avatarImgURL: updatedAvatarImageUrl.absoluteString,
+                                                                    latitude: self?.editedUserInfo.latitude,
+                                                                    longitude: self?.editedUserInfo.longitude,
+                                                                    isOnline: true,
+                                                                    description: self?.editedUserInfo.description),
+                                                         completion: { [weak self] responseResult in
+                                                            switch responseResult {
+
+                                                            case .success(_):
+                                                                self?.isAnimating?(false)
+                                                                self?.dismissVC?()
+                                                            case .failure(_):
+                                                                self?.didCatchError?("Failed to update Info. Retry please")
+                                                                self?.isAnimating?(false); return
+                                                            }
+                            })
+                        case .failure(_):
+                            self?.didCatchError?("Image Uploading Failed")
+                            self?.isAnimating?(false); return
+                        }
+                    })
+
+                } else {
+                    self?.userService.updateById(user: User(id: user.id,
+                                                            name: self?.editedUserInfo.name,
+                                                            email: user.email,
+                                                            avatarImgURL: user.avatarImgURL,
+                                                            latitude: self?.editedUserInfo.latitude,
+                                                            longitude: self?.editedUserInfo.longitude,
+                                                            isOnline: true,
+                                                            description: self?.editedUserInfo.description),
+                                                 completion: { [weak self] responseResult in
+                                                    switch responseResult {
+
+                                                    case .success(_):
+                                                        self?.isAnimating?(false)
+                                                        self?.dismissVC?()
+                                                    case .failure(_):
+                                                        self?.didCatchError?("Failed to update Info. Retry please")
+                                                        self?.isAnimating?(false); return
+                                                    }
+                    })
+
+                }
+            case .failure(_):
+                self?.didCatchError?("Network Error. Reload the App"); self?.isAnimating?(false); return
+            }
+        }
+
+
+    }
+
     func logout() {
         emailAuthService.signOut { [weak self] responseResult in
             switch responseResult {

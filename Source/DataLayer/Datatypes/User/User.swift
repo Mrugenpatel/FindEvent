@@ -60,14 +60,14 @@ class User {
         self.description = description
     }
 
-    init(id: String,
-         name: String,
-         email: String,
-         avatarImgURL: String,
-         latitude: String,
-         longitude: String,
-         isOnline: Bool,
-         description: String
+    init(id: String?,
+         name: String?,
+         email: String?,
+         avatarImgURL: String?,
+         latitude: String?,
+         longitude: String?,
+         isOnline: Bool?,
+         description: String?
         ) {
         self.id = id
         self.name = name

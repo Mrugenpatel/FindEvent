@@ -10,6 +10,10 @@ import UIKit
 
 class SettingsNameCell: TableViewCell {
 
+    // MARK: - Callbacks
+
+    var editedName: ((String)->Void)?
+
     // MARK: - Views
 
     lazy var textField = configuredTextField()
@@ -20,6 +24,12 @@ class SettingsNameCell: TableViewCell {
         super.configure()
         contentView.backgroundColor = ViewConfig.Colors.background
         attachTextField()
+    }
+
+    func configure(name: String) {
+        if !name.isEmpty {
+            textField.text = name
+        }
     }
 
     private func configuredTextField() -> TextField {
@@ -46,7 +56,19 @@ class SettingsNameCell: TableViewCell {
 }
 
 extension SettingsNameCell: UITextFieldDelegate {
-    func textFieldDidBeginEditing(_ textField: UITextField) {
+    func textFieldDidBeginEditing(
+        _ textField: UITextField
+        ) {
         textField.text = ""
+    }
+    
+    func textField(
+        _ textField: UITextField,
+        shouldChangeCharactersIn range: NSRange,
+        replacementString string: String
+        ) -> Bool {
+        let updatedString = (textField.text as NSString?)?.replacingCharacters(in: range, with: string)
+        editedName?(updatedString ?? "")
+        return true
     }
 }

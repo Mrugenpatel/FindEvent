@@ -10,6 +10,10 @@ import UIKit
 
 class SettingsDecriptionCell: TableViewCell {
 
+    // MARK: - Callbacks
+
+    var editedDescription: ((String)->Void)?
+
     // MARK: - Views
 
     lazy var textField = configuredTextField()
@@ -52,7 +56,19 @@ class SettingsDecriptionCell: TableViewCell {
 }
 
 extension SettingsDecriptionCell: UITextFieldDelegate {
-    func textFieldDidBeginEditing(_ textField: UITextField) {
+    func textFieldDidBeginEditing(
+        _ textField: UITextField
+        ) {
         textField.text = ""
+    }
+
+    func textField(
+        _ textField: UITextField,
+        shouldChangeCharactersIn range: NSRange,
+        replacementString string: String
+        ) -> Bool {
+        let updatedString = (textField.text as NSString?)?.replacingCharacters(in: range, with: string)
+        editedDescription?(updatedString ?? "")
+        return true
     }
 }
