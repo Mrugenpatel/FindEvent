@@ -15,8 +15,7 @@ protocol EmailAuthServiceType: AuthServiceType {
         withEmail email: String,
         withPassword password: String,
         withUserImg img: UIImage?,
-        withLatitude latitude: String,
-        withLongitude longtitude: String,
+        withCoordinate coordinate: Coordinate?,
         completion: @escaping AuthResult
     )
     
@@ -58,8 +57,7 @@ class EmailAuthService: EmailAuthServiceType {
         withEmail email: String,
         withPassword password: String,
         withUserImg img: UIImage?,
-        withLatitude latitude: String = "",
-        withLongitude longitude: String = "",
+        withCoordinate coordinate: Coordinate?,
         completion: @escaping AuthResult
         ) {
         firebaseAuth.createUser(
@@ -90,9 +88,8 @@ class EmailAuthService: EmailAuthServiceType {
                                     name: name,
                                     email: email,
                                     avatarImgURL: stringURL,
-                                    latitude: latitude,
-                                    longitude: longitude,
-                                    isOnline: true,
+                                    coordinate: coordinate,
+                                    lastOnlineDate: true,
                                     description: ""
                                 ))
                             { responseResult in
@@ -116,9 +113,8 @@ class EmailAuthService: EmailAuthServiceType {
                             name: name,
                             email: email,
                             avatarImgURL: "",
-                            latitude: latitude,
-                            longitude: longitude,
-                            isOnline: true,
+                            coordinate: coordinate,
+                            lastOnlineDate: true,
                             description: ""
                         ))
                     { responseResult in

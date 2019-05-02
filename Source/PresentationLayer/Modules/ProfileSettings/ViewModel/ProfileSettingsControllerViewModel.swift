@@ -15,15 +15,13 @@ class ProfileSettingsControllerViewModel {
         var avatarURL: String
         var avatarImage: UIImage?
         var name: String
-        var latitude: String
-        var longitude: String
+        var coordinate: Coordinate?
         var description: String
 
         init(avatarURL: String?,
              avatarImage: UIImage?,
              name: String?,
-             latitude: String?,
-             longitude: String?,
+             coordinate: Coordinate?,
              description: String?
             ) {
             self.avatarImage = avatarImage
@@ -37,16 +35,7 @@ class ProfileSettingsControllerViewModel {
             } else {
                 self.name = ""
             }
-            if let latitude = latitude {
-                self.latitude = latitude
-            } else {
-                self.latitude = ""
-            }
-            if let longitude = longitude {
-                self.longitude = longitude
-            } else {
-                self.longitude = ""
-            }
+            self.coordinate = coordinate
             if let description = description {
                 self.description = description
             } else {
@@ -58,8 +47,7 @@ class ProfileSettingsControllerViewModel {
     var editedUserInfo = UserInfo(avatarURL: "",
                                   avatarImage: nil,
                                   name: "",
-                                  latitude: "",
-                                  longitude: "",
+                                  coordinate: nil,
                                   description: "")
 
     var updatedImage: UIImage?
@@ -123,8 +111,7 @@ class ProfileSettingsControllerViewModel {
                             avatarURL: user.avatarImgURL,
                             avatarImage: image,
                             name: user.name,
-                            latitude: user.latitude,
-                            longitude: user.longitude,
+                            coordinate: user.coordinate,
                             description: user.description
                             )
                         )
@@ -134,8 +121,7 @@ class ProfileSettingsControllerViewModel {
                             avatarURL: user.avatarImgURL,
                             avatarImage: nil,
                             name: user.name,
-                            latitude: user.latitude,
-                            longitude: user.longitude,
+                            coordinate: user.coordinate,
                             description: user.description
                             )
                         )
@@ -175,9 +161,8 @@ class ProfileSettingsControllerViewModel {
                                                                     name: self?.editedUserInfo.name,
                                                                     email: user.email,
                                                                     avatarImgURL: updatedAvatarImageUrl.absoluteString,
-                                                                    latitude: self?.editedUserInfo.latitude,
-                                                                    longitude: self?.editedUserInfo.longitude,
-                                                                    isOnline: true,
+                                                                    coordinate: self?.editedUserInfo.coordinate,
+                                                                    lastOnlineDate: true,
                                                                     description: self?.editedUserInfo.description),
                                                          completion: { [weak self] responseResult in
                                                             switch responseResult {
@@ -201,9 +186,8 @@ class ProfileSettingsControllerViewModel {
                                                             name: self?.editedUserInfo.name,
                                                             email: user.email,
                                                             avatarImgURL: user.avatarImgURL,
-                                                            latitude: self?.editedUserInfo.latitude,
-                                                            longitude: self?.editedUserInfo.longitude,
-                                                            isOnline: true,
+                                                            coordinate: self?.editedUserInfo.coordinate,
+                                                            lastOnlineDate: true,
                                                             description: self?.editedUserInfo.description),
                                                  completion: { [weak self] responseResult in
                                                     switch responseResult {

@@ -23,10 +23,7 @@ protocol SignUpControllerViewModelType {
     var nameData: String? { get set }
     var emailData: String? { get set }
     var passwordData: String? { get set }
-    var locationData: (
-        latitude: String,
-        longitude: String
-        ) { get set }
+    var locationData: Coordinate? { get set }
     var didCatchSigningUpError: ((String) -> (Void))? { get set }
     var didSignedUp: EmptyClosure? { get set }
     func signUpViaEmail()
@@ -61,7 +58,7 @@ final class SignUpControllerViewModel: SignUpControllerViewModelType {
     var emailData: String?
     var passwordData: String?
     var imageData: UIImage?
-    var locationData: (latitude: String, longitude: String) = ("", "")
+    var locationData: Coordinate?
 
     // MARK: Callbacks
 
@@ -94,8 +91,8 @@ final class SignUpControllerViewModel: SignUpControllerViewModelType {
                 withEmail: signupParams.email,
                 withPassword: signupParams.password,
                 withUserImg: imageData,
-                withLatitude: locationData.latitude,
-                withLongitude: locationData.longitude) { [unowned self] responseResult in
+                withCoordinate: locationData
+            ) { [unowned self] responseResult in
                     switch responseResult {
                     case .success(_):
                         self.didSignedUp?()

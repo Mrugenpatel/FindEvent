@@ -272,9 +272,9 @@ final class SignUpViewController: UIViewController {
 extension SignUpViewController: CLLocationManagerDelegate {
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        viewModel.locationData = (
-            String(locations[0].coordinate.latitude),
-            String(locations[0].coordinate.longitude)
+        viewModel.locationData = Coordinate(
+            latitude: locations[0].coordinate.latitude,
+            longitude: locations[0].coordinate.longitude
         )
         locationManager.stopUpdatingLocation()
     }

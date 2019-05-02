@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import FirebaseFirestore
 
 /* User
  id
@@ -26,8 +27,7 @@ class User {
         case name
         case email
         case avatarImgURL
-        case latitude
-        case longitude
+        case coordinate
         case lastOnlineDate
         case description
     }
@@ -36,8 +36,7 @@ class User {
     var name: String?
     let email: String?
     var avatarImgURL: String?
-    var latitude: String?
-    var longitude: String?
+    var coordinate: Coordinate?
     var lastOnlineDate: Bool?
     var description: String?
 
@@ -50,10 +49,8 @@ class User {
         self.email = email
         guard let avatarImgURL = user[Constants.avatarImgURL.rawValue] as? String else { return nil }
         self.avatarImgURL = avatarImgURL
-        guard let latitude = user[Constants.latitude.rawValue] as? String else { return nil }
-        self.latitude = latitude
-        guard let longtitude = user[Constants.longitude.rawValue] as? String else { return nil }
-        self.longitude = longtitude
+        guard let coordinate = user[Constants.coordinate.rawValue] as? GeoPoint else { return nil }
+        self.coordinate = Coordinate(latitude: coordinate.latitude, longitude: coordinate.longitude)
         guard let lastOnlineDate = user[Constants.lastOnlineDate.rawValue] as? Bool else { return nil }
         self.lastOnlineDate = lastOnlineDate
         guard let description = user[Constants.description.rawValue] as? String else { return nil }
@@ -64,18 +61,16 @@ class User {
          name: String?,
          email: String?,
          avatarImgURL: String?,
-         latitude: String?,
-         longitude: String?,
-         isOnline: Bool?,
+         coordinate: Coordinate?,
+         lastOnlineDate: Bool?,
          description: String?
         ) {
         self.id = id
         self.name = name
         self.email = email
         self.avatarImgURL = avatarImgURL
-        self.latitude = latitude
-        self.longitude = longitude
-        self.lastOnlineDate = isOnline
+        self.coordinate = coordinate
+        self.lastOnlineDate = lastOnlineDate
         self.description = description
     }
 
@@ -85,8 +80,7 @@ class User {
             Constants.name.rawValue: name as Any,
             Constants.email.rawValue: email as Any,
             Constants.avatarImgURL.rawValue: avatarImgURL as Any,
-            Constants.latitude.rawValue: latitude as Any,
-            Constants.longitude.rawValue: longitude as Any,
+            Constants.coordinate.rawValue: coordinate as Any,
             Constants.lastOnlineDate.rawValue: lastOnlineDate as Any,
             Constants.description.rawValue: description as Any
         ]

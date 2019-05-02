@@ -169,7 +169,7 @@ final class ProfileSettingsViewController: UIViewController {
                 return cell
             case .locationSection:
                 let cell: SettingsLocationCell = tableView.dequeueCell(at: indexPath)
-                cell.configure(location: viewModel.editedUserInfo.latitude + viewModel.editedUserInfo.longitude)
+                cell.configure(location: viewModel.editedUserInfo.coordinate)
                 cell.showMap = { [unowned self] in
                     // present map VC
                 }

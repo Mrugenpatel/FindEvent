@@ -26,10 +26,10 @@ class SettingsLocationCell: TableViewCell {
         attachTextField()
     }
 
-    func configure(location: String) {
-        if !location.isEmpty {
-            textField.text = location
-        }
+    func configure(location: Coordinate?) {
+//        if !location.isEmpty {
+//            textField.text = location
+//        }
     }
 
     private func configuredTextField() -> TextField {

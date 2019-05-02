@@ -67,7 +67,7 @@ final class SettingsControllerViewModel {
                         completion(UserInfoHeaderViewModel(
                             image: image,
                             name: user.name,
-                            location: user.latitude
+                            location: user.coordinate?.latitude.description // MARK: FIX TO LOCATION 
                             )
                         )
                     case .failure(_):
@@ -75,7 +75,7 @@ final class SettingsControllerViewModel {
                         completion(UserInfoHeaderViewModel(
                             image: nil,
                             name: user.name,
-                            location: user.latitude   // MARK: FIX TO LOCATION 
+                            location: user.coordinate?.latitude.description   // MARK: FIX TO LOCATION
                             )
                         )
                     }
