@@ -44,7 +44,11 @@ final class SettingsViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
         configuredNavigationBar()
-        // update headerview
+        viewModel.getUserInfo { [weak self] userInfoHeaderViewModel in
+            DispatchQueue.main.async {
+                self?.infoHeaderView.configure(viewModel: userInfoHeaderViewModel)
+            }
+        }
     }
     
     // MARK: Configuration
