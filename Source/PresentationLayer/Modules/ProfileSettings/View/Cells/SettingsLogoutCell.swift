@@ -23,6 +23,7 @@ class SettingsLogoutCell: TableViewCell {
     override func configure() {
         super.configure()
         contentView.backgroundColor = ViewConfig.Colors.background
+        selectionStyle = .none
         attachButton()
     }
 

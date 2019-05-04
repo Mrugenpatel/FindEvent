@@ -20,36 +20,14 @@ class Application: UIResponder, UIApplicationDelegate {
     var rootViewController: RootViewController!
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        FirebaseApp.configure()
-        IQKeyboardManager.shared().isEnabled = true
+        firebaseSetup()
+        keyboardSetup()
         viewSetup()
         UserService.setUserStatus(isOnline: true)
         return true
     }
 
-    private func viewSetup() {
-        window = UIWindow(frame: UIScreen.main.bounds)
-        window?.backgroundColor = ViewConfig.Colors.background
-
-        UINavigationBar.appearance().tintColor = ViewConfig.Colors.textWhite
-        UINavigationBar.appearance().barTintColor = ViewConfig.Colors.background
-        UINavigationBar.appearance().isTranslucent = false
-        UINavigationBar.appearance().titleTextAttributes = [NSAttributedString.Key(
-            rawValue: NSAttributedString.Key.foregroundColor.rawValue): ViewConfig.Colors.white]
-
-        UITabBarItem.appearance().setTitleTextAttributes(
-            [NSAttributedString.Key.foregroundColor: ViewConfig.Colors.textWhite], for: .normal)
-        UITabBarItem.appearance().setTitleTextAttributes(
-            [NSAttributedString.Key.foregroundColor: ViewConfig.Colors.blue], for: .selected)
-
-        rootViewController = RootViewController(userDefaultsService: UserDefaultsService())
-
-        window?.rootViewController = rootViewController
-        window?.makeKeyAndVisible()
-
-        SVProgressHUD.setMinimumDismissTimeInterval(1)
-        SVProgressHUD.setDefaultMaskType(.gradient)
-    }
+    // MARK: - App Life Cycle
 
     func applicationWillResignActive(_ application: UIApplication) {
     }
@@ -68,5 +46,50 @@ class Application: UIResponder, UIApplicationDelegate {
     func applicationWillTerminate(_ application: UIApplication) {
         UserService.setUserStatus(isOnline: false)
     }
+}
+
+// MARK: - Setup
+
+private extension Application {
+
+    func viewSetup() {
+        window = UIWindow(frame: UIScreen.main.bounds)
+        window?.backgroundColor = ViewConfig.Colors.background
+
+        rootViewController = RootViewController(userDefaultsService: UserDefaultsService())
+
+        window?.rootViewController = rootViewController
+        window?.makeKeyAndVisible()
+
+        // - UINavigationBar Setup
+
+        UINavigationBar.appearance().tintColor = ViewConfig.Colors.textWhite
+        UINavigationBar.appearance().barTintColor = ViewConfig.Colors.background
+        UINavigationBar.appearance().isTranslucent = false
+        UINavigationBar.appearance().titleTextAttributes = [NSAttributedString.Key(
+            rawValue: NSAttributedString.Key.foregroundColor.rawValue): ViewConfig.Colors.white]
+
+        // - UITabBarItem Setup
+
+        UITabBarItem.appearance().setTitleTextAttributes(
+            [NSAttributedString.Key.foregroundColor: ViewConfig.Colors.textWhite], for: .normal)
+        UITabBarItem.appearance().setTitleTextAttributes(
+            [NSAttributedString.Key.foregroundColor: ViewConfig.Colors.blue], for: .selected)
+
+        // - SVProgressHUD Setup
+
+        SVProgressHUD.setMinimumDismissTimeInterval(1)
+        SVProgressHUD.setDefaultMaskType(.gradient)
+    }
+
+    func firebaseSetup() {
+        FirebaseApp.configure()
+    }
+
+    func keyboardSetup() {
+        let keyboardManager = IQKeyboardManager.shared()
+        keyboardManager.isEnabled = true
+    }
+
 }
 

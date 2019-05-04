@@ -24,6 +24,7 @@ class SettingsAvatarCell: TableViewCell {
 
     override func configure() {
         super.configure()
+        selectionStyle = .none
         contentView.backgroundColor = ViewConfig.Colors.background
         attachSelectAvatarView()
     }

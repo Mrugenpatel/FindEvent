@@ -23,6 +23,7 @@ class SettingsDecriptionCell: TableViewCell {
     override func configure() {
         super.configure()
         contentView.backgroundColor = ViewConfig.Colors.background
+        selectionStyle = .none
         attachTextField()
     }
 

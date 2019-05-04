@@ -177,6 +177,7 @@ extension SettingsViewController: UITableViewDataSource {
         cellForRowAt indexPath: IndexPath
         ) -> UITableViewCell {
         let cell: SettingsTableViewCell = tableView.dequeueCell(at: indexPath)
+        cell.selectionStyle = .none
         cell.configure(
             withViewModel: viewModel.getCellViewModel(
                 sectionindex: indexPath.section,
