@@ -6,6 +6,8 @@ target 'FamillyOrganizer' do
  # UI
     pod 'SnapKit'
     pod 'SVProgressHUD'
+    pod 'IQKeyboardManager'
+
 
  # Autogeneration
     pod 'R.swift'

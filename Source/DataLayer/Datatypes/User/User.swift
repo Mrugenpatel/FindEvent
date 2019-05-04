@@ -49,8 +49,9 @@ class User {
         self.email = email
         guard let avatarImgURL = user[Constants.avatarImgURL.rawValue] as? String else { return nil }
         self.avatarImgURL = avatarImgURL
-        guard let coordinate = user[Constants.coordinate.rawValue] as? GeoPoint else { return nil }
-        self.coordinate = Coordinate(latitude: coordinate.latitude, longitude: coordinate.longitude)
+        if let coordinate = user[Constants.coordinate.rawValue] as? GeoPoint {
+            self.coordinate = Coordinate(latitude: coordinate.latitude, longitude: coordinate.longitude)
+        }
         guard let lastOnlineDate = user[Constants.lastOnlineDate.rawValue] as? Bool else { return nil }
         self.lastOnlineDate = lastOnlineDate
         guard let description = user[Constants.description.rawValue] as? String else { return nil }
