@@ -8,6 +8,8 @@
 
 import UIKit
 import SVProgressHUD
+import Position
+import CoreLocation
 
 final class ProfileSettingsViewController: UIViewController {
     private struct Constants {
@@ -52,6 +54,19 @@ final class ProfileSettingsViewController: UIViewController {
         super.configureView()
         containerView.backgroundColor = ViewConfig.Colors.background
         attachTableView()
+        Position.shared.addObserver(self)
+        Position.shared.distanceFilter = 20
+
+        if Position.shared.locationServicesStatus == .allowedWhenInUse ||
+            Position.shared.locationServicesStatus == .allowedAlways {
+            Position.shared.performOneShotLocationUpdate(withDesiredAccuracy: 250) { (location, error) -> () in
+                print(location, error)
+            }
+        } else {
+            // request permissions based on the type of location support required.
+            Position.shared.requestWhenInUseLocationAuthorization()
+            // Position.shared.requestA`lwaysLocationAuthorization()
+        }
     }
 
     override func configureViewModel() {
@@ -265,5 +280,33 @@ final class ProfileSettingsViewController: UIViewController {
                 return Constants.heightForDescriptionRow
             }
         }
+}
+
+extension ProfileSettingsViewController: PositionObserver {
+    func position(_ position: Position, didUpdateOneShotLocation location: CLLocation?) {
+
+    }
+
+    func position(_ position: Position, didUpdateTrackingLocations locations: [CLLocation]?) {
+
+    }
+
+    func position(_ position: Position, didUpdateFloor floor: CLFloor) {
+
+    }
+
+    func position(_ position: Position, didVisit visit: CLVisit?) {
+
+    }
+
+    func position(_ position: Position, didChangeDesiredAccurary desiredAccuracy: Double) {
+
+    }
+
+    func position(_ position: Position, didFailWithError error: Error?) {
+
+    }
+
+
 }
 

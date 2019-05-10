@@ -116,6 +116,7 @@ PODS:
     - Permission/Core
   - Permission/Photos (2.2.0):
     - Permission/Core
+  - Position (0.7.0)
   - Protobuf (3.6.1)
   - R.swift (5.0.2):
     - R.swift.Library (~> 5.0.0)
@@ -133,6 +134,7 @@ DEPENDENCIES:
   - Permission/Camera (from `./LocalPods/Permission`)
   - Permission/Microphone (from `./LocalPods/Permission`)
   - Permission/Photos (from `./LocalPods/Permission`)
+  - Position
   - R.swift
   - SnapKit
   - SVProgressHUD
@@ -156,6 +158,7 @@ SPEC REPOS:
     - IQKeyboardManager
     - leveldb-library
     - nanopb
+    - Position
     - Protobuf
     - R.swift
     - R.swift.Library
@@ -185,12 +188,13 @@ SPEC CHECKSUMS:
   leveldb-library: 08cba283675b7ed2d99629a4bc5fd052cd2bb6a5
   nanopb: 2901f78ea1b7b4015c860c2fdd1ea2fee1a18d48
   Permission: 5a77b519f676aecbae99b8d8d3b296dc16a833dc
+  Position: 23b536846a3e891897cf8082b0308e90022a5ad6
   Protobuf: 1eb9700044745f00181c136ef21b8ff3ad5a0fd5
   R.swift: 81455d81467763cbd3f4d79d938d05f4ac4c0228
   R.swift.Library: 0bf390e729bc10bb2c9e4fb78bd043164a7be4ff
   SnapKit: fe8a619752f3f27075cc9a90244d75c6c3f27e2a
   SVProgressHUD: 1428aafac632c1f86f62aa4243ec12008d7a51d6
 
-PODFILE CHECKSUM: c7aaca5fe0c05d920cf42674feb9417c2d992406
+PODFILE CHECKSUM: 3657fc0dde5be30a619a5c1dc94eecb2aac04629
 
 COCOAPODS: 1.6.1

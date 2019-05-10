@@ -7,6 +7,7 @@ target 'FamillyOrganizer' do
     pod 'SnapKit'
     pod 'SVProgressHUD'
     pod 'IQKeyboardManager'
+    pod 'Position'
 
 
  # Autogeneration
