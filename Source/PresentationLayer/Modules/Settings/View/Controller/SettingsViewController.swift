@@ -50,7 +50,6 @@ final class SettingsViewController: UIViewController {
             if let userInfo = userInfo {
                 self?.currentData = userInfo
             }
-
             DispatchQueue.main.async {
                 self?.infoHeaderView.configure(viewModel: userInfoHeaderViewModel)
             }
@@ -149,6 +148,7 @@ final class SettingsViewController: UIViewController {
     private func showDetail() {
         let profileVC = ProfileSettingsViewController(
             viewModel: ProfileSettingsControllerViewModel(
+                userDefaultsService: UserDefaultsService(),
                 userService: UserService(),
                 imageService: ImageService(),
                 emailAuthService: EmailAuthService(

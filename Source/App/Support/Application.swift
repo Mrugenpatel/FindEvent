@@ -10,6 +10,7 @@ import UIKit
 import Firebase
 import SVProgressHUD
 import IQKeyboardManager
+import Position
 
 let App = UIApplication.shared.delegate as! Application
 
@@ -21,6 +22,7 @@ class Application: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         firebaseSetup()
+        locationSetup()
         keyboardSetup()
         viewSetup()
         UserService.setUserStatus(isOnline: true)
@@ -91,5 +93,26 @@ private extension Application {
         keyboardManager.isEnabled = true
     }
 
+    func locationSetup() {
+        let userDefaultsService = UserDefaultsService()
+        if userDefaultsService.shareCurrentLocation {
+            guard let currentUserId = Auth.auth().currentUser else { return }
+            Position.shared.distanceFilter = 20
+            if Position.shared.locationServicesStatus == .allowedWhenInUse ||
+                Position.shared.locationServicesStatus == .allowedAlways {
+                Position.shared.performOneShotLocationUpdate(withDesiredAccuracy: 250) { [weak self] location, error in
+                    guard
+                        error == nil,
+                        let location = location
+                    else { return }
+                    let coordinate = GeoPoint(
+                        latitude: location.coordinate.latitude,
+                        longitude: location.coordinate.longitude)
+                    let userCollection = Firestore.firestore().collection("users")
+                    userCollection.document(currentUserId.uid).setData(["coordinate": coordinate], merge: true)
+                }
+            }
+        }
+    }
 }
 

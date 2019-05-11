@@ -59,6 +59,7 @@ class SettingsLocationCell: TableViewCell {
     private func configuredLocationSwitcher() -> UISwitch {
         let switcher = UISwitch()
         switcher.addTarget(self, action: #selector(onSwitchValueChanged(_:)), for: .touchUpInside)
+        switcher.onTintColor = ViewConfig.Colors.blue
 
         return switcher
     }

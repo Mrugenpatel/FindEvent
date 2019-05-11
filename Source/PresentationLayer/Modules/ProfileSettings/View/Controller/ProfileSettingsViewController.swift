@@ -169,11 +169,13 @@ extension ProfileSettingsViewController: UITableViewDataSource {
             cell.showLocation = { [unowned self] isShowing in
                 switch isShowing {
                 case true:
+                    self.viewModel.shareCurrentLocation(isSharing: true)
                     self.viewModel.observeLocation(completion: { isUpdated in
                         isUpdated ? cell.configure(location: self.viewModel.editedUserInfo.coordinate) :
                             cell.configure(location: self.viewModel.editedUserInfo.coordinate)
                     })
                 case false:
+                    self.viewModel.shareCurrentLocation(isSharing: false)
                     self.viewModel.editedUserInfo.coordinate = nil
                     cell.configure(location: nil)
                 }

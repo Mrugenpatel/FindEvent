@@ -56,6 +56,7 @@ class ProfileSettingsControllerViewModel {
 
     var dismissVC: EmptyClosure?
 
+    private var userDefaultsService: UserDefaultsService
     private var userService: UserService
     private var imageService: ImageService
     private var emailAuthService: EmailAuthService
@@ -68,12 +69,14 @@ class ProfileSettingsControllerViewModel {
     }
     
     init(
+        userDefaultsService: UserDefaultsService,
         userService: UserService,
         imageService: ImageService,
         emailAuthService: EmailAuthService,
         facebookAuthService: FacebookAuthService,
         currentData: UserInfo
         ) {
+        self.userDefaultsService = userDefaultsService
         self.userService = userService
         self.imageService = imageService
         self.emailAuthService = emailAuthService
@@ -192,7 +195,11 @@ class ProfileSettingsControllerViewModel {
                 completion(true)
             }
         } else {
-            didCatchError?("Location Services disabled. Please enable Location Services in Settings")
+            didCatchError?("Location Services disabled. Please enable Location Services in Settings and reload the Application")
         }
+    }
+
+    func shareCurrentLocation(isSharing: Bool) {
+       userDefaultsService.shareCurrentLocation = isSharing
     }
 }

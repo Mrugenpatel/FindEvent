@@ -47,6 +47,7 @@ final class SignUpControllerViewModel: SignUpControllerViewModelType {
     private let emailAuthService: EmailAuthService
     private let facebookAuthService: FacebookAuthService
     private let userInputValidator: UserInputValidator
+    private let userDefaultsService: UserDefaultsService
 
     var selectUserAvatarViewTitle = Strings.selectUserAvatarViewTitle
     var emailBtnTitle = Strings.emailBtnTitle
@@ -59,7 +60,11 @@ final class SignUpControllerViewModel: SignUpControllerViewModelType {
     var emailData: String?
     var passwordData: String?
     var imageData: UIImage?
-    var locationData: GeoPoint?
+    var locationData: GeoPoint? {
+        didSet {
+            locationData == nil ? shareCurrentLocation(isSharing: false) : shareCurrentLocation(isSharing: true)
+        }
+    }
 
     // MARK: Callbacks
 
@@ -71,10 +76,12 @@ final class SignUpControllerViewModel: SignUpControllerViewModelType {
 
     init(emailAuthService: EmailAuthService,
          facebookAuthService: FacebookAuthService,
-         userInputValidator: UserInputValidator) {
+         userInputValidator: UserInputValidator,
+         userDefaultsService: UserDefaultsService) {
         self.emailAuthService = emailAuthService
         self.facebookAuthService = facebookAuthService
         self.userInputValidator = userInputValidator
+        self.userDefaultsService = userDefaultsService
     }
 
     // MARK: Actions
@@ -108,6 +115,10 @@ final class SignUpControllerViewModel: SignUpControllerViewModelType {
 
     func signUpViaFacebook() {
         //
+    }
+
+    func shareCurrentLocation(isSharing: Bool) {
+        userDefaultsService.shareCurrentLocation = isSharing
     }
 }
 
