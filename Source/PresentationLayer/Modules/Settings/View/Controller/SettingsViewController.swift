@@ -16,6 +16,8 @@ final class SettingsViewController: UIViewController {
     }
     
     // MARK: Properties
+
+    private var currentData: UserInfo!
     
     private var viewModel: SettingsControllerViewModel!
     
@@ -44,7 +46,11 @@ final class SettingsViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
         configuredNavigationBar()
-        viewModel.getUserInfo { [weak self] userInfoHeaderViewModel in
+        viewModel.getUserInfo { [weak self] userInfo,userInfoHeaderViewModel in
+            if let userInfo = userInfo {
+                self?.currentData = userInfo
+            }
+
             DispatchQueue.main.async {
                 self?.infoHeaderView.configure(viewModel: userInfoHeaderViewModel)
             }
@@ -70,9 +76,11 @@ final class SettingsViewController: UIViewController {
         viewModel.isAnimating = { [weak self] isAnimating in
             DispatchQueue.main.async {
                 self?.infoHeaderView.isAnimating = isAnimating
+                self?.touchingEnabling(isAnimating: isAnimating)
             }
         }
-        viewModel.getUserInfo { [weak self] userInfoHeaderViewModel in
+        viewModel.getUserInfo { [weak self] user,userInfoHeaderViewModel in
+            self?.currentData = user
             DispatchQueue.main.async {
                 self?.infoHeaderView.configure(viewModel: userInfoHeaderViewModel)
             }
@@ -143,12 +151,20 @@ final class SettingsViewController: UIViewController {
             viewModel: ProfileSettingsControllerViewModel(
                 userService: UserService(),
                 imageService: ImageService(),
-                emailAuthService: EmailAuthService(userService: UserService(), imageService: ImageService()),
-                facebookAuthService: FacebookAuthService()
+                emailAuthService: EmailAuthService(
+                    userService: UserService(),
+                    imageService: ImageService()),
+                facebookAuthService: FacebookAuthService(),
+                currentData: currentData
         ))
         profileVC.doneCallback = doneCallback
         
         navigationController?.pushViewController(profileVC, animated: true)
+    }
+
+    private func touchingEnabling(isAnimating: Bool) {
+        navigationController?.navigationBar.isUserInteractionEnabled = !isAnimating
+        containerView.isUserInteractionEnabled = !isAnimating
     }
 }
 

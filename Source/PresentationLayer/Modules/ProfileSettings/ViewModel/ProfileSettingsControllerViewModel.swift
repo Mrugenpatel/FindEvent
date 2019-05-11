@@ -11,46 +11,46 @@ import FirebaseAuth
 import FirebaseFirestore
 import Position
 
-class ProfileSettingsControllerViewModel {
-    
-    struct UserInfo {
-        var avatarURL: String
-        var avatarImage: UIImage?
-        var name: String
-        var coordinate: GeoPoint?
-        var description: String
+struct UserInfo {
+    var avatarURL: String
+    var avatarImage: UIImage?
+    var name: String
+    var coordinate: GeoPoint?
+    var description: String
 
-        init(avatarURL: String?,
-             avatarImage: UIImage?,
-             name: String?,
-             coordinate: GeoPoint?,
-             description: String?
-            ) {
-            self.avatarImage = avatarImage
-            if let avatarURL = avatarURL {
-                self.avatarURL = avatarURL
-            } else {
-                self.avatarURL = ""
-            }
-            if let name = name {
-                self.name = name
-            } else {
-                self.name = ""
-            }
-            self.coordinate = coordinate
-            if let description = description {
-                self.description = description
-            } else {
-                self.description = ""
-            }
+    init(avatarURL: String?,
+         avatarImage: UIImage?,
+         name: String?,
+         coordinate: GeoPoint?,
+         description: String?
+        ) {
+        self.avatarImage = avatarImage
+        if let avatarURL = avatarURL {
+            self.avatarURL = avatarURL
+        } else {
+            self.avatarURL = ""
+        }
+        if let name = name {
+            self.name = name
+        } else {
+            self.name = ""
+        }
+        self.coordinate = coordinate
+        if let description = description {
+            self.description = description
+        } else {
+            self.description = ""
         }
     }
+}
 
-    var editedUserInfo = UserInfo(avatarURL: "",
-                                  avatarImage: nil,
-                                  name: "",
-                                  coordinate: nil,
-                                  description: "")
+class ProfileSettingsControllerViewModel {
+
+    // Properties
+
+    var currentData: UserInfo
+
+    var editedUserInfo: UserInfo!
 
     var updatedImage: UIImage?
 
@@ -71,12 +71,15 @@ class ProfileSettingsControllerViewModel {
         userService: UserService,
         imageService: ImageService,
         emailAuthService: EmailAuthService,
-        facebookAuthService: FacebookAuthService
+        facebookAuthService: FacebookAuthService,
+        currentData: UserInfo
         ) {
         self.userService = userService
         self.imageService = imageService
         self.emailAuthService = emailAuthService
         self.facebookAuthService = facebookAuthService
+        self.currentData = currentData
+        self.editedUserInfo = currentData
     }
     
     // MARK: Callbacks
@@ -86,56 +89,6 @@ class ProfileSettingsControllerViewModel {
     var startingLogout: EmptyClosure?
     
     // MARK: Methods
-    
-    func getUserInfo(completion: @escaping (UserInfo?) -> Void) {
-        isAnimating?(true)
-        guard let currentUserId = Auth.auth().currentUser?.uid else {
-            isAnimating?(false);
-            didCatchError?("Network Error. Reload the App");
-            return completion(nil)
-        }
-        userService.getById(
-            userId: currentUserId
-            )
-        { [weak self] responseResult in
-            guard let strongSelf = self else {return}
-            switch responseResult {
-                
-            case .success(let user):
-                self?.imageService.getImage(
-                    by: user.avatarImgURL)
-                { responseResult in
-                    switch responseResult {
-                        
-                    case .success(let image):
-                        strongSelf.isAnimating?(false)
-                        completion(UserInfo(
-                            avatarURL: user.avatarImgURL,
-                            avatarImage: image,
-                            name: user.name,
-                            coordinate: user.coordinate,
-                            description: user.description
-                            )
-                        )
-                    case .failure(_):
-                        strongSelf.isAnimating?(false)
-                        completion(UserInfo(
-                            avatarURL: user.avatarImgURL,
-                            avatarImage: nil,
-                            name: user.name,
-                            coordinate: user.coordinate,
-                            description: user.description
-                            )
-                        )
-                    }
-                }
-            case .failure(_):
-                strongSelf.isAnimating?(false)
-                completion(nil)
-                strongSelf.didCatchError?("Network Error. Reload the App")
-            }
-        }
-    }
 
     func saveEditedInfo() {
         isAnimating?(true)
@@ -144,8 +97,8 @@ class ProfileSettingsControllerViewModel {
             isAnimating?(false); didCatchError?("Too short name"); return
         }
 
-        guard editedUserInfo.description.count > 10 && editedUserInfo.description.count < 30 else {
-            isAnimating?(false); didCatchError?("Min 10 && Max 30 symbols for bio"); return
+        guard editedUserInfo.description.count < 30 else {
+            isAnimating?(false); didCatchError?("Max 30 symbols for bio"); return
         }
 
         guard let currentUserId = Auth.auth().currentUser?.uid else {
@@ -236,7 +189,7 @@ class ProfileSettingsControllerViewModel {
                 self?.editedUserInfo.coordinate = GeoPoint(
                     latitude: location.coordinate.latitude,
                     longitude: location.coordinate.longitude)
-                    completion(true)
+                completion(true)
             }
         } else {
             didCatchError?("Location Services disabled. Please enable Location Services in Settings")

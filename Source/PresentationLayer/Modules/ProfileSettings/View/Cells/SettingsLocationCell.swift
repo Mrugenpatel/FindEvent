@@ -48,6 +48,7 @@ class SettingsLocationCell: TableViewCell {
 
     private func configuredTextField() -> TextField {
         let textField = TextField()
+        textField.isUserInteractionEnabled = false
         textField.backgroundColor = .clear
         textField.delegate = self
         textField.placeholder = "Location"

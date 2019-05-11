@@ -73,14 +73,7 @@ final class ProfileSettingsViewController: UIViewController {
         }
         viewModel.isAnimating = { isAnimating in
             DispatchQueue.main.async {
-                //isAnimating ? SVProgressHUD.show() : SVProgressHUD.dismiss()  // for saving only
-            }
-        }
-        viewModel.getUserInfo { [weak self] userInfo in     // remove
-            guard let userInfo = userInfo else { return }
-            self?.viewModel.editedUserInfo = userInfo
-            DispatchQueue.main.async {
-                self?.tableView.reloadData()
+                isAnimating ? SVProgressHUD.show() : SVProgressHUD.dismiss()  // for saving only
             }
         }
     }
@@ -152,7 +145,7 @@ extension ProfileSettingsViewController: UITableViewDataSource {
         switch viewModel.sections[indexPath.section] {
         case .avatarSection:
             let cell: SettingsAvatarCell = tableView.dequeueCell(at: indexPath)
-            cell.configure(avatarImage: viewModel.editedUserInfo.avatarImage)
+            cell.configure(avatarImage: viewModel.currentData.avatarImage)
             cell.selectAvatarView.didSelectImage = { [unowned self] in
                 ImagePicker { picker in
                     picker.didPickImage = { [unowned self] image in
@@ -164,14 +157,14 @@ extension ProfileSettingsViewController: UITableViewDataSource {
             return cell
         case .nameSection:
             let cell: SettingsNameCell = tableView.dequeueCell(at: indexPath)
-            cell.configure(name: viewModel.editedUserInfo.name)
+            cell.configure(name: viewModel.currentData.name)
             cell.editedName = { [unowned self] name in
                 self.viewModel.editedUserInfo.name = name
             }
             return cell
         case .locationSection:
             let cell: SettingsLocationCell = tableView.dequeueCell(at: indexPath)
-            cell.configure(location: viewModel.editedUserInfo.coordinate)
+            cell.configure(location: viewModel.currentData.coordinate)
 
             cell.showLocation = { [unowned self] isShowing in
                 switch isShowing {
@@ -192,7 +185,7 @@ extension ProfileSettingsViewController: UITableViewDataSource {
             return cell
         case .descriptionSection:
             let cell: SettingsDecriptionCell = tableView.dequeueCell(at: indexPath)
-            cell.configure(description: viewModel.editedUserInfo.description)
+            cell.configure(description: viewModel.currentData.description)
             cell.editedDescription = { [unowned self] description in
                 self.viewModel.editedUserInfo.description = description
             }

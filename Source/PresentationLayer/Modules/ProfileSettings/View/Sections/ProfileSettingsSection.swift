@@ -14,7 +14,7 @@ enum ProfileSettingsSection: String, CaseIterable {
 
     case avatarSection = "Choose or Change Image"
     case nameSection = "Please enter your real name"
-    case locationSection = "Add your location and near people can meet you"
+    case locationSection = "Show current location for friends"
     case descriptionSection = "Describe yourself (hobbies,profession,age)"
     case logoutSection = ""
 }

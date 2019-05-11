@@ -42,12 +42,12 @@ final class SettingsControllerViewModel {
 
     // MARK: Methods
 
-    func getUserInfo(completion: @escaping (UserInfoHeaderViewModel?) -> Void) {
+    func getUserInfo(completion: @escaping (UserInfo?,UserInfoHeaderViewModel?) -> Void) {
         isAnimating?(true)
         guard let currentUserId = Auth.auth().currentUser?.uid else {
             isAnimating?(false);
             didCatchError?("Network Error. Reload the App");
-            return completion(nil)
+            return completion(nil,nil)
         }
         userService.getById(
             userId: currentUserId
@@ -64,25 +64,39 @@ final class SettingsControllerViewModel {
 
                     case .success(let image):
                         strongSelf.isAnimating?(false)
-                        completion(UserInfoHeaderViewModel(
-                            image: image,
-                            name: user.name,
-                            location: user.coordinate?.latitude.description // MARK: FIX TO LOCATION 
+                        completion(
+                            UserInfo(
+                                avatarURL: user.avatarImgURL,
+                                avatarImage: image,
+                                name: user.name,
+                                coordinate: user.coordinate,
+                                description: user.description),
+                            UserInfoHeaderViewModel(
+                                image: image,
+                                name: user.name,
+                                location: user.coordinate?.latitude.description // MARK: FIX TO LOCATION
                             )
                         )
                     case .failure(_):
                         strongSelf.isAnimating?(false)
-                        completion(UserInfoHeaderViewModel(
-                            image: nil,
-                            name: user.name,
-                            location: user.coordinate?.latitude.description   // MARK: FIX TO LOCATION
+                        completion(
+                            UserInfo(
+                                avatarURL: user.avatarImgURL,
+                                avatarImage: nil,
+                                name: user.name,
+                                coordinate: user.coordinate,
+                                description: user.description),
+                            UserInfoHeaderViewModel(
+                                image: nil,
+                                name: user.name,
+                                location: user.coordinate?.latitude.description   // MARK: FIX TO LOCATION
                             )
                         )
                     }
                 }
             case .failure(_):
                 strongSelf.isAnimating?(false)
-                completion(nil)
+                completion(nil,nil)
                 strongSelf.didCatchError?("Network Error. Reload the App")
             }
         }
