@@ -14,7 +14,7 @@ final class UserDefaultsService {
 
     private enum Keys: String {
         case keyUserLogin
-        case keyUserInGroup
+        case keyShareCurrentLocation
     }
 
     var isUserLogin: Bool {
@@ -28,13 +28,13 @@ final class UserDefaultsService {
         }
     }
 
-    var isUserInGroup: Bool {
+    var shareCurrentLocation: Bool {
         get {
-            let isUserInGroup = userDefaults.bool(forKey: Keys.keyUserInGroup.rawValue)
-            return isUserInGroup
+            let shareCurrentLocation = userDefaults.bool(forKey: Keys.keyShareCurrentLocation.rawValue)
+            return shareCurrentLocation
         }
-        set(userGroupState) {
-            userDefaults.set(userGroupState, forKey: Keys.keyUserInGroup.rawValue)
+        set(shareCurrentLocation) {
+            userDefaults.set(shareCurrentLocation, forKey: Keys.keyShareCurrentLocation.rawValue)
             userDefaults.synchronize()
         }
     }
