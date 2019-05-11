@@ -48,6 +48,7 @@
 		4B83B2FD220F44D900C549AA /* UserService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B83B2FC220F44D900C549AA /* UserService.swift */; };
 		4B83B300220F496C00C549AA /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B83B2FF220F496C00C549AA /* User.swift */; };
 		4B83B302220F67C600C549AA /* UserServiceError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B83B301220F67C600C549AA /* UserServiceError.swift */; };
+		4B8BFB2322875ABE00F2427B /* Location+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B8BFB2222875ABE00F2427B /* Location+Extension.swift */; };
 		4B8C9044226B8E8300FCC1AB /* SettingsAvatarCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B8C9043226B8E8300FCC1AB /* SettingsAvatarCell.swift */; };
 		4B8E96482218BC8C001694C8 /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B8E96472218BC8C001694C8 /* ImagePicker.swift */; };
 		4B8E964A2218BCDB001694C8 /* ImagePickerActionSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B8E96492218BCDB001694C8 /* ImagePickerActionSheet.swift */; };
@@ -134,6 +135,7 @@
 		4B83B2FC220F44D900C549AA /* UserService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserService.swift; sourceTree = "<group>"; };
 		4B83B2FF220F496C00C549AA /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		4B83B301220F67C600C549AA /* UserServiceError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserServiceError.swift; sourceTree = "<group>"; };
+		4B8BFB2222875ABE00F2427B /* Location+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Location+Extension.swift"; sourceTree = "<group>"; };
 		4B8C9043226B8E8300FCC1AB /* SettingsAvatarCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsAvatarCell.swift; sourceTree = "<group>"; };
 		4B8E96472218BC8C001694C8 /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
 		4B8E96492218BCDB001694C8 /* ImagePickerActionSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePickerActionSheet.swift; sourceTree = "<group>"; };
@@ -596,6 +598,14 @@
 			path = User;
 			sourceTree = "<group>";
 		};
+		4B8BFB2122875A9D00F2427B /* Location */ = {
+			isa = PBXGroup;
+			children = (
+				4B8BFB2222875ABE00F2427B /* Location+Extension.swift */,
+			);
+			path = Location;
+			sourceTree = "<group>";
+		};
 		4B8C9042226B8E2600FCC1AB /* Cells */ = {
 			isa = PBXGroup;
 			children = (
@@ -837,6 +847,7 @@
 		4BD8CFB0220A590800E0C6F5 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				4B8BFB2122875A9D00F2427B /* Location */,
 				4BD35143221C994D00D764D2 /* ViewController */,
 				4BD8CFB7220A59C600E0C6F5 /* CollectionView */,
 				4BD8CFB4220A599B00E0C6F5 /* UITableView */,
@@ -1042,7 +1053,7 @@
 			outputFileListPaths = (
 			);
 			outputPaths = (
-				"$SRCROOT/Source/PresentationLayer/Autogeneration/R.generated.swift",
+				$SRCROOT/Source/PresentationLayer/Autogeneration/R.generated.swift,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -1177,6 +1188,7 @@
 				4BD8CF7E220A4A3E00E0C6F5 /* View.swift in Sources */,
 				4B49B3122212967800EF6C74 /* ChatsViewController.swift in Sources */,
 				4B49B3142212968C00EF6C74 /* GameViewController.swift in Sources */,
+				4B8BFB2322875ABE00F2427B /* Location+Extension.swift in Sources */,
 				4B49B2E722127F4500EF6C74 /* WelcomeViewController.swift in Sources */,
 				4B49B30E2212965B00EF6C74 /* FriendsViewController.swift in Sources */,
 				4B8E96482218BC8C001694C8 /* ImagePicker.swift in Sources */,

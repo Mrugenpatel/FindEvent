@@ -100,8 +100,8 @@ class ProfileSettingsControllerViewModel {
             isAnimating?(false); didCatchError?("Too short name"); return
         }
 
-        guard editedUserInfo.description.count < 30 else {
-            isAnimating?(false); didCatchError?("Max 30 symbols for bio"); return
+        guard editedUserInfo.description.count < 45 else {
+            isAnimating?(false); didCatchError?("Max 45 symbols for bio"); return
         }
 
         guard let currentUserId = Auth.auth().currentUser?.uid else {

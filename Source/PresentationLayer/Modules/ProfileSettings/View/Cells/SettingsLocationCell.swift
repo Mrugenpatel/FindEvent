@@ -8,6 +8,7 @@
 
 import UIKit
 import FirebaseFirestore
+import CoreLocation
 
 class SettingsLocationCell: TableViewCell {
 
@@ -27,23 +28,24 @@ class SettingsLocationCell: TableViewCell {
         super.configure()
         contentView.backgroundColor = ViewConfig.Colors.background
         selectionStyle = .none
-        attachTextField()
         attachSwitcher()
+        attachTextField()
+
     }
 
     func configure(location: GeoPoint?) {
         guard
             let location = location
-        else {
-            locationSwitcher.isOn = false
-            textField.text = nil
-            return }
+            else {
+                locationSwitcher.isOn = false
+                textField.text = nil
+                return }
         locationSwitcher.isOn = true
-        textField.text = String(location.latitude)
-        
-        //        if !location.isEmpty {
-        //            textField.text = location
-        //        }
+        getPlace(for: CLLocation(
+            latitude: location.latitude,
+            longitude: location.longitude)) { [weak self] placemark in
+                self?.textField.text = String().formattedAddress(fromPlacemark: placemark)
+        }
     }
 
     private func configuredTextField() -> TextField {
@@ -59,7 +61,9 @@ class SettingsLocationCell: TableViewCell {
     private func configuredLocationSwitcher() -> UISwitch {
         let switcher = UISwitch()
         switcher.addTarget(self, action: #selector(onSwitchValueChanged(_:)), for: .touchUpInside)
-        switcher.onTintColor = ViewConfig.Colors.blue
+        switcher.onTintColor = ViewConfig.Colors.dark
+        switcher.tintColor = ViewConfig.Colors.dark
+        switcher.thumbTintColor = ViewConfig.Colors.blue
 
         return switcher
     }
@@ -73,22 +77,22 @@ class SettingsLocationCell: TableViewCell {
 
     // MARK: - Attachments
 
-    private func attachTextField() {
-        contentView.addSubview(textField)
-
-        textField.snp.makeConstraints { maker in
-            maker.left.top.equalToSuperview().inset(5)
-            maker.height.equalTo(30)
-        }
-    }
-
     private func attachSwitcher() {
         contentView.addSubview(locationSwitcher)
 
         locationSwitcher.snp.makeConstraints { maker in
-            maker.centerY.equalTo(textField)
-            maker.left.equalTo(textField.snp.right)
-            maker.right.equalToSuperview().inset(10)
+            maker.top.right.equalToSuperview().inset(5)
+            maker.height.equalTo(30)
+        }
+    }
+
+    private func attachTextField() {
+        contentView.addSubview(textField)
+
+        textField.snp.makeConstraints { maker in
+            maker.left.equalToSuperview().inset(5)
+            maker.right.equalTo(locationSwitcher.snp.left).offset(3)
+            maker.centerY.equalTo(locationSwitcher)
             maker.height.equalTo(30)
         }
     }

@@ -211,8 +211,8 @@ extension ProfileSettingsViewController: UITableViewDataSource {
         let label = UILabel()
         label.numberOfLines = 0
         label.textAlignment = .center
-        label.font = ViewConfig.Fonts.boldItalic(of: 12)
-        label.textColor = ViewConfig.Colors.white
+        label.font = ViewConfig.Fonts.semibold(of: 12)
+        label.textColor = ViewConfig.Colors.textLightGrey
         label.text = viewModel.sections[section].rawValue
 
         backgroundView.addSubview(label)
