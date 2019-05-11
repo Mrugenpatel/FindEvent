@@ -36,7 +36,7 @@ class User {
     var name: String?
     let email: String?
     var avatarImgURL: String?
-    var coordinate: Coordinate?
+    var coordinate: GeoPoint?
     var lastOnlineDate: Bool?
     var description: String?
 
@@ -50,7 +50,7 @@ class User {
         guard let avatarImgURL = user[Constants.avatarImgURL.rawValue] as? String else { return nil }
         self.avatarImgURL = avatarImgURL
         if let coordinate = user[Constants.coordinate.rawValue] as? GeoPoint {
-            self.coordinate = Coordinate(latitude: coordinate.latitude, longitude: coordinate.longitude)
+            self.coordinate = GeoPoint(latitude: coordinate.latitude, longitude: coordinate.longitude)
         }
         guard let lastOnlineDate = user[Constants.lastOnlineDate.rawValue] as? Bool else { return nil }
         self.lastOnlineDate = lastOnlineDate
@@ -62,7 +62,7 @@ class User {
          name: String?,
          email: String?,
          avatarImgURL: String?,
-         coordinate: Coordinate?,
+         coordinate: GeoPoint?,
          lastOnlineDate: Bool?,
          description: String?
         ) {

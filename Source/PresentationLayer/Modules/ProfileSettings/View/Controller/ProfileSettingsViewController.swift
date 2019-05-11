@@ -54,19 +54,6 @@ final class ProfileSettingsViewController: UIViewController {
         super.configureView()
         containerView.backgroundColor = ViewConfig.Colors.background
         attachTableView()
-        Position.shared.addObserver(self)
-        Position.shared.distanceFilter = 20
-
-        if Position.shared.locationServicesStatus == .allowedWhenInUse ||
-            Position.shared.locationServicesStatus == .allowedAlways {
-            Position.shared.performOneShotLocationUpdate(withDesiredAccuracy: 250) { (location, error) -> () in
-                print(location, error)
-            }
-        } else {
-            // request permissions based on the type of location support required.
-            Position.shared.requestWhenInUseLocationAuthorization()
-            // Position.shared.requestA`lwaysLocationAuthorization()
-        }
     }
 
     override func configureViewModel() {
@@ -74,239 +61,226 @@ final class ProfileSettingsViewController: UIViewController {
         viewModel.startingLogout = { [unowned self] in
             self.doneCallback?()
         }
-            viewModel.dismissVC = { [weak self] in
-                DispatchQueue.main.async {
-                    self?.navigationController?.popViewController(animated: true)
-                }
-            }
-            viewModel.didCatchError = { [weak self] error in
-                DispatchQueue.main.async {
-                    self?.showError(error: error)
-                }
-            }
-            viewModel.isAnimating = { isAnimating in
-                DispatchQueue.main.async {
-                    isAnimating ? SVProgressHUD.show() : SVProgressHUD.dismiss()
-                }
-            }
-            viewModel.getUserInfo { [weak self] userInfo in
-                guard let userInfo = userInfo else { return }
-                self?.viewModel.editedUserInfo = userInfo
-                DispatchQueue.main.async {
-                    self?.tableView.reloadData()
-                }
+        viewModel.dismissVC = { [weak self] in
+            DispatchQueue.main.async {
+                self?.navigationController?.popViewController(animated: true)
             }
         }
-
-        private func configuredNavigationBar() {
-            navigationItem.title = "Edit Profile"
-            navigationItem.rightBarButtonItem = UIBarButtonItem(
-                title: "Save",
-                style: .plain,
-                target: self,
-                action: #selector(save))
-        }
-
-        private func configuredTableView() -> UITableView {
-            let tableView = UITableView()
-            tableView.backgroundColor = ViewConfig.Colors.dark
-            tableView.separatorStyle = .none
-            tableView.delegate = self
-            tableView.dataSource = self
-            tableView.registerCell(ofType: SettingsAvatarCell.self)
-            tableView.registerCell(ofType: SettingsNameCell.self)
-            tableView.registerCell(ofType: SettingsLocationCell.self)
-            tableView.registerCell(ofType: SettingsDecriptionCell.self)
-            tableView.registerCell(ofType: SettingsLogoutCell.self)
-
-            return tableView
-        }
-
-        // MARK: - Attachments
-
-        private func attachTableView() {
-            containerView.addSubview(tableView)
-
-            tableView.snp.makeConstraints { maker in
-                maker.edges.equalToSuperview()
+        viewModel.didCatchError = { [weak self] error in
+            DispatchQueue.main.async {
+                self?.showError(error: error)
             }
         }
-
-        // MARK: Actions
-
-        @objc func save() {
-            viewModel.saveEditedInfo()
+        viewModel.isAnimating = { isAnimating in
+            DispatchQueue.main.async {
+                //isAnimating ? SVProgressHUD.show() : SVProgressHUD.dismiss()
+            }
         }
-
-        private func showError(error: String) {
-            SVProgressHUD.showError(withStatus: error)
+        viewModel.getUserInfo { [weak self] userInfo in
+            guard let userInfo = userInfo else { return }
+            self?.viewModel.editedUserInfo = userInfo
+            DispatchQueue.main.async {
+                self?.tableView.reloadData()
+            }
         }
     }
 
-    extension ProfileSettingsViewController: UITableViewDataSource {
+    private func configuredNavigationBar() {
+        navigationItem.title = "Edit Profile"
+        navigationItem.rightBarButtonItem = UIBarButtonItem(
+            title: "Save",
+            style: .plain,
+            target: self,
+            action: #selector(save))
+    }
 
-        func numberOfSections(
-            in tableView: UITableView
-            ) -> Int {
-            return viewModel.numberOfSections
-        }
+    private func configuredTableView() -> UITableView {
+        let tableView = UITableView()
+        tableView.backgroundColor = ViewConfig.Colors.dark
+        tableView.separatorStyle = .none
+        tableView.delegate = self
+        tableView.dataSource = self
+        tableView.registerCell(ofType: SettingsAvatarCell.self)
+        tableView.registerCell(ofType: SettingsNameCell.self)
+        tableView.registerCell(ofType: SettingsLocationCell.self)
+        tableView.registerCell(ofType: SettingsDecriptionCell.self)
+        tableView.registerCell(ofType: SettingsLogoutCell.self)
 
-        func tableView(
-            _ tableView: UITableView,
-            numberOfRowsInSection section: Int
-            ) -> Int {
-            return 1
-        }
+        return tableView
+    }
 
-        func tableView(
-            _ tableView: UITableView,
-            cellForRowAt indexPath: IndexPath
-            ) -> UITableViewCell {
-            switch viewModel.sections[indexPath.section] {
-            case .avatarSection:
-                let cell: SettingsAvatarCell = tableView.dequeueCell(at: indexPath)
-                cell.configure(avatarImage: viewModel.editedUserInfo.avatarImage)
-                cell.selectAvatarView.didSelectImage = { [unowned self] in
-                    ImagePicker { picker in
-                        picker.didPickImage = { [unowned self] image in
-                            cell.configure(avatarImage: image)
-                            self.viewModel.updatedImage = image
-                        }
-                        }.show(from: self)
-                }
-                return cell
-            case .nameSection:
-                let cell: SettingsNameCell = tableView.dequeueCell(at: indexPath)
-                cell.configure(name: viewModel.editedUserInfo.name)
-                cell.editedName = { [unowned self] name in
-                    self.viewModel.editedUserInfo.name = name
-                }
-                return cell
-            case .locationSection:
-                let cell: SettingsLocationCell = tableView.dequeueCell(at: indexPath)
-                cell.configure(location: viewModel.editedUserInfo.coordinate)
-                cell.showMap = { [unowned self] in
-                    // present map VC
-                }
-                return cell
-            case .descriptionSection:
-                let cell: SettingsDecriptionCell = tableView.dequeueCell(at: indexPath)
-                cell.configure(description: viewModel.editedUserInfo.description)
-                cell.editedDescription = { [unowned self] description in
-                    self.viewModel.editedUserInfo.description = description
-                }
-                return cell
-            case .logoutSection:
-                let cell: SettingsLogoutCell = tableView.dequeueCell(at: indexPath)
-                cell.logout = { [unowned self] in
-                    self.viewModel.logout()
-                }
-                return cell
-            }
-        }
+    // MARK: - Attachments
 
-        func tableView(
-            _ tableView: UITableView,
-            viewForFooterInSection section: Int
-            ) -> UIView? {
-            let backgroundView = UIView()
-            backgroundView.backgroundColor = ViewConfig.Colors.dark
+    private func attachTableView() {
+        containerView.addSubview(tableView)
 
-            let label = UILabel()
-            label.numberOfLines = 0
-            label.textAlignment = .center
-            label.font = ViewConfig.Fonts.boldItalic(of: 12)
-            label.textColor = ViewConfig.Colors.white
-            label.text = viewModel.sections[section].rawValue
-
-            backgroundView.addSubview(label)
-
-            label.snp.makeConstraints { maker in
-                maker.left.right.top.equalToSuperview().inset(5)
-            }
-
-            return backgroundView
+        tableView.snp.makeConstraints { maker in
+            maker.edges.equalToSuperview()
         }
     }
 
-    extension ProfileSettingsViewController: UITableViewDelegate {
+    // MARK: Actions
 
-        func tableView(
-            _ tableView: UITableView,
-            estimatedHeightForFooterInSection section: Int
-            ) -> CGFloat {
-            return Constants.heightForFooterInSection
-        }
+    @objc func save() {
+        viewModel.saveEditedInfo()
+    }
 
-        func tableView(
-            _ tableView: UITableView,
-            heightForFooterInSection section: Int
-            ) -> CGFloat {
-            return Constants.heightForFooterInSection
-        }
-
-        func tableView(
-            _ tableView: UITableView,
-            heightForRowAt indexPath: IndexPath
-            ) -> CGFloat {
-            switch viewModel.sections[indexPath.section] {
-            case .avatarSection:
-                return Constants.heightForAvatarRow
-            case .nameSection:
-                return Constants.heightForNameRow
-            case .locationSection:
-                return Constants.heightForLocationRow
-            case .descriptionSection:
-                return Constants.heightForDescriptionRow
-            case .logoutSection:
-                return Constants.heightForDescriptionRow
-            }
-        }
-
-        func tableView(
-            _ tableView: UITableView,
-            estimatedHeightForRowAt indexPath: IndexPath
-            ) -> CGFloat {
-            switch viewModel.sections[indexPath.section] {
-            case .avatarSection:
-                return Constants.heightForAvatarRow
-            case .nameSection:
-                return Constants.heightForNameRow
-            case .locationSection:
-                return Constants.heightForLocationRow
-            case .descriptionSection:
-                return Constants.heightForDescriptionRow
-            case .logoutSection:
-                return Constants.heightForDescriptionRow
-            }
-        }
+    private func showError(error: String) {
+        SVProgressHUD.showError(withStatus: error)
+    }
 }
 
-extension ProfileSettingsViewController: PositionObserver {
-    func position(_ position: Position, didUpdateOneShotLocation location: CLLocation?) {
+extension ProfileSettingsViewController: UITableViewDataSource {
 
+    func numberOfSections(
+        in tableView: UITableView
+        ) -> Int {
+        return viewModel.numberOfSections
     }
 
-    func position(_ position: Position, didUpdateTrackingLocations locations: [CLLocation]?) {
-
+    func tableView(
+        _ tableView: UITableView,
+        numberOfRowsInSection section: Int
+        ) -> Int {
+        return 1
     }
 
-    func position(_ position: Position, didUpdateFloor floor: CLFloor) {
+    func tableView(
+        _ tableView: UITableView,
+        cellForRowAt indexPath: IndexPath
+        ) -> UITableViewCell {
+        switch viewModel.sections[indexPath.section] {
+        case .avatarSection:
+            let cell: SettingsAvatarCell = tableView.dequeueCell(at: indexPath)
+            cell.configure(avatarImage: viewModel.editedUserInfo.avatarImage)
+            cell.selectAvatarView.didSelectImage = { [unowned self] in
+                ImagePicker { picker in
+                    picker.didPickImage = { [unowned self] image in
+                        cell.configure(avatarImage: image)
+                        self.viewModel.updatedImage = image
+                    }
+                    }.show(from: self)
+            }
+            return cell
+        case .nameSection:
+            let cell: SettingsNameCell = tableView.dequeueCell(at: indexPath)
+            cell.configure(name: viewModel.editedUserInfo.name)
+            cell.editedName = { [unowned self] name in
+                self.viewModel.editedUserInfo.name = name
+            }
+            return cell
+        case .locationSection:
+            let cell: SettingsLocationCell = tableView.dequeueCell(at: indexPath)
+            cell.configure(location: viewModel.editedUserInfo.coordinate)
 
+            cell.showLocation = { [unowned self] isShowing in
+                switch isShowing {
+                case true:
+                    self.viewModel.observeLocation(completion: { isUpdated in
+                        isUpdated ? cell.configure(location: self.viewModel.editedUserInfo.coordinate) :
+                            cell.configure(location: self.viewModel.editedUserInfo.coordinate)
+                    })
+                case false:
+                    self.viewModel.editedUserInfo.coordinate = nil
+                    cell.configure(location: nil)
+                }
+            }
+
+            cell.showMap = { [unowned self] in
+                // present map VC
+            }
+            return cell
+        case .descriptionSection:
+            let cell: SettingsDecriptionCell = tableView.dequeueCell(at: indexPath)
+            cell.configure(description: viewModel.editedUserInfo.description)
+            cell.editedDescription = { [unowned self] description in
+                self.viewModel.editedUserInfo.description = description
+            }
+            return cell
+        case .logoutSection:
+            let cell: SettingsLogoutCell = tableView.dequeueCell(at: indexPath)
+            cell.logout = { [unowned self] in
+                self.viewModel.logout()
+            }
+            return cell
+        }
     }
 
-    func position(_ position: Position, didVisit visit: CLVisit?) {
+    func tableView(
+        _ tableView: UITableView,
+        viewForFooterInSection section: Int
+        ) -> UIView? {
+        let backgroundView = UIView()
+        backgroundView.backgroundColor = ViewConfig.Colors.dark
 
+        let label = UILabel()
+        label.numberOfLines = 0
+        label.textAlignment = .center
+        label.font = ViewConfig.Fonts.boldItalic(of: 12)
+        label.textColor = ViewConfig.Colors.white
+        label.text = viewModel.sections[section].rawValue
+
+        backgroundView.addSubview(label)
+
+        label.snp.makeConstraints { maker in
+            maker.left.right.top.equalToSuperview().inset(5)
+        }
+
+        return backgroundView
     }
-
-    func position(_ position: Position, didChangeDesiredAccurary desiredAccuracy: Double) {
-
-    }
-
-    func position(_ position: Position, didFailWithError error: Error?) {
-
-    }
-
-
 }
+
+extension ProfileSettingsViewController: UITableViewDelegate {
+
+    func tableView(
+        _ tableView: UITableView,
+        estimatedHeightForFooterInSection section: Int
+        ) -> CGFloat {
+        return Constants.heightForFooterInSection
+    }
+
+    func tableView(
+        _ tableView: UITableView,
+        heightForFooterInSection section: Int
+        ) -> CGFloat {
+        return Constants.heightForFooterInSection
+    }
+
+    func tableView(
+        _ tableView: UITableView,
+        heightForRowAt indexPath: IndexPath
+        ) -> CGFloat {
+        switch viewModel.sections[indexPath.section] {
+        case .avatarSection:
+            return Constants.heightForAvatarRow
+        case .nameSection:
+            return Constants.heightForNameRow
+        case .locationSection:
+            return Constants.heightForLocationRow
+        case .descriptionSection:
+            return Constants.heightForDescriptionRow
+        case .logoutSection:
+            return Constants.heightForDescriptionRow
+        }
+    }
+
+    func tableView(
+        _ tableView: UITableView,
+        estimatedHeightForRowAt indexPath: IndexPath
+        ) -> CGFloat {
+        switch viewModel.sections[indexPath.section] {
+        case .avatarSection:
+            return Constants.heightForAvatarRow
+        case .nameSection:
+            return Constants.heightForNameRow
+        case .locationSection:
+            return Constants.heightForLocationRow
+        case .descriptionSection:
+            return Constants.heightForDescriptionRow
+        case .logoutSection:
+            return Constants.heightForDescriptionRow
+        }
+    }
+}
+
 

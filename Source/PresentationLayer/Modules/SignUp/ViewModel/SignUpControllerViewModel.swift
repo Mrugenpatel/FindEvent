@@ -8,6 +8,7 @@
 
 import UIKit
 import CoreLocation
+import FirebaseFirestore
 
 protocol SignUpControllerViewModelType {
     var selectUserAvatarViewTitle: String { get }
@@ -23,7 +24,7 @@ protocol SignUpControllerViewModelType {
     var nameData: String? { get set }
     var emailData: String? { get set }
     var passwordData: String? { get set }
-    var locationData: Coordinate? { get set }
+    var locationData: GeoPoint? { get set }
     var didCatchSigningUpError: ((String) -> (Void))? { get set }
     var didSignedUp: EmptyClosure? { get set }
     func signUpViaEmail()
@@ -58,7 +59,7 @@ final class SignUpControllerViewModel: SignUpControllerViewModelType {
     var emailData: String?
     var passwordData: String?
     var imageData: UIImage?
-    var locationData: Coordinate?
+    var locationData: GeoPoint?
 
     // MARK: Callbacks
 

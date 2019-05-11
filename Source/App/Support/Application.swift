@@ -78,7 +78,7 @@ private extension Application {
 
         // - SVProgressHUD Setup
 
-        SVProgressHUD.setMinimumDismissTimeInterval(1)
+        SVProgressHUD.setMinimumDismissTimeInterval(0.5)
         SVProgressHUD.setDefaultMaskType(.gradient)
     }
 

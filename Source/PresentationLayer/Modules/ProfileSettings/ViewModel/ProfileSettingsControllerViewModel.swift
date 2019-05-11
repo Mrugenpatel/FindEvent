@@ -8,6 +8,8 @@
 
 import Foundation
 import FirebaseAuth
+import FirebaseFirestore
+import Position
 
 class ProfileSettingsControllerViewModel {
     
@@ -15,13 +17,13 @@ class ProfileSettingsControllerViewModel {
         var avatarURL: String
         var avatarImage: UIImage?
         var name: String
-        var coordinate: Coordinate?
+        var coordinate: GeoPoint?
         var description: String
 
         init(avatarURL: String?,
              avatarImage: UIImage?,
              name: String?,
-             coordinate: Coordinate?,
+             coordinate: GeoPoint?,
              description: String?
             ) {
             self.avatarImage = avatarImage
@@ -218,6 +220,26 @@ class ProfileSettingsControllerViewModel {
             case .failure(let error):
                 self?.didCatchError?(error.localizedDescription)
             }
+        }
+    }
+
+    func observeLocation(completion: @escaping (Bool) -> Void) {
+        Position.shared.distanceFilter = 20
+
+        if Position.shared.locationServicesStatus == .allowedWhenInUse ||
+            Position.shared.locationServicesStatus == .allowedAlways {
+            Position.shared.performOneShotLocationUpdate(withDesiredAccuracy: 250) { [weak self] location, error in
+                guard
+                    error == nil,
+                    let location = location
+                    else { return }
+                self?.editedUserInfo.coordinate = GeoPoint(
+                    latitude: location.coordinate.latitude,
+                    longitude: location.coordinate.longitude)
+                    completion(true)
+            }
+        } else {
+            didCatchError?("Location Services disabled. Please enable Location Services in Settings")
         }
     }
 }

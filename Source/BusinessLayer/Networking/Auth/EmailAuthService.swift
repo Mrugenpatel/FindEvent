@@ -7,6 +7,7 @@
 //
 
 import FirebaseAuth
+import FirebaseFirestore
 
 protocol EmailAuthServiceType: AuthServiceType {
     
@@ -15,7 +16,7 @@ protocol EmailAuthServiceType: AuthServiceType {
         withEmail email: String,
         withPassword password: String,
         withUserImg img: UIImage?,
-        withCoordinate coordinate: Coordinate?,
+        withCoordinate coordinate: GeoPoint?,
         completion: @escaping AuthResult
     )
     
@@ -57,7 +58,7 @@ class EmailAuthService: EmailAuthServiceType {
         withEmail email: String,
         withPassword password: String,
         withUserImg img: UIImage?,
-        withCoordinate coordinate: Coordinate?,
+        withCoordinate coordinate: GeoPoint?,
         completion: @escaping AuthResult
         ) {
         firebaseAuth.createUser(
