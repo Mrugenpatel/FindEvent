@@ -60,7 +60,6 @@ extension SettingsNameCell: UITextFieldDelegate {
     func textFieldDidBeginEditing(
         _ textField: UITextField
         ) {
-        textField.text = ""
     }
     
     func textField(

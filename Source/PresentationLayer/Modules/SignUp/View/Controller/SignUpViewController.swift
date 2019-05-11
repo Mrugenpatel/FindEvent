@@ -273,10 +273,6 @@ final class SignUpViewController: UIViewController {
 extension SignUpViewController: CLLocationManagerDelegate {
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-//        viewModel.locationData = Coordinate(
-//            latitude: locations[0].coordinate.latitude,
-//            longitude: locations[0].coordinate.longitude
-//        )
         viewModel.locationData = GeoPoint(
             latitude: locations[0].coordinate.latitude,
             longitude: locations[0].coordinate.longitude)

@@ -73,10 +73,10 @@ final class ProfileSettingsViewController: UIViewController {
         }
         viewModel.isAnimating = { isAnimating in
             DispatchQueue.main.async {
-                //isAnimating ? SVProgressHUD.show() : SVProgressHUD.dismiss()
+                //isAnimating ? SVProgressHUD.show() : SVProgressHUD.dismiss()  // for saving only
             }
         }
-        viewModel.getUserInfo { [weak self] userInfo in
+        viewModel.getUserInfo { [weak self] userInfo in     // remove
             guard let userInfo = userInfo else { return }
             self?.viewModel.editedUserInfo = userInfo
             DispatchQueue.main.async {
