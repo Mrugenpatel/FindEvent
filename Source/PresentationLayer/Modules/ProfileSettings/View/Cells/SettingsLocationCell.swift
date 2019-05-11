@@ -30,7 +30,6 @@ class SettingsLocationCell: TableViewCell {
         selectionStyle = .none
         attachSwitcher()
         attachTextField()
-
     }
 
     func configure(location: GeoPoint?) {
