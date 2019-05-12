@@ -18,6 +18,9 @@ target 'FamillyOrganizer' do
     pod 'Firebase/Core'
     pod 'Firebase/Firestore'
     pod 'Firebase/Storage'
+    pod 'FacebookCore'
+    pod 'FacebookLogin'
+    pod 'FBSDKLoginKit'
 
 # Permissions
     pod 'Permission', :path => './LocalPods/Permission'
