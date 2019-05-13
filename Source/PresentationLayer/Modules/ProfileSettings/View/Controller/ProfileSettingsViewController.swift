@@ -181,7 +181,7 @@ extension ProfileSettingsViewController: UITableViewDataSource {
                 }
             }
 
-            cell.showMap = { in
+            cell.showMap = {
                 // present map VC
             }
             return cell
