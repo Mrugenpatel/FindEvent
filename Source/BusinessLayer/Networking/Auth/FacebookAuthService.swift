@@ -10,6 +10,7 @@ import Foundation
 import FirebaseAuth
 import FacebookCore
 import FacebookLogin
+import FBSDKLoginKit
 
 protocol FacebookAuthServiceType: AuthServiceType {
     
