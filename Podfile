@@ -21,6 +21,7 @@ target 'FamillyOrganizer' do
     pod 'FacebookCore'
     pod 'FacebookLogin'
     pod 'FBSDKLoginKit'
+    pod 'SwiftyJSON', '~> 3.0'
 
 # Permissions
     pod 'Permission', :path => './LocalPods/Permission'

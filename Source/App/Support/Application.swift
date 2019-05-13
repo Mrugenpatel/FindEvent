@@ -100,7 +100,7 @@ private extension Application {
             Position.shared.distanceFilter = 20
             if Position.shared.locationServicesStatus == .allowedWhenInUse ||
                 Position.shared.locationServicesStatus == .allowedAlways {
-                Position.shared.performOneShotLocationUpdate(withDesiredAccuracy: 250) { [weak self] location, error in
+                Position.shared.performOneShotLocationUpdate(withDesiredAccuracy: 250) { location, error in
                     guard
                         error == nil,
                         let location = location

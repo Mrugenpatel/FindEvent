@@ -141,6 +141,7 @@ PODS:
   - R.swift.Library (5.0.0)
   - SnapKit (4.2.0)
   - SVProgressHUD (2.2.5)
+  - SwiftyJSON (3.1.4)
 
 DEPENDENCIES:
   - FacebookCore
@@ -159,6 +160,7 @@ DEPENDENCIES:
   - R.swift
   - SnapKit
   - SVProgressHUD
+  - SwiftyJSON (~> 3.0)
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
@@ -190,6 +192,7 @@ SPEC REPOS:
     - R.swift.Library
     - SnapKit
     - SVProgressHUD
+    - SwiftyJSON
 
 EXTERNAL SOURCES:
   Permission:
@@ -225,7 +228,8 @@ SPEC CHECKSUMS:
   R.swift.Library: 0bf390e729bc10bb2c9e4fb78bd043164a7be4ff
   SnapKit: fe8a619752f3f27075cc9a90244d75c6c3f27e2a
   SVProgressHUD: 1428aafac632c1f86f62aa4243ec12008d7a51d6
+  SwiftyJSON: c2842d878f95482ffceec5709abc3d05680c0220
 
-PODFILE CHECKSUM: 0c9dda21bba502db4b3a13993564a2aefe7dc36e
+PODFILE CHECKSUM: 7c9dff37e34e8ebc3ceaa864b882b106f753ca1f
 
 COCOAPODS: 1.6.1
