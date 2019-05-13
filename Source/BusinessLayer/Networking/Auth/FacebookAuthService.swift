@@ -102,12 +102,11 @@ class FacebookAuthService: FacebookAuthServiceType {
                 guard
                     let name = json["name"].string,
                     let email = json["email"].string,
-                    let profileImageFacebookUrl = json["picture"]["data"]["url"].string
+                    let profileImageFacebookUrl = json["picture"]["data"]["url"].string,
+                    let url = URL(string: profileImageFacebookUrl)
                 else {
                         completion(Result.failure(AuthServiceError.failedToCreateUser));
-                        return }
-                
-                guard let url = URL(string: profileImageFacebookUrl) else { completion(Result.failure(AuthServiceError.failedToCreateUser)); return }
+                return }
                 
                 //                URLSession.shared.dataTask(with: url) { (data, response, err) in
                 //                    if err != nil { completion("Failed to fetch profile picture with err:", err, nil); return }
