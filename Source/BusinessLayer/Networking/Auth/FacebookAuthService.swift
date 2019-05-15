@@ -59,11 +59,18 @@ class FacebookAuthService: FacebookAuthServiceType {
         completion: @escaping AuthResult
         ) { // if image(Optional) -> set imageUrl from Facebook
         
-        LoginManager().logIn(readPermissions: [.publicProfile, .email], viewController: viewController) { (result) in
+        LoginManager().logIn(readPermissions: [.publicProfile, .email], viewController: viewController) { [weak self] result in
+            guard let strongSelf = self else {return}
             switch result {
             case .success(grantedPermissions: _, declinedPermissions: _, token: _):
-                print("Succesfully logged in into Facebook.")
-                self.signIntoFirebaseWithFacebook(completion: completion)
+                guard let authenticationToken = AccessToken.current?.authenticationToken else {
+                    completion(Result.failure(AuthServiceError.failedToCreateUser))
+                    return }
+                let facebookCredential = FacebookAuthProvider.credential(withAccessToken: authenticationToken)
+                strongSelf.firebaseAuth.signInAndRetrieveData(with: facebookCredential) { (result, err) in
+                    if let _ = err { completion(Result.failure(AuthServiceError.failedToCreateUser)); return }
+                    strongSelf.fetchFacebookUser(completion: completion)
+                }
             case .failed(_):
                 completion(Result.failure(AuthServiceError.failedToCreateUser))
             case .cancelled:
@@ -72,56 +79,23 @@ class FacebookAuthService: FacebookAuthServiceType {
         }
     }
     
-    private func signIntoFirebaseWithFacebook(completion: @escaping AuthResult) {
-        guard let authenticationToken = AccessToken.current?.authenticationToken else {
-            completion(Result.failure(AuthServiceError.failedToCreateUser))
-            return }
-        let facebookCredential = FacebookAuthProvider.credential(withAccessToken: authenticationToken)
-        signIntoFirebase(withFacebookCredential: facebookCredential, completion: completion)
-    }
-    
-    private func signIntoFirebase(withFacebookCredential facebookCredential: AuthCredential, completion: @escaping AuthResult) {
-        firebaseAuth.signInAndRetrieveData(with: facebookCredential) { (result, err) in
-            if let _ = err { completion(Result.failure(AuthServiceError.failedToCreateUser)); return }
-            self.fetchFacebookUser(completion: completion)
-        }
-    }
-    
     private func fetchFacebookUser(completion: @escaping AuthResult) {
         let graphRequestConnection = GraphRequestConnection()
         let graphRequest = GraphRequest(graphPath: "me", parameters: ["fields": "id, email, name, picture.type(large)"], accessToken: AccessToken.current, httpMethod: .GET, apiVersion: .defaultVersion)
-        graphRequestConnection.add(graphRequest, completion: { (httpResponse, result) in
+        graphRequestConnection.add(graphRequest, completion: { [weak self] (httpResponse, result) in
             switch result {
             case .success(response: let response):
                 
-                guard let uid = Auth.auth().currentUser?.uid else { completion(Result.failure(AuthServiceError.failedToCreateUser)); return }
-                
-                guard let responseDict = response.dictionaryValue else { completion(Result.failure(AuthServiceError.failedToCreateUser)); return }
-                
+                guard let currentUserID = self?.currentUserId else { completion(Result.failure(AuthServiceError.failedToCreateUser)); return }
+                guard let responseDict = response.dictionaryValue else {
+                    completion(Result.failure(AuthServiceError.failedToCreateUser)); return }
                 let json = JSON(responseDict)
                 guard
                     let name = json["name"].string,
                     let email = json["email"].string,
                     let profileImageFacebookUrl = json["picture"]["data"]["url"].string,
                     let url = URL(string: profileImageFacebookUrl)
-                else {
-                        completion(Result.failure(AuthServiceError.failedToCreateUser));
-                return }
-                
-                //                URLSession.shared.dataTask(with: url) { (data, response, err) in
-                //                    if err != nil { completion("Failed to fetch profile picture with err:", err, nil); return }
-                //                    guard let data = data else { completion("Failed to fetch profile picture data with err:", nil, nil); return }
-                //
-                //                    let documentData = [SparkKeys.SparkUser.uid: uid,
-                //                                        SparkKeys.SparkUser.name: name,
-                //                                        SparkKeys.SparkUser.email: email,
-                //                                        SparkKeys.SparkUser.profileImageUrl: profileImageFacebookUrl /* remember to change this to the Firebase Storage url later on*/] as [String : Any]
-                //
-                //                    let sparkUser = SparkUser(documentData: documentData)
-                //                    saveUserIntoFirebaseDatabase(profileImageData: data, sparkUser: sparkUser, completion: completion)
-                //
-                //                    }.resume()
-                
+                else { completion(Result.failure(AuthServiceError.failedToCreateUser)); return }
                 break
             case .failed(_):
                 completion(Result.failure(AuthServiceError.failedToCreateUser))
