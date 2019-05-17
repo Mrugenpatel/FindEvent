@@ -30,7 +30,6 @@ class User {
         case coordinate
         case lastOnlineDate
         case description
-        case friends
     }
 
     let id: String?
@@ -40,7 +39,6 @@ class User {
     var coordinate: GeoPoint?
     var lastOnlineDate: Bool?
     var description: String?
-    var friends: [DocumentReference]?
 
     init?(user: [String: Any]) {
         guard let id = user[Constants.id.rawValue] as? String else { return nil }
@@ -58,8 +56,6 @@ class User {
         self.lastOnlineDate = lastOnlineDate
         guard let description = user[Constants.description.rawValue] as? String else { return nil }
         self.description = description
-        guard let friends = user[Constants.friends.rawValue] as? [DocumentReference] else { return nil }
-        self.friends = friends
     }
 
     init(id: String?,
@@ -68,8 +64,7 @@ class User {
          avatarImgURL: String?,
          coordinate: GeoPoint?,
          lastOnlineDate: Bool?,
-         description: String?,
-         friends: [DocumentReference]?
+         description: String?
         ) {
         self.id = id
         self.name = name
@@ -78,7 +73,6 @@ class User {
         self.coordinate = coordinate
         self.lastOnlineDate = lastOnlineDate
         self.description = description
-        self.friends = friends
     }
 
     func data() -> [String: Any] {
@@ -89,8 +83,7 @@ class User {
             Constants.avatarImgURL.rawValue: avatarImgURL as Any,
             Constants.coordinate.rawValue: coordinate as Any,
             Constants.lastOnlineDate.rawValue: lastOnlineDate as Any,
-            Constants.description.rawValue: description as Any,
-            Constants.friends.rawValue: friends as Any
+            Constants.description.rawValue: description as Any
         ]
     }
 }

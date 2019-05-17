@@ -91,8 +91,7 @@ class EmailAuthService: EmailAuthServiceType {
                                     avatarImgURL: stringURL,
                                     coordinate: coordinate,
                                     lastOnlineDate: true,
-                                    description: "",
-                                    friends: nil
+                                    description: ""
                                 ))
                             { responseResult in
                                 
@@ -117,8 +116,7 @@ class EmailAuthService: EmailAuthServiceType {
                             avatarImgURL: "",
                             coordinate: coordinate,
                             lastOnlineDate: true,
-                            description: "",
-                            friends: nil
+                            description: ""
                         ))
                     { responseResult in
                         

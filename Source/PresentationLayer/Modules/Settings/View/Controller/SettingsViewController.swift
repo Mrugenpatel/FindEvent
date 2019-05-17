@@ -154,7 +154,8 @@ final class SettingsViewController: UIViewController {
                 emailAuthService: EmailAuthService(
                     userService: UserService(),
                     imageService: ImageService()),
-                facebookAuthService: FacebookAuthService(),
+                facebookAuthService: FacebookAuthService(userService: UserService(),
+                                                         imageService: ImageService()),
                 currentData: currentData
         ))
         profileVC.doneCallback = doneCallback

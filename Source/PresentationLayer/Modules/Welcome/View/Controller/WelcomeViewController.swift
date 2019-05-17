@@ -127,9 +127,11 @@ final class WelcomeViewController: UIViewController {
                 emailAuthService: EmailAuthService(
                     userService: UserService(),
                     imageService: ImageService()),
-                facebookAuthService: FacebookAuthService(),
+                facebookAuthService: FacebookAuthService(userService: UserService(),
+                                                         imageService: ImageService()),
                 userInputValidator: UserInputValidator(),
-                userDefaultsService: UserDefaultsService()))
+                userDefaultsService: UserDefaultsService(),
+                viewController: self))
         signUpViewController.doneCallback = doneCallback
         navigationController?.pushViewController(signUpViewController, animated: true)
     }
@@ -139,7 +141,8 @@ final class WelcomeViewController: UIViewController {
             viewModel: SignInControllerViewModel(
                 emailAuthService: EmailAuthService(userService: UserService(),
                                                    imageService: ImageService()),
-                facebookAuthService: FacebookAuthService(),
+                facebookAuthService: FacebookAuthService(userService: UserService(),
+                                                         imageService: ImageService()),
                 userInputValidator: UserInputValidator()))
         signInViewController.doneCallback = doneCallback
         navigationController?.pushViewController(signInViewController, animated: true)

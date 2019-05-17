@@ -11,6 +11,7 @@ import Firebase
 import SVProgressHUD
 import IQKeyboardManager
 import Position
+import FBSDKCoreKit
 
 let App = UIApplication.shared.delegate as! Application
 
@@ -20,13 +21,34 @@ class Application: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
     var rootViewController: RootViewController!
 
-    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
+    func application(
+        _ application: UIApplication,
+        didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?
+        ) -> Bool {
         firebaseSetup()
         locationSetup()
         keyboardSetup()
         viewSetup()
         UserService.setUserStatus(isOnline: true)
         return true
+    }
+
+    func application(
+        _ application: UIApplication,
+        didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?
+        ) {
+        FBSDKApplicationDelegate.sharedInstance()?.application(application,
+                                                               didFinishLaunchingWithOptions: launchOptions)
+    }
+
+    func application(
+        _ app: UIApplication,
+        open url: URL,
+        options: [UIApplication.OpenURLOptionsKey : Any] = [:]
+        ) -> Bool {
+        return FBSDKApplicationDelegate.sharedInstance()?.application(app,
+                                                                      open: url,
+                                                                      options: options) ?? false
     }
 
     // MARK: - App Life Cycle
@@ -104,7 +126,7 @@ private extension Application {
                     guard
                         error == nil,
                         let location = location
-                    else { return }
+                        else { return }
                     let coordinate = GeoPoint(
                         latitude: location.coordinate.latitude,
                         longitude: location.coordinate.longitude)

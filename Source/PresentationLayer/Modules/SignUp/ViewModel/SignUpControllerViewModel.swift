@@ -48,6 +48,7 @@ final class SignUpControllerViewModel: SignUpControllerViewModelType {
     private let facebookAuthService: FacebookAuthService
     private let userInputValidator: UserInputValidator
     private let userDefaultsService: UserDefaultsService
+    private let viewController: UIViewController
 
     var selectUserAvatarViewTitle = Strings.selectUserAvatarViewTitle
     var emailBtnTitle = Strings.emailBtnTitle
@@ -77,11 +78,13 @@ final class SignUpControllerViewModel: SignUpControllerViewModelType {
     init(emailAuthService: EmailAuthService,
          facebookAuthService: FacebookAuthService,
          userInputValidator: UserInputValidator,
-         userDefaultsService: UserDefaultsService) {
+         userDefaultsService: UserDefaultsService,
+         viewController: UIViewController) {
         self.emailAuthService = emailAuthService
         self.facebookAuthService = facebookAuthService
         self.userInputValidator = userInputValidator
         self.userDefaultsService = userDefaultsService
+        self.viewController = viewController
     }
 
     // MARK: Actions
@@ -101,12 +104,12 @@ final class SignUpControllerViewModel: SignUpControllerViewModelType {
                 withUserImg: imageData,
                 withCoordinate: locationData
             ) { [unowned self] responseResult in
-                    switch responseResult {
-                    case .success(_):
-                        self.didSignedUp?()
-                    case .failure(let error):
-                        self.didCatchSigningUpError?(error.localizedDescription)
-                    }
+                switch responseResult {
+                case .success(_):
+                    self.didSignedUp?()
+                case .failure(let error):
+                    self.didCatchSigningUpError?(error.localizedDescription)
+                }
             }
         } catch let error {
             didCatchSigningUpError?(error.localizedDescription)
@@ -114,7 +117,18 @@ final class SignUpControllerViewModel: SignUpControllerViewModelType {
     }
 
     func signUpViaFacebook() {
-        //
+        facebookAuthService.signUp(
+            viewController: viewController,
+            withUserImg: imageData,
+            withCoordinate: locationData
+        ) { [unowned self] responseResult in
+            switch responseResult {
+            case .success(_):
+                self.didSignedUp?()
+            case .failure(let error):
+                self.didCatchSigningUpError?(error.localizedDescription)
+            }
+        }
     }
 
     func shareCurrentLocation(isSharing: Bool) {
