@@ -111,18 +111,6 @@ class ProfileSettingsControllerViewModel {
         userService.getById(userId: currentUserId) { [weak self] responseResult in
             switch responseResult {
             case .success(let user):
-//                if let friends = user.friends {
-//                    for friend in friends {
-//                        friend.getDocument(source: .default, completion: { documentSnapshot, documentError in
-//                            if documentError == nil {
-//                                guard let documentSnapshot = documentSnapshot else {return}
-//                                let user = User(user: documentSnapshot.data()!)
-//                                print("====")
-//                                print(user?.email)
-//                            }
-//                        })
-//                    }
-//                }
                 if let updatedImage = self?.updatedImage {
                     self?.imageService.uploadImage(updatedImage, identifier: currentUserId, completion: { [weak self] imageServiceResult in
                         switch imageServiceResult {
