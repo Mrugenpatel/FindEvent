@@ -22,6 +22,11 @@ protocol FacebookAuthServiceType: AuthServiceType {
         withCoordinate coordinate: GeoPoint?,
         completion: @escaping AuthResult
     )
+
+    func signIn(
+        viewController: UIViewController,
+        completion: @escaping AuthResult
+    )
 }
 
 class FacebookAuthService: FacebookAuthServiceType {
@@ -43,6 +48,33 @@ class FacebookAuthService: FacebookAuthServiceType {
     var currentUserId: String? {
         guard let firUserId = currentFirebaseUser?.uid else { return nil }
         return firUserId
+    }
+
+    func signIn(
+        viewController: UIViewController,
+        completion: @escaping AuthResult
+        ) {
+        LoginManager().logIn(readPermissions: [.publicProfile, .email], viewController: viewController) { [weak self] result in
+            guard let strongSelf = self else {return}
+            switch result {
+            case .success(grantedPermissions: _, declinedPermissions: _, token: _):
+                guard let authenticationToken = AccessToken.current?.authenticationToken else {
+                    completion(Result.failure(AuthServiceError.failedToCreateUser)); return }
+                let facebookCredential = FacebookAuthProvider.credential(withAccessToken: authenticationToken)
+                strongSelf.firebaseAuth.signInAndRetrieveData(with: facebookCredential) { (result, err) in
+                    if let _ = err { completion(Result.failure(AuthServiceError.failedToCreateUser)); return }
+                    strongSelf.fetchFacebookUser(
+                        completion: completion,
+                        withUserImg: nil,
+                        withCoordinate: nil
+                    )
+                }
+            case .failed(_):
+                completion(Result.failure(AuthServiceError.failedToCreateUser))
+            case .cancelled:
+                completion(Result.failure(AuthServiceError.failedToCreateUser))
+            }
+        }
     }
     
     func signUp(

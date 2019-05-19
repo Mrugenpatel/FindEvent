@@ -6,7 +6,7 @@
 //  Copyright © 2019 Yurii Tsymbala. All rights reserved.
 //
 
-import Foundation
+import UIKit
 
 protocol SignInControllerViewModelType {
     var emailBtnTitle: String { get }
@@ -41,6 +41,7 @@ final class SignInControllerViewModel: SignInControllerViewModelType {
     private let emailAuthService: EmailAuthService
     private let facebookAuthService: FacebookAuthService
     private let userInputValidator: UserInputValidator
+    private let viewController: UIViewController
 
     var emailBtnTitle = Strings.emailBtnTitle
     var facebookBtnTitle = Strings.facebookBtnTitle
@@ -62,10 +63,13 @@ final class SignInControllerViewModel: SignInControllerViewModelType {
 
     init(emailAuthService: EmailAuthService,
          facebookAuthService: FacebookAuthService,
-         userInputValidator: UserInputValidator) {
+         userInputValidator: UserInputValidator,
+         viewController: UIViewController
+        ) {
         self.emailAuthService = emailAuthService
         self.facebookAuthService = facebookAuthService
         self.userInputValidator = userInputValidator
+        self.viewController = viewController
     }
 
     func signInViaEmail() {
@@ -92,7 +96,16 @@ final class SignInControllerViewModel: SignInControllerViewModelType {
     }
 
     func signInViaFacebook() {
-        //
+        facebookAuthService.signIn(
+            viewController: viewController)
+        { [unowned self] responseResult in
+            switch responseResult {
+            case .success(_):
+                self.didSignedIn?()
+            case .failure(let error):
+                self.didCatchSigningInError?(error.localizedDescription)
+            }
+        }
     }
 
     func forgotPassword() {
