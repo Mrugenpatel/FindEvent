@@ -56,6 +56,8 @@ class ProfileSettingsControllerViewModel {
 
     var dismissVC: EmptyClosure?
 
+    var navigateToAppSettings: EmptyClosure?
+
     private var userDefaultsService: UserDefaultsService
     private var userService: UserService
     private var imageService: ImageService
@@ -195,7 +197,7 @@ class ProfileSettingsControllerViewModel {
                 completion(true)
             }
         } else {
-            didCatchError?("Location Services disabled. Please enable Location Services in Settings and reload the Application")
+            navigateToAppSettings?()
         }
     }
 

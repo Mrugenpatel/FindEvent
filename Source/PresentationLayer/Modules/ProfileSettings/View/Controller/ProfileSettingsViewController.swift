@@ -58,6 +58,10 @@ final class ProfileSettingsViewController: UIViewController {
 
     override func configureViewModel() {
         super.configureViewModel()
+
+        viewModel.navigateToAppSettings = {
+            self.navigateAppToSettings()
+        }
         viewModel.startingLogout = { [unowned self] in
             self.doneCallback?()
         }
@@ -120,6 +124,14 @@ final class ProfileSettingsViewController: UIViewController {
 
     private func showError(error: String) {
         SVProgressHUD.showError(withStatus: error)
+    }
+
+    private func navigateAppToSettings() {
+        if let url = URL(string:UIApplication.openSettingsURLString) {
+            if UIApplication.shared.canOpenURL(url) {
+                UIApplication.shared.open(url, options: [:], completionHandler: nil)
+            }
+        }
     }
 }
 
