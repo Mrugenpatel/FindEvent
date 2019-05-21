@@ -69,10 +69,10 @@ class FriendsService: FriendsServiceType {
         ) {
     }
 
-        func getSent(
-            completion: @escaping (FriendsResult) -> Void
-            ) {
-        }
+    func getSent(
+        completion: @escaping (FriendsResult) -> Void
+        ) {
+    }
 }
 
 /*
