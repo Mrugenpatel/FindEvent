@@ -16,17 +16,17 @@ protocol UserServiceType {
 
     func create(
         user: User,
-        completion: @escaping (Result<User, UserServiceError>) -> Void
+        completion: @escaping (UserResult) -> Void
     )
 
     func updateById(
         user: User,
-        completion: @escaping (Result<User, UserServiceError>) -> Void
+        completion: @escaping (UserResult) -> Void
     )
 
     func getById(
         userId: String,
-        completion: @escaping (Result<User, UserServiceError>) -> Void
+        completion: @escaping (UserResult) -> Void
     )
 
     func getAll(

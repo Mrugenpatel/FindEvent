@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4B04C4E52291CD2F00455919 /* FriendsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B04C4E42291CD2F00455919 /* FriendsService.swift */; };
+		4B04C4E72291CDA800455919 /* FriendsServiceError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B04C4E62291CDA800455919 /* FriendsServiceError.swift */; };
+		4B04C4EA22920BCA00455919 /* FriendRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B04C4E922920BCA00455919 /* FriendRequest.swift */; };
 		4B087100220D3EFD00ABD553 /* AuthServiceError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B0870FF220D3EFD00ABD553 /* AuthServiceError.swift */; };
 		4B0EC965224FFF2900C6A87D /* ProfileSettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B0EC964224FFF2900C6A87D /* ProfileSettingsViewController.swift */; };
 		4B0EC967224FFF6900C6A87D /* ProfileSettingsControllerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B0EC966224FFF6900C6A87D /* ProfileSettingsControllerViewModel.swift */; };
@@ -92,6 +95,9 @@
 /* Begin PBXFileReference section */
 		39B9EB50827781FE90ADD3E5 /* Pods-FamillyOrganizer.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FamillyOrganizer.debug.xcconfig"; path = "Pods/Target Support Files/Pods-FamillyOrganizer/Pods-FamillyOrganizer.debug.xcconfig"; sourceTree = "<group>"; };
 		3E1035FD427EBD97E6209FA0 /* Pods_FamillyOrganizer.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FamillyOrganizer.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		4B04C4E42291CD2F00455919 /* FriendsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsService.swift; sourceTree = "<group>"; };
+		4B04C4E62291CDA800455919 /* FriendsServiceError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsServiceError.swift; sourceTree = "<group>"; };
+		4B04C4E922920BCA00455919 /* FriendRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendRequest.swift; sourceTree = "<group>"; };
 		4B0870FF220D3EFD00ABD553 /* AuthServiceError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthServiceError.swift; sourceTree = "<group>"; };
 		4B0EC964224FFF2900C6A87D /* ProfileSettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileSettingsViewController.swift; sourceTree = "<group>"; };
 		4B0EC966224FFF6900C6A87D /* ProfileSettingsControllerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileSettingsControllerViewModel.swift; sourceTree = "<group>"; };
@@ -188,6 +194,23 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		4B04C4E32291CCD700455919 /* Friends */ = {
+			isa = PBXGroup;
+			children = (
+				4B04C4E42291CD2F00455919 /* FriendsService.swift */,
+				4B04C4E62291CDA800455919 /* FriendsServiceError.swift */,
+			);
+			path = Friends;
+			sourceTree = "<group>";
+		};
+		4B04C4E822920BB700455919 /* FriendRequests */ = {
+			isa = PBXGroup;
+			children = (
+				4B04C4E922920BCA00455919 /* FriendRequest.swift */,
+			);
+			path = FriendRequests;
+			sourceTree = "<group>";
+		};
 		4B39EF0C22177EEF00A36A06 /* Location */ = {
 			isa = PBXGroup;
 			children = (
@@ -897,6 +920,7 @@
 		4BD8CFC5220A5E5600E0C6F5 /* Datatypes */ = {
 			isa = PBXGroup;
 			children = (
+				4B04C4E822920BB700455919 /* FriendRequests */,
 				4B764FE4227B5D4F00CA4180 /* Location */,
 				4B83B2FE220F495400C549AA /* User */,
 			);
@@ -933,6 +957,7 @@
 		4BDAF6AA220B7135006AD329 /* Networking */ = {
 			isa = PBXGroup;
 			children = (
+				4B04C4E32291CCD700455919 /* Friends */,
 				4B39EF0C22177EEF00A36A06 /* Location */,
 				4BAB7A4522160AF4003EB418 /* Data */,
 				4B83B2FA220F43E900C549AA /* Auth */,
@@ -1053,7 +1078,7 @@
 			outputFileListPaths = (
 			);
 			outputPaths = (
-				"$SRCROOT/Source/PresentationLayer/Autogeneration/R.generated.swift",
+				$SRCROOT/Source/PresentationLayer/Autogeneration/R.generated.swift,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -1168,7 +1193,9 @@
 				4BB5DDCF2275ED0200CA35A0 /* ProfileSettingsSection.swift in Sources */,
 				4B49B3102212966B00EF6C74 /* EventsViewController.swift in Sources */,
 				4B087100220D3EFD00ABD553 /* AuthServiceError.swift in Sources */,
+				4B04C4E52291CD2F00455919 /* FriendsService.swift in Sources */,
 				4B49B2EA22128C5D00EF6C74 /* ViewConfig.swift in Sources */,
+				4B04C4E72291CDA800455919 /* FriendsServiceError.swift in Sources */,
 				4B0F621322766461008C8DE3 /* SettingsLogoutCell.swift in Sources */,
 				4BB6BA682231E6B10062E42B /* TableViewCell.swift in Sources */,
 				4BBD3201223E668B0000D398 /* SettingsTableViewCell.swift in Sources */,
@@ -1178,6 +1205,7 @@
 				4B0F621122763A18008C8DE3 /* SettingsDecriptionCell.swift in Sources */,
 				4BAB7A4922160C04003EB418 /* ImageServiceError.swift in Sources */,
 				4BB7591C2211FE58009E305B /* RootViewController.swift in Sources */,
+				4B04C4EA22920BCA00455919 /* FriendRequest.swift in Sources */,
 				4BD8CFC2220A5D1400E0C6F5 /* UserInputValidator.swift in Sources */,
 				4BB6BA6A2231E6FE0062E42B /* CollectionViewCell.swift in Sources */,
 				4B49B32622129AE300EF6C74 /* FriendsControllerViewModel.swift in Sources */,

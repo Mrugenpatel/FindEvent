@@ -9,18 +9,6 @@
 import Foundation
 import FirebaseFirestore
 
-/* User
- id
- name
- email
- avatarImgUrl
- latitude
- longtitude
- lastOnlineDate - "Update with 1 minute interval" , observe it and check if (current date - lastOnlineDate) <= 2 -> user is Online
- descriptionInfo - "I am 20 years old iOS deverloper from Lviv"
- */
-
-
 class User {
     private enum Constants: String {
         case id
