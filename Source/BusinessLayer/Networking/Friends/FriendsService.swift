@@ -18,6 +18,7 @@ protocol FriendsServiceType {
 
 class FriendsService: FriendsServiceType {
     private struct CollectionKeys {
+        static let friendsCollection = "users"
         static let friendRequests = "friend_requests"
         static let receiver = "receiver"
         static let sender = "sender"
@@ -25,6 +26,7 @@ class FriendsService: FriendsServiceType {
     }
 
     private let friendsCollection = Firestore.firestore().collection(CollectionKeys.friendRequests)
+    private let friendsRequestsCollection = Firestore.firestore().collection(CollectionKeys.friendRequests)
 
     private let usersService: UserService
 
@@ -32,87 +34,53 @@ class FriendsService: FriendsServiceType {
         self.usersService = usersService
     }
 
-    func getFriends(completion: @escaping (FriendsResult) -> Void) {
-        guard let currentUserID = Auth.auth().currentUser?.uid else {return}
-
-        friendsCollection.document(currentUserID).getDocument { document, error in
-            guard let data = document?.data() else {return}
-            let user = User(user: data)
-
-
+    func getFriends(
+        completion: @escaping (FriendsResult) -> Void
+        ) {
+        var friends = [User]()
+        guard let currentUserID = Auth.auth().currentUser?.uid else {
+            completion(Result.failure(FriendsServiceError.emptyId))
+            return
         }
-
+        friendsCollection.document(currentUserID).collection("friends").getDocuments { (documentsArray, error) in
+            guard let friendDocuments = documentsArray else {return}
+            if friendDocuments.documents.count == 0 {
+                completion(Result.success([]))
+            }
+            for friendDocument in friendDocuments.documents {
+                let friendDocumentDictionary = friendDocument.data()
+                guard let userReference = friendDocumentDictionary["user"] as? DocumentReference else {
+                    completion(Result.failure(FriendsServiceError.emptyId))
+                    return
+                }
+                userReference.getDocument(completion: { dictionaryData, error in
+                    guard let userDictionary = dictionaryData?.data() else {return}
+                    let user = User(user: userDictionary)
+                    guard let friend = user else {return}
+                    friends.append(friend)
+                })
+            }
+            completion(Result.success(friends))
+        }
     }
 
-//    func getFriends(completion: @escaping (FriendsResult) -> Void) {
-//        guard let currendUserID = Auth.auth().currentUser?.uid else {return}
-//
-//        var friends = [User]()
-//
-//        friendsCollection
-//            .whereField(CollectionKeys.receiver, isEqualTo: currendUserID)
-//            .whereField(CollectionKeys.status, isEqualTo: "accepted")
-//            .getDocuments { (snapshot, error) in
-//                guard error == nil else { return }
-//                guard let documents = snapshot?.documents else {return}
-//                for document in documents {
-//                    if let document = FriendRequest(friendRequest: document.data()) {
-//                        guard let id = document.receiver else {return}
-//                        self.usersService.getById(userId: id, completion: { responseResult in
-//                            switch responseResult {
-//                            case .success(let friend):
-//                                friends.append(friend)
-//                            case .failure(_):
-//                                completion(Result.failure(FriendsServiceError.emptyId)); return
-//                            }})}}}
-//
-//        friendsCollection
-//            .whereField(CollectionKeys.sender, isEqualTo: currendUserID)
-//            .whereField(CollectionKeys.status, isEqualTo: "accepted")
-//            .getDocuments { (snapshot, error) in
-//                guard error == nil else { return }
-//                guard let documents = snapshot?.documents else {return}
-//                for document in documents {
-//                    if let document = FriendRequest(friendRequest: document.data()) {
-//                        guard let id = document.sender else {return}
-//                        self.usersService.getById(userId: id, completion: { responseResult in
-//                            switch responseResult {
-//                            case .success(let friend):
-//                                friends.append(friend)
-//                            case .failure(_):
-//                                completion(Result.failure(FriendsServiceError.emptyId)); return
-//                            }})}
-// completion(Result.success(friends))
-//                }
-//
-//        }
-//    }
+    func getRequests(
+        completion: @escaping (FriendsResult) -> Void
+        ) {
+    }
 
+        func getSent(
+            completion: @escaping (FriendsResult) -> Void
+            ) {
+        }
 }
 
-//        friendsCollection
-//            .whereField(CollectionKeys.sender, isEqualTo: currendUserID)
-//            .whereField(CollectionKeys.status, isEqualTo: "accepted")
-//            .getDocuments { (snapshot, error) in
-//            guard error == nil else { return }
-//            guard let documents = snapshot?.documents else {return}
-//            for document in documents {
-//                if let document = FriendRequest(friendRequest: document.data()) {
-//                    friendsRequests.append(document)}}
-//        }
-
 /*
- fetchFriends
-
- fetchRequests
-
- fetchSent
-
- approveRequest
-
- declineRequest
-
- sentRequest
+ fetchRequests [User]
+ fetchSent  [User]
+ approveRequest Bool
+ declineRequest Bool
+ sentRequest Bool
 
  */
 
