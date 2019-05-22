@@ -57,7 +57,7 @@ class FriendsService: FriendsServiceType {
         static let status = "status"
     }
     
-    private let friendsCollection = Firestore.firestore().collection(CollectionKeys.friendRequests)
+    private let friendsCollection = Firestore.firestore().collection(CollectionKeys.friendsCollection)
     private let friendsRequestsCollection = Firestore.firestore().collection(CollectionKeys.friendRequests)
     
     private let usersService: UserService

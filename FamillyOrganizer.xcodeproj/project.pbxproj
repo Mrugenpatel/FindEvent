@@ -90,6 +90,7 @@
 		4BDAF6AC220B716F006AD329 /* EmailAuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BDAF6AB220B716F006AD329 /* EmailAuthService.swift */; };
 		4BDAF6AE220B7180006AD329 /* FacebookAuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BDAF6AD220B7180006AD329 /* FacebookAuthService.swift */; };
 		7F09F18985B3098CD0DA3BB5 /* Pods_FamillyOrganizer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3E1035FD427EBD97E6209FA0 /* Pods_FamillyOrganizer.framework */; };
+		A4DB2237229585BC0054EA78 /* SegmentControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4DB2236229585BB0054EA78 /* SegmentControl.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -180,6 +181,7 @@
 		4BDAF6AB220B716F006AD329 /* EmailAuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailAuthService.swift; sourceTree = "<group>"; };
 		4BDAF6AD220B7180006AD329 /* FacebookAuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FacebookAuthService.swift; sourceTree = "<group>"; };
 		8BD17FA9E4F5A73C298B947C /* Pods-FamillyOrganizer.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FamillyOrganizer.release.xcconfig"; path = "Pods/Target Support Files/Pods-FamillyOrganizer/Pods-FamillyOrganizer.release.xcconfig"; sourceTree = "<group>"; };
+		A4DB2236229585BB0054EA78 /* SegmentControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SegmentControl.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -813,6 +815,7 @@
 				4BB6BA652231E67A0062E42B /* Reusable.swift */,
 				4BB6BA672231E6B10062E42B /* TableViewCell.swift */,
 				4BB6BA692231E6FE0062E42B /* CollectionViewCell.swift */,
+				A4DB2236229585BB0054EA78 /* SegmentControl.swift */,
 			);
 			path = Base;
 			sourceTree = "<group>";
@@ -1200,6 +1203,7 @@
 				4B49B32822129AFF00EF6C74 /* EventsControllerViewModel.swift in Sources */,
 				4BB5DDCF2275ED0200CA35A0 /* ProfileSettingsSection.swift in Sources */,
 				4B49B3102212966B00EF6C74 /* EventsViewController.swift in Sources */,
+				A4DB2237229585BC0054EA78 /* SegmentControl.swift in Sources */,
 				4B087100220D3EFD00ABD553 /* AuthServiceError.swift in Sources */,
 				4B04C4E52291CD2F00455919 /* FriendsService.swift in Sources */,
 				4B49B2EA22128C5D00EF6C74 /* ViewConfig.swift in Sources */,
