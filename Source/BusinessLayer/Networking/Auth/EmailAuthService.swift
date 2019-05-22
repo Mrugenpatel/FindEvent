@@ -156,7 +156,8 @@ class EmailAuthService: EmailAuthServiceType {
                     switch responseResult {
                     case .success(let user):
                         completion(.success(user))
-                    case .failure: completion(.failure(.failedToGetUser))
+                    case .failure:
+                        completion(.failure(.failedToGetUser))
                     }
                 }
                 return

@@ -29,7 +29,7 @@ class Application: UIResponder, UIApplicationDelegate {
         locationSetup()
         keyboardSetup()
         viewSetup()
-        UserService.setUserStatus(isOnline: true)
+        //UserService.setUserStatus(isOnline: true)
         return true
     }
 
@@ -39,18 +39,18 @@ class Application: UIResponder, UIApplicationDelegate {
     }
 
     func applicationDidEnterBackground(_ application: UIApplication) {
-        UserService.setUserStatus(isOnline: false)
+       // UserService.setUserStatus(isOnline: false)
     }
 
     func applicationWillEnterForeground(_ application: UIApplication) {
     }
 
     func applicationDidBecomeActive(_ application: UIApplication) {
-        UserService.setUserStatus(isOnline: true)
+       // UserService.setUserStatus(isOnline: true)
     }
 
     func applicationWillTerminate(_ application: UIApplication) {
-        UserService.setUserStatus(isOnline: false)
+      //  UserService.setUserStatus(isOnline: false)
     }
 }
 

@@ -73,6 +73,9 @@ class FriendsService: FriendsServiceType {
             completion(Result.failure(FriendsServiceError.emptyId))
             return
         }
+
+        let group = DispatchGroup()
+
         friendsCollection
             .document(currentUserID)
             .collection("friends")
@@ -86,8 +89,12 @@ class FriendsService: FriendsServiceType {
                 var users = [User]()
                 
                 for friendDocument in friendDocuments.documents {
+
+                    group.enter()
+
                     let friendDocumentDictionary = friendDocument.data()
                     guard let userReference = friendDocumentDictionary["user"] as? DocumentReference else {
+                        group.leave()
                         completion(Result.failure(FriendsServiceError.emptyId))
                         return
                     }
@@ -96,12 +103,15 @@ class FriendsService: FriendsServiceType {
                         let user = User(user: userDictionary)
                         guard let friend = user else {return}
                         users.append(friend)
+                        group.leave()
                     })
                 }
-                completion(Result.success(users))
+                group.notify(queue: .main) {
+                    completion(Result.success(users))
+                }
         }
     }
-    
+
     func removeFriend(
         completion: @escaping (RequestResult) -> Void
         ) {
@@ -117,6 +127,8 @@ class FriendsService: FriendsServiceType {
             completion(Result.failure(FriendsServiceError.emptyId))
             return
         }
+
+        let group = DispatchGroup()
         
         friendsRequestsCollection
             .whereField("receiver", isEqualTo: currentUserID)
@@ -139,17 +151,24 @@ class FriendsService: FriendsServiceType {
                 var users = [User]()
                 
                 for request in requests {
-                    self.usersService.getById(userId: request.id!, completion: { responseResult in
+
+                    group.enter()
+
+                    self.usersService.getById(userId: request.sender!, completion: { responseResult in
                         switch responseResult {
                         case .success(let user):
                             users.append(user)
+                            group.leave()
                         case .failure(_):
                             completion(Result.failure(FriendsServiceError.emptyId))
+                            group.leave()
                             return
                         }
                     })
                 }
-                completion(.success((users,requests)))
+                group.notify(queue: .main) {
+                    completion(.success((users,requests)))
+                }
         }
     }
     
@@ -160,6 +179,8 @@ class FriendsService: FriendsServiceType {
             completion(Result.failure(FriendsServiceError.emptyId))
             return
         }
+
+        let group = DispatchGroup()
         
         friendsRequestsCollection
             .whereField("sender", isEqualTo: currentUserID)
@@ -182,17 +203,24 @@ class FriendsService: FriendsServiceType {
                 var users = [User]()
                 
                 for request in requests {
-                    self.usersService.getById(userId: request.id!, completion: { responseResult in
+
+                    group.enter()
+
+                    self.usersService.getById(userId: request.receiver!, completion: { responseResult in
                         switch responseResult {
                         case .success(let user):
                             users.append(user)
+                            group.leave()
                         case .failure(_):
                             completion(Result.failure(FriendsServiceError.emptyId))
+                            group.leave()
                             return
                         }
                     })
                 }
-                completion(.success((users,requests)))
+                group.notify(queue: .main) {
+                    completion(.success((users,requests)))
+                }
         }
     }
     
@@ -200,7 +228,7 @@ class FriendsService: FriendsServiceType {
         requestID: String,
         completion: @escaping (RequestResult) -> Void
         ) {
-        friendsRequestsCollection.document(requestID).setValue("accepted", forKey: "status")
+        friendsRequestsCollection.document(requestID).updateData(["status":"accepted"])
         completion(.success(true))
         
     }
@@ -209,7 +237,7 @@ class FriendsService: FriendsServiceType {
         requestID: String,
         completion: @escaping (RequestResult) -> Void
         ) {
-        friendsRequestsCollection.document(requestID).setValue("declined", forKey: "status")
+        friendsRequestsCollection.document(requestID).updateData(["status":"declined"])
         completion(.success(true))
     }
     
