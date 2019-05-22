@@ -13,7 +13,31 @@ import FirebaseAuth
 protocol FriendsServiceType {
 
     typealias FriendsResult = (Result<[User], FriendsServiceError>)
-
+    typealias RequestResult = (Result<Bool, FriendsServiceError>)
+    
+    func getFriends(
+        completion: @escaping (FriendsResult) -> Void
+    )
+    
+    func getSent(
+        completion: @escaping (FriendsResult) -> Void
+    )
+    
+    func getRequests(
+        completion: @escaping (FriendsResult) -> Void
+    )
+    
+    func approveRequest(
+        completion: @escaping (RequestResult) -> Void
+    )
+    
+    func declineRequest(
+        completion: @escaping (RequestResult) -> Void
+    )
+    
+    func sentRequest(
+        completion: @escaping (RequestResult) -> Void
+    )
 }
 
 class FriendsService: FriendsServiceType {
@@ -37,16 +61,19 @@ class FriendsService: FriendsServiceType {
     func getFriends(
         completion: @escaping (FriendsResult) -> Void
         ) {
-        var friends = [User]()
         guard let currentUserID = Auth.auth().currentUser?.uid else {
             completion(Result.failure(FriendsServiceError.emptyId))
             return
         }
         friendsCollection.document(currentUserID).collection("friends").getDocuments { (documentsArray, error) in
             guard let friendDocuments = documentsArray else {return}
-            if friendDocuments.documents.count == 0 {
+            if friendDocuments.documents.isEmpty {
                 completion(Result.success([]))
+                return
             }
+            
+             var users = [User]()
+            
             for friendDocument in friendDocuments.documents {
                 let friendDocumentDictionary = friendDocument.data()
                 guard let userReference = friendDocumentDictionary["user"] as? DocumentReference else {
@@ -57,30 +84,90 @@ class FriendsService: FriendsServiceType {
                     guard let userDictionary = dictionaryData?.data() else {return}
                     let user = User(user: userDictionary)
                     guard let friend = user else {return}
-                    friends.append(friend)
+                    users.append(friend)
                 })
             }
-            completion(Result.success(friends))
+            completion(Result.success(users))
         }
     }
 
     func getRequests(
         completion: @escaping (FriendsResult) -> Void
         ) {
+        guard let currentUserID = Auth.auth().currentUser?.uid else {
+            completion(Result.failure(FriendsServiceError.emptyId))
+            return
+        }
+        
+        friendsCollection
+            .whereField("receiver", isEqualTo: currentUserID)
+            .whereField("status", isEqualTo: "pending")
+            .getDocuments { collectionDocuments, error in
+                
+            guard let collectionDocuments = collectionDocuments else {
+                completion(Result.failure(FriendsServiceError.emptyId))
+                return
+            }
+                let users = collectionDocuments.documents.compactMap({ docs in
+                    docs.data().flatMap({ data in return User(user: data)})
+                })
+                
+                users.isEmpty ? completion(.success([])) : completion(.success(users))
+        }
     }
 
     func getSent(
         completion: @escaping (FriendsResult) -> Void
         ) {
+        guard let currentUserID = Auth.auth().currentUser?.uid else {
+            completion(Result.failure(FriendsServiceError.emptyId))
+            return
+        }
+        
+        friendsCollection
+            .whereField("sender", isEqualTo: currentUserID)
+            .whereField("status", isEqualTo: "pending")
+            .getDocuments { collectionDocuments, error in
+                
+                guard let collectionDocuments = collectionDocuments else {
+                    completion(Result.failure(FriendsServiceError.emptyId))
+                    return
+                }
+                let users = collectionDocuments.documents.compactMap({ docs in
+                    docs.data().flatMap({ data in return User(user: data)})
+                })
+                
+                users.isEmpty ? completion(.success([])) : completion(.success(users))
+        }
+    }
+    
+    func approveRequest(
+        completion: @escaping (RequestResult) -> Void
+        ) {
+        guard let currentUserID = Auth.auth().currentUser?.uid else {
+            completion(Result.failure(FriendsServiceError.emptyId))
+            return
+        }
+        
+    }
+    
+    func declineRequest(
+        completion: @escaping (RequestResult) -> Void
+        ) {
+        guard let currentUserID = Auth.auth().currentUser?.uid else {
+            completion(Result.failure(FriendsServiceError.emptyId))
+            return
+        }
+    }
+    
+    func sentRequest(
+        completion: @escaping (RequestResult) -> Void
+        ) {
+        guard let currentUserID = Auth.auth().currentUser?.uid else {
+            completion(Result.failure(FriendsServiceError.emptyId))
+            return
+        }
     }
 }
 
-/*
- fetchRequests [User]
- fetchSent  [User]
- approveRequest Bool
- declineRequest Bool
- sentRequest Bool
-
- */
 
