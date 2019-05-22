@@ -19,46 +19,46 @@ final class ProfileSettingsViewController: UIViewController {
         static let heightForDescriptionRow: CGFloat = 40
         static let heightForFooterInSection: CGFloat = 30
     }
-
+    
     private var viewModel: ProfileSettingsControllerViewModel!
-
+    
     convenience init(viewModel: ProfileSettingsControllerViewModel) {
         self.init()
         self.viewModel = viewModel
     }
-
+    
     // MARK: Callbacks
-
+    
     var doneCallback: EmptyClosure?
-
+    
     // MARK: Views
-
+    
     private lazy var tableView = configuredTableView()
-
+    
     // MARK: View Life Cycle
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         configureView()
         configureViewModel()
     }
-
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
         configuredNavigationBar()
     }
-
+    
     // MARK: Configuration
-
+    
     override func configureView() {
         super.configureView()
         containerView.backgroundColor = ViewConfig.Colors.background
         attachTableView()
     }
-
+    
     override func configureViewModel() {
         super.configureViewModel()
-
+        
         viewModel.navigateToAppSettings = {
             self.navigateAppToSettings()
         }
@@ -81,16 +81,15 @@ final class ProfileSettingsViewController: UIViewController {
             }
         }
     }
-
+    
     private func configuredNavigationBar() {
         navigationItem.title = "Edit Profile"
         navigationItem.rightBarButtonItem = UIBarButtonItem(
-            title: "Save",
-            style: .plain,
+            barButtonSystemItem: .save,
             target: self,
             action: #selector(save))
     }
-
+    
     private func configuredTableView() -> UITableView {
         let tableView = UITableView()
         tableView.backgroundColor = ViewConfig.Colors.dark
@@ -102,30 +101,30 @@ final class ProfileSettingsViewController: UIViewController {
         tableView.registerCell(ofType: SettingsLocationCell.self)
         tableView.registerCell(ofType: SettingsDecriptionCell.self)
         tableView.registerCell(ofType: SettingsLogoutCell.self)
-
+        
         return tableView
     }
-
+    
     // MARK: - Attachments
-
+    
     private func attachTableView() {
         containerView.addSubview(tableView)
-
+        
         tableView.snp.makeConstraints { maker in
             maker.edges.equalToSuperview()
         }
     }
-
+    
     // MARK: Actions
-
+    
     @objc func save() {
         viewModel.saveEditedInfo()
     }
-
+    
     private func showError(error: String) {
         SVProgressHUD.showError(withStatus: error)
     }
-
+    
     private func navigateAppToSettings() {
         if let url = URL(string:UIApplication.openSettingsURLString) {
             if UIApplication.shared.canOpenURL(url) {
@@ -136,20 +135,20 @@ final class ProfileSettingsViewController: UIViewController {
 }
 
 extension ProfileSettingsViewController: UITableViewDataSource {
-
+    
     func numberOfSections(
         in tableView: UITableView
         ) -> Int {
         return viewModel.numberOfSections
     }
-
+    
     func tableView(
         _ tableView: UITableView,
         numberOfRowsInSection section: Int
         ) -> Int {
         return 1
     }
-
+    
     func tableView(
         _ tableView: UITableView,
         cellForRowAt indexPath: IndexPath
@@ -177,7 +176,7 @@ extension ProfileSettingsViewController: UITableViewDataSource {
         case .locationSection:
             let cell: SettingsLocationCell = tableView.dequeueCell(at: indexPath)
             cell.configure(location: viewModel.currentData.coordinate)
-
+            
             cell.showLocation = { [unowned self] isShowing in
                 switch isShowing {
                 case true:
@@ -192,7 +191,7 @@ extension ProfileSettingsViewController: UITableViewDataSource {
                     cell.configure(location: nil)
                 }
             }
-
+            
             cell.showMap = {
                 // present map VC
             }
@@ -212,47 +211,47 @@ extension ProfileSettingsViewController: UITableViewDataSource {
             return cell
         }
     }
-
+    
     func tableView(
         _ tableView: UITableView,
         viewForFooterInSection section: Int
         ) -> UIView? {
         let backgroundView = UIView()
         backgroundView.backgroundColor = ViewConfig.Colors.dark
-
+        
         let label = UILabel()
         label.numberOfLines = 0
         label.textAlignment = .center
         label.font = ViewConfig.Fonts.semibold(of: 12)
         label.textColor = ViewConfig.Colors.textLightGrey
         label.text = viewModel.sections[section].rawValue
-
+        
         backgroundView.addSubview(label)
-
+        
         label.snp.makeConstraints { maker in
             maker.left.right.top.equalToSuperview().inset(5)
         }
-
+        
         return backgroundView
     }
 }
 
 extension ProfileSettingsViewController: UITableViewDelegate {
-
+    
     func tableView(
         _ tableView: UITableView,
         estimatedHeightForFooterInSection section: Int
         ) -> CGFloat {
         return Constants.heightForFooterInSection
     }
-
+    
     func tableView(
         _ tableView: UITableView,
         heightForFooterInSection section: Int
         ) -> CGFloat {
         return Constants.heightForFooterInSection
     }
-
+    
     func tableView(
         _ tableView: UITableView,
         heightForRowAt indexPath: IndexPath
@@ -270,7 +269,7 @@ extension ProfileSettingsViewController: UITableViewDelegate {
             return Constants.heightForDescriptionRow
         }
     }
-
+    
     func tableView(
         _ tableView: UITableView,
         estimatedHeightForRowAt indexPath: IndexPath

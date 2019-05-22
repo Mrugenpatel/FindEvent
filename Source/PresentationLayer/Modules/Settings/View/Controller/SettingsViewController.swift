@@ -91,8 +91,7 @@ final class SettingsViewController: UIViewController {
     
     private func configuredNavigationBar() {
         navigationItem.rightBarButtonItem = UIBarButtonItem(
-            title: "Edit",
-            style: .plain,
+            barButtonSystemItem: .compose,
             target: self,
             action: #selector(edit))
     }
