@@ -11,7 +11,8 @@ import FirebaseFirestore
 import FirebaseAuth
 
 protocol FriendsServiceType {
-
+    
+    typealias FriendsRequestResult = (Result<([User],[FriendRequest]), FriendsServiceError>)
     typealias FriendsResult = (Result<[User], FriendsServiceError>)
     typealias RequestResult = (Result<Bool, FriendsServiceError>)
     
@@ -19,24 +20,28 @@ protocol FriendsServiceType {
         completion: @escaping (FriendsResult) -> Void
     )
     
+    func removeFriend(
+        completion: @escaping (RequestResult) -> Void
+    )
+    
     func getSent(
-        completion: @escaping (FriendsResult) -> Void
+        completion: @escaping (FriendsRequestResult) -> Void
     )
     
     func getRequests(
-        completion: @escaping (FriendsResult) -> Void
+        completion: @escaping (FriendsRequestResult) -> Void
     )
     
     func approveRequest(
-        completion: @escaping (RequestResult) -> Void
+        completion: @escaping (RequestResult) -> Void // in document with id change status to "accepted"
     )
     
     func declineRequest(
-        completion: @escaping (RequestResult) -> Void
+        completion: @escaping (RequestResult) -> Void // in document with id change status to "declined"
     )
     
     func sentRequest(
-        completion: @escaping (RequestResult) -> Void
+        completion: @escaping (RequestResult) -> Void // in document with id change status to "pending"
     )
 }
 
@@ -90,9 +95,15 @@ class FriendsService: FriendsServiceType {
             completion(Result.success(users))
         }
     }
+    
+    func removeFriend(
+        completion: @escaping (RequestResult) -> Void
+        ) {
+        
+    }
 
     func getRequests(
-        completion: @escaping (FriendsResult) -> Void
+        completion: @escaping (FriendsRequestResult) -> Void
         ) {
         guard let currentUserID = Auth.auth().currentUser?.uid else {
             completion(Result.failure(FriendsServiceError.emptyId))
@@ -108,16 +119,34 @@ class FriendsService: FriendsServiceType {
                 completion(Result.failure(FriendsServiceError.emptyId))
                 return
             }
-                let users = collectionDocuments.documents.compactMap({ docs in
-                    docs.data().flatMap({ data in return User(user: data)})
+                let requests = collectionDocuments.documents.compactMap({ docs in
+                    docs.data().flatMap({ data in return FriendRequest(friendRequest: data)})
                 })
                 
-                users.isEmpty ? completion(.success([])) : completion(.success(users))
+                if requests.isEmpty {
+                    completion(.success(([],[])))
+                    return
+                }
+                
+                var users = [User]()
+                
+                for request in requests {
+                    self.usersService.getById(userId: request.id!, completion: { responseResult in
+                        switch responseResult {
+                        case .success(let user):
+                            users.append(user)
+                        case .failure(_):
+                            completion(Result.failure(FriendsServiceError.emptyId))
+                            return
+                        }
+                    })
+                }
+                completion(.success((users,requests)))
         }
     }
 
     func getSent(
-        completion: @escaping (FriendsResult) -> Void
+        completion: @escaping (FriendsRequestResult) -> Void
         ) {
         guard let currentUserID = Auth.auth().currentUser?.uid else {
             completion(Result.failure(FriendsServiceError.emptyId))
@@ -133,11 +162,29 @@ class FriendsService: FriendsServiceType {
                     completion(Result.failure(FriendsServiceError.emptyId))
                     return
                 }
-                let users = collectionDocuments.documents.compactMap({ docs in
-                    docs.data().flatMap({ data in return User(user: data)})
+                let requests = collectionDocuments.documents.compactMap({ docs in
+                    docs.data().flatMap({ data in return FriendRequest(friendRequest: data)})
                 })
                 
-                users.isEmpty ? completion(.success([])) : completion(.success(users))
+                if requests.isEmpty {
+                    completion(.success(([],[])))
+                    return
+                }
+                
+                var users = [User]()
+                
+                for request in requests {
+                    self.usersService.getById(userId: request.id!, completion: { responseResult in
+                        switch responseResult {
+                        case .success(let user):
+                            users.append(user)
+                        case .failure(_):
+                            completion(Result.failure(FriendsServiceError.emptyId))
+                            return
+                        }
+                    })
+                }
+                completion(.success((users,requests)))
         }
     }
     
@@ -148,6 +195,8 @@ class FriendsService: FriendsServiceType {
             completion(Result.failure(FriendsServiceError.emptyId))
             return
         }
+        
+      //  fri
         
     }
     

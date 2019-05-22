@@ -28,6 +28,8 @@ class FriendRequest {
         self.receiver = receiver
         guard let sender = friendRequest[Constants.sender.rawValue] as? String else { return nil }
         self.sender = sender
+        guard let status = friendRequest[Constants.status.rawValue] as? String else { return nil }
+        self.status = status
     }
 
     init(id: String?,
