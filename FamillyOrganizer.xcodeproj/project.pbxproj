@@ -704,6 +704,7 @@
 			isa = PBXGroup;
 			children = (
 				4B49B2F22212940500EF6C74 /* Controller */,
+				A4DB22352295764E0054EA78 /* Cells */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -964,6 +965,13 @@
 				4B83B2FB220F43F500C549AA /* User */,
 			);
 			path = Networking;
+			sourceTree = "<group>";
+		};
+		A4DB22352295764E0054EA78 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Cells;
 			sourceTree = "<group>";
 		};
 		B93874519070A1A466673031 /* Pods */ = {

@@ -42,6 +42,15 @@ class FriendsViewController: UIViewController {
     }
     
     private func configuredNavigationBar() {
-        navigationController?.isNavigationBarHidden = false
+        navigationItem.rightBarButtonItem = UIBarButtonItem(
+            barButtonSystemItem: .add,
+            target: self,
+            action: #selector(addFriends))
+    }
+    
+    // MARK: Actions
+    
+    @objc func addFriends() {
+        //viewModel.saveEditedInfo()
     }
 }
