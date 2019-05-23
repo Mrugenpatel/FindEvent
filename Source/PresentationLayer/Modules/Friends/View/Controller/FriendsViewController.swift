@@ -40,6 +40,7 @@ class FriendsViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
         configuredNavigationBar()
+        // fetch All info
     }
     
     // MARK: Configuration
@@ -57,6 +58,10 @@ class FriendsViewController: UIViewController {
     
     override func configureViewModel() {
         super.configureViewModel()
+        
+        // колбек який вказує якій таблиці закритись
+        // колбеки які релоадять тейблвюхи (присилається фолс по дефолту і крутяться крутілки, якшо тру то зупиняютсья крутілки і релоадиться)
+        // колбек який крутить крутілку тру/фолс поки методи виконуються
     }
     
     private func configuredNavigationBar() {

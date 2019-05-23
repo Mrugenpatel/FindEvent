@@ -856,6 +856,7 @@
 		4BD8CFAC220A569700E0C6F5 /* Modules */ = {
 			isa = PBXGroup;
 			children = (
+				A41351782296AF480093D3D7 /* Helpers */,
 				4BB7591A2211FE3C009E305B /* Root */,
 				4BDAF6A7220B6E1C006AD329 /* Welcome */,
 				4B61677722308D6A00CF12AA /* ForgotPassword */,
@@ -968,6 +969,53 @@
 				4B83B2FB220F43F500C549AA /* User */,
 			);
 			path = Networking;
+			sourceTree = "<group>";
+		};
+		A41351782296AF480093D3D7 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				A41351792296AF600093D3D7 /* Users */,
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
+		A41351792296AF600093D3D7 /* Users */ = {
+			isa = PBXGroup;
+			children = (
+				A413517A2296AFA70093D3D7 /* View */,
+				A413517B2296AFAE0093D3D7 /* ViewModel */,
+			);
+			path = Users;
+			sourceTree = "<group>";
+		};
+		A413517A2296AFA70093D3D7 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				A413517C2296AFBA0093D3D7 /* Controller */,
+				A413517D2296AFC00093D3D7 /* Cells */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		A413517B2296AFAE0093D3D7 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		A413517C2296AFBA0093D3D7 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		A413517D2296AFC00093D3D7 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Cells;
 			sourceTree = "<group>";
 		};
 		A4DB22352295764E0054EA78 /* Cells */ = {
