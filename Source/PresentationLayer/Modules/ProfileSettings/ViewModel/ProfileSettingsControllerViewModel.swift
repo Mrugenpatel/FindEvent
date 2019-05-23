@@ -54,10 +54,6 @@ class ProfileSettingsControllerViewModel {
 
     var updatedImage: UIImage?
 
-    var dismissVC: EmptyClosure?
-
-    var navigateToAppSettings: EmptyClosure?
-
     private var userDefaultsService: UserDefaultsService
     private var userService: UserService
     private var imageService: ImageService
@@ -92,7 +88,9 @@ class ProfileSettingsControllerViewModel {
     var didCatchError: ((String) -> (Void))?
     var isAnimating: ((Bool) -> (Void))?
     var startingLogout: EmptyClosure?
-    
+    var dismissVC: EmptyClosure?
+    var navigateToAppSettings: EmptyClosure?
+
     // MARK: Methods
 
     func saveEditedInfo() {
