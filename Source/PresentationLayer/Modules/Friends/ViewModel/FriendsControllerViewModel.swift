@@ -33,11 +33,14 @@ final class FriendsControllerViewModel {
     var isRequestsTableAnimating: ((Bool) -> (Void))?
     var isSentTableAnimating: ((Bool) -> (Void))?
     
-    private var friends = [User]()
-    private var sent = ([User],[FriendRequest]).self
+    private var friendUsers = [User]()
+    private var sentUsers = [User]()
+    private var sentRequests = [FriendRequest]()
+    private var requestUsers = [User]()
+    private var requestRequests = [FriendRequest]()
     
     var numberOfFriends: Int {
-        return friends.count
+        return friendUsers.count
     }
     
     func fetchFriends() {
@@ -46,22 +49,45 @@ final class FriendsControllerViewModel {
             switch responseResult {
             case .success(let users):
                 self?.isFriendsTableAnimating?(false)
-                self?.friends = users
+                self?.friendUsers = users
                 print(users)
             case .failure(let error):
                 print(error)
+                self?.isFriendsTableAnimating?(false)
                 self?.didCatchError?("Error")
             }
         }
     }
     
     func fetchSent() {
-        
+        isSentTableAnimating?(true)
+        friendsService.getSent { [weak self] responseResult in
+            switch responseResult {
+                
+            case .success(let users, let sentRequests):
+                self?.sentUsers = users
+                self?.sentRequests = sentRequests
+            case .failure(let error):
+                print(error)
+                self?.isSentTableAnimating?(false)
+                self?.didCatchError?("Error")
+            }
+        }
     }
     
     func fetchRequests() {
-        
+        isRequestsTableAnimating?(true)
+        friendsService.getSent { [weak self] responseResult in
+            switch responseResult {
+                
+            case .success(let users, let requestRequests):
+                self?.requestUsers = users
+                self?.requestRequests = requestRequests
+            case .failure(let error):
+                print(error)
+                self?.isRequestsTableAnimating?(false)
+                self?.didCatchError?("Error")
+            }
+        }
     }
-    
-    
 }
