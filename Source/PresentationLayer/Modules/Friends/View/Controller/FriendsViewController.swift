@@ -134,20 +134,39 @@ class FriendsViewController: UIViewController {
         }
     }
     
-    private func attachMapView() {
+    private func attachFriendsTableView() {
+        containerView.addSubview(friendsTableView)
         
+        friendsTableView.snp.makeConstraints { maker in
+            maker.top.equalTo(segmentControl.snp.bottom).offset(5)
+            maker.left.right.bottom.equalToSuperview().inset(8)
+        }
     }
     
-    private func attachFriendsTableView() {
+    private func attachMapView() {
+        friendsTableView.addSubview(friendsMapView)
         
+        friendsMapView.snp.makeConstraints { maker in
+            maker.edges.equalToSuperview()
+        }
     }
     
     private func attachRequestsTableView() {
+        containerView.addSubview(requestsTableView)
         
+        requestsTableView.snp.makeConstraints { maker in
+            maker.top.equalTo(segmentControl.snp.bottom).offset(5)
+            maker.left.right.bottom.equalToSuperview().inset(8)
+        }
     }
     
     private func attachSentTableView() {
+        containerView.addSubview(sentTableView)
         
+        sentTableView.snp.makeConstraints { maker in
+            maker.top.equalTo(segmentControl.snp.bottom).offset(5)
+            maker.left.right.bottom.equalToSuperview().inset(8)
+        }
     }
     
     private func attachFriendsActivityIndicator() {
@@ -178,7 +197,7 @@ class FriendsViewController: UIViewController {
         containerView.addSubview(sortTypeButton)
         
         sortTypeButton.snp.makeConstraints { maker in
-            maker.center.equalToSuperview()
+            maker.right.bottom.equalToSuperview().inset(20)
             maker.height.width.equalTo(50)
         }
     }
