@@ -25,8 +25,11 @@ class FriendsViewController: UIViewController {
     private lazy var segmentControl = configuredSegmentControl()
     private lazy var friendsMapView = configuredMapView()
     private lazy var friendsTableView = configuredFriendsTableView()
+    private lazy var friendsActivityIndicator = configuredActivityIndicator()
     private lazy var requestsTableView = configuredRequestsTableView()
+    private lazy var requestsActivityIndicator = configuredActivityIndicator()
     private lazy var sentTableView = configuredSentTableView()
+    private lazy var sentActivityIndicator = configuredActivityIndicator()
     private lazy var sortTypeButton = configuredSortTypeButton()
     
     // MARK: View Life Cycle
@@ -53,13 +56,15 @@ class FriendsViewController: UIViewController {
 //        attachMapView()
 //        attachRequestsTableView()
 //        attachSentTableView()
+//        attachFriendsActivityIndicator()
+//        attachRequestsActivityIndicator()
+//        attachSentActivityIndicator()
 //        attachSortTypeButton()
     }
     
     override func configureViewModel() {
         super.configureViewModel()
-        
-        // колбек який вказує якій таблиці закритись
+
         // колбеки які релоадять тейблвюхи (присилається фолс по дефолту і крутяться крутілки, якшо тру то зупиняютсья крутілки і релоадиться)
         // колбек який крутить крутілку тру/фолс поки методи виконуються
     }
@@ -85,6 +90,13 @@ class FriendsViewController: UIViewController {
         let mapView = MKMapView()
         
         return mapView
+    }
+    
+    private func configuredActivityIndicator() -> UIActivityIndicatorView {
+        let activityIndicator = UIActivityIndicatorView(style: .whiteLarge)
+        
+        return activityIndicator
+        
     }
     
     private func configuredFriendsTableView() -> UITableView {
@@ -138,6 +150,30 @@ class FriendsViewController: UIViewController {
         
     }
     
+    private func attachFriendsActivityIndicator() {
+        friendsTableView.addSubview(friendsActivityIndicator)
+        
+        friendsActivityIndicator.snp.makeConstraints { maker in
+            maker.center.equalToSuperview()
+        }
+    }
+    
+    private func attachRequestsActivityIndicator() {
+        requestsTableView.addSubview(requestsActivityIndicator)
+        
+        requestsActivityIndicator.snp.makeConstraints { maker in
+            maker.center.equalToSuperview()
+        }
+    }
+    
+    private func attachSentActivityIndicator() {
+        sentTableView.addSubview(sentActivityIndicator)
+        
+        sentActivityIndicator.snp.makeConstraints { maker in
+            maker.center.equalToSuperview()
+        }
+    }
+    
     private func attachSortTypeButton() {
         containerView.addSubview(sortTypeButton)
         
@@ -145,7 +181,6 @@ class FriendsViewController: UIViewController {
             maker.center.equalToSuperview()
             maker.height.width.equalTo(50)
         }
-        
     }
     
     
@@ -158,11 +193,17 @@ class FriendsViewController: UIViewController {
     @objc private func indexChanged(_ sender: UISegmentedControl) {
         switch sender.selectedSegmentIndex{
         case 0:
-            print("iOS")
+            friendsTableView.isHidden = false
+            requestsTableView.isHidden = true
+            sentTableView.isHidden = true
         case 1:
-            print("Android")
+            friendsTableView.isHidden = true
+            requestsTableView.isHidden = false
+            sentTableView.isHidden = true
         case 2:
-            print("Android")
+            friendsTableView.isHidden = true
+            requestsTableView.isHidden = true
+            sentTableView.isHidden = false
         default:
             break
         }
