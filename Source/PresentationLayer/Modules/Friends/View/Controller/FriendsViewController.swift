@@ -43,7 +43,9 @@ class FriendsViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
         configuredNavigationBar()
-        // fetch All info
+        viewModel?.fetchFriends()
+        viewModel?.fetchRequests()
+        viewModel?.fetchSent()
     }
     
     // MARK: Configuration
@@ -67,6 +69,8 @@ class FriendsViewController: UIViewController {
 
         // колбеки які релоадять тейблвюхи (присилається фолс по дефолту і крутяться крутілки, якшо тру то зупиняютсья крутілки і релоадиться)
         // колбек який крутить крутілку тру/фолс поки методи виконуються
+        
+        
     }
     
     private func configuredNavigationBar() {
