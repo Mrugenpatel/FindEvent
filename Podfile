@@ -1,7 +1,10 @@
 platform :ios, '11.0'
 
-target 'FamillyOrganizer' do
+target 'FindEvent' do
   use_frameworks!
+
+# ignore all warnings from all pods
+inhibit_all_warnings!
 
  # UI
     pod 'SnapKit'

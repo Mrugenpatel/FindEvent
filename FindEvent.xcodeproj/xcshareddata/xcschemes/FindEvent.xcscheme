@@ -15,9 +15,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "4B44D5822208D7E9005FEF14"
-               BuildableName = "FamillyOrganizer.app"
-               BlueprintName = "FamillyOrganizer"
-               ReferencedContainer = "container:FamillyOrganizer.xcodeproj">
+               BuildableName = "FindEvent.app"
+               BlueprintName = "FindEvent"
+               ReferencedContainer = "container:FindEvent.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -33,9 +33,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "4B44D5822208D7E9005FEF14"
-            BuildableName = "FamillyOrganizer.app"
-            BlueprintName = "FamillyOrganizer"
-            ReferencedContainer = "container:FamillyOrganizer.xcodeproj">
+            BuildableName = "FindEvent.app"
+            BlueprintName = "FindEvent"
+            ReferencedContainer = "container:FindEvent.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
       <AdditionalOptions>
@@ -56,9 +56,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "4B44D5822208D7E9005FEF14"
-            BuildableName = "FamillyOrganizer.app"
-            BlueprintName = "FamillyOrganizer"
-            ReferencedContainer = "container:FamillyOrganizer.xcodeproj">
+            BuildableName = "FindEvent.app"
+            BlueprintName = "FindEvent"
+            ReferencedContainer = "container:FindEvent.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
       <AdditionalOptions>
@@ -79,9 +79,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "4B44D5822208D7E9005FEF14"
-            BuildableName = "FamillyOrganizer.app"
-            BlueprintName = "FamillyOrganizer"
-            ReferencedContainer = "container:FamillyOrganizer.xcodeproj">
+            BuildableName = "FindEvent.app"
+            BlueprintName = "FindEvent"
+            ReferencedContainer = "container:FindEvent.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>

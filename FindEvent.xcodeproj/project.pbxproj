@@ -89,13 +89,16 @@
 		4BD8CFC4220A5DC300E0C6F5 /* UserInputError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BD8CFC3220A5DC300E0C6F5 /* UserInputError.swift */; };
 		4BDAF6AC220B716F006AD329 /* EmailAuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BDAF6AB220B716F006AD329 /* EmailAuthService.swift */; };
 		4BDAF6AE220B7180006AD329 /* FacebookAuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BDAF6AD220B7180006AD329 /* FacebookAuthService.swift */; };
-		7F09F18985B3098CD0DA3BB5 /* Pods_FamillyOrganizer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3E1035FD427EBD97E6209FA0 /* Pods_FamillyOrganizer.framework */; };
+		6758CF5E046CFEE861088175 /* Pods_FindEvent.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9869283FCF931A3BD49BA395 /* Pods_FindEvent.framework */; };
+		7F09F18985B3098CD0DA3BB5 /* Pods_FindEvent.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3E1035FD427EBD97E6209FA0 /* Pods_FindEvent.framework */; };
 		A4DB2237229585BC0054EA78 /* SegmentControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4DB2236229585BB0054EA78 /* SegmentControl.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		39B9EB50827781FE90ADD3E5 /* Pods-FamillyOrganizer.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FamillyOrganizer.debug.xcconfig"; path = "Pods/Target Support Files/Pods-FamillyOrganizer/Pods-FamillyOrganizer.debug.xcconfig"; sourceTree = "<group>"; };
-		3E1035FD427EBD97E6209FA0 /* Pods_FamillyOrganizer.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FamillyOrganizer.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		1D613BF7951D0A9E0F6BDECF /* Pods-FindEvent.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FindEvent.release.xcconfig"; path = "Pods/Target Support Files/Pods-FindEvent/Pods-FindEvent.release.xcconfig"; sourceTree = "<group>"; };
+		2E21A2DA6F3C3E035F6D8657 /* Pods-FindEvent.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FindEvent.debug.xcconfig"; path = "Pods/Target Support Files/Pods-FindEvent/Pods-FindEvent.debug.xcconfig"; sourceTree = "<group>"; };
+		39B9EB50827781FE90ADD3E5 /* Pods-FindEvent.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FindEvent.debug.xcconfig"; path = "Pods/Target Support Files/Pods-FindEvent/Pods-FindEvent.debug.xcconfig"; sourceTree = "<group>"; };
+		3E1035FD427EBD97E6209FA0 /* Pods_FindEvent.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FindEvent.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		4B04C4E42291CD2F00455919 /* FriendsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsService.swift; sourceTree = "<group>"; };
 		4B04C4E62291CDA800455919 /* FriendsServiceError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsServiceError.swift; sourceTree = "<group>"; };
 		4B04C4E922920BCA00455919 /* FriendRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendRequest.swift; sourceTree = "<group>"; };
@@ -108,7 +111,7 @@
 		4B0F621222766461008C8DE3 /* SettingsLogoutCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsLogoutCell.swift; sourceTree = "<group>"; };
 		4B3319F92213E7120095032E /* TextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextField.swift; sourceTree = "<group>"; };
 		4B39EF0D22177F0300A36A06 /* LocationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationService.swift; sourceTree = "<group>"; };
-		4B44D5832208D7E9005FEF14 /* FamillyOrganizer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FamillyOrganizer.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		4B44D5832208D7E9005FEF14 /* FindEvent.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FindEvent.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4B44D5862208D7E9005FEF14 /* Application.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Application.swift; sourceTree = "<group>"; };
 		4B44D58D2208D7EC005FEF14 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		4B44D5902208D7EC005FEF14 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -180,7 +183,8 @@
 		4BD8CFC3220A5DC300E0C6F5 /* UserInputError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInputError.swift; sourceTree = "<group>"; };
 		4BDAF6AB220B716F006AD329 /* EmailAuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailAuthService.swift; sourceTree = "<group>"; };
 		4BDAF6AD220B7180006AD329 /* FacebookAuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FacebookAuthService.swift; sourceTree = "<group>"; };
-		8BD17FA9E4F5A73C298B947C /* Pods-FamillyOrganizer.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FamillyOrganizer.release.xcconfig"; path = "Pods/Target Support Files/Pods-FamillyOrganizer/Pods-FamillyOrganizer.release.xcconfig"; sourceTree = "<group>"; };
+		8BD17FA9E4F5A73C298B947C /* Pods-FindEvent.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FindEvent.release.xcconfig"; path = "Pods/Target Support Files/Pods-FindEvent/Pods-FindEvent.release.xcconfig"; sourceTree = "<group>"; };
+		9869283FCF931A3BD49BA395 /* Pods_FindEvent.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FindEvent.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A4DB2236229585BB0054EA78 /* SegmentControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SegmentControl.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -189,7 +193,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7F09F18985B3098CD0DA3BB5 /* Pods_FamillyOrganizer.framework in Frameworks */,
+				7F09F18985B3098CD0DA3BB5 /* Pods_FindEvent.framework in Frameworks */,
+				6758CF5E046CFEE861088175 /* Pods_FindEvent.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -234,7 +239,7 @@
 		4B44D5842208D7E9005FEF14 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				4B44D5832208D7E9005FEF14 /* FamillyOrganizer.app */,
+				4B44D5832208D7E9005FEF14 /* FindEvent.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -1028,8 +1033,10 @@
 		B93874519070A1A466673031 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				39B9EB50827781FE90ADD3E5 /* Pods-FamillyOrganizer.debug.xcconfig */,
-				8BD17FA9E4F5A73C298B947C /* Pods-FamillyOrganizer.release.xcconfig */,
+				39B9EB50827781FE90ADD3E5 /* Pods-FindEvent.debug.xcconfig */,
+				8BD17FA9E4F5A73C298B947C /* Pods-FindEvent.release.xcconfig */,
+				2E21A2DA6F3C3E035F6D8657 /* Pods-FindEvent.debug.xcconfig */,
+				1D613BF7951D0A9E0F6BDECF /* Pods-FindEvent.release.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -1037,7 +1044,8 @@
 		C55615BA2114CC9DC12105E0 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				3E1035FD427EBD97E6209FA0 /* Pods_FamillyOrganizer.framework */,
+				3E1035FD427EBD97E6209FA0 /* Pods_FindEvent.framework */,
+				9869283FCF931A3BD49BA395 /* Pods_FindEvent.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -1045,9 +1053,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		4B44D5822208D7E9005FEF14 /* FamillyOrganizer */ = {
+		4B44D5822208D7E9005FEF14 /* FindEvent */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 4B44D5952208D7EC005FEF14 /* Build configuration list for PBXNativeTarget "FamillyOrganizer" */;
+			buildConfigurationList = 4B44D5952208D7EC005FEF14 /* Build configuration list for PBXNativeTarget "FindEvent" */;
 			buildPhases = (
 				6958100D686C2564BA1557BB /* [CP] Check Pods Manifest.lock */,
 				4B44D5AF2208E162005FEF14 /* Run Script */,
@@ -1060,9 +1068,9 @@
 			);
 			dependencies = (
 			);
-			name = FamillyOrganizer;
-			productName = FamillyOrganizer;
-			productReference = 4B44D5832208D7E9005FEF14 /* FamillyOrganizer.app */;
+			name = FindEvent;
+			productName = FindEvent;
+			productReference = 4B44D5832208D7E9005FEF14 /* FindEvent.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -1081,7 +1089,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 4B44D57E2208D7E9005FEF14 /* Build configuration list for PBXProject "FamillyOrganizer" */;
+			buildConfigurationList = 4B44D57E2208D7E9005FEF14 /* Build configuration list for PBXProject "FindEvent" */;
 			compatibilityVersion = "Xcode 9.3";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -1094,7 +1102,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				4B44D5822208D7E9005FEF14 /* FamillyOrganizer */,
+				4B44D5822208D7E9005FEF14 /* FindEvent */,
 			);
 		};
 /* End PBXProject section */
@@ -1137,7 +1145,7 @@
 			outputFileListPaths = (
 			);
 			outputPaths = (
-				$SRCROOT/Source/PresentationLayer/Autogeneration/R.generated.swift,
+				"$SRCROOT/Source/PresentationLayer/Autogeneration/R.generated.swift",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -1158,7 +1166,7 @@
 			outputFileListPaths = (
 			);
 			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-FamillyOrganizer-checkManifestLockResult.txt",
+				"$(DERIVED_FILE_DIR)/Pods-FindEvent-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -1173,7 +1181,7 @@
 			inputFileListPaths = (
 			);
 			inputPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-FamillyOrganizer/Pods-FamillyOrganizer-frameworks.sh",
+				"${PODS_ROOT}/Target Support Files/Pods-FindEvent/Pods-FindEvent-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Bolts/Bolts.framework",
 				"${BUILT_PRODUCTS_DIR}/BoringSSL-GRPC/openssl_grpc.framework",
 				"${BUILT_PRODUCTS_DIR}/FBSDKCoreKit/FBSDKCoreKit.framework",
@@ -1222,7 +1230,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-FamillyOrganizer/Pods-FamillyOrganizer-frameworks.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-FindEvent/Pods-FindEvent-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -1437,7 +1445,7 @@
 		};
 		4B44D5962208D7EC005FEF14 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 39B9EB50827781FE90ADD3E5 /* Pods-FamillyOrganizer.debug.xcconfig */;
+			baseConfigurationReference = 2E21A2DA6F3C3E035F6D8657 /* Pods-FindEvent.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -1448,7 +1456,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.yurafloka.FamillyOrganizer;
+				PRODUCT_BUNDLE_IDENTIFIER = com.yurafloka.FindEvent;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = 1;
@@ -1457,7 +1465,7 @@
 		};
 		4B44D5972208D7EC005FEF14 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 8BD17FA9E4F5A73C298B947C /* Pods-FamillyOrganizer.release.xcconfig */;
+			baseConfigurationReference = 1D613BF7951D0A9E0F6BDECF /* Pods-FindEvent.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -1468,7 +1476,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.yurafloka.FamillyOrganizer;
+				PRODUCT_BUNDLE_IDENTIFIER = com.yurafloka.FindEvent;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = 1;
@@ -1478,7 +1486,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		4B44D57E2208D7E9005FEF14 /* Build configuration list for PBXProject "FamillyOrganizer" */ = {
+		4B44D57E2208D7E9005FEF14 /* Build configuration list for PBXProject "FindEvent" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				4B44D5932208D7EC005FEF14 /* Debug */,
@@ -1487,7 +1495,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		4B44D5952208D7EC005FEF14 /* Build configuration list for PBXNativeTarget "FamillyOrganizer" */ = {
+		4B44D5952208D7EC005FEF14 /* Build configuration list for PBXNativeTarget "FindEvent" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				4B44D5962208D7EC005FEF14 /* Debug */,
